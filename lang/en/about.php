@@ -1,0 +1,65 @@
+<?php
+
+return [
+    'title' => 'About OzyTech | Engineering the Work Behind the Next',
+
+    'hero' => [
+        'eyebrow' => 'The people behind the systems',
+        'title' => 'Built for the work that matters.',
+        'description' => 'OzyTech is a global engineering guild for ambitious teams. We bring principal-level thinking, careful craft, and practical momentum to the software that moves your business forward.',
+        'cta_primary' => 'Meet us in a working session',
+        'cta_secondary' => 'Our principles',
+        'stat_number' => '01',
+        'stat_text' => 'One senior team from first architectural question to the last production deployment. Fewer handoffs. Better decisions.',
+    ],
+
+    'section1' => [
+        'label' => 'What we believe',
+        'title' => 'Good engineering creates room for better ideas.',
+        'paragraph1' => 'The best technology partner does more than ship features. They make complexity legible, protect the quality bar, and leave your team stronger than they found it.',
+        'paragraph2' => 'That is the standard we bring to every engagement: honest architecture, direct communication, and a bias toward systems that can keep earning their place as your business grows.',
+    ],
+
+    'principles' => [
+        'label' => 'How we work',
+        'title' => 'A guild built around trust, not theatre.',
+        'description' => 'Our operating principles keep the work focused when the problem is complex and the stakes are real.',
+        'cards' => [
+            ['title' => 'Think in systems', 'description' => 'We design for the full lifecycle: reliability, security, cost, adoption, and the people who will own the work after launch.'],
+            ['title' => 'Make it clear', 'description' => 'Decisions belong in the open. We explain tradeoffs plainly and keep stakeholders close to the technical truth.'],
+            ['title' => 'Leave it better', 'description' => 'Every engagement should create durable capability, from a cleaner platform to a team that can move with confidence.'],
+        ],
+    ],
+
+    'team' => [
+        'label' => 'Who you will work with',
+        'title' => 'The guild behind the work.',
+        'description' => 'A small set of the principals, architects, and leads who show up on client calls, not just in the org chart.',
+        'members' => [
+            ['name' => 'Yassine El Amrani', 'role' => 'Principal Architect & Co-Founder', 'focus' => 'Distributed systems and cloud architecture across 40+ production launches.'],
+            ['name' => 'Elena Kovac', 'role' => 'Head of Product Design', 'focus' => 'Interfaces that make complex products feel obvious.'],
+            ['name' => 'Marcus Ferreira', 'role' => 'Principal Engineer, Cloud & DevSecOps', 'focus' => 'Zero-trust infrastructure and reliability engineering at scale.'],
+            ['name' => 'Amara Okafor', 'role' => 'Engineering Lead, Mobile & AI Systems', 'focus' => 'Native and cross-platform apps powered by agentic AI.'],
+            ['name' => 'Kenji Watanabe', 'role' => 'Delivery Lead, APAC', 'focus' => 'Keeps every sprint honest, on time, and easy to trust.'],
+            ['name' => 'Sofia Marín', 'role' => 'Head of Client Partnerships', 'focus' => 'The first call when a roadmap needs a clear next move.'],
+        ],
+    ],
+
+    'numbers' => [
+        'label' => 'The guild by the numbers',
+        'title' => 'Small enough to stay close. Experienced enough to go deep.',
+        'items' => [
+            ['value' => '12+', 'label' => 'Years average senior builder tenure'],
+            ['value' => '250+', 'label' => 'Enterprise systems shipped'],
+            ['value' => '6', 'label' => 'Regions connected by our guild'],
+            ['value' => '98.5%', 'label' => 'Long-term partner retention'],
+        ],
+    ],
+
+    'cta' => [
+        'label' => 'Start with the hard question',
+        'title' => 'Bring us the problem behind the brief.',
+        'description' => 'Tell us what is changing in your business. We will bring a principal engineer to the first conversation and help you find the clearest next move.',
+        'button' => 'Talk to the team',
+    ],
+];
