@@ -36,7 +36,7 @@ return [
         'body' => 'Nous transformons des idées prometteuses en produits ciblés et testables qui génèrent rapidement des preuves, sans sacrifier les fondations dont vous aurez besoin ensuite.',
         'features' => ['Prototypage rapide', 'Cadrage des fonctionnalités clés', 'Boucles de retour utilisateur'],
     ],
-    'tech-migration' => [
+    'llc-incorporation' => [
         'title' => 'Création de société (LLC)',
         'lead' => "Une constitution d'entreprise aux États-Unis et à l'international, faite dans les règles.",
         'body' => "Nous prenons en charge la constitution de sociétés aux États-Unis (Delaware/Wyoming) et à l'international, les services d'agent enregistré, l'obtention de l'EIN fiscal et la conformité continue, pour que vos fondations juridiques suivent le rythme de votre feuille de route technique.",

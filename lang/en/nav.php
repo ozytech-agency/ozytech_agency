@@ -24,7 +24,7 @@ return [
         'softwareDev' => ['title' => 'SaaS Development', 'desc' => 'Reliable multi-tenant products built to scale.'],
         'mobileApps' => ['title' => 'Mobile Apps', 'desc' => 'Useful iOS and Android experiences.'],
         'mvp' => ['title' => 'MVP Development', 'desc' => 'Validate ideas with focused builds.'],
-        'techMigration' => ['title' => 'LLC & Incorporation', 'desc' => 'US and global business formation, done right.'],
+        'llcIncorporation' => ['title' => 'LLC & Incorporation', 'desc' => 'US and global business formation, done right.'],
         'webDev' => ['title' => 'Web Development', 'desc' => 'Fast, accessible web platforms.'],
         'cms' => ['title' => 'WordPress Development', 'desc' => 'Content systems your team can own.'],
         'shopify' => ['title' => 'Shopify Store Development', 'desc' => 'Commerce stores built to convert.'],

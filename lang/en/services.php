@@ -36,7 +36,7 @@ return [
         'body' => 'We turn promising ideas into focused, testable products that create evidence quickly without sacrificing the foundations you will need next.',
         'features' => ['Rapid prototyping', 'Core feature scoping', 'User feedback loops'],
     ],
-    'tech-migration' => [
+    'llc-incorporation' => [
         'title' => 'LLC & Incorporation',
         'lead' => 'US and global business formation, done right.',
         'body' => 'We handle US (Delaware/Wyoming) and global company formation, registered agent services, EIN tax setup, and ongoing compliance, so your legal foundation keeps pace with your engineering roadmap.',

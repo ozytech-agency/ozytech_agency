@@ -24,7 +24,7 @@ return [
         'softwareDev' => ['title' => 'Développement SaaS', 'desc' => 'Des produits multi-tenants fiables conçus pour évoluer.'],
         'mobileApps' => ['title' => 'Applications mobiles', 'desc' => 'Des expériences iOS et Android utiles.'],
         'mvp' => ['title' => 'Développement MVP', 'desc' => 'Valider vos idées avec des versions ciblées.'],
-        'techMigration' => ['title' => 'Création de société (LLC)', 'desc' => "Une constitution d'entreprise aux États-Unis et à l'international, faite dans les règles."],
+        'llcIncorporation' => ['title' => 'Création de société (LLC)', 'desc' => "Une constitution d'entreprise aux États-Unis et à l'international, faite dans les règles."],
         'webDev' => ['title' => 'Développement web', 'desc' => 'Des plateformes web rapides et accessibles.'],
         'cms' => ['title' => 'Développement WordPress', 'desc' => 'Des systèmes de contenu que votre équipe maîtrise.'],
         'shopify' => ['title' => 'Boutique Shopify', 'desc' => 'Des boutiques pensées pour convertir.'],

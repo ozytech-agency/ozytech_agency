@@ -2,7 +2,7 @@ export const servicesNav = [
     { key: 'softwareDev', slug: 'software-development', icon: 'fa-solid fa-code' },
     { key: 'mobileApps', slug: 'mobile-apps', icon: 'fa-solid fa-mobile-screen-button' },
     { key: 'mvp', slug: 'mvp-development', icon: 'fa-solid fa-rocket' },
-    { key: 'techMigration', slug: 'tech-migration', icon: 'fa-solid fa-building' },
+    { key: 'llcIncorporation', slug: 'llc-incorporation', icon: 'fa-solid fa-building' },
     { key: 'webDev', slug: 'web-development', icon: 'fa-solid fa-laptop-code' },
     { key: 'cms', slug: 'cms-development', icon: 'fa-brands fa-wordpress' },
     { key: 'shopify', slug: 'shopify-store-development', icon: 'fa-brands fa-shopify' },

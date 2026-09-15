@@ -36,7 +36,7 @@ return [
         'body' => 'Convertimos ideas prometedoras en productos enfocados y comprobables que generan evidencia rápidamente sin sacrificar las bases que necesitarás después.',
         'features' => ['Prototipado rápido', 'Definición de funciones clave', 'Ciclos de feedback de usuarios'],
     ],
-    'tech-migration' => [
+    'llc-incorporation' => [
         'title' => 'Constitución de LLC',
         'lead' => 'Formación empresarial en EE. UU. y a nivel global, hecha correctamente.',
         'body' => 'Nos encargamos de la constitución de empresas en EE. UU. (Delaware/Wyoming) y a nivel global, servicios de agente registrado, obtención del EIN fiscal y cumplimiento continuo, para que tus bases legales avancen al ritmo de tu hoja de ruta técnica.',
