@@ -17,24 +17,36 @@ export default function Blog() {
         <SiteLayout>
             <Head title={t('blog.title')} />
 
-            <section className="relative overflow-hidden bg-primary-container py-space-3xl lg:py-space-4xl text-on-primary w-full">
+            <section className="relative overflow-hidden py-space-3xl lg:py-space-4xl text-on-primary w-full isolate">
+                <div className="absolute inset-0 -z-20">
+                    <img
+                        src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=2200&q=80"
+                        alt=""
+                        aria-hidden="true"
+                        className="h-full w-full object-cover"
+                    />
+                </div>
+                <div
+                    className="absolute inset-0 -z-10 pointer-events-none"
+                    style={{
+                        background:
+                            'linear-gradient(90deg, rgb(9 14 25 / .92) 0%, rgb(9 14 25 / .8) 55%, rgb(9 14 25 / .6) 100%), linear-gradient(180deg, rgb(9 14 25 / .3), rgb(9 14 25 / .55))',
+                    }}
+                ></div>
                 <div className="absolute top-[-25%] right-[-8%] w-[560px] h-[560px] rounded-full bg-secondary-container/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop relative z-10">
-                    <Link href={route('home')} className="inline-flex items-center gap-space-xs font-label-md text-label-md text-primary-fixed-dim hover:text-on-primary transition-colors">
-                        <i className="fa-solid fa-arrow-left text-xs" aria-hidden="true"></i> {t('blog.hero.back')}
-                    </Link>
-                    <div className="max-w-3xl mt-space-2xl">
+                <div className="mx-[6%] relative z-10">
+                    <div className="max-w-3xl">
                         <span className="inline-flex items-center gap-space-xs px-space-md py-space-2xs bg-primary-fixed/10 rounded-full font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-widest">
                             <span className="w-2 h-2 rounded-full bg-accent2"></span> {t('blog.hero.badge')}
                         </span>
                         <h1 className="mt-space-md font-display-xl text-display-xl leading-[1.1]">{t('blog.hero.title')}</h1>
-                        <p className="mt-space-md max-w-2xl font-body-lg text-body-lg text-primary-fixed-dim">{t('blog.hero.description')}</p>
+                        <p className="mt-space-md max-w-2xl font-body-lg text-body-lg text-white/80">{t('blog.hero.description')}</p>
                     </div>
                 </div>
             </section>
 
             <section className="w-full py-space-3xl lg:py-space-4xl bg-surface">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="flex flex-col lg:flex-row gap-space-xl items-stretch">
                         <article className="lg:w-3/5 relative overflow-hidden rounded-xl bg-primary-container text-on-primary min-h-[380px] flex items-end">
                             <img
@@ -75,7 +87,7 @@ export default function Blog() {
             </section>
 
             <section className="w-full bg-surface-container-low py-space-3xl lg:py-space-4xl">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl">
                         <div>
                             <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary">{t('blog.latest.label')}</span>
@@ -112,7 +124,7 @@ export default function Blog() {
             </section>
 
             <section className="w-full py-space-3xl lg:py-space-4xl bg-primary-container text-on-primary">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop flex flex-col md:flex-row md:items-center justify-between gap-space-lg">
+                <div className="mx-[6%] flex flex-col md:flex-row md:items-center justify-between gap-space-lg">
                     <div>
                         <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary-fixed-dim">{t('blog.cta_section.label')}</span>
                         <h2 className="mt-space-xs font-headline-lg text-headline-lg">{t('blog.cta_section.title')}</h2>

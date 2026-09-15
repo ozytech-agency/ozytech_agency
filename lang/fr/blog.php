@@ -4,7 +4,6 @@ return [
     'title' => 'Blog OzyTech | Notes d\'ingénierie pour équipes ambitieuses',
 
     'hero' => [
-        'back' => 'Retour à OzyTech',
         'badge' => "Notes d'ingénierie",
         'title' => 'Des idées qui rendent la technologie complexe plus facile à faire avancer.',
         'description' => "Une réflexion claire sur l'architecture, l'IA, les systèmes cloud et les décisions qui aident les équipes ambitieuses à livrer avec confiance.",

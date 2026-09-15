@@ -4,7 +4,6 @@ return [
     'title' => 'OzyTech Blog | Engineering Notes for Ambitious Teams',
 
     'hero' => [
-        'back' => 'Back to OzyTech',
         'badge' => 'Engineering notes',
         'title' => 'Ideas that make complex technology easier to move.',
         'description' => 'Clear thinking on architecture, AI, cloud systems, and the decisions that help ambitious teams ship with confidence.',
