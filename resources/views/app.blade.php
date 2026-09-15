@@ -31,6 +31,16 @@
 
         <!-- Scripts -->
         @routes
+        <script>
+            /* Expose the Ziggy config on window so the app bundle (an ES module,
+               which can't see the plain `const Ziggy` from the classic script
+               above) can keep Ziggy.defaults.locale in sync on client-side
+               Inertia navigations — see the router.on('navigate') listener in
+               resources/js/app.jsx. Without this, route() calls that omit an
+               explicit locale silently fall back to the locale of the very
+               first full page load, not the current one. */
+            window.Ziggy = Ziggy;
+        </script>
         @viteReactRefresh
         @vite(['resources/css/app.css', 'resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
         @inertiaHead
