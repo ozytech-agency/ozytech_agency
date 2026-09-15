@@ -3,10 +3,10 @@ import { router } from '@inertiajs/react';
 import { useLocale } from '@/lib/translations';
 
 const LANGS = [
-    { code: 'ar', label: 'العربية' },
-    { code: 'en', label: 'English' },
-    { code: 'fr', label: 'Français' },
-    { code: 'es', label: 'Español' },
+    { code: 'ar', label: 'العربية', flag: 'ma' },
+    { code: 'en', label: 'English', flag: 'gb' },
+    { code: 'fr', label: 'Français', flag: 'fr' },
+    { code: 'es', label: 'Español', flag: 'es' },
 ];
 
 export default function LanguageSwitcher() {
@@ -61,14 +61,10 @@ export default function LanguageSwitcher() {
                                 current ? 'bg-surface-container-high font-semibold' : ''
                             }`}
                         >
-                            <span
-                                className={`inline-flex items-center justify-center min-w-[1.75rem] h-6 px-1 rounded-md text-[0.6875rem] font-bold tracking-wide ${
-                                    current ? 'bg-accent2 text-white' : 'bg-surface-container-high text-on-surface-variant'
-                                }`}
-                            >
-                                {l.code.toUpperCase()}
+                            <span className="inline-flex items-center justify-center w-7 h-5 shrink-0 rounded-[4px] overflow-hidden border border-outline-variant/40">
+                                <img src={`https://flagcdn.com/${l.flag}.svg`} alt="" className="w-full h-full object-cover" />
                             </span>
-                            <span className="text-on-surface">{l.label}</span>
+                            <span className={`text-on-surface ${l.code === 'ar' ? 'font-tajawal' : ''}`}>{l.label}</span>
                             <svg
                                 viewBox="0 0 20 20"
                                 fill="currentColor"

@@ -130,6 +130,16 @@ html.theme-transition * {
     }
 }
 
+.services-menu::before {
+    content: '';
+    position: absolute;
+    z-index: 59;
+    top: 100%;
+    left: -1rem;
+    width: min(640px, calc(100vw - 2rem));
+    height: 0.75rem;
+}
+
 .services-dropdown {
     position: absolute;
     z-index: 60;
@@ -153,6 +163,7 @@ html.theme-transition * {
 }
 
 .services-menu.is-open .services-dropdown,
+.services-menu:hover .services-dropdown,
 .services-menu:focus-within .services-dropdown {
     opacity: 1;
     pointer-events: auto;
@@ -364,4 +375,11 @@ details.faq[open] .faq-icon {
 html[lang='ar'] body,
 html[lang='ar'] body *:not(.material-symbols-outlined):not([class*='fa-']) {
     font-family: 'Tajawal', sans-serif !important;
+}
+
+/* Arabic text can appear outside html[lang='ar'] too (e.g. "العربية" in the
+   language switcher while browsing in another locale) — force Tajawal there
+   directly so it never falls back to the default Latin font stack. */
+.font-tajawal {
+    font-family: 'Tajawal', sans-serif;
 }
