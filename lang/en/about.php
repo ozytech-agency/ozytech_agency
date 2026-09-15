@@ -7,7 +7,7 @@ return [
         'eyebrow' => 'The people behind the systems',
         'title' => 'Built for the work that matters.',
         'description' => 'OzyTech is a global engineering guild for ambitious teams. We bring principal-level thinking, careful craft, and practical momentum to the software that moves your business forward.',
-        'cta_primary' => 'Meet us in a working session',
+        'cta_primary' => 'Start your project',
         'cta_secondary' => 'Our principles',
         'stat_number' => '01',
         'stat_text' => 'One senior team from first architectural question to the last production deployment. Fewer handoffs. Better decisions.',
@@ -33,15 +33,11 @@ return [
 
     'team' => [
         'label' => 'Who you will work with',
-        'title' => 'The guild behind the work.',
-        'description' => 'A small set of the principals, architects, and leads who show up on client calls, not just in the org chart.',
+        'title' => 'The founders behind the work.',
+        'description' => 'Two co-founders who show up on every client call personally, from the first architecture sketch to the last deployment.',
         'members' => [
-            ['name' => 'Yassine El Amrani', 'role' => 'Principal Architect & Co-Founder', 'focus' => 'Distributed systems and cloud architecture across 40+ production launches.'],
-            ['name' => 'Elena Kovac', 'role' => 'Head of Product Design', 'focus' => 'Interfaces that make complex products feel obvious.'],
-            ['name' => 'Marcus Ferreira', 'role' => 'Principal Engineer, Cloud & DevSecOps', 'focus' => 'Zero-trust infrastructure and reliability engineering at scale.'],
-            ['name' => 'Amara Okafor', 'role' => 'Engineering Lead, Mobile & AI Systems', 'focus' => 'Native and cross-platform apps powered by agentic AI.'],
-            ['name' => 'Kenji Watanabe', 'role' => 'Delivery Lead, APAC', 'focus' => 'Keeps every sprint honest, on time, and easy to trust.'],
-            ['name' => 'Sofia Marín', 'role' => 'Head of Client Partnerships', 'focus' => 'The first call when a roadmap needs a clear next move.'],
+            ['name' => 'Oussama Driouech', 'role' => 'OzyTech Co-Founder & Full-Stack Developer', 'focus' => 'Full-stack architecture and product engineering across every OzyTech launch.'],
+            ['name' => 'Zakariae Hallaji', 'role' => 'Mobile Application Developer & OzyTech Co-Founder', 'focus' => 'Native mobile experiences and app architecture across iOS and Android.'],
         ],
     ],
 

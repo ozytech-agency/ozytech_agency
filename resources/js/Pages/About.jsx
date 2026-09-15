@@ -5,14 +5,31 @@ import { useTranslations } from '@/lib/translations';
 
 const PRINCIPLE_ICONS = ['architecture', 'forum', 'trending_up'];
 
-const TEAM_PHOTOS = [
-    'https://i.pravatar.cc/240?img=12',
-    'https://i.pravatar.cc/240?img=47',
-    'https://i.pravatar.cc/240?img=32',
-    'https://i.pravatar.cc/240?img=65',
-    'https://i.pravatar.cc/240?img=8',
-    'https://i.pravatar.cc/240?img=54',
+const TEAM_AVATAR_STYLES = ['bg-secondary-container text-on-secondary-container', 'bg-primary text-on-primary'];
+
+const TEAM_SOCIALS = [
+    [
+        { key: 'x', icon: 'fa-brands fa-x-twitter', href: 'https://x.com/oussamadriouech' },
+        { key: 'instagram', icon: 'fa-brands fa-instagram', href: 'https://instagram.com/oussama.driouech' },
+        { key: 'linkedin', icon: 'fa-brands fa-linkedin-in', href: 'https://linkedin.com/in/oussama-driouech' },
+        { key: 'website', icon: 'fa-solid fa-globe', href: 'https://ozytechagency.com' },
+    ],
+    [
+        { key: 'x', icon: 'fa-brands fa-x-twitter', href: 'https://x.com/zakariaehallaji' },
+        { key: 'instagram', icon: 'fa-brands fa-instagram', href: 'https://instagram.com/zakariae.hallaji' },
+        { key: 'linkedin', icon: 'fa-brands fa-linkedin-in', href: 'https://linkedin.com/in/zakariae-hallaji' },
+        { key: 'website', icon: 'fa-solid fa-globe', href: 'https://ozytechagency.com' },
+    ],
 ];
+
+function getInitials(name) {
+    return name
+        .split(' ')
+        .map((part) => part.charAt(0))
+        .join('')
+        .slice(0, 2)
+        .toUpperCase();
+}
 
 export default function About() {
     const t = useTranslations();
@@ -24,18 +41,33 @@ export default function About() {
         <SiteLayout>
             <Head title={t('about.title')} />
 
-            <section className="relative w-full overflow-hidden bg-surface-container-low py-space-4xl">
+            <section className="relative w-full overflow-hidden py-space-4xl isolate">
+                <div className="absolute inset-0 -z-20">
+                    <img
+                        src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2200&q=85"
+                        alt=""
+                        aria-hidden="true"
+                        className="h-full w-full object-cover"
+                    />
+                </div>
+                <div
+                    className="absolute inset-0 -z-10 pointer-events-none"
+                    style={{
+                        background:
+                            'linear-gradient(90deg, rgb(9 14 25 / .88) 0%, rgb(9 14 25 / .68) 48%, rgb(9 14 25 / .34) 100%), linear-gradient(180deg, rgb(9 14 25 / .18), rgb(9 14 25 / .5))',
+                    }}
+                ></div>
                 <div className="absolute -right-24 -top-40 h-[34rem] w-[34rem] rounded-full bg-secondary-container/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
-                <div className="relative max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="relative mx-[6%]">
                     <div className="max-w-2xl">
-                        <div className="inline-flex items-center gap-space-xs mb-space-lg text-on-surface-variant">
+                        <div className="inline-flex items-center gap-space-xs mb-space-lg text-white/80">
                             <span className="w-2 h-2 rounded-full bg-accent2"></span>
                             <span className="font-label-sm text-label-sm uppercase tracking-widest">{t('about.hero.eyebrow')}</span>
                         </div>
-                        <h1 className="font-display-xl text-display-xl-mobile sm:text-display-xl leading-[1.02] tracking-tight text-on-surface">
+                        <h1 className="font-display-xl text-display-xl-mobile sm:text-display-xl leading-[1.02] tracking-tight text-white/[92%]">
                             {t('about.hero.title')}
                         </h1>
-                        <p className="mt-space-lg max-w-xl text-body-lg text-body-lg text-on-surface-variant leading-relaxed">{t('about.hero.description')}</p>
+                        <p className="mt-space-lg max-w-xl text-body-lg text-body-lg text-white/80 leading-relaxed">{t('about.hero.description')}</p>
                         <div className="mt-space-xl flex flex-wrap gap-space-sm">
                             <Link
                                 href={route('start-a-project')}
@@ -56,7 +88,7 @@ export default function About() {
             </section>
 
             <Reveal as="section" className="w-full py-space-4xl bg-surface">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-space-2xl items-center">
+                <div className="mx-[6%] grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-space-2xl items-center">
                     <div className="rounded-2xl overflow-hidden bg-surface-container-high">
                         <img
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkJPdW8obQp1iA3g-wc5kBgMH7qk_IcokPWD0MjBfqm4V1CKxmKh9bV_rHZccMDPGOIsXgWX9C8JcXwMwAc2fuXXXz1BW9VeXqhKZ8HRHXJrA1EOCdLYBJ10S5K4gbPK6RqmPq6pjmVaBIIGLiY9XV57wE8vmtwOKivhI5D2wbfZ1AWBVU23HqnnPfqZchXyMLMrY1Sa2Zaq675rpx1XGOkgtF37kdBRKS6UFHX0MSn3Z4yFrGZE9c"
@@ -74,7 +106,7 @@ export default function About() {
             </Reveal>
 
             <section id="principles" className="w-full py-space-4xl bg-surface-container-low">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="max-w-2xl mb-space-2xl">
                         <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('about.principles.label')}</span>
                         <h2 className="mt-space-sm font-headline-lg text-headline-lg text-on-surface">{t('about.principles.title')}</h2>
@@ -93,21 +125,40 @@ export default function About() {
             </section>
 
             <Reveal as="section" className="w-full py-space-4xl bg-surface">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="max-w-2xl mb-space-2xl">
                         <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('about.team.label')}</span>
                         <h2 className="mt-space-sm font-headline-lg text-headline-lg text-on-surface">{t('about.team.title')}</h2>
                         <p className="mt-space-sm text-on-surface-variant">{t('about.team.description')}</p>
                     </div>
-                    <Reveal as="div" stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+                    <Reveal as="div" stagger className="grid grid-cols-1 sm:grid-cols-2 gap-space-lg max-w-3xl">
                         {teamMembers.map((member, i) => (
-                            <article key={member.name} className="h-full flex flex-col items-start gap-space-sm bg-surface-container-lowest border border-surface-container rounded-xl p-space-lg">
-                                <img src={TEAM_PHOTOS[i]} alt="" className="w-16 h-16 rounded-full object-cover" />
-                                <div>
+                            <article key={member.name} className="h-full flex flex-col overflow-hidden bg-surface-container-lowest border border-surface-container rounded-xl">
+                                <div
+                                    className={`flex aspect-square w-full items-center justify-center font-headline-lg text-5xl font-bold ${TEAM_AVATAR_STYLES[i % TEAM_AVATAR_STYLES.length]}`}
+                                    aria-hidden="true"
+                                >
+                                    {getInitials(member.name)}
+                                </div>
+                                <div className="flex flex-1 flex-col p-space-lg">
                                     <h3 className="font-headline-sm text-lg font-bold text-on-surface">{member.name}</h3>
                                     <p className="font-label-sm text-label-sm text-secondary">{member.role}</p>
+                                    <p className="mt-space-xs text-sm text-on-surface-variant leading-relaxed">{member.focus}</p>
+                                    <div className="mt-space-md flex items-center gap-space-xs border-t border-surface-container pt-space-md">
+                                        {TEAM_SOCIALS[i].map((social) => (
+                                            <a
+                                                key={social.key}
+                                                href={social.href}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                aria-label={`${member.name} on ${social.key}`}
+                                                className="flex h-9 w-9 items-center justify-center rounded-lg text-on-surface-variant transition-colors hover:bg-surface-container-high hover:text-on-surface"
+                                            >
+                                                <i className={social.icon} aria-hidden="true"></i>
+                                            </a>
+                                        ))}
+                                    </div>
                                 </div>
-                                <p className="text-sm text-on-surface-variant leading-relaxed">{member.focus}</p>
                             </article>
                         ))}
                     </Reveal>
@@ -115,7 +166,7 @@ export default function About() {
             </Reveal>
 
             <Reveal as="section" className="w-full py-space-4xl bg-surface-container-low">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="max-w-2xl mb-space-2xl">
                         <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('about.numbers.label')}</span>
                         <h2 className="mt-space-sm font-headline-lg text-headline-lg text-on-surface">{t('about.numbers.title')}</h2>
@@ -131,16 +182,31 @@ export default function About() {
                 </div>
             </Reveal>
 
-            <section className="w-full py-space-4xl bg-primary-container text-on-primary">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop flex flex-col md:flex-row items-center justify-between gap-space-xl">
+            <section className="relative w-full overflow-hidden py-space-4xl text-on-primary isolate">
+                <div className="absolute inset-0 -z-20">
+                    <img
+                        src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2200&q=80"
+                        alt=""
+                        aria-hidden="true"
+                        className="h-full w-full object-cover"
+                    />
+                </div>
+                <div
+                    className="absolute inset-0 -z-10 pointer-events-none"
+                    style={{
+                        background:
+                            'linear-gradient(90deg, rgb(9 14 25 / .92) 0%, rgb(9 14 25 / .82) 55%, rgb(9 14 25 / .6) 100%), linear-gradient(180deg, rgb(9 14 25 / .3), rgb(9 14 25 / .55))',
+                    }}
+                ></div>
+                <div className="relative mx-[6%] flex flex-col md:flex-row items-center justify-between gap-space-xl">
                     <div>
                         <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary-fixed-dim">{t('about.cta.label')}</span>
                         <h2 className="mt-space-sm font-headline-lg text-headline-lg max-w-[13ch]">{t('about.cta.title')}</h2>
                     </div>
                     <div className="max-w-md">
-                        <p className="text-primary-fixed-dim leading-relaxed">{t('about.cta.description')}</p>
+                        <p className="text-white/80 leading-relaxed">{t('about.cta.description')}</p>
                         <Link
-                            href={route('start-a-project')}
+                            href={route('contact')}
                             className="mt-space-lg inline-flex items-center gap-space-xs bg-accent2 text-on-primary font-label-md text-label-md px-space-lg py-space-sm rounded-lg shadow-[0_10px_20px_-5px_rgba(233,87,71,0.35)] transition-all hover:-translate-y-0.5"
                         >
                             {t('about.cta.button')} <span className="material-symbols-outlined text-base">arrow_forward</span>

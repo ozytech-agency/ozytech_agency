@@ -7,7 +7,7 @@ return [
         'eyebrow' => 'Las personas detrás de los sistemas',
         'title' => 'Construidos para el trabajo que importa.',
         'description' => 'OzyTech es un gremio de ingeniería global para equipos ambiciosos. Aportamos pensamiento de nivel principal, artesanía cuidadosa y impulso práctico al software que impulsa tu negocio hacia adelante.',
-        'cta_primary' => 'Reúnete con nosotros en una sesión de trabajo',
+        'cta_primary' => 'Inicia tu proyecto',
         'cta_secondary' => 'Nuestros principios',
         'stat_number' => '01',
         'stat_text' => 'Un solo equipo senior desde la primera pregunta arquitectónica hasta el último despliegue en producción. Menos transferencias. Mejores decisiones.',
@@ -33,15 +33,11 @@ return [
 
     'team' => [
         'label' => 'Con quién vas a trabajar',
-        'title' => 'El gremio detrás del trabajo.',
-        'description' => 'Un pequeño grupo de responsables principales, arquitectos y líderes que aparecen en las llamadas con clientes, no solo en el organigrama.',
+        'title' => 'Los fundadores detrás del trabajo.',
+        'description' => 'Dos cofundadores presentes en persona en cada llamada con el cliente, desde el primer boceto de arquitectura hasta el último despliegue.',
         'members' => [
-            ['name' => 'Yassine El Amrani', 'role' => 'Arquitecto principal y cofundador', 'focus' => 'Sistemas distribuidos y arquitectura cloud en más de 40 lanzamientos a producción.'],
-            ['name' => 'Elena Kovac', 'role' => 'Directora de diseño de producto', 'focus' => 'Interfaces que hacen que los productos complejos parezcan evidentes.'],
-            ['name' => 'Marcus Ferreira', 'role' => 'Ingeniero principal, Cloud y DevSecOps', 'focus' => 'Infraestructura de confianza cero e ingeniería de fiabilidad a gran escala.'],
-            ['name' => 'Amara Okafor', 'role' => 'Líder de ingeniería, Móvil y sistemas de IA', 'focus' => 'Apps nativas y multiplataforma impulsadas por IA agencial.'],
-            ['name' => 'Kenji Watanabe', 'role' => 'Líder de entrega, APAC', 'focus' => 'Mantiene cada sprint honesto, puntual y fácil de confiar.'],
-            ['name' => 'Sofia Marín', 'role' => 'Directora de alianzas con clientes', 'focus' => 'La primera llamada cuando una hoja de ruta necesita un siguiente paso claro.'],
+            ['name' => 'Oussama Driouech', 'role' => 'Cofundador de OzyTech y desarrollador Full-Stack', 'focus' => 'Arquitectura full-stack e ingeniería de producto en cada lanzamiento de OzyTech.'],
+            ['name' => 'Zakariae Hallaji', 'role' => 'Desarrollador de aplicaciones móviles y cofundador de OzyTech', 'focus' => 'Experiencias móviles nativas y arquitectura de apps en iOS y Android.'],
         ],
     ],
 
