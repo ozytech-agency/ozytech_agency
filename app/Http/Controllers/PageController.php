@@ -36,4 +36,9 @@ class PageController extends Controller
     {
         return Inertia::render('Packages');
     }
+
+    public function faq(): Response
+    {
+        return Inertia::render('Faq');
+    }
 }

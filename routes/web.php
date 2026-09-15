@@ -18,6 +18,7 @@ Route::prefix('{locale}')
         Route::get('/contact', [PageController::class, 'contact'])->name('contact');
         Route::get('/blog', [PageController::class, 'blog'])->name('blog');
         Route::get('/packages', [PageController::class, 'packages'])->name('packages');
+        Route::get('/faq', [PageController::class, 'faq'])->name('faq');
         Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
         Route::get('/policies/{policy}', [PolicyController::class, 'show'])->name('policies.show');
 
