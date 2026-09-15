@@ -2,13 +2,6 @@ import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { useTranslations } from '@/lib/translations';
 
-const COMPANY_LINKS = [
-    { key: 'client_impact', hash: 'case-studies' },
-    { key: 'tech_stack', hash: 'delivery' },
-    { key: 'industry_solutions', hash: 'solutions' },
-    { key: 'careers', hash: 'contact' },
-];
-
 export default function SiteFooter() {
     const t = useTranslations();
     const { auth } = usePage().props;
@@ -27,7 +20,7 @@ export default function SiteFooter() {
 
     return (
         <footer className="w-full bg-primary-container text-on-surface-variant pt-space-4xl pb-space-2xl">
-            <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+            <div className="mx-[6%]">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-xl pb-space-3xl">
                     <div className="lg:col-span-3 flex flex-col gap-space-md">
                         <div className="w-fit">
@@ -76,10 +69,14 @@ export default function SiteFooter() {
                     <div className="lg:col-span-2 flex flex-col gap-space-sm">
                         <span className="font-label-sm text-label-sm uppercase tracking-wider text-surface-variant font-bold">{t('footer.services_heading')}</span>
                         <div className="flex flex-col gap-space-xs">
-                            {serviceLinks.map((label) => (
-                                <a key={label} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors" href={`${route('home')}#services`}>
-                                    {label}
-                                </a>
+                            {serviceLinks.map((service) => (
+                                <Link
+                                    key={service.slug}
+                                    href={route('services.show', service.slug)}
+                                    className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors"
+                                >
+                                    {service.label}
+                                </Link>
                             ))}
                         </div>
                     </div>
@@ -90,11 +87,12 @@ export default function SiteFooter() {
                             <Link href={route('about')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
                                 {t('footer.company.about')}
                             </Link>
-                            {COMPANY_LINKS.map((item) => (
-                                <a key={item.key} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors" href={`${route('home')}#${item.hash}`}>
-                                    {t(`footer.company.${item.key}`)}
-                                </a>
-                            ))}
+                            <Link href={route('packages')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
+                                {t('nav.packages')}
+                            </Link>
+                            <Link href={route('start-a-project')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
+                                {t('home.hero.cta_start')}
+                            </Link>
                         </div>
                         <Link href={route('blog')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
                             {t('nav.blogs')}
@@ -104,9 +102,9 @@ export default function SiteFooter() {
                     <div className="lg:col-span-2 flex flex-col gap-space-md">
                         <span className="font-label-sm text-label-sm uppercase tracking-wider text-surface-variant font-bold">{t('footer.support_heading')}</span>
                         <div className="flex flex-col gap-space-xs">
-                            <a href={`${route('start-a-project')}#faq`} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
+                            <Link href={route('faq')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
                                 {t('footer.support.faqs')}
-                            </a>
+                            </Link>
                             <Link href={route('contact')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
                                 {t('footer.support.client_support')}
                             </Link>
@@ -134,7 +132,7 @@ export default function SiteFooter() {
                             </a>
                             <a href="https://wa.me/212654092321" className="contact-detail group flex items-center gap-space-sm font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
                                 <i className="fa-brands fa-whatsapp text-lg transition-transform group-hover:scale-110 group-hover:-rotate-6" aria-hidden="true"></i>
-                                <span>+212 654-092321</span>
+                                <span dir="ltr">+212 654-092321</span>
                             </a>
                             <span className="contact-detail group flex items-center gap-space-sm font-body-sm text-body-sm text-outline-variant">
                                 <i className="fa-solid fa-location-dot text-lg transition-transform group-hover:scale-110 group-hover:-rotate-6" aria-hidden="true"></i>
