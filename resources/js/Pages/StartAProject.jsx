@@ -123,16 +123,31 @@ export default function StartAProject() {
         <SiteLayout>
             <Head title={t('start_a_project.title')} />
 
-            <section className="relative w-full py-space-3xl lg:py-space-4xl overflow-hidden bg-surface">
+            <section className="relative w-full py-space-3xl lg:py-space-4xl overflow-hidden text-on-primary isolate">
+                <div className="absolute inset-0 -z-20">
+                    <img
+                        src="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=2200&q=80"
+                        alt=""
+                        aria-hidden="true"
+                        className="h-full w-full object-cover"
+                    />
+                </div>
+                <div
+                    className="absolute inset-0 -z-10 pointer-events-none"
+                    style={{
+                        background:
+                            'linear-gradient(90deg, rgb(9 14 25 / .92) 0%, rgb(9 14 25 / .8) 55%, rgb(9 14 25 / .6) 100%), linear-gradient(180deg, rgb(9 14 25 / .3), rgb(9 14 25 / .55))',
+                    }}
+                ></div>
                 <div className="absolute top-0 right-[-8%] w-[560px] h-[560px] bg-secondary-container/[12%] rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop relative z-10">
+                <div className="mx-[6%] relative z-10">
                     <div className="max-w-3xl flex flex-col gap-space-md">
-                        <div className="inline-flex items-center gap-space-xs px-space-md py-space-2xs bg-surface-container-high rounded-full shadow-sm self-start">
+                        <div className="inline-flex items-center gap-space-xs px-space-md py-space-2xs bg-black/30 backdrop-blur-sm border border-white/10 rounded-full shadow-sm self-start">
                             <span className="w-2 h-2 rounded-full bg-accent2 animate-ping"></span>
-                            <span className="font-label-sm text-label-sm text-secondary tracking-widest uppercase">{t('start_a_project.hero.badge')}</span>
+                            <span className="font-label-sm text-label-sm text-white/[92%] tracking-widest uppercase">{t('start_a_project.hero.badge')}</span>
                         </div>
-                        <h1 className="font-display-xl text-display-xl leading-[1.1] tracking-tight text-on-surface">{t('start_a_project.hero.title')}</h1>
-                        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">{t('start_a_project.hero.subtitle')}</p>
+                        <h1 className="font-display-xl text-display-xl leading-[1.1] tracking-tight text-white/[92%]">{t('start_a_project.hero.title')}</h1>
+                        <p className="font-body-lg text-body-lg text-white/80 max-w-2xl">{t('start_a_project.hero.subtitle')}</p>
                         <div className="flex flex-wrap gap-space-sm pt-space-xs">
                             <a href="#inquiry-form" className="inline-flex items-center gap-space-xs bg-accent2 text-on-primary font-label-md text-label-md px-space-xl py-space-sm rounded-lg shadow-[0_12px_24px_-8px_rgba(233,87,71,0.45)] transition-all hover:-translate-y-0.5">
                                 {t('start_a_project.hero.cta_primary')} <span className="material-symbols-outlined text-base">arrow_downward</span>
@@ -141,11 +156,11 @@ export default function StartAProject() {
                                 <span className="material-symbols-outlined text-base text-secondary">videocam</span> {t('start_a_project.hero.cta_secondary')}
                             </a>
                         </div>
-                        <dl className="grid grid-cols-2 sm:grid-cols-4 gap-space-md w-full pt-space-lg border-t border-surface-container mt-space-sm">
+                        <dl className="grid grid-cols-2 sm:grid-cols-4 gap-space-md w-full pt-space-lg border-t border-white/15 mt-space-sm">
                             {t('start_a_project.hero.stats').map((stat) => (
                                 <div key={stat.label} className="flex flex-col gap-space-2xs">
-                                    <dt className="font-label-sm text-label-sm uppercase tracking-wider text-outline">{stat.label}</dt>
-                                    <dd className="font-headline-sm text-headline-sm font-bold text-on-surface">{stat.value}</dd>
+                                    <dt className="font-label-sm text-label-sm uppercase tracking-wider text-white/60">{stat.label}</dt>
+                                    <dd className="font-headline-sm text-headline-sm font-bold text-white/[92%]">{stat.value}</dd>
                                 </div>
                             ))}
                         </dl>
@@ -154,7 +169,7 @@ export default function StartAProject() {
             </section>
 
             <Reveal as="section" className="w-full py-space-3xl bg-surface-container-low" id="inquiries">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="max-w-2xl flex flex-col gap-space-xs mb-space-2xl">
                         <span className="font-label-sm text-label-sm text-secondary-container uppercase tracking-widest font-bold">{t('start_a_project.routing.kicker')}</span>
                         <h2 className="font-headline-lg text-headline-lg text-on-surface">{t('start_a_project.routing.title')}</h2>
@@ -183,7 +198,7 @@ export default function StartAProject() {
             </Reveal>
 
             <Reveal as="section" className="w-full py-space-3xl lg:py-space-4xl bg-surface" id="inquiry-form">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl">
                         <div className="lg:col-span-7">
                             <div ref={formRef} className="bg-surface-container-lowest rounded-xl shadow-xl border border-surface-container p-space-lg sm:p-space-xl">
@@ -200,7 +215,7 @@ export default function StartAProject() {
                                         <h3 className="font-headline-sm text-headline-sm font-bold text-on-surface">{t('start_a_project.form.success.title')}</h3>
                                         <p className="font-body-md text-body-md text-on-surface-variant">
                                             {t('start_a_project.form.success.message_prefix')} <span className="font-semibold text-on-surface">{form.email}</span>. {t('start_a_project.form.success.message_suffix')}{' '}
-                                            <a href="tel:+14155550142" className="text-secondary font-semibold">+1 (415) 555-0142</a>.
+                                            <a href="tel:+14155550142" dir="ltr" className="text-secondary font-semibold">+1 (415) 555-0142</a>.
                                         </p>
                                         <button type="button" onClick={reset} className="inline-flex items-center gap-space-2xs font-label-md text-label-md text-secondary hover:translate-x-0.5 transition-transform">
                                             {t('start_a_project.form.success.reset_cta')} <span className="material-symbols-outlined text-base">refresh</span>
@@ -251,7 +266,7 @@ export default function StartAProject() {
                                                 <label htmlFor="phone" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
                                                     {t('start_a_project.form.phone')} <span className="text-outline font-normal">{t('start_a_project.form.phone_optional')}</span>
                                                 </label>
-                                                <input id="phone" type="tel" className="field" placeholder="+212 6 12 34 56 78" />
+                                                <input id="phone" type="tel" dir="ltr" className="field" placeholder="+212 6 12 34 56 78" />
                                             </div>
                                         </div>
 
@@ -425,8 +440,8 @@ export default function StartAProject() {
                                         <span className="material-symbols-outlined text-lg">call</span>
                                     </span>
                                     <span>
-                                        <a href="tel:+14155550142" className="block font-label-md text-label-md text-on-surface hover:text-secondary transition-colors">+1 (415) 555-0142</a>
-                                        <a href="tel:+442079460958" className="block font-label-md text-label-md text-on-surface hover:text-secondary transition-colors">+44 20 7946 0958</a>
+                                        <a href="tel:+14155550142" dir="ltr" className="block font-label-md text-label-md text-on-surface hover:text-secondary transition-colors">+1 (415) 555-0142</a>
+                                        <a href="tel:+442079460958" dir="ltr" className="block font-label-md text-label-md text-on-surface hover:text-secondary transition-colors">+44 20 7946 0958</a>
                                         <span className="block font-body-sm text-body-sm text-outline">{t('start_a_project.sidebar.channels.hours')}</span>
                                     </span>
                                 </div>
@@ -452,7 +467,7 @@ export default function StartAProject() {
             </Reveal>
 
             <Reveal as="section" id="offices" className="w-full py-space-3xl lg:py-space-4xl bg-surface-container-low">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl items-center mb-space-2xl">
                         <div className="lg:col-span-5 flex flex-col gap-space-xs">
                             <span className="font-label-sm text-label-sm text-secondary-container uppercase tracking-widest font-bold">{t('start_a_project.offices.kicker')}</span>
@@ -493,7 +508,7 @@ export default function StartAProject() {
             </Reveal>
 
             <Reveal as="section" id="faq" className="w-full py-space-3xl lg:py-space-4xl bg-surface">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl">
                         <div className="lg:col-span-4 flex flex-col gap-space-sm">
                             <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">{t('start_a_project.faq.kicker')}</span>
@@ -528,7 +543,7 @@ export default function StartAProject() {
                 className="relative w-full py-space-3xl lg:py-space-4xl overflow-hidden text-on-secondary-fixed"
                 style={{ background: 'linear-gradient(to right, rgb(var(--c-secondary-container)), rgb(var(--c-secondary-fixed-dim)), rgb(var(--c-secondary)))' }}
             >
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop relative z-10 text-center flex flex-col items-center">
+                <div className="mx-[6%] relative z-10 text-center flex flex-col items-center">
                     <div className="inline-flex items-center gap-space-2xs px-space-md py-1 bg-surface-container-lowest/30 backdrop-blur-md rounded-full mb-space-sm">
                         <span className="material-symbols-outlined text-sm text-accent2">bolt</span>
                         <span className="font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed font-bold">{t('start_a_project.cta.badge')}</span>
