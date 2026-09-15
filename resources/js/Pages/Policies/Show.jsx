@@ -11,7 +11,7 @@ export default function PolicyShow({ title, subtitle, sections }) {
 
             <section className="relative overflow-hidden bg-primary-container py-space-4xl text-on-primary">
                 <div className="absolute right-[-8%] top-[-35%] h-[520px] w-[520px] rounded-full bg-secondary-container/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
-                <div className="relative mx-auto max-w-max-width px-gutter-mobile lg:px-gutter-desktop">
+                <div className="relative mx-[6%]">
                     <p className="mb-space-sm font-label-sm text-label-sm uppercase tracking-widest text-secondary-fixed-dim">{t('policies.eyebrow')}</p>
                     <h1 className="max-w-3xl font-display-xl text-display-xl leading-[1.1]">{title}</h1>
                     <p className="mt-space-md max-w-2xl font-body-lg text-body-lg text-primary-fixed-dim">{subtitle}</p>

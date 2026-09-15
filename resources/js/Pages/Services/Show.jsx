@@ -48,7 +48,7 @@ export default function ServiceShow({ title, lead, body, features, gallery, rela
 
             {gallery?.length > 0 && (
                 <section className="w-full py-space-3xl bg-surface">
-                    <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                    <div className="mx-[6%]">
                         <h2 className="mb-space-lg font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('services.details.gallery_label')}</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
                             {gallery.map((src) => (
@@ -63,7 +63,7 @@ export default function ServiceShow({ title, lead, body, features, gallery, rela
 
             {processSteps?.length > 0 && (
                 <section className="w-full py-space-3xl bg-surface-container-low">
-                    <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                    <div className="mx-[6%]">
                         <h2 className="mb-space-lg font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('services.details.process_label')}</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
                             {processSteps.map((step, i) => (
@@ -80,7 +80,7 @@ export default function ServiceShow({ title, lead, body, features, gallery, rela
 
             {related?.length > 0 && (
                 <section className="w-full py-space-3xl bg-surface">
-                    <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                    <div className="mx-[6%]">
                         <h2 className="mb-space-lg font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('services.details.related_label')}</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
                             {related.map((item) => (

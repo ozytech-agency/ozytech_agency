@@ -30,7 +30,7 @@ export default function SiteHeader() {
     return (
         <header className="fixed top-0 left-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
             <a href="#main" className="sr-only">{t('nav.skip_to_content')}</a>
-            <div className="header-bar relative h-20 max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md">
+            <div className="header-bar relative h-20 mx-[6%] flex items-center justify-between gap-space-md">
                 <Link href={route('home')} className="flex items-center gap-space-xs shrink-0">
                     <img width="150" src="/images/logo.png" alt={t('nav.logo_alt')} />
                 </Link>
@@ -115,7 +115,7 @@ export default function SiteHeader() {
 
             {mobileOpen && (
                 <nav aria-label="Mobile" className="lg:hidden fixed top-20 inset-x-0 z-40 bg-surface border-t border-surface-container shadow-[0_20px_40px_-12px_rgba(19,27,46,0.25)] max-h-[calc(100vh-5rem)] overflow-y-auto">
-                    <div className="max-w-max-width mx-auto px-gutter-mobile py-space-md flex flex-col gap-1">
+                    <div className="mx-[6%] py-space-md flex flex-col gap-1">
                         <Link
                             href={route('home')}
                             onClick={closeMobile}
