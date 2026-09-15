@@ -101,13 +101,14 @@ return [
         'stat1_desc' => 'Rigorous 5-stage architectural vetting.',
         'stat2_value' => '12+ Yrs',
         'stat2_desc' => 'Average senior builder tenure.',
-        'cta' => 'Explore engineering team & culture',
+        'cta' => 'Our Packages',
     ],
 
     'stats' => [
-        'systems_shipped' => 'Enterprise Systems Shipped',
-        'valuation_created' => 'Client Valuation Created',
-        'partner_retention' => 'Long-Term Partner Retention',
+        'builder_tenure' => 'Years average senior builder tenure',
+        'systems_shipped' => 'Enterprise systems shipped',
+        'regions_connected' => 'Regions connected by our guild',
+        'partner_retention' => 'Long-term partner retention',
     ],
 
     'testimonials' => [

@@ -101,12 +101,13 @@ return [
         'stat1_desc' => 'Riguroso proceso de selección arquitectónica en 5 etapas.',
         'stat2_value' => '12+ años',
         'stat2_desc' => 'Antigüedad promedio de nuestros desarrolladores senior.',
-        'cta' => 'Conoce al equipo de ingeniería y su cultura',
+        'cta' => 'Nuestros paquetes',
     ],
 
     'stats' => [
+        'builder_tenure' => 'Años de antigüedad promedio de nuestros desarrolladores senior',
         'systems_shipped' => 'Sistemas empresariales entregados',
-        'valuation_created' => 'Valoración creada para clientes',
+        'regions_connected' => 'Regiones conectadas por nuestro gremio',
         'partner_retention' => 'Retención de socios a largo plazo',
     ],
 

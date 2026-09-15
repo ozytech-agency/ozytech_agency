@@ -111,7 +111,7 @@ export default function Home() {
                 <div className="absolute top-10 right-[-5%] w-[580px] h-[580px] bg-secondary-container/15 rounded-full blur-3xl pointer-events-none -z-0"></div>
                 <div className="absolute top-1/2 left-[-10%] w-[500px] h-[500px] bg-surface-container-highest/60 rounded-full blur-2xl pointer-events-none -z-0"></div>
 
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop relative z-10">
+                <div className="mx-[6%] relative z-10">
                     <div className="flex flex-col items-center">
                         <div className="w-full max-w-4xl flex flex-col items-center text-center gap-space-md">
                             <div className="inline-flex items-center gap-space-xs px-space-md py-space-2xs bg-black/30 backdrop-blur-sm border border-white/10 rounded-full shadow-sm">
@@ -153,7 +153,7 @@ export default function Home() {
 
             {/* 2. SERVICES CAPABILITIES */}
             <Reveal as="section" id="services" className="relative w-full py-space-3xl lg:py-space-4xl bg-surface-container-low">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop flex flex-col items-center">
+                <div className="mx-[6%] flex flex-col items-center">
                     <div className="max-w-3xl text-center flex flex-col items-center gap-space-xs mb-space-2xl">
                         <div className="inline-flex items-center gap-space-xs px-space-md py-space-2xs bg-surface-container rounded-full shadow-sm">
                             <span className="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
@@ -208,7 +208,7 @@ export default function Home() {
 
             {/* 3. DELIVERY MODEL */}
             <Reveal as="section" id="delivery" className="w-full py-space-3xl lg:py-space-4xl bg-surface">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-center">
                         <div className="lg:col-span-5 flex flex-col gap-space-md">
                             <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary-container font-bold">{t('home.delivery.badge')}</span>
@@ -231,9 +231,12 @@ export default function Home() {
                                     </div>
                                 ))}
                             </div>
-                            <a href="#services" className="inline-flex items-center gap-space-xs text-secondary font-label-md text-label-md hover:translate-x-1 transition-transform pt-space-xs">
+                            <Link
+                                href={route('about')}
+                                className="inline-flex items-center gap-space-xs self-start mt-[20px] bg-accent2 text-on-primary font-label-md text-label-md px-space-lg py-space-sm rounded-lg shadow-[0_10px_20px_-5px_rgba(233,87,71,0.35)] transition-all hover:-translate-y-0.5"
+                            >
                                 <span>{t('home.delivery.cta')}</span> <span className="material-symbols-outlined text-base">arrow_forward</span>
-                            </a>
+                            </Link>
                         </div>
                         <div className="lg:col-span-7 relative">
                             <div className="absolute -right-4 top-10 w-72 h-72 rounded-full bg-secondary-fixed opacity-70 blur-xl"></div>
@@ -275,7 +278,7 @@ export default function Home() {
 
             {/* 4. GUILD */}
             <Reveal as="section" id="about" className="w-full py-space-3xl lg:py-space-4xl bg-surface-container-low">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl items-center">
                         <div className="lg:col-span-6 grid grid-cols-3 gap-space-xs">
                             {[0, 2, 4].map((startIdx, colIdx) => (
@@ -304,7 +307,10 @@ export default function Home() {
                                     <div className="font-body-sm text-body-sm text-on-surface-variant">{t('home.guild.stat2_desc')}</div>
                                 </div>
                             </div>
-                            <Link href={route('about')} className="inline-flex items-center gap-space-xs text-secondary font-label-md text-label-md hover:translate-x-1 transition-transform pt-space-xs">
+                            <Link
+                                href={route('packages')}
+                                className="inline-flex items-center gap-space-xs self-start mt-[20px] bg-accent2 text-on-primary font-label-md text-label-md px-space-lg py-space-sm rounded-lg shadow-[0_10px_20px_-5px_rgba(233,87,71,0.35)] transition-all hover:-translate-y-0.5"
+                            >
                                 <span>{t('home.guild.cta')}</span> <span className="material-symbols-outlined text-base">arrow_forward</span>
                             </Link>
                         </div>
@@ -314,28 +320,23 @@ export default function Home() {
 
             {/* 5. IMPACT STATS */}
             <Reveal as="section" id="impact" className="w-full py-space-3xl bg-primary-container text-on-primary">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-space-xl text-center">
-                        <div className="flex flex-col items-center gap-space-xs">
-                            <div className="w-12 h-12 rounded-full bg-primary/60 flex items-center justify-center text-secondary-container mb-space-2xs shadow-inner">
-                                <span className="material-symbols-outlined text-2xl">rocket_launch</span>
-                            </div>
+                <div className="mx-[6%]">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-space-xl text-left">
+                        <div className="flex flex-col gap-space-2xs">
+                            <CountUp target={12} suffix="+" className="font-stat-counter text-stat-counter font-bold text-on-primary tracking-tight" />
+                            <span className="font-body-sm text-body-sm text-outline-variant">{t('home.stats.builder_tenure')}</span>
+                        </div>
+                        <div className="flex flex-col gap-space-2xs">
                             <CountUp target={250} suffix="+" className="font-stat-counter text-stat-counter font-bold text-on-primary tracking-tight" />
-                            <span className="font-label-sm text-label-sm uppercase tracking-widest text-outline-variant font-semibold">{t('home.stats.systems_shipped')}</span>
+                            <span className="font-body-sm text-body-sm text-outline-variant">{t('home.stats.systems_shipped')}</span>
                         </div>
-                        <div className="flex flex-col items-center gap-space-xs">
-                            <div className="w-12 h-12 rounded-full bg-primary/60 flex items-center justify-center text-secondary-container mb-space-2xs shadow-inner">
-                                <span className="material-symbols-outlined text-2xl">diamond</span>
-                            </div>
-                            <CountUp target={1.8} prefix="$" suffix="B+" decimals={1} className="font-stat-counter text-stat-counter font-bold text-secondary-container tracking-tight" />
-                            <span className="font-label-sm text-label-sm uppercase tracking-widest text-outline-variant font-semibold">{t('home.stats.valuation_created')}</span>
+                        <div className="flex flex-col gap-space-2xs">
+                            <CountUp target={6} className="font-stat-counter text-stat-counter font-bold text-on-primary tracking-tight" />
+                            <span className="font-body-sm text-body-sm text-outline-variant">{t('home.stats.regions_connected')}</span>
                         </div>
-                        <div className="flex flex-col items-center gap-space-xs">
-                            <div className="w-12 h-12 rounded-full bg-primary/60 flex items-center justify-center text-secondary-container mb-space-2xs shadow-inner">
-                                <span className="material-symbols-outlined text-2xl">workspace_premium</span>
-                            </div>
+                        <div className="flex flex-col gap-space-2xs">
                             <CountUp target={98.5} suffix="%" decimals={1} className="font-stat-counter text-stat-counter font-bold text-on-primary tracking-tight" />
-                            <span className="font-label-sm text-label-sm uppercase tracking-widest text-outline-variant font-semibold">{t('home.stats.partner_retention')}</span>
+                            <span className="font-body-sm text-body-sm text-outline-variant">{t('home.stats.partner_retention')}</span>
                         </div>
                     </div>
                 </div>
@@ -343,7 +344,7 @@ export default function Home() {
 
             {/* 6. TESTIMONIALS */}
             <Reveal as="section" id="case-studies" className="w-full py-space-3xl lg:py-space-4xl bg-surface">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-space-md mb-space-2xl">
                         <div>
                             <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">{t('home.testimonials.badge')}</span>
@@ -390,7 +391,7 @@ export default function Home() {
 
             {/* 7. SOLUTIONS */}
             <Reveal as="section" id="solutions" className="w-full py-space-3xl lg:py-space-4xl bg-surface-container-low">
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop">
+                <div className="mx-[6%]">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-center">
                         <div className="lg:col-span-5 flex flex-col items-start gap-space-md">
                             <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary-container font-bold">{t('home.solutions.badge')}</span>
@@ -450,7 +451,7 @@ export default function Home() {
                 className="relative w-full py-space-3xl lg:py-space-4xl overflow-hidden text-on-secondary-fixed"
                 style={{ background: 'linear-gradient(to right, rgb(var(--c-secondary-container)), rgb(var(--c-secondary-fixed-dim)), rgb(var(--c-secondary)))' }}
             >
-                <div className="max-w-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop relative z-10 text-center flex flex-col items-center">
+                <div className="mx-[6%] relative z-10 text-center flex flex-col items-center">
                     <div className="inline-flex items-center gap-space-2xs px-space-md py-1 bg-surface-container-lowest/30 backdrop-blur-md rounded-full mb-space-sm">
                         <span className="material-symbols-outlined text-sm text-accent2">bolt</span>
                         <span className="font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed font-bold">{t('home.cta.badge')}</span>

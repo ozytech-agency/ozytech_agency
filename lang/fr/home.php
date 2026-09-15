@@ -101,12 +101,13 @@ return [
         'stat1_desc' => 'Sélection architecturale rigoureuse en 5 étapes.',
         'stat2_value' => '12+ ans',
         'stat2_desc' => 'Ancienneté moyenne de nos bâtisseurs seniors.',
-        'cta' => "Découvrir l'équipe d'ingénierie & sa culture",
+        'cta' => 'Nos offres',
     ],
 
     'stats' => [
+        'builder_tenure' => "Années d'ancienneté moyenne de nos bâtisseurs seniors",
         'systems_shipped' => "Systèmes d'entreprise livrés",
-        'valuation_created' => 'Valorisation créée pour les clients',
+        'regions_connected' => 'Régions connectées par notre guilde',
         'partner_retention' => 'Fidélisation des partenaires à long terme',
     ],
 
