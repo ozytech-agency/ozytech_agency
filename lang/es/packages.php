@@ -12,28 +12,73 @@ return [
     'cards' => [
         [
             'label' => '01 / Explorar',
-            'title' => 'Sprint estratégico',
+            'title' => 'Paquete de crecimiento',
             'best_for' => 'Ideal para claridad en etapas tempranas',
             'description' => 'Convierte una idea compleja en una dirección técnica práctica, un plan de entrega y la siguiente decisión.',
-            'features' => ['Revisión de arquitectura', 'Hoja de ruta priorizada', 'Sesión de trabajo senior'],
-            'cta' => 'Iniciar una conversación',
+            'features' => [
+                'Creación e incorporación de LLC',
+                [
+                    'text' => 'Sitio web: Shopify, WooCommerce o WordPress',
+                    'note' => 'Elige lo que mejor se adapte a tu negocio — una tienda Shopify o WooCommerce si vendes en línea, o un sitio WordPress estándar si no.',
+                ],
+                [
+                    'text' => 'Dominio gratuito',
+                    'note' => 'Incluido gratis durante el primer año — elige cualquier nombre de dominio disponible que prefieras.',
+                ],
+                'Mantenimiento del sitio web durante 1 año',
+                [
+                    'text' => 'Pasarelas de pago',
+                    'note' => 'Stripe, PayPal o un proveedor local — configuramos el que mejor se adapte a tu mercado y a cómo quieres cobrar.',
+                ],
+            ],
+            'cta' => 'Elegir este paquete',
+            'price' => ['amount' => '4900 $', 'period' => 'pago único'],
         ],
         [
             'label' => '02 / Construir',
-            'title' => 'Lanzamiento de producto',
+            'title' => 'Paquete Pro',
             'best_for' => 'Ideal para un primer lanzamiento de producto',
             'description' => 'Diseña y lanza una primera versión sólida con las bases de ingeniería para crecer después del lanzamiento.',
-            'features' => ['Descubrimiento de producto', 'Diseño UX e interfaz', 'Compilación lista para producción'],
+            'features' => [
+                [
+                    'text' => 'Desarrollo SaaS',
+                    'note' => 'Una aplicación web multiinquilino con registro seguro, facturación por suscripción y un panel de administración adaptado a tu producto.',
+                ],
+                [
+                    'text' => 'Aplicación móvil',
+                    'note' => 'Una app nativa o multiplataforma para iOS y Android, desarrollada y publicada en ambas tiendas.',
+                ],
+                'Mantenimiento de software durante 1 año',
+                [
+                    'text' => 'Dominio gratuito',
+                    'note' => 'Incluido gratis durante el primer año — elige cualquier nombre de dominio disponible que prefieras.',
+                ],
+            ],
             'cta' => 'Planifica tu lanzamiento',
             'badge' => 'Más popular',
+            'price' => ['amount' => '24 000 $', 'period' => 'desde'],
         ],
         [
             'label' => '03 / Escalar',
-            'title' => 'Plataforma de crecimiento',
+            'title' => 'Paquete Ultimate',
             'best_for' => 'Ideal para equipos en crecimiento',
             'description' => 'Fortalece un producto, entorno cloud o equipo existente para la siguiente etapa de demanda.',
-            'features' => ['Modernización de plataforma', 'Trabajo de nube y fiabilidad', 'Equipo senior integrado'],
+            'features' => [
+                'Modernización de plataforma',
+                'Ingeniería de nube y fiabilidad',
+                'Equipo de ingeniería senior integrado',
+                [
+                    'text' => 'Infraestructura y seguridad dedicadas',
+                    'note' => 'Un entorno cloud compatible con SOC2, con monitoreo continuo, copias de seguridad automatizadas y refuerzo de seguridad adaptado a tus necesidades de cumplimiento.',
+                ],
+                [
+                    'text' => 'Soporte prioritario 24/7',
+                    'note' => 'Acceso directo a tu equipo de ingeniería con un tiempo de respuesta garantizado ante incidentes, cualquier día de la semana.',
+                ],
+                'Revisiones estratégicas y de hoja de ruta trimestrales',
+            ],
             'cta' => 'Hablemos de escalar',
+            'price' => ['amount' => '12 000 $', 'period' => 'al mes'],
         ],
     ],
 

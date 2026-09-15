@@ -12,28 +12,73 @@ return [
     'cards' => [
         [
             'label' => '01 / Explorer',
-            'title' => 'Sprint stratégique',
+            'title' => 'Pack de croissance',
             'best_for' => 'Idéal pour la clarté en phase initiale',
             'description' => 'Transformez une idée complexe en une direction technique concrète, un plan de livraison et une prochaine décision.',
-            'features' => ['Revue d\'architecture', 'Feuille de route priorisée', 'Session de travail senior'],
-            'cta' => 'Démarrer une conversation',
+            'features' => [
+                'Création & incorporation de LLC',
+                [
+                    'text' => 'Site web : Shopify, WooCommerce ou WordPress',
+                    'note' => 'Choisissez ce qui convient à votre activité — une boutique Shopify ou WooCommerce si vous vendez en ligne, ou un site WordPress classique sinon.',
+                ],
+                [
+                    'text' => 'Nom de domaine gratuit',
+                    'note' => 'Inclus gratuitement la première année — choisissez le nom de domaine disponible de votre choix.',
+                ],
+                'Maintenance du site pendant 1 an',
+                [
+                    'text' => 'Passerelles de paiement',
+                    'note' => 'Stripe, PayPal ou un prestataire local — nous configurons celui qui convient à votre marché et à votre façon d\'encaisser.',
+                ],
+            ],
+            'cta' => 'Choisir ce pack',
+            'price' => ['amount' => '4 900 $', 'period' => 'paiement unique'],
         ],
         [
             'label' => '02 / Construire',
-            'title' => 'Lancement produit',
+            'title' => 'Pack Pro',
             'best_for' => 'Idéal pour un premier lancement produit',
             'description' => 'Concevez et livrez une première version solide, avec les fondations techniques pour grandir après le lancement.',
-            'features' => ['Découverte produit', 'Design UX et interface', 'Version prête pour la production'],
+            'features' => [
+                [
+                    'text' => 'Développement SaaS',
+                    'note' => 'Une application web multi-tenant avec inscription sécurisée, facturation d\'abonnement et tableau de bord admin adapté à votre produit.',
+                ],
+                [
+                    'text' => 'Application mobile',
+                    'note' => 'Une application native ou multiplateforme iOS et Android, développée et publiée sur les deux stores.',
+                ],
+                'Maintenance logicielle pendant 1 an',
+                [
+                    'text' => 'Nom de domaine gratuit',
+                    'note' => 'Inclus gratuitement la première année — choisissez le nom de domaine disponible de votre choix.',
+                ],
+            ],
             'cta' => 'Planifier votre lancement',
             'badge' => 'Le plus populaire',
+            'price' => ['amount' => '24 000 $', 'period' => 'à partir de'],
         ],
         [
             'label' => '03 / Grandir',
-            'title' => 'Plateforme de croissance',
+            'title' => 'Pack Ultimate',
             'best_for' => 'Idéal pour les équipes en croissance',
             'description' => 'Renforcez un produit, un environnement cloud ou une équipe existante pour la prochaine étape de la demande.',
-            'features' => ['Modernisation de plateforme', 'Travaux de cloud et de fiabilité', 'Équipe senior intégrée'],
+            'features' => [
+                'Modernisation de plateforme',
+                'Ingénierie cloud et fiabilité',
+                'Équipe d\'ingénierie senior intégrée',
+                [
+                    'text' => 'Infrastructure et sécurité dédiées',
+                    'note' => 'Un environnement cloud conforme SOC2 avec surveillance continue, sauvegardes automatisées et durcissement de la sécurité adapté à vos besoins de conformité.',
+                ],
+                [
+                    'text' => 'Support prioritaire 24/7',
+                    'note' => 'Accès direct à votre équipe d\'ingénierie avec un délai de réponse garanti aux incidents, tous les jours de la semaine.',
+                ],
+                'Revues stratégiques et feuille de route trimestrielles',
+            ],
             'cta' => 'Parler de votre croissance',
+            'price' => ['amount' => '12 000 $', 'period' => 'par mois'],
         ],
     ],
 
