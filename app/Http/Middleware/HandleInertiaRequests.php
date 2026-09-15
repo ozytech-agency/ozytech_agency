@@ -28,7 +28,7 @@ class HandleInertiaRequests extends Middleware
      * @var list<string>
      */
     protected array $translationNamespaces = [
-        'nav', 'footer', 'home', 'about', 'blog', 'packages', 'contact', 'start_a_project', 'services', 'policies', 'auth_pages',
+        'nav', 'footer', 'home', 'about', 'blog', 'packages', 'contact', 'start_a_project', 'services', 'policies', 'auth_pages', 'faq', 'dashboard',
     ];
 
     /**

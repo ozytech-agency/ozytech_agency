@@ -1,18 +1,6 @@
 <?php
 
 return [
-    'brand' => [
-        'kicker' => 'Espacio de clientes de OzyTech',
-        'title' => 'Todo lo que tu proyecto necesita, en un solo lugar.',
-        'subtitle' => 'Un espacio único para actualizaciones de entrega, acceso directo a tu equipo de ingeniería y todos los contratos que has firmado con nosotros.',
-        'features' => [
-            ['title' => 'Visibilidad de entrega en tiempo real', 'desc' => 'Sigue los sprints, lanzamientos e hitos a medida que se completan.'],
-            ['title' => 'Línea directa con tus ingenieros', 'desc' => 'Escribe a tu equipo senior sin esperar en una cola de tickets.'],
-            ['title' => 'Contratos y facturas en un solo lugar', 'desc' => 'Encuentra cada acuerdo y registro de pago sin buscar en tu correo.'],
-        ],
-        'stat_caption' => 'Retención de socios a largo plazo en todos nuestros proyectos.',
-    ],
-
     'login' => [
         'title' => 'Iniciar sesión',
         'kicker' => 'Bienvenido de nuevo',

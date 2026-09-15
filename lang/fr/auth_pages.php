@@ -1,18 +1,6 @@
 <?php
 
 return [
-    'brand' => [
-        'kicker' => 'Espace client OzyTech',
-        'title' => 'Tout ce dont votre projet a besoin, au même endroit.',
-        'subtitle' => 'Un espace unique pour les mises à jour de livraison, un accès direct à votre équipe d\'ingénierie, et tous les contrats que vous avez signés avec nous.',
-        'features' => [
-            ['title' => 'Visibilité de livraison en temps réel', 'desc' => 'Suivez les sprints, les mises en production et les jalons au fil de leur avancement.'],
-            ['title' => 'Ligne directe avec vos ingénieurs', 'desc' => "Échangez avec votre équipe senior sans attendre une file de tickets."],
-            ['title' => 'Contrats & factures en un seul endroit', 'desc' => 'Retrouvez chaque accord et chaque paiement sans fouiller dans vos e-mails.'],
-        ],
-        'stat_caption' => 'Fidélisation des partenaires à long terme sur toutes nos missions.',
-    ],
-
     'login' => [
         'title' => 'Connexion',
         'kicker' => 'Content de vous revoir',
@@ -49,7 +37,7 @@ return [
         'title' => 'Mot de passe oublié',
         'kicker' => 'Récupération de compte',
         'heading' => 'Réinitialisez votre mot de passe',
-        'description' => "Pas de souci. Indiquez-nous simplement votre adresse e-mail et nous vous enverrons un lien pour choisir un nouveau mot de passe.",
+        'description' => 'Pas de souci. Indiquez-nous simplement votre adresse e-mail et nous vous enverrons un lien pour choisir un nouveau mot de passe.',
         'email_label' => 'E-mail professionnel',
         'submit' => 'Envoyer le lien de réinitialisation',
     ],

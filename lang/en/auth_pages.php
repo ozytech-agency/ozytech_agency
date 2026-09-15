@@ -1,18 +1,6 @@
 <?php
 
 return [
-    'brand' => [
-        'kicker' => 'OzyTech Client Workspace',
-        'title' => 'Everything your project needs, in one place.',
-        'subtitle' => 'One workspace for delivery updates, direct access to your engineering team, and every contract you have signed with us.',
-        'features' => [
-            ['title' => 'Real-time delivery visibility', 'desc' => 'Follow sprints, releases, and milestones as they ship.'],
-            ['title' => 'Direct line to your engineers', 'desc' => 'Message your senior team without waiting on a ticket queue.'],
-            ['title' => 'Contracts & invoices in one tab', 'desc' => 'Find every agreement and payment record without digging through email.'],
-        ],
-        'stat_caption' => 'Long-term partner retention across every engagement we run.',
-    ],
-
     'login' => [
         'title' => 'Log in',
         'kicker' => 'Welcome back',
