@@ -1,25 +1,15 @@
-import DangerButton from '@/Components/DangerButton';
 import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
 import Modal from '@/Components/Modal';
-import SecondaryButton from '@/Components/SecondaryButton';
-import TextInput from '@/Components/TextInput';
 import { useForm } from '@inertiajs/react';
 import { useRef, useState } from 'react';
+import { useTranslations } from '@/lib/translations';
 
-export default function DeleteUserForm({ className = '' }) {
+export default function DeleteUserForm() {
+    const t = useTranslations();
     const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
     const passwordInput = useRef();
 
-    const {
-        data,
-        setData,
-        delete: destroy,
-        processing,
-        reset,
-        errors,
-        clearErrors,
-    } = useForm({
+    const { data, setData, delete: destroy, processing, reset, errors, clearErrors } = useForm({
         password: '',
     });
 
@@ -33,7 +23,7 @@ export default function DeleteUserForm({ className = '' }) {
         destroy(route('profile.destroy'), {
             preserveScroll: true,
             onSuccess: () => closeModal(),
-            onError: () => passwordInput.current.focus(),
+            onError: () => passwordInput.current?.focus(),
             onFinish: () => reset(),
         });
     };
@@ -46,72 +36,63 @@ export default function DeleteUserForm({ className = '' }) {
     };
 
     return (
-        <section className={`space-y-6 ${className}`}>
+        <section>
             <header>
-                <h2 className="text-lg font-medium text-gray-900">
-                    Delete Account
-                </h2>
-
-                <p className="mt-1 text-sm text-gray-600">
-                    Once your account is deleted, all of its resources and data
-                    will be permanently deleted. Before deleting your account,
-                    please download any data or information that you wish to
-                    retain.
-                </p>
+                <h2 className="font-headline-sm text-headline-sm text-on-surface">{t('profile.sections.delete.heading')}</h2>
+                <p className="mt-space-2xs text-body-sm text-on-surface-variant">{t('profile.sections.delete.desc')}</p>
             </header>
 
-            <DangerButton onClick={confirmUserDeletion}>
-                Delete Account
-            </DangerButton>
+            <button
+                type="button"
+                onClick={confirmUserDeletion}
+                className="mt-space-lg inline-flex h-12 items-center justify-center gap-space-xs rounded-lg border border-error px-space-lg font-label-md text-label-md text-error transition-colors hover:bg-error-container/40"
+            >
+                {t('profile.sections.delete.trigger')}
+            </button>
 
             <Modal show={confirmingUserDeletion} onClose={closeModal}>
-                <form onSubmit={deleteUser} className="p-6">
-                    <h2 className="text-lg font-medium text-gray-900">
-                        Are you sure you want to delete your account?
-                    </h2>
+                <form onSubmit={deleteUser} className="p-space-lg">
+                    <h2 className="font-headline-sm text-headline-sm text-on-surface">{t('profile.sections.delete.modal_heading')}</h2>
 
-                    <p className="mt-1 text-sm text-gray-600">
-                        Once your account is deleted, all of its resources and
-                        data will be permanently deleted. Please enter your
-                        password to confirm you would like to permanently delete
-                        your account.
-                    </p>
+                    <p className="mt-space-2xs text-body-sm text-on-surface-variant">{t('profile.sections.delete.modal_desc')}</p>
 
-                    <div className="mt-6">
-                        <InputLabel
-                            htmlFor="password"
-                            value="Password"
-                            className="sr-only"
-                        />
-
-                        <TextInput
-                            id="password"
-                            type="password"
-                            name="password"
-                            ref={passwordInput}
-                            value={data.password}
-                            onChange={(e) =>
-                                setData('password', e.target.value)
-                            }
-                            className="mt-1 block w-3/4"
-                            isFocused
-                            placeholder="Password"
-                        />
-
-                        <InputError
-                            message={errors.password}
-                            className="mt-2"
-                        />
+                    <div className="mt-space-lg">
+                        <label htmlFor="delete_password" className="sr-only">
+                            {t('profile.sections.delete.password_label')}
+                        </label>
+                        <div className="relative">
+                            <span className="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[20px] text-on-surface-variant">lock</span>
+                            <input
+                                id="delete_password"
+                                type="password"
+                                name="password"
+                                ref={passwordInput}
+                                value={data.password}
+                                onChange={(e) => setData('password', e.target.value)}
+                                autoFocus
+                                placeholder={t('profile.sections.delete.password_label')}
+                                className="h-12 w-full rounded-lg border border-outline-variant/50 bg-surface pl-11 pr-space-sm text-on-surface outline-none transition-colors focus:border-error focus:ring-2 focus:ring-error/20"
+                            />
+                        </div>
+                        <InputError message={errors.password} className="mt-2" />
                     </div>
 
-                    <div className="mt-6 flex justify-end">
-                        <SecondaryButton onClick={closeModal}>
-                            Cancel
-                        </SecondaryButton>
+                    <div className="mt-space-lg flex justify-end gap-space-sm">
+                        <button
+                            type="button"
+                            onClick={closeModal}
+                            className="inline-flex h-12 items-center justify-center rounded-lg border border-outline-variant px-space-lg font-label-md text-label-md text-on-surface-variant transition-colors hover:border-secondary-container hover:text-on-surface"
+                        >
+                            {t('profile.sections.delete.cancel')}
+                        </button>
 
-                        <DangerButton className="ms-3" disabled={processing}>
-                            Delete Account
-                        </DangerButton>
+                        <button
+                            type="submit"
+                            disabled={processing}
+                            className="inline-flex h-12 items-center justify-center rounded-lg bg-error px-space-lg font-label-md text-label-md text-on-error transition-colors hover:opacity-90 disabled:opacity-50"
+                        >
+                            {t('profile.sections.delete.confirm')}
+                        </button>
                     </div>
                 </form>
             </Modal>
