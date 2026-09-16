@@ -80,6 +80,7 @@ return [
             'valid_email' => 'un e-mail valide',
             'consent' => 'le consentement à être contacté',
             'prefix' => 'Veuillez ajouter :',
+            'generic' => 'Veuillez vérifier les champs surlignés.',
         ],
     ],
 

@@ -24,6 +24,42 @@ return [
         ],
     ],
 
+    'checklist' => [
+        'heading' => 'Get set up',
+        'items' => [
+            'verify_email' => [
+                'title' => 'Verify your email',
+                'desc' => 'Confirm your email address to secure your account.',
+                'cta' => 'Verify email',
+            ],
+            'verify_phone' => [
+                'title' => 'Verify your phone number',
+                'desc' => 'Confirm the phone number you signed up with.',
+                'cta' => 'Verify phone',
+            ],
+            'first_inquiry' => [
+                'title' => 'Submit your first request',
+                'desc' => 'Tell us what you need and get a scoping call within 2 business days.',
+                'cta' => 'Start a project',
+            ],
+        ],
+    ],
+
+    'requests' => [
+        'heading' => 'My requests',
+        'empty' => [
+            'title' => 'No requests yet',
+            'desc' => 'Submit a request and it will show up here.',
+            'cta' => 'Start a project',
+        ],
+        'status' => [
+            'new' => 'New',
+            'in_progress' => 'In progress',
+            'responded' => 'Responded',
+            'closed' => 'Closed',
+        ],
+    ],
+
     'quick_links' => [
         'heading' => 'Quick links',
         'items' => [

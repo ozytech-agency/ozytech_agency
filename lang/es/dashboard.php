@@ -24,6 +24,42 @@ return [
         ],
     ],
 
+    'checklist' => [
+        'heading' => 'Configura tu cuenta',
+        'items' => [
+            'verify_email' => [
+                'title' => 'Verifica tu correo',
+                'desc' => 'Confirma tu dirección de correo para proteger tu cuenta.',
+                'cta' => 'Verificar correo',
+            ],
+            'verify_phone' => [
+                'title' => 'Verifica tu número de teléfono',
+                'desc' => 'Confirma el número de teléfono con el que te registraste.',
+                'cta' => 'Verificar teléfono',
+            ],
+            'first_inquiry' => [
+                'title' => 'Envía tu primera solicitud',
+                'desc' => 'Cuéntanos qué necesitas y consigue una llamada de alcance en 2 días hábiles.',
+                'cta' => 'Iniciar un proyecto',
+            ],
+        ],
+    ],
+
+    'requests' => [
+        'heading' => 'Mis solicitudes',
+        'empty' => [
+            'title' => 'Aún no tienes solicitudes',
+            'desc' => 'Envía una solicitud y aparecerá aquí.',
+            'cta' => 'Iniciar un proyecto',
+        ],
+        'status' => [
+            'new' => 'Nueva',
+            'in_progress' => 'En progreso',
+            'responded' => 'Respondida',
+            'closed' => 'Cerrada',
+        ],
+    ],
+
     'quick_links' => [
         'heading' => 'Enlaces rápidos',
         'items' => [

@@ -24,6 +24,42 @@ return [
         ],
     ],
 
+    'checklist' => [
+        'heading' => 'Finalisez votre configuration',
+        'items' => [
+            'verify_email' => [
+                'title' => 'Vérifiez votre e-mail',
+                'desc' => 'Confirmez votre adresse e-mail pour sécuriser votre compte.',
+                'cta' => 'Vérifier l\'e-mail',
+            ],
+            'verify_phone' => [
+                'title' => 'Vérifiez votre numéro de téléphone',
+                'desc' => 'Confirmez le numéro de téléphone fourni lors de votre inscription.',
+                'cta' => 'Vérifier le téléphone',
+            ],
+            'first_inquiry' => [
+                'title' => 'Envoyez votre première demande',
+                'desc' => 'Dites-nous ce dont vous avez besoin et obtenez un appel de cadrage sous 2 jours ouvrés.',
+                'cta' => 'Démarrer un projet',
+            ],
+        ],
+    ],
+
+    'requests' => [
+        'heading' => 'Mes demandes',
+        'empty' => [
+            'title' => 'Aucune demande pour le moment',
+            'desc' => 'Envoyez une demande et elle apparaîtra ici.',
+            'cta' => 'Démarrer un projet',
+        ],
+        'status' => [
+            'new' => 'Nouvelle',
+            'in_progress' => 'En cours',
+            'responded' => 'Répondue',
+            'closed' => 'Clôturée',
+        ],
+    ],
+
     'quick_links' => [
         'heading' => 'Liens rapides',
         'items' => [
