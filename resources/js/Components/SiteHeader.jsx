@@ -4,19 +4,9 @@ import useDarkMode from '@/Hooks/useDarkMode';
 import NavDropdown from '@/Components/NavDropdown';
 import MobileNavDropdown from '@/Components/MobileNavDropdown';
 import Dropdown from '@/Components/Dropdown';
+import Avatar from '@/Components/Avatar';
 import { servicesNav, websiteNav } from '@/data/nav';
 import { useTranslations } from '@/lib/translations';
-
-function getInitials(name) {
-    if (!name) return '';
-    return name
-        .trim()
-        .split(/\s+/)
-        .slice(0, 2)
-        .map((part) => part[0])
-        .join('')
-        .toUpperCase();
-}
 
 export default function SiteHeader() {
     const t = useTranslations();
@@ -46,7 +36,7 @@ export default function SiteHeader() {
                     <Link href={route('packages')} className="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
                         {t('nav.packages')}
                     </Link>
-                    <NavDropdown label={t('nav.website_trigger')} items={websiteNav} namespace="website" />
+                    <NavDropdown label={t('nav.website_trigger')} items={websiteNav} namespace="website" align="end" />
                     <Link href={route('blog')} className="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
                         {t('nav.blogs')}
                     </Link>
@@ -70,14 +60,13 @@ export default function SiteHeader() {
                                         type="button"
                                         className="inline-flex items-center gap-space-xs rounded-lg px-space-sm py-space-xs text-on-surface-variant transition-colors hover:text-on-surface"
                                     >
-                                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent2 font-label-sm text-label-sm font-bold text-on-primary">
-                                            {getInitials(user.name)}
-                                        </span>
+                                        <Avatar user={user} className="h-7 w-7 font-label-sm text-label-sm" />
                                         <span className="max-w-[9rem] truncate font-label-md text-label-md">{user.name}</span>
                                         <span className="material-symbols-outlined text-lg">expand_more</span>
                                     </button>
                                 </Dropdown.Trigger>
                                 <Dropdown.Content align="right" width="48">
+                                    <Dropdown.Link href={route('dashboard')}>{t('nav.dashboard')}</Dropdown.Link>
                                     <Dropdown.Link href={route('profile.edit')}>{t('nav.profile')}</Dropdown.Link>
                                     <Dropdown.Link href={route('logout')} method="post" as="button">
                                         {t('nav.logout')}
@@ -149,14 +138,19 @@ export default function SiteHeader() {
                         {user ? (
                             <div className="mt-space-xs border-t border-surface-container pt-space-sm">
                                 <div className="flex items-center gap-space-xs px-space-sm pb-space-xs">
-                                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent2 font-label-sm text-label-sm font-bold text-on-primary">
-                                        {getInitials(user.name)}
-                                    </span>
+                                    <Avatar user={user} className="h-8 w-8 font-label-sm text-label-sm" />
                                     <div className="min-w-0">
                                         <p className="truncate font-label-md text-label-md text-on-surface">{user.name}</p>
                                         <p className="truncate font-body-sm text-body-sm text-on-surface-variant">{user.email}</p>
                                     </div>
                                 </div>
+                                <Link
+                                    href={route('dashboard')}
+                                    onClick={closeMobile}
+                                    className="block px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md transition-colors"
+                                >
+                                    {t('nav.dashboard')}
+                                </Link>
                                 <Link
                                     href={route('profile.edit')}
                                     onClick={closeMobile}

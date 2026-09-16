@@ -12,7 +12,7 @@ return [
     'website_trigger' => 'Sitio web',
     'login' => 'Iniciar sesión',
     'signup' => 'Registrarse',
-    'dashboard' => 'Panel',
+    'dashboard' => 'Panel de control',
     'profile' => 'Perfil',
     'logout' => 'Cerrar sesión',
     'theme_toggle_to_dark' => 'Cambiar a tema oscuro',

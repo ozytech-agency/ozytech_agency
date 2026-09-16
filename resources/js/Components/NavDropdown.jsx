@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from '@/lib/translations';
 
-export default function NavDropdown({ label, items, namespace }) {
+export default function NavDropdown({ label, items, namespace, align = 'start' }) {
     const t = useTranslations();
     const [open, setOpen] = useState(false);
     const ref = useRef(null);
@@ -23,7 +23,7 @@ export default function NavDropdown({ label, items, namespace }) {
     }, []);
 
     return (
-        <div className={`services-menu relative ${open ? 'is-open' : ''}`} ref={ref}>
+        <div className={`services-menu relative ${align === 'end' ? 'services-menu--align-end' : ''} ${open ? 'is-open' : ''}`} ref={ref}>
             <button
                 type="button"
                 className="inline-flex items-center gap-[0.2rem] px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg"

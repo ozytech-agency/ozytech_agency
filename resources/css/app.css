@@ -170,6 +170,24 @@ html.theme-transition * {
     transform: translateY(0);
 }
 
+/*
+ * Menus positioned toward the trailing/right side of the nav bar (e.g. "Website")
+ * anchor from their trailing edge instead of their leading edge, so the wide
+ * mega-menu panel (and its invisible hover bridge) expands away from adjacent
+ * header controls (login/sign up) instead of over them.
+ */
+.services-menu--align-end::before,
+.services-menu--align-end .services-dropdown {
+    left: auto;
+    right: -1rem;
+}
+
+[dir='rtl'] .services-menu--align-end::before,
+[dir='rtl'] .services-menu--align-end .services-dropdown {
+    left: -1rem;
+    right: auto;
+}
+
 .services-dropdown a {
     display: flex;
     align-items: center;
