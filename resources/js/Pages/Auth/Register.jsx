@@ -1,4 +1,5 @@
 import InputError from '@/Components/InputError';
+import PhoneNumberInput from '@/Components/PhoneNumberInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { useState } from 'react';
@@ -9,6 +10,7 @@ export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
+        phone_number: '',
         password: '',
         password_confirmation: '',
     });
@@ -71,6 +73,25 @@ export default function Register() {
                         />
                     </div>
                     <InputError message={errors.email} className="mt-2" />
+                </div>
+
+                <div>
+                    <label htmlFor="phone_number" className="mb-space-2xs block font-label-md text-label-md text-on-surface">
+                        {t('auth_pages.register.phone_label')}
+                    </label>
+                    <PhoneNumberInput
+                        id="phone_number"
+                        value={data.phone_number}
+                        onChange={(value) => setData('phone_number', value)}
+                        autoComplete="tel"
+                        required
+                        placeholder={t('auth_pages.register.phone_placeholder')}
+                        leadingIcon={<span className="material-symbols-outlined shrink-0 text-[20px] text-on-surface-variant">call</span>}
+                        boxClassName="flex h-12 w-full items-center gap-space-xs rounded-lg border border-outline-variant/50 bg-surface pl-space-sm pr-space-sm text-on-surface transition-colors focus-within:border-secondary-container focus-within:ring-2 focus-within:ring-secondary-container/30"
+                        selectClassName="shrink-0 border-outline-variant/40 bg-transparent pe-space-xs text-on-surface outline-none [border-inline-end-width:1px] [max-width:5.5rem]"
+                        inputClassName="min-w-0 flex-1 border-0 bg-transparent text-on-surface outline-none placeholder:text-outline"
+                    />
+                    <InputError message={errors.phone_number} className="mt-2" />
                 </div>
 
                 <div>

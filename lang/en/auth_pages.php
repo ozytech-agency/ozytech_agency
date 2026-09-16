@@ -24,6 +24,8 @@ return [
         'name_label' => 'Full name',
         'name_placeholder' => 'Your full name',
         'email_label' => 'Work email',
+        'phone_label' => 'Phone number',
+        'phone_placeholder' => '6 12 34 56 78',
         'password_label' => 'Password',
         'password_placeholder' => 'Create a password',
         'confirm_password_label' => 'Confirm password',
@@ -68,6 +70,18 @@ return [
         'description' => "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.",
         'link_sent' => 'A new verification link has been sent to the email address you provided during registration.',
         'submit' => 'Resend Verification Email',
+        'logout' => 'Log Out',
+    ],
+
+    'verify_phone' => [
+        'title' => 'Phone Verification',
+        'kicker' => 'One more step',
+        'heading' => 'Verify your phone number',
+        'description' => 'For your security, please confirm the phone number you signed up with. Send yourself a verification code, then enter it below.',
+        'code_sent' => 'A new verification code has been generated for the phone number you provided during registration.',
+        'code_label' => 'Verification code',
+        'send_code' => 'Send Verification Code',
+        'submit' => 'Verify Phone',
         'logout' => 'Log Out',
     ],
 ];

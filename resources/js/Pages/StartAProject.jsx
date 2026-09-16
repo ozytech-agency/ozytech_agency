@@ -1,7 +1,8 @@
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, useForm } from '@inertiajs/react';
 import { useRef, useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
+import PhoneNumberInput from '@/Components/PhoneNumberInput';
 import { useTranslations } from '@/lib/translations';
 
 const ROUTE_META = [
@@ -50,14 +51,28 @@ const WHEN_MAP = {
     budgetTimeline: ['new-project'],
 };
 
+const INITIAL_INQUIRY_FORM = {
+    topic: 'new-project',
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone: '',
+    company: '',
+    website: '',
+    role: '',
+    company_size: '',
+    services: [],
+    budget: '',
+    timeline: '',
+    message: '',
+    referral: '',
+    nda_requested: false,
+    consent: false,
+};
+
 export default function StartAProject() {
     const t = useTranslations();
-    const [topic, setTopic] = useState('new-project');
-    const [form, setForm] = useState({ firstName: '', lastName: '', email: '', message: '' });
-    const [services, setServices] = useState([]);
-    const [nda, setNda] = useState(false);
-    const [consent, setConsent] = useState(false);
-    const [error, setError] = useState(null);
+    const { data, setData, post, processing, errors } = useForm({ ...INITIAL_INQUIRY_FORM });
     const [submitted, setSubmitted] = useState(false);
     const [openFaq, setOpenFaq] = useState(null);
     const formRef = useRef(null);
@@ -72,51 +87,36 @@ export default function StartAProject() {
     const nextSteps = t('start_a_project.sidebar.next_steps.steps');
     const officeHours = t('start_a_project.offices.hours');
     const faqs = t('start_a_project.faq.items');
-    const v = (key) => t(`contact.form.validation.${key}`);
 
-    const showFor = (key) => !WHEN_MAP[key] || WHEN_MAP[key].includes(topic);
+    const showFor = (key) => !WHEN_MAP[key] || WHEN_MAP[key].includes(data.topic);
 
     const toggleService = (value) => {
-        setServices((prev) => (prev.includes(value) ? prev.filter((v2) => v2 !== value) : [...prev, value]));
+        setData('services', data.services.includes(value) ? data.services.filter((v) => v !== value) : [...data.services, value]);
     };
 
     const selectRoute = (key) => {
-        setTopic(key);
+        setData('topic', key);
         document.getElementById('inquiry-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         setTimeout(() => document.getElementById('firstName')?.focus(), 400);
     };
 
     const submit = (e) => {
         e.preventDefault();
-        const missing = [];
-        if (!form.firstName.trim()) missing.push(v('first_name'));
-        if (!form.lastName.trim()) missing.push(v('last_name'));
-        if (!form.email.trim()) missing.push(v('email'));
-        else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.trim())) missing.push(v('valid_email'));
-        if (!form.message.trim()) missing.push(v('message'));
-        if (!consent) missing.push(v('consent'));
-
-        if (missing.length) {
-            setError(`${v('prefix')} ${missing.join(', ')}.`);
-            return;
-        }
-        setError(null);
-        setSubmitted(true);
+        post(route('start-a-project.store'), {
+            preserveScroll: true,
+            onSuccess: () => setSubmitted(true),
+        });
     };
 
-    const reset = () => {
-        setForm({ firstName: '', lastName: '', email: '', message: '' });
-        setServices([]);
-        setNda(false);
-        setConsent(false);
+    const resetForm = () => {
+        setData({ ...INITIAL_INQUIRY_FORM });
         setSubmitted(false);
-        setTopic('new-project');
         formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
     const field = (name) => ({
-        value: form[name] || '',
-        onChange: (e) => setForm((f) => ({ ...f, [name]: e.target.value })),
+        value: data[name] ?? '',
+        onChange: (e) => setData(name, e.target.value),
     });
 
     return (
@@ -214,10 +214,10 @@ export default function StartAProject() {
                                         </div>
                                         <h3 className="font-headline-sm text-headline-sm font-bold text-on-surface">{t('start_a_project.form.success.title')}</h3>
                                         <p className="font-body-md text-body-md text-on-surface-variant">
-                                            {t('start_a_project.form.success.message_prefix')} <span className="font-semibold text-on-surface">{form.email}</span>. {t('start_a_project.form.success.message_suffix')}{' '}
+                                            {t('start_a_project.form.success.message_prefix')} <span className="font-semibold text-on-surface">{data.email}</span>. {t('start_a_project.form.success.message_suffix')}{' '}
                                             <a href="tel:+14155550142" dir="ltr" className="text-secondary font-semibold">+1 (415) 555-0142</a>.
                                         </p>
-                                        <button type="button" onClick={reset} className="inline-flex items-center gap-space-2xs font-label-md text-label-md text-secondary hover:translate-x-0.5 transition-transform">
+                                        <button type="button" onClick={resetForm} className="inline-flex items-center gap-space-2xs font-label-md text-label-md text-secondary hover:translate-x-0.5 transition-transform">
                                             {t('start_a_project.form.success.reset_cta')} <span className="material-symbols-outlined text-base">refresh</span>
                                         </button>
                                     </div>
@@ -230,7 +230,7 @@ export default function StartAProject() {
                                             <div className="grid grid-cols-2 sm:grid-cols-3 gap-space-2xs p-space-2xs bg-surface-container-low rounded-xl">
                                                 {TOPIC_META.map((tp, i) => (
                                                     <label key={tp.value} className="seg">
-                                                        <input type="radio" name="topic" checked={topic === tp.value} onChange={() => setTopic(tp.value)} />
+                                                        <input type="radio" name="topic" checked={data.topic === tp.value} onChange={() => setData('topic', tp.value)} />
                                                         <span>
                                                             <span className="material-symbols-outlined text-sm">{tp.icon}</span>
                                                             {topicLabels[i]}
@@ -238,6 +238,7 @@ export default function StartAProject() {
                                                     </label>
                                                 ))}
                                             </div>
+                                            {errors.topic && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.topic}</p>}
                                         </fieldset>
 
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
@@ -245,13 +246,15 @@ export default function StartAProject() {
                                                 <label htmlFor="firstName" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
                                                     {t('start_a_project.form.first_name')} <span className="text-secondary-container">*</span>
                                                 </label>
-                                                <input id="firstName" className="field" placeholder={t('start_a_project.form.first_name_placeholder')} {...field('firstName')} />
+                                                <input id="firstName" className="field" placeholder={t('start_a_project.form.first_name_placeholder')} {...field('first_name')} />
+                                                {errors.first_name && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.first_name}</p>}
                                             </div>
                                             <div>
                                                 <label htmlFor="lastName" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
                                                     {t('start_a_project.form.last_name')} <span className="text-secondary-container">*</span>
                                                 </label>
-                                                <input id="lastName" className="field" placeholder={t('start_a_project.form.last_name_placeholder')} {...field('lastName')} />
+                                                <input id="lastName" className="field" placeholder={t('start_a_project.form.last_name_placeholder')} {...field('last_name')} />
+                                                {errors.last_name && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.last_name}</p>}
                                             </div>
                                         </div>
 
@@ -261,12 +264,22 @@ export default function StartAProject() {
                                                     {t('start_a_project.form.email')} <span className="text-secondary-container">*</span>
                                                 </label>
                                                 <input id="email" type="email" className="field" placeholder="amina@company.com" {...field('email')} />
+                                                {errors.email && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.email}</p>}
                                             </div>
                                             <div>
                                                 <label htmlFor="phone" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
                                                     {t('start_a_project.form.phone')} <span className="text-outline font-normal">{t('start_a_project.form.phone_optional')}</span>
                                                 </label>
-                                                <input id="phone" type="tel" dir="ltr" className="field" placeholder="+212 6 12 34 56 78" />
+                                                <PhoneNumberInput
+                                                    id="phone"
+                                                    value={data.phone}
+                                                    onChange={(value) => setData('phone', value)}
+                                                    placeholder="6 12 34 56 78"
+                                                    boxClassName="field flex items-center gap-space-xs"
+                                                    selectClassName="shrink-0 overflow-hidden text-ellipsis whitespace-nowrap border-outline-variant/40 bg-transparent p-0 pe-space-xs text-on-surface outline-none [border-inline-end-width:1px] [max-width:9.5rem]"
+                                                    inputClassName="min-w-0 flex-1 border-0 bg-transparent p-0 text-on-surface outline-none placeholder:text-outline"
+                                                />
+                                                {errors.phone && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.phone}</p>}
                                             </div>
                                         </div>
 
@@ -274,11 +287,13 @@ export default function StartAProject() {
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
                                                 <div>
                                                     <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.company')}</label>
-                                                    <input className="field" placeholder="Acme Inc." />
+                                                    <input className="field" placeholder="Acme Inc." {...field('company')} />
+                                                    {errors.company && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.company}</p>}
                                                 </div>
                                                 <div>
                                                     <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.website')}</label>
-                                                    <input type="url" className="field" placeholder="https://acme.com" />
+                                                    <input type="url" className="field" placeholder="https://acme.com" {...field('website')} />
+                                                    {errors.website && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.website}</p>}
                                                 </div>
                                             </div>
                                         )}
@@ -286,17 +301,19 @@ export default function StartAProject() {
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
                                             <div>
                                                 <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.role')}</label>
-                                                <input className="field" placeholder={t('start_a_project.form.role_placeholder')} />
+                                                <input className="field" placeholder={t('start_a_project.form.role_placeholder')} {...field('role')} />
+                                                {errors.role && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.role}</p>}
                                             </div>
                                             {showFor('companySize') && (
                                                 <div>
                                                     <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.company_size')}</label>
-                                                    <select className="field" defaultValue="">
+                                                    <select className="field" {...field('company_size')}>
                                                         <option value="">{t('start_a_project.form.select_placeholder')}</option>
                                                         {companySizeOptions.map((opt) => (
                                                             <option key={opt}>{opt}</option>
                                                         ))}
                                                     </select>
+                                                    {errors.company_size && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.company_size}</p>}
                                                 </div>
                                             )}
                                         </div>
@@ -307,7 +324,7 @@ export default function StartAProject() {
                                                 <div className="flex flex-wrap gap-space-2xs">
                                                     {SERVICE_OPTION_META.map((s, i) => (
                                                         <label key={s.value} className="chip">
-                                                            <input type="checkbox" checked={services.includes(s.value)} onChange={() => toggleService(s.value)} />
+                                                            <input type="checkbox" checked={data.services.includes(s.value)} onChange={() => toggleService(s.value)} />
                                                             <span>
                                                                 <span className="material-symbols-outlined text-sm">{s.icon}</span>
                                                                 {serviceOptionLabels[i]}
@@ -315,6 +332,7 @@ export default function StartAProject() {
                                                         </label>
                                                     ))}
                                                 </div>
+                                                {errors.services && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.services}</p>}
                                             </fieldset>
                                         )}
 
@@ -322,21 +340,23 @@ export default function StartAProject() {
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
                                                 <div>
                                                     <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.budget')}</label>
-                                                    <select className="field" defaultValue="">
+                                                    <select className="field" {...field('budget')}>
                                                         <option value="">{t('start_a_project.form.select_placeholder')}</option>
                                                         {budgetOptions.map((opt) => (
                                                             <option key={opt}>{opt}</option>
                                                         ))}
                                                     </select>
+                                                    {errors.budget && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.budget}</p>}
                                                 </div>
                                                 <div>
                                                     <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.timeline')}</label>
-                                                    <select className="field" defaultValue="">
+                                                    <select className="field" {...field('timeline')}>
                                                         <option value="">{t('start_a_project.form.select_placeholder')}</option>
                                                         {timelineOptions.map((opt) => (
                                                             <option key={opt}>{opt}</option>
                                                         ))}
                                                     </select>
+                                                    {errors.timeline && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.timeline}</p>}
                                                 </div>
                                             </div>
                                         )}
@@ -346,7 +366,7 @@ export default function StartAProject() {
                                                 <label htmlFor="message" className="font-label-md text-label-md text-on-surface">
                                                     {t('start_a_project.form.message')} <span className="text-secondary-container">*</span>
                                                 </label>
-                                                <span className="font-body-sm text-body-sm text-outline">{form.message.length} / 1500</span>
+                                                <span className="font-body-sm text-body-sm text-outline">{data.message.length} / 1500</span>
                                             </div>
                                             <textarea
                                                 id="message"
@@ -355,41 +375,45 @@ export default function StartAProject() {
                                                 placeholder={t('start_a_project.form.message_placeholder')}
                                                 {...field('message')}
                                             />
+                                            {errors.message && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.message}</p>}
                                         </div>
 
                                         <div>
                                             <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.referral')}</label>
-                                            <select className="field" defaultValue="">
+                                            <select className="field" {...field('referral')}>
                                                 <option value="">{t('start_a_project.form.select_placeholder')}</option>
                                                 {referralOptions.map((opt) => (
                                                     <option key={opt}>{opt}</option>
                                                 ))}
                                             </select>
+                                            {errors.referral && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.referral}</p>}
                                         </div>
 
                                         <div className="flex flex-col gap-space-xs pt-space-2xs">
                                             <label className="flex items-start gap-space-xs cursor-pointer">
-                                                <input type="checkbox" checked={nda} onChange={(e) => setNda(e.target.checked)} className="mt-1 w-4 h-4 accent-secondary-container shrink-0" />
+                                                <input type="checkbox" checked={data.nda_requested} onChange={(e) => setData('nda_requested', e.target.checked)} className="mt-1 w-4 h-4 accent-secondary-container shrink-0" />
                                                 <span className="font-body-sm text-body-sm text-on-surface-variant">{t('start_a_project.form.nda_consent')}</span>
                                             </label>
                                             <label className="flex items-start gap-space-xs cursor-pointer">
-                                                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-1 w-4 h-4 accent-secondary-container shrink-0" />
+                                                <input type="checkbox" checked={data.consent} onChange={(e) => setData('consent', e.target.checked)} className="mt-1 w-4 h-4 accent-secondary-container shrink-0" />
                                                 <span className="font-body-sm text-body-sm text-on-surface-variant">
                                                     {t('start_a_project.form.consent')} <a href="#" className="text-secondary font-semibold underline">{t('start_a_project.form.privacy_policy_link')}</a>.{' '}
                                                     <span className="text-secondary-container">*</span>
                                                 </span>
                                             </label>
+                                            {errors.consent && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.consent}</p>}
                                         </div>
 
-                                        {error && (
+                                        {Object.keys(errors).length > 0 && (
                                             <p role="alert" className="font-body-sm text-body-sm text-error bg-error-container/50 rounded-lg px-space-md py-space-xs">
-                                                {error}
+                                                {t('start_a_project.form.validation.generic')}
                                             </p>
                                         )}
 
                                         <button
                                             type="submit"
-                                            className="inline-flex items-center justify-center gap-space-xs bg-accent2 text-on-primary font-label-md text-label-md px-space-2xl py-space-md rounded-lg shadow-[0_12px_24px_-8px_rgba(233,87,71,0.45)] transition-all hover:-translate-y-0.5 self-start"
+                                            disabled={processing}
+                                            className="inline-flex items-center justify-center gap-space-xs bg-accent2 text-on-primary font-label-md text-label-md px-space-2xl py-space-md rounded-lg shadow-[0_12px_24px_-8px_rgba(233,87,71,0.45)] transition-all hover:-translate-y-0.5 self-start disabled:opacity-60"
                                         >
                                             {t('start_a_project.form.submit')} <span className="material-symbols-outlined text-base">send</span>
                                         </button>

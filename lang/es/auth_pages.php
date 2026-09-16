@@ -24,6 +24,8 @@ return [
         'name_label' => 'Nombre completo',
         'name_placeholder' => 'Tu nombre completo',
         'email_label' => 'Correo profesional',
+        'phone_label' => 'Número de teléfono',
+        'phone_placeholder' => '6 12 34 56 78',
         'password_label' => 'Contraseña',
         'password_placeholder' => 'Crea una contraseña',
         'confirm_password_label' => 'Confirmar contraseña',
@@ -68,6 +70,18 @@ return [
         'description' => '¡Gracias por registrarte! Antes de empezar, ¿podrías verificar tu dirección de correo haciendo clic en el enlace que te acabamos de enviar? Si no recibiste el correo, con gusto te enviaremos otro.',
         'link_sent' => 'Se ha enviado un nuevo enlace de verificación a la dirección de correo que proporcionaste al registrarte.',
         'submit' => 'Reenviar correo de verificación',
+        'logout' => 'Cerrar sesión',
+    ],
+
+    'verify_phone' => [
+        'title' => 'Verificación de teléfono',
+        'kicker' => 'Un paso más',
+        'heading' => 'Verifica tu número de teléfono',
+        'description' => 'Por tu seguridad, confirma el número de teléfono con el que te registraste. Envíate un código de verificación y luego introdúcelo a continuación.',
+        'code_sent' => 'Se ha generado un nuevo código de verificación para el número de teléfono que proporcionaste al registrarte.',
+        'code_label' => 'Código de verificación',
+        'send_code' => 'Enviar código de verificación',
+        'submit' => 'Verificar teléfono',
         'logout' => 'Cerrar sesión',
     ],
 ];

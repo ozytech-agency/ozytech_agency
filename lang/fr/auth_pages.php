@@ -24,6 +24,8 @@ return [
         'name_label' => 'Nom complet',
         'name_placeholder' => 'Votre nom complet',
         'email_label' => 'E-mail professionnel',
+        'phone_label' => 'Numéro de téléphone',
+        'phone_placeholder' => '6 12 34 56 78',
         'password_label' => 'Mot de passe',
         'password_placeholder' => 'Créez un mot de passe',
         'confirm_password_label' => 'Confirmer le mot de passe',
@@ -68,6 +70,18 @@ return [
         'description' => "Merci de vous être inscrit ! Avant de commencer, pourriez-vous vérifier votre adresse e-mail en cliquant sur le lien que nous venons de vous envoyer ? Si vous n'avez pas reçu l'e-mail, nous vous en renverrons un avec plaisir.",
         'link_sent' => "Un nouveau lien de vérification a été envoyé à l'adresse e-mail fournie lors de votre inscription.",
         'submit' => "Renvoyer l'e-mail de vérification",
+        'logout' => 'Déconnexion',
+    ],
+
+    'verify_phone' => [
+        'title' => 'Vérification du téléphone',
+        'kicker' => 'Encore une étape',
+        'heading' => 'Vérifiez votre numéro de téléphone',
+        'description' => 'Pour votre sécurité, veuillez confirmer le numéro de téléphone fourni lors de votre inscription. Envoyez-vous un code de vérification, puis saisissez-le ci-dessous.',
+        'code_sent' => 'Un nouveau code de vérification a été généré pour le numéro de téléphone fourni lors de votre inscription.',
+        'code_label' => 'Code de vérification',
+        'send_code' => 'Envoyer le code de vérification',
+        'submit' => 'Vérifier le téléphone',
         'logout' => 'Déconnexion',
     ],
 ];
