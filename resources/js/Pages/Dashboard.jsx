@@ -1,4 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import Avatar from '@/Components/Avatar';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { useTranslations } from '@/lib/translations';
 
@@ -11,6 +12,8 @@ const QUICK_LINK_META = [
 
 const WORKSPACE_FEATURE_ICONS = ['insights', 'forum', 'receipt_long'];
 
+const TOPIC_ORDER = ['new-project', 'partnership', 'support', 'careers', 'press', 'general'];
+
 function formatMemberSince(dateString, locale) {
     if (!dateString) return null;
     return new Date(dateString).toLocaleDateString(locale, { year: 'numeric', month: 'long' });
@@ -18,12 +21,47 @@ function formatMemberSince(dateString, locale) {
 
 export default function Dashboard() {
     const t = useTranslations();
-    const { auth, locale } = usePage().props;
+    const { auth, locale, inquiries } = usePage().props;
     const user = auth.user;
     const firstName = user.name?.split(' ')[0] ?? user.name;
 
     const workspaceFeatures = t('dashboard.workspace.features');
     const quickLinks = t('dashboard.quick_links.items');
+    const topicLabels = t('start_a_project.form.topics');
+
+    const statusMeta = {
+        new: { label: t('dashboard.requests.status.new'), classes: 'bg-secondary-container/15 text-secondary-container' },
+        in_progress: { label: t('dashboard.requests.status.in_progress'), classes: 'bg-accent2/15 text-accent2' },
+        responded: { label: t('dashboard.requests.status.responded'), classes: 'bg-tertiary-container/40 text-on-tertiary-container' },
+        closed: { label: t('dashboard.requests.status.closed'), classes: 'bg-surface-container-high text-on-surface-variant' },
+    };
+
+    const checklistItems = [
+        {
+            key: 'verify_email',
+            done: Boolean(user.email_verified_at),
+            title: t('dashboard.checklist.items.verify_email.title'),
+            desc: t('dashboard.checklist.items.verify_email.desc'),
+            ctaLabel: t('dashboard.checklist.items.verify_email.cta'),
+            ctaRoute: 'verification.notice',
+        },
+        {
+            key: 'verify_phone',
+            done: Boolean(user.phone_verified_at),
+            title: t('dashboard.checklist.items.verify_phone.title'),
+            desc: t('dashboard.checklist.items.verify_phone.desc'),
+            ctaLabel: t('dashboard.checklist.items.verify_phone.cta'),
+            ctaRoute: 'phone-verification.notice',
+        },
+        {
+            key: 'first_inquiry',
+            done: inquiries.length > 0,
+            title: t('dashboard.checklist.items.first_inquiry.title'),
+            desc: t('dashboard.checklist.items.first_inquiry.desc'),
+            ctaLabel: t('dashboard.checklist.items.first_inquiry.cta'),
+            ctaRoute: 'start-a-project',
+        },
+    ];
 
     return (
         <AuthenticatedLayout
@@ -51,16 +89,60 @@ export default function Dashboard() {
                                     <p className="text-body-sm text-on-surface-variant">{f.desc}</p>
                                 </div>
                             ))}
-                            <div className="flex flex-col items-start gap-space-sm rounded-xl border border-dashed border-outline-variant p-space-lg sm:col-span-2">
-                                <span className="font-label-md text-label-md text-on-surface">{t('dashboard.workspace.empty.title')}</span>
-                                <p className="text-body-sm text-on-surface-variant">{t('dashboard.workspace.empty.desc')}</p>
-                                <Link
-                                    href={route('start-a-project')}
-                                    className="mt-space-xs inline-flex items-center gap-space-xs font-label-md text-label-md text-secondary hover:translate-x-0.5 transition-transform"
-                                >
-                                    {t('dashboard.workspace.empty.cta')} <span className="material-symbols-outlined text-base">arrow_forward</span>
-                                </Link>
+                            <div className="flex flex-col gap-space-sm rounded-xl border border-surface-container bg-surface-container-lowest p-space-lg sm:col-span-2">
+                                <span className="font-label-md text-label-md text-on-surface">{t('dashboard.checklist.heading')}</span>
+                                <ul className="flex flex-col gap-space-sm">
+                                    {checklistItems.map((item) => (
+                                        <li key={item.key} className="flex items-start gap-space-sm">
+                                            <span className={`material-symbols-outlined text-[20px] ${item.done ? 'icon-fill text-secondary-container' : 'text-outline-variant'}`}>
+                                                {item.done ? 'check_circle' : 'radio_button_unchecked'}
+                                            </span>
+                                            <div className="min-w-0 flex-1">
+                                                <p className="font-label-md text-label-md text-on-surface">{item.title}</p>
+                                                <p className="text-body-sm text-on-surface-variant">{item.desc}</p>
+                                                {!item.done && (
+                                                    <Link
+                                                        href={route(item.ctaRoute)}
+                                                        className="mt-space-2xs inline-flex items-center gap-space-2xs font-label-md text-label-md text-secondary hover:translate-x-0.5 transition-transform"
+                                                    >
+                                                        {item.ctaLabel} <span className="material-symbols-outlined text-base">arrow_forward</span>
+                                                    </Link>
+                                                )}
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
+                        </div>
+
+                        <h2 className="mt-space-2xl font-headline-sm text-headline-sm text-on-surface">{t('dashboard.requests.heading')}</h2>
+                        <div className="mt-space-md flex flex-col gap-space-md">
+                            {inquiries.length === 0 ? (
+                                <div className="flex flex-col items-start gap-space-sm rounded-xl border border-dashed border-outline-variant p-space-lg">
+                                    <span className="font-label-md text-label-md text-on-surface">{t('dashboard.requests.empty.title')}</span>
+                                    <p className="text-body-sm text-on-surface-variant">{t('dashboard.requests.empty.desc')}</p>
+                                    <Link
+                                        href={route('start-a-project')}
+                                        className="mt-space-xs inline-flex items-center gap-space-xs font-label-md text-label-md text-secondary hover:translate-x-0.5 transition-transform"
+                                    >
+                                        {t('dashboard.requests.empty.cta')} <span className="material-symbols-outlined text-base">arrow_forward</span>
+                                    </Link>
+                                </div>
+                            ) : (
+                                inquiries.map((inquiry) => {
+                                    const topicIndex = TOPIC_ORDER.indexOf(inquiry.topic);
+                                    const status = statusMeta[inquiry.status] ?? statusMeta.new;
+                                    return (
+                                        <div key={inquiry.id} className="flex items-center justify-between gap-space-md rounded-xl border border-surface-container bg-surface-container-lowest p-space-lg">
+                                            <div className="min-w-0">
+                                                <p className="font-label-md text-label-md text-on-surface">{topicIndex >= 0 ? topicLabels[topicIndex] : inquiry.topic}</p>
+                                                <p className="text-body-sm text-on-surface-variant">{formatMemberSince(inquiry.created_at, locale)}</p>
+                                            </div>
+                                            <span className={`shrink-0 rounded-full px-space-sm py-space-2xs font-label-sm text-label-sm ${status.classes}`}>{status.label}</span>
+                                        </div>
+                                    );
+                                })
+                            )}
                         </div>
 
                         <h2 className="mt-space-2xl font-headline-sm text-headline-sm text-on-surface">{t('dashboard.quick_links.heading')}</h2>
@@ -87,9 +169,7 @@ export default function Dashboard() {
                         <h2 className="font-headline-sm text-headline-sm text-on-surface">{t('dashboard.account.heading')}</h2>
                         <div className="mt-space-md flex flex-col gap-space-md rounded-xl border border-surface-container bg-surface-container-lowest p-space-lg">
                             <div className="flex items-center gap-space-sm">
-                                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent2 font-label-md text-label-md font-bold text-on-primary">
-                                    {user.name?.charAt(0).toUpperCase()}
-                                </span>
+                                <Avatar user={user} className="h-12 w-12 font-label-md text-label-md" />
                                 <div className="min-w-0">
                                     <p className="truncate font-label-md text-label-md text-on-surface">{user.name}</p>
                                     <p className="truncate text-body-sm text-on-surface-variant">{user.email}</p>

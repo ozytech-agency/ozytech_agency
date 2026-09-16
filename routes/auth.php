@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\PhoneVerificationController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,17 @@ Route::middleware('auth')->group(function () {
     Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
         ->middleware('throttle:6,1')
         ->name('verification.send');
+
+    Route::get('verify-phone', [PhoneVerificationController::class, 'notice'])
+        ->name('phone-verification.notice');
+
+    Route::post('verify-phone/send', [PhoneVerificationController::class, 'send'])
+        ->middleware('throttle:6,1')
+        ->name('phone-verification.send');
+
+    Route::post('verify-phone/confirm', [PhoneVerificationController::class, 'confirm'])
+        ->middleware('throttle:6,1')
+        ->name('phone-verification.confirm');
 
     Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
         ->name('password.confirm');

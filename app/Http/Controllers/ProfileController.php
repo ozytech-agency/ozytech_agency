@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -35,7 +36,50 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
+        if ($request->user()->isDirty('phone_number')) {
+            $request->user()->phone_verified_at = null;
+            $request->user()->phone_otp_code = null;
+            $request->user()->phone_otp_expires_at = null;
+        }
+
         $request->user()->save();
+
+        return Redirect::route('profile.edit');
+    }
+
+    /**
+     * Upload (or replace) the user's avatar.
+     */
+    public function updateAvatar(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'avatar' => ['required', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
+        ]);
+
+        $user = $request->user();
+
+        if ($user->avatar_path) {
+            Storage::disk('public')->delete($user->avatar_path);
+        }
+
+        $user->avatar_path = $request->file('avatar')->store('avatars', 'public');
+        $user->save();
+
+        return Redirect::route('profile.edit');
+    }
+
+    /**
+     * Remove the user's avatar.
+     */
+    public function destroyAvatar(Request $request): RedirectResponse
+    {
+        $user = $request->user();
+
+        if ($user->avatar_path) {
+            Storage::disk('public')->delete($user->avatar_path);
+            $user->avatar_path = null;
+            $user->save();
+        }
 
         return Redirect::route('profile.edit');
     }
