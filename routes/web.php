@@ -6,6 +6,7 @@ use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,7 @@ Route::prefix('{locale}')
         Route::get('/packages', [PageController::class, 'packages'])->name('packages');
         Route::get('/faq', [PageController::class, 'faq'])->name('faq');
         Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
+        Route::get('/services/{service}/work', [ProjectController::class, 'show'])->name('services.work');
         Route::get('/policies/{policy}', [PolicyController::class, 'show'])->name('policies.show');
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');

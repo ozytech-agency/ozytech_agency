@@ -2,7 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import { useTranslations } from '@/lib/translations';
 
-export default function ServiceShow({ title, lead, body, features, gallery, related }) {
+export default function ServiceShow({ slug, title, lead, body, offer, build, gallery, related }) {
     const t = useTranslations();
     const processSteps = t('services.details.process');
 
@@ -11,10 +11,7 @@ export default function ServiceShow({ title, lead, body, features, gallery, rela
             <Head title={`${title} | OzyTech`} />
 
             <section className="w-full bg-surface">
-                <div className="w-full max-w-[760px] mx-auto px-gutter-mobile pt-space-3xl pb-space-xl flex flex-col">
-                    <Link href={route('home')} className="self-start mb-space-3xl font-body-sm text-body-sm text-on-surface-variant hover:text-secondary transition-colors inline-flex items-center gap-2">
-                        <i className="fa-solid fa-arrow-left"></i> {t('services.back')}
-                    </Link>
+                <div className="mx-[6%] max-w-[760px] pt-space-3xl pb-space-xl flex flex-col">
                     <span className="mb-space-md font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('services.kicker')}</span>
                     <h1 className="font-display-xl text-display-xl-mobile sm:text-display-xl leading-[1] text-on-surface">{title}</h1>
                     <p className="mt-space-md font-headline-sm text-secondary" style={{ fontSize: 'clamp(1.25rem,3vw,2rem)' }}>
@@ -30,18 +27,35 @@ export default function ServiceShow({ title, lead, body, features, gallery, rela
                 </div>
             </section>
 
-            {features?.length > 0 && (
+            {(offer?.length > 0 || build?.length > 0) && (
                 <section className="w-full py-space-2xl bg-surface-container-low">
-                    <div className="max-w-[760px] mx-auto px-gutter-mobile">
-                        <h2 className="mb-space-md font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('services.details.included_label')}</h2>
-                        <ul className="grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
-                            {features.map((feature) => (
-                                <li key={feature} className="flex items-start gap-space-xs rounded-xl border border-surface-container bg-surface-container-lowest p-space-md">
-                                    <span className="material-symbols-outlined icon-fill text-secondary-container">check_circle</span>
-                                    <span className="text-sm text-on-surface">{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
+                    <div className="mx-[6%] max-w-[760px] grid grid-cols-1 sm:grid-cols-2 gap-space-xl">
+                        {offer?.length > 0 && (
+                            <div>
+                                <h2 className="mb-space-md font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('services.details.offer_label')}</h2>
+                                <ul className="flex flex-col gap-space-sm">
+                                    {offer.map((item) => (
+                                        <li key={item.label} className="flex items-start gap-space-xs">
+                                            <span className="material-symbols-outlined icon-fill text-secondary-container">{item.icon}</span>
+                                            <span className="text-sm text-on-surface">{item.label}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                        {build?.length > 0 && (
+                            <div>
+                                <h2 className="mb-space-md font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('services.details.build_label')}</h2>
+                                <ul className="flex flex-col gap-space-sm">
+                                    {build.map((item) => (
+                                        <li key={item.label} className="flex items-start gap-space-xs">
+                                            <span className="material-symbols-outlined icon-fill text-accent2">{item.icon}</span>
+                                            <span className="text-sm text-on-surface">{item.label}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                     </div>
                 </section>
             )}
@@ -52,9 +66,18 @@ export default function ServiceShow({ title, lead, body, features, gallery, rela
                         <h2 className="mb-space-lg font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('services.details.gallery_label')}</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
                             {gallery.map((src) => (
-                                <div key={src} className="aspect-[4/3] overflow-hidden rounded-xl bg-surface-container-high">
-                                    <img src={src} alt="" className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
-                                </div>
+                                <Link
+                                    key={src}
+                                    href={route('services.work', slug)}
+                                    className="group relative block aspect-[4/3] overflow-hidden rounded-xl bg-surface-container-high"
+                                >
+                                    <img src={src} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                    <span className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 via-black/0 to-black/0 p-space-md opacity-0 transition-opacity group-hover:opacity-100">
+                                        <span className="inline-flex items-center gap-space-2xs font-label-md text-label-md text-white">
+                                            {t('services.details.gallery_cta')} <span className="material-symbols-outlined text-base">arrow_forward</span>
+                                        </span>
+                                    </span>
+                                </Link>
                             ))}
                         </div>
                     </div>
