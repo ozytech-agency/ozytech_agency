@@ -1,9 +1,10 @@
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import { useRef, useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
 import PhoneNumberInput from '@/Components/PhoneNumberInput';
 import { useTranslations } from '@/lib/translations';
+import { PACKAGE_KEYS } from '@/lib/packages';
 
 const ROUTE_META = [
     { key: 'new-project', icon: 'rocket_launch', color: 'text-secondary-container' },
@@ -14,41 +15,10 @@ const ROUTE_META = [
     { key: 'general', icon: 'chat_bubble', color: 'text-on-tertiary-container' },
 ];
 
-const TOPIC_META = [
-    { value: 'new-project', icon: 'rocket_launch' },
-    { value: 'partnership', icon: 'handshake' },
-    { value: 'support', icon: 'support_agent' },
-    { value: 'careers', icon: 'badge' },
-    { value: 'press', icon: 'newspaper' },
-    { value: 'general', icon: 'chat_bubble' },
-];
-
-const SERVICE_OPTION_META = [
-    { value: 'IT Solutions & Cloud', icon: 'dns' },
-    { value: 'LLC & Incorporation', icon: 'domain_add' },
-    { value: 'Payments', icon: 'credit_card' },
-    { value: 'Shopify & Commerce', icon: 'shopping_cart' },
-    { value: 'WordPress & Woo', icon: 'web' },
-    { value: 'Full Stack Web', icon: 'code' },
-    { value: 'Mobile Apps', icon: 'smartphone' },
-    { value: 'SaaS Product', icon: 'cloud_sync' },
-    { value: 'Agentic AI', icon: 'smart_toy' },
-];
-
-const OFFICE_META = [
-    { city: 'Marrakech', hq: true, address: 'Rue de la Liberté, Guéliz', addressLine2: 'Marrakech 40000, Morocco', mapQuery: 'Gu%C3%A9liz+Marrakech' },
-    { city: 'London', address: '1 Finsbury Avenue', addressLine2: 'London EC2M 2PF, United Kingdom', mapQuery: '1+Finsbury+Avenue+London' },
-    { city: 'New York', address: '110 Wall Street, Floor 7', addressLine2: 'New York, NY 10005, USA', mapQuery: '110+Wall+Street+New+York' },
-    { city: 'Berlin', address: 'Torstraße 177', addressLine2: '10115 Berlin, Germany', mapQuery: 'Torstra%C3%9Fe+177+Berlin' },
-    { city: 'Dubai', address: 'One Central, DWTC', addressLine2: 'Dubai, United Arab Emirates', mapQuery: 'One+Central+DWTC+Dubai' },
-    { city: 'Singapore', address: '68 Circular Road, #02-01', addressLine2: 'Singapore 049422', mapQuery: '68+Circular+Road+Singapore' },
-];
-
 const WHEN_MAP = {
     company: ['new-project', 'partnership', 'support', 'general'],
-    companySize: ['new-project', 'partnership', 'support', 'general'],
-    services: ['new-project', 'partnership'],
-    budgetTimeline: ['new-project'],
+    workArea: ['new-project', 'partnership', 'support', 'general'],
+    packages: ['new-project', 'partnership'],
 };
 
 const INITIAL_INQUIRY_FORM = {
@@ -58,46 +28,62 @@ const INITIAL_INQUIRY_FORM = {
     email: '',
     phone: '',
     company: '',
-    website: '',
+    domain_name: '',
     role: '',
-    company_size: '',
-    services: [],
-    budget: '',
-    timeline: '',
+    work_area: '',
+    package: '',
     message: '',
     referral: '',
     nda_requested: false,
     consent: false,
 };
 
+const LOCKED_FIELD_CLASS = 'field cursor-not-allowed opacity-70';
+
+// Identity fields are locked to the registered account (the server enforces this too).
+function inquiryFormFor(user) {
+    const [firstName, ...rest] = (user.name ?? '').trim().split(/\s+/);
+
+    return {
+        ...INITIAL_INQUIRY_FORM,
+        first_name: firstName ?? '',
+        last_name: rest.join(' '),
+        email: user.email ?? '',
+        phone: user.phone_number ?? '',
+    };
+}
+
+// The Packages page links here with ?package=<key> to pre-select a card.
+function packageFromQuery() {
+    if (typeof window === 'undefined') return '';
+    const key = new URLSearchParams(window.location.search).get('package');
+
+    return PACKAGE_KEYS.includes(key) ? key : '';
+}
+
 export default function StartAProject() {
     const t = useTranslations();
-    const { data, setData, post, processing, errors } = useForm({ ...INITIAL_INQUIRY_FORM });
+    const user = usePage().props.auth.user;
+    const preselectedPackage = useRef(packageFromQuery()).current;
+    const { data, setData, post, processing, errors } = useForm({ ...inquiryFormFor(user), package: preselectedPackage });
+    const [openPackage, setOpenPackage] = useState(preselectedPackage || null);
     const [submitted, setSubmitted] = useState(false);
     const [openFaq, setOpenFaq] = useState(null);
     const formRef = useRef(null);
 
     const routingItems = t('start_a_project.routing.items');
-    const topicLabels = t('start_a_project.form.topics');
-    const companySizeOptions = t('start_a_project.form.company_size_options');
-    const serviceOptionLabels = t('start_a_project.form.service_options');
-    const budgetOptions = t('start_a_project.form.budget_options');
-    const timelineOptions = t('start_a_project.form.timeline_options');
+    const workAreaOptions = t('start_a_project.form.work_area_options');
+    const packages = t('packages.cards');
     const referralOptions = t('start_a_project.form.referral_options');
     const nextSteps = t('start_a_project.sidebar.next_steps.steps');
-    const officeHours = t('start_a_project.offices.hours');
     const faqs = t('start_a_project.faq.items');
 
     const showFor = (key) => !WHEN_MAP[key] || WHEN_MAP[key].includes(data.topic);
 
-    const toggleService = (value) => {
-        setData('services', data.services.includes(value) ? data.services.filter((v) => v !== value) : [...data.services, value]);
-    };
-
     const selectRoute = (key) => {
         setData('topic', key);
         document.getElementById('inquiry-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setTimeout(() => document.getElementById('firstName')?.focus(), 400);
+        setTimeout(() => document.getElementById('message')?.focus(), 400);
     };
 
     const submit = (e) => {
@@ -109,7 +95,7 @@ export default function StartAProject() {
     };
 
     const resetForm = () => {
-        setData({ ...INITIAL_INQUIRY_FORM });
+        setData(inquiryFormFor(user));
         setSubmitted(false);
         formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
@@ -215,7 +201,7 @@ export default function StartAProject() {
                                         <h3 className="font-headline-sm text-headline-sm font-bold text-on-surface">{t('start_a_project.form.success.title')}</h3>
                                         <p className="font-body-md text-body-md text-on-surface-variant">
                                             {t('start_a_project.form.success.message_prefix')} <span className="font-semibold text-on-surface">{data.email}</span>. {t('start_a_project.form.success.message_suffix')}{' '}
-                                            <a href="tel:+14155550142" dir="ltr" className="text-secondary font-semibold">+1 (415) 555-0142</a>.
+                                            <a href="tel:+212654092321" dir="ltr" className="text-secondary font-semibold">+212 654-092321</a>.
                                         </p>
                                         <button type="button" onClick={resetForm} className="inline-flex items-center gap-space-2xs font-label-md text-label-md text-secondary hover:translate-x-0.5 transition-transform">
                                             {t('start_a_project.form.success.reset_cta')} <span className="material-symbols-outlined text-base">refresh</span>
@@ -223,37 +209,19 @@ export default function StartAProject() {
                                     </div>
                                 ) : (
                                     <form onSubmit={submit} className="flex flex-col gap-space-lg">
-                                        <fieldset className="flex flex-col gap-space-xs">
-                                            <legend className="font-label-md text-label-md text-on-surface mb-space-2xs">
-                                                {t('start_a_project.form.topic_legend')} <span className="text-secondary-container">*</span>
-                                            </legend>
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-space-2xs p-space-2xs bg-surface-container-low rounded-xl">
-                                                {TOPIC_META.map((tp, i) => (
-                                                    <label key={tp.value} className="seg">
-                                                        <input type="radio" name="topic" checked={data.topic === tp.value} onChange={() => setData('topic', tp.value)} />
-                                                        <span>
-                                                            <span className="material-symbols-outlined text-sm">{tp.icon}</span>
-                                                            {topicLabels[i]}
-                                                        </span>
-                                                    </label>
-                                                ))}
-                                            </div>
-                                            {errors.topic && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.topic}</p>}
-                                        </fieldset>
-
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
                                             <div>
                                                 <label htmlFor="firstName" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
                                                     {t('start_a_project.form.first_name')} <span className="text-secondary-container">*</span>
                                                 </label>
-                                                <input id="firstName" className="field" placeholder={t('start_a_project.form.first_name_placeholder')} {...field('first_name')} />
+                                                <input id="firstName" className={LOCKED_FIELD_CLASS} disabled {...field('first_name')} />
                                                 {errors.first_name && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.first_name}</p>}
                                             </div>
                                             <div>
                                                 <label htmlFor="lastName" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
                                                     {t('start_a_project.form.last_name')} <span className="text-secondary-container">*</span>
                                                 </label>
-                                                <input id="lastName" className="field" placeholder={t('start_a_project.form.last_name_placeholder')} {...field('last_name')} />
+                                                <input id="lastName" className={LOCKED_FIELD_CLASS} disabled {...field('last_name')} />
                                                 {errors.last_name && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.last_name}</p>}
                                             </div>
                                         </div>
@@ -263,7 +231,7 @@ export default function StartAProject() {
                                                 <label htmlFor="email" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
                                                     {t('start_a_project.form.email')} <span className="text-secondary-container">*</span>
                                                 </label>
-                                                <input id="email" type="email" className="field" placeholder="amina@company.com" {...field('email')} />
+                                                <input id="email" type="email" className={LOCKED_FIELD_CLASS} disabled {...field('email')} />
                                                 {errors.email && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.email}</p>}
                                             </div>
                                             <div>
@@ -275,13 +243,20 @@ export default function StartAProject() {
                                                     value={data.phone}
                                                     onChange={(value) => setData('phone', value)}
                                                     placeholder="6 12 34 56 78"
-                                                    boxClassName="field flex items-center gap-space-xs"
+                                                    disabled
+                                                    boxClassName={`${LOCKED_FIELD_CLASS} flex items-center gap-space-xs`}
                                                     selectClassName="shrink-0 overflow-hidden text-ellipsis whitespace-nowrap border-outline-variant/40 bg-transparent p-0 pe-space-xs text-on-surface outline-none [border-inline-end-width:1px] [max-width:9.5rem]"
                                                     inputClassName="min-w-0 flex-1 border-0 bg-transparent p-0 text-on-surface outline-none placeholder:text-outline"
                                                 />
                                                 {errors.phone && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.phone}</p>}
                                             </div>
                                         </div>
+                                        <p className="-mt-2 font-body-sm text-body-sm text-outline">
+                                            {t('start_a_project.form.account_note')}{' '}
+                                            <Link href={route('profile.edit')} className="text-secondary font-semibold underline">
+                                                {t('start_a_project.form.account_note_link')}
+                                            </Link>
+                                        </p>
 
                                         {showFor('company') && (
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
@@ -291,74 +266,115 @@ export default function StartAProject() {
                                                     {errors.company && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.company}</p>}
                                                 </div>
                                                 <div>
-                                                    <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.website')}</label>
-                                                    <input type="url" className="field" placeholder="https://acme.com" {...field('website')} />
-                                                    {errors.website && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.website}</p>}
+                                                    <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.domain_name')}</label>
+                                                    <input className="field" placeholder="acme.com" autoCapitalize="none" {...field('domain_name')} />
+                                                    {errors.domain_name && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.domain_name}</p>}
                                                 </div>
                                             </div>
                                         )}
 
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
                                             <div>
-                                                <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.role')}</label>
+                                                <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.role')} <span className="text-outline font-normal">{t('start_a_project.form.optional')}</span></label>
                                                 <input className="field" placeholder={t('start_a_project.form.role_placeholder')} {...field('role')} />
                                                 {errors.role && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.role}</p>}
                                             </div>
-                                            {showFor('companySize') && (
+                                            {showFor('workArea') && (
                                                 <div>
-                                                    <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.company_size')}</label>
-                                                    <select className="field" {...field('company_size')}>
+                                                    <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.work_area')} <span className="text-outline font-normal">{t('start_a_project.form.optional')}</span></label>
+                                                    <select className="field" {...field('work_area')}>
                                                         <option value="">{t('start_a_project.form.select_placeholder')}</option>
-                                                        {companySizeOptions.map((opt) => (
+                                                        {workAreaOptions.map((opt) => (
                                                             <option key={opt}>{opt}</option>
                                                         ))}
                                                     </select>
-                                                    {errors.company_size && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.company_size}</p>}
+                                                    {errors.work_area && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.work_area}</p>}
                                                 </div>
                                             )}
                                         </div>
 
-                                        {showFor('services') && (
+                                        {showFor('packages') && (
                                             <fieldset className="flex flex-col gap-space-xs">
-                                                <legend className="font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.services_legend')}</legend>
-                                                <div className="flex flex-wrap gap-space-2xs">
-                                                    {SERVICE_OPTION_META.map((s, i) => (
-                                                        <label key={s.value} className="chip">
-                                                            <input type="checkbox" checked={data.services.includes(s.value)} onChange={() => toggleService(s.value)} />
-                                                            <span>
-                                                                <span className="material-symbols-outlined text-sm">{s.icon}</span>
-                                                                {serviceOptionLabels[i]}
-                                                            </span>
-                                                        </label>
-                                                    ))}
+                                                <legend className="font-label-md text-label-md text-on-surface mb-space-2xs">
+                                                    {t('start_a_project.form.package_legend')} <span className="text-outline font-normal">{t('start_a_project.form.optional')}</span>
+                                                </legend>
+                                                <div className="grid grid-cols-1 gap-space-xs sm:grid-cols-3">
+                                                    {packages.map((pkg, i) => {
+                                                        const key = PACKAGE_KEYS[i];
+                                                        const selected = data.package === key;
+                                                        const open = openPackage === key;
+                                                        return (
+                                                            <div
+                                                                key={key}
+                                                                className={`flex flex-col overflow-hidden rounded-xl border transition-colors ${
+                                                                    selected ? 'border-accent2 bg-accent2/5 ring-2 ring-accent2/20' : 'border-outline-variant/40 bg-surface-container-low'
+                                                                }`}
+                                                            >
+                                                                <button
+                                                                    type="button"
+                                                                    aria-pressed={selected}
+                                                                    onClick={() => setData('package', selected ? '' : key)}
+                                                                    className="flex flex-1 flex-col gap-space-xs p-space-md text-start"
+                                                                >
+                                                                    <span className="flex items-center justify-between gap-space-xs">
+                                                                        <span
+                                                                            aria-hidden="true"
+                                                                            className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 ${selected ? 'border-accent2' : 'border-outline-variant'}`}
+                                                                        >
+                                                                            {selected && <span className="h-2.5 w-2.5 rounded-full bg-accent2"></span>}
+                                                                        </span>
+                                                                        {pkg.badge && (
+                                                                            <span className="rounded-full bg-accent2 px-2 py-0.5 font-label-sm text-[10px] font-bold uppercase tracking-wider text-on-primary">{pkg.badge}</span>
+                                                                        )}
+                                                                    </span>
+                                                                    <span className="font-label-md text-label-md font-bold text-on-surface">{pkg.title}</span>
+                                                                    <span className="font-body-sm text-body-sm text-on-surface-variant">{pkg.best_for}</span>
+                                                                    <span className="mt-auto pt-space-2xs">
+                                                                        <span className="block font-headline-sm text-xl font-bold leading-tight text-accent2">{pkg.price.amount}</span>
+                                                                        <span className="block font-label-sm text-[10px] uppercase tracking-wider text-outline">{pkg.price.period}</span>
+                                                                    </span>
+                                                                </button>
+                                                                <button
+                                                                    type="button"
+                                                                    aria-expanded={open}
+                                                                    aria-controls={`package-features-${key}`}
+                                                                    aria-label={`${t('start_a_project.form.package_features')}: ${pkg.title}`}
+                                                                    onClick={() => setOpenPackage((prev) => (prev === key ? null : key))}
+                                                                    className="flex h-9 items-center justify-center border-t border-outline-variant/30 text-on-surface-variant transition-colors hover:text-accent2"
+                                                                >
+                                                                    <span className={`material-symbols-outlined transition-transform ${open ? 'rotate-180' : ''}`}>expand_more</span>
+                                                                </button>
+                                                            </div>
+                                                        );
+                                                    })}
                                                 </div>
-                                                {errors.services && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.services}</p>}
+                                                {packages.map((pkg, i) => {
+                                                    const key = PACKAGE_KEYS[i];
+                                                    if (openPackage !== key) return null;
+                                                    return (
+                                                        <div key={key} id={`package-features-${key}`} className="rounded-xl border border-outline-variant/40 bg-surface-container-lowest p-space-md">
+                                                            <p className="font-label-md text-label-md font-bold text-on-surface">{pkg.title}</p>
+                                                            <p className="mb-space-xs font-body-sm text-body-sm text-on-surface-variant">{pkg.description}</p>
+                                                            <ul className="grid grid-cols-1 gap-space-xs sm:grid-cols-2">
+                                                                {pkg.features.map((feature) => {
+                                                                    const text = typeof feature === 'string' ? feature : feature.text;
+                                                                    const note = typeof feature === 'string' ? null : feature.note;
+                                                                    return (
+                                                                        <li key={text} className="flex items-start gap-space-xs font-body-sm text-body-sm text-on-surface">
+                                                                            <span className="material-symbols-outlined icon-fill mt-0.5 text-[16px] text-secondary-container">check_circle</span>
+                                                                            <span>
+                                                                                {text}
+                                                                                {note && <span className="block text-outline">{note}</span>}
+                                                                            </span>
+                                                                        </li>
+                                                                    );
+                                                                })}
+                                                            </ul>
+                                                        </div>
+                                                    );
+                                                })}
+                                                {errors.package && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.package}</p>}
                                             </fieldset>
-                                        )}
-
-                                        {showFor('budgetTimeline') && (
-                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
-                                                <div>
-                                                    <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.budget')}</label>
-                                                    <select className="field" {...field('budget')}>
-                                                        <option value="">{t('start_a_project.form.select_placeholder')}</option>
-                                                        {budgetOptions.map((opt) => (
-                                                            <option key={opt}>{opt}</option>
-                                                        ))}
-                                                    </select>
-                                                    {errors.budget && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.budget}</p>}
-                                                </div>
-                                                <div>
-                                                    <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.timeline')}</label>
-                                                    <select className="field" {...field('timeline')}>
-                                                        <option value="">{t('start_a_project.form.select_placeholder')}</option>
-                                                        {timelineOptions.map((opt) => (
-                                                            <option key={opt}>{opt}</option>
-                                                        ))}
-                                                    </select>
-                                                    {errors.timeline && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.timeline}</p>}
-                                                </div>
-                                            </div>
                                         )}
 
                                         <div>
@@ -443,32 +459,24 @@ export default function StartAProject() {
 
                             <div className="bg-surface-container-lowest rounded-xl border border-surface-container shadow-sm p-space-lg flex flex-col gap-space-md">
                                 <h3 className="font-label-sm text-label-sm uppercase tracking-widest text-outline font-bold">{t('start_a_project.sidebar.channels.title')}</h3>
-                                {[
-                                    ['alternate_email', 'newprojects@ozytech.agency', t('start_a_project.sidebar.channels.new_business')],
-                                    ['support_agent', 'support@ozytech.agency', t('start_a_project.sidebar.channels.support')],
-                                    ['work', 'careers@ozytech.agency', t('start_a_project.sidebar.channels.careers')],
-                                    ['newspaper', 'press@ozytech.agency', t('start_a_project.sidebar.channels.press')],
-                                ].map(([icon, mail, desc]) => (
-                                    <a key={mail} href={`mailto:${mail}`} className="flex items-start gap-space-sm group">
-                                        <span className="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary-container shrink-0">
-                                            <span className="material-symbols-outlined text-lg">{icon}</span>
-                                        </span>
-                                        <span>
-                                            <span className="block font-label-md text-label-md text-on-surface group-hover:text-secondary transition-colors">{mail}</span>
-                                            <span className="block font-body-sm text-body-sm text-outline">{desc}</span>
-                                        </span>
-                                    </a>
-                                ))}
-                                <div className="flex items-start gap-space-sm">
+                                <a href="mailto:contact@ozytechagency.com" className="flex items-start gap-space-sm group">
+                                    <span className="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary-container shrink-0">
+                                        <span className="material-symbols-outlined text-lg">alternate_email</span>
+                                    </span>
+                                    <span>
+                                        <span className="block font-label-md text-label-md text-on-surface group-hover:text-secondary transition-colors">contact@ozytechagency.com</span>
+                                        <span className="block font-body-sm text-body-sm text-outline">{t('start_a_project.sidebar.channels.email')}</span>
+                                    </span>
+                                </a>
+                                <a href="tel:+212654092321" className="flex items-start gap-space-sm group">
                                     <span className="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary-container shrink-0">
                                         <span className="material-symbols-outlined text-lg">call</span>
                                     </span>
                                     <span>
-                                        <a href="tel:+14155550142" dir="ltr" className="block font-label-md text-label-md text-on-surface hover:text-secondary transition-colors">+1 (415) 555-0142</a>
-                                        <a href="tel:+442079460958" dir="ltr" className="block font-label-md text-label-md text-on-surface hover:text-secondary transition-colors">+44 20 7946 0958</a>
+                                        <span dir="ltr" className="block font-label-md text-label-md text-on-surface group-hover:text-secondary transition-colors">+212 654-092321</span>
                                         <span className="block font-body-sm text-body-sm text-outline">{t('start_a_project.sidebar.channels.hours')}</span>
                                     </span>
-                                </div>
+                                </a>
                             </div>
 
                             <div className="bg-surface-container-low rounded-xl p-space-lg">
@@ -490,48 +498,7 @@ export default function StartAProject() {
                 </div>
             </Reveal>
 
-            <Reveal as="section" id="offices" className="w-full py-space-3xl lg:py-space-4xl bg-surface-container-low">
-                <div className="mx-[6%]">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl items-center mb-space-2xl">
-                        <div className="lg:col-span-5 flex flex-col gap-space-xs">
-                            <span className="font-label-sm text-label-sm text-secondary-container uppercase tracking-widest font-bold">{t('start_a_project.offices.kicker')}</span>
-                            <h2 className="font-headline-lg text-headline-lg text-on-surface">{t('start_a_project.offices.title')}</h2>
-                            <p className="font-body-md text-body-md text-on-surface-variant">{t('start_a_project.offices.subtitle')}</p>
-                        </div>
-                        <div className="lg:col-span-7 flex items-center justify-center rounded-xl bg-surface-container-lowest border border-surface-container p-space-xl">
-                            <span className="material-symbols-outlined text-6xl text-secondary-container/40">public</span>
-                        </div>
-                    </div>
-                    <Reveal as="div" stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-lg">
-                        {OFFICE_META.map((office) => (
-                            <div key={office.city} className="h-full bg-surface-container-lowest rounded-xl border border-surface-container shadow-sm p-space-lg flex flex-col gap-space-2xs">
-                                <div className="flex items-center justify-between">
-                                    <h3 className="font-headline-sm text-lg font-bold text-on-surface">{office.city}</h3>
-                                    {office.hq && (
-                                        <span className="font-label-sm text-label-sm px-space-xs py-1 rounded bg-secondary-container text-on-primary font-semibold">{t('start_a_project.offices.hq_badge')}</span>
-                                    )}
-                                </div>
-                                <p className="font-body-sm text-body-sm text-on-surface-variant">
-                                    {office.address}
-                                    <br />
-                                    {office.addressLine2}
-                                </p>
-                                <p className="font-body-sm text-body-sm text-outline mt-space-2xs">{officeHours[office.city]}</p>
-                                <a
-                                    href={`https://maps.google.com/?q=${office.mapQuery}`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="inline-flex items-center gap-space-2xs mt-space-xs font-label-md text-label-md text-secondary hover:translate-x-0.5 transition-transform"
-                                >
-                                    {t('start_a_project.offices.directions_cta')} <span className="material-symbols-outlined text-base">north_east</span>
-                                </a>
-                            </div>
-                        ))}
-                    </Reveal>
-                </div>
-            </Reveal>
-
-            <Reveal as="section" id="faq" className="w-full py-space-3xl lg:py-space-4xl bg-surface">
+            <Reveal as="section" id="faq" className="w-full py-space-3xl lg:py-space-4xl bg-surface-container-low">
                 <div className="mx-[6%]">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl">
                         <div className="lg:col-span-4 flex flex-col gap-space-sm">

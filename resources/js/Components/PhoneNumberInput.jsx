@@ -30,6 +30,7 @@ export default function PhoneNumberInput({
     placeholder,
     autoComplete,
     required = false,
+    disabled = false,
     defaultCountryIso = 'MA',
     boxClassName,
     selectClassName,
@@ -94,8 +95,9 @@ export default function PhoneNumberInput({
                     aria-haspopup="listbox"
                     aria-expanded={listOpen}
                     aria-label="Country code"
+                    disabled={disabled}
                     onClick={() => setListOpen((v) => !v)}
-                    className={`inline-flex items-center gap-1 whitespace-nowrap bg-transparent text-on-surface outline-none ${selectClassName}`}
+                    className={`inline-flex disabled:cursor-not-allowed items-center gap-1 whitespace-nowrap bg-transparent text-on-surface outline-none ${selectClassName}`}
                 >
                     <span aria-hidden="true">{flagEmoji(iso)}</span>
                     <span>{selectedDial}</span>
@@ -128,6 +130,7 @@ export default function PhoneNumberInput({
                 dir="ltr"
                 inputMode="tel"
                 required={required}
+                disabled={disabled}
                 autoComplete={autoComplete}
                 value={localNumber}
                 placeholder={placeholder}

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
 import { useTranslations } from '@/lib/translations';
+import { PACKAGE_KEYS } from '@/lib/packages';
 
 const CARD_META = [
     { icon: 'fa-solid fa-compass', featured: false },
@@ -153,7 +154,7 @@ export default function Packages() {
                                 })}
                             </ul>
                             <a
-                                href={`${route('start-a-project')}#inquiry-form`}
+                                href={`${route('start-a-project')}?package=${PACKAGE_KEYS[i]}#inquiry-form`}
                                 className={`mt-auto inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-3 text-sm font-bold transition-all hover:-translate-y-0.5 ${
                                     CARD_META[i].featured ? 'border-white/30 text-white hover:bg-accent2 hover:border-accent2' : 'border-outline-variant/40 text-on-surface hover:bg-accent2 hover:border-accent2 hover:text-white'
                                 }`}
