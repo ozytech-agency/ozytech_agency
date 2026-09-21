@@ -5,7 +5,7 @@ return [
 
     'hero' => [
         'badge' => 'Next-Gen Digital Innovation',
-        'title_prefix' => 'Engineer scalable',
+        'title_prefix' => 'Build scalable',
         'title_highlight' => 'tech',
         'title_suffix' => 'for forward-thinking enterprises',
         'subtitle' => 'We architect and deploy mission-critical software, custom agentic AI systems, and resilient cloud architectures. Designed for fast-moving scale-ups and global tech enterprises.',
