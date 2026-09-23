@@ -14,7 +14,7 @@ class DashboardController extends Controller
             'inquiries' => $request->user()
                 ->inquiries()
                 ->latest()
-                ->get(['id', 'topic', 'status', 'created_at']),
+                ->get(['id', 'topic', 'status', 'company', 'created_at']),
         ]);
     }
 }

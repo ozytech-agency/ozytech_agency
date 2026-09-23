@@ -53,10 +53,16 @@ return [
             'cta' => 'Start a project',
         ],
         'status' => [
-            'new' => 'New',
+            'in_review' => 'In review',
             'in_progress' => 'In progress',
-            'responded' => 'Responded',
-            'closed' => 'Closed',
+            'completed' => 'Completed',
+        ],
+        'remove' => [
+            'label' => 'Remove request',
+            'title' => 'Remove this project request?',
+            'desc' => "Are you sure you want to remove this project request? This can't be undone.",
+            'confirm' => 'Yes',
+            'cancel' => 'No',
         ],
     ],
 

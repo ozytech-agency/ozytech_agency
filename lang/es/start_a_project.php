@@ -63,11 +63,11 @@ return [
         'privacy_policy_link' => 'Política de privacidad',
         'submit' => 'Iniciar un proyecto',
         'privacy_note_prefix' => 'Nunca compartimos tu información. Respuesta habitual:',
-        'privacy_note_suffix' => 'menos de 4 horas hábiles.',
+        'privacy_note_suffix' => 'menos de 24 horas.',
         'success' => [
             'title' => 'Mensaje recibido — estás en buenas manos',
             'message_prefix' => 'Una confirmación va en camino a',
-            'message_suffix' => 'Un ingeniero principal te responderá en menos de 4 horas hábiles. Para algo urgente, llama al',
+            'message_suffix' => 'Un ingeniero principal te responderá en menos de 24 horas. Para algo urgente, llama al',
             'reset_cta' => 'Enviar otro mensaje',
         ],
         'validation' => [
@@ -97,7 +97,7 @@ return [
         'next_steps' => [
             'title' => 'Qué sigue',
             'steps' => [
-                ['title' => 'Revisamos y dirigimos', 'desc' => 'En menos de 4 horas hábiles, hacia el responsable correcto, no una cola.'],
+                ['title' => 'Revisamos y dirigimos', 'desc' => 'En menos de 24 horas, hacia el responsable correcto, no una cola.'],
                 ['title' => 'Llamada de introducción y alcance', 'desc' => '30–45 min para poner a prueba objetivos, restricciones, cronograma y presupuesto.'],
                 ['title' => 'Propuesta y resumen de arquitectura', 'desc' => 'En 2–4 días: alcance fijo, plan de equipo e hitos accionables.'],
             ],
@@ -108,9 +108,10 @@ return [
         'kicker' => 'Antes de escribirnos',
         'title' => 'Preguntas frecuentes',
         'subtitle' => '¿Aún no sabes qué equipo necesitas? Envía un mensaje general y lo derivaremos internamente.',
-        'go_to_form' => 'Ir al formulario',
+        'contact_us' => 'Contáctanos',
+        'browse_all' => 'Ver todas las preguntas frecuentes',
         'items' => [
-            ['q' => '¿Qué tan rápido me responderán?', 'a' => 'El tiempo medio de primera respuesta es menos de 4 horas hábiles entre semana. Para un nuevo proyecto, espera una llamada de alcance programada en 2 días hábiles. Los incidentes de producción de clientes existentes se reconocen en 15 minutos.'],
+            ['q' => '¿Qué tan rápido me responderán?', 'a' => 'El tiempo medio de primera respuesta es menos de 24 horas. Para un nuevo proyecto, espera una llamada de alcance programada en 2 días hábiles. Los incidentes de producción de clientes existentes se reconocen en 15 minutos.'],
             ['q' => '¿Firman un NDA antes del descubrimiento?', 'a' => 'Sí. Marca la casilla de NDA en el formulario y enviaremos un NDA mutuo antes de intercambiar cualquier detalle técnico. Si tienes tu propio documento, envíalo — nuestro equipo legal gestiona la mayoría de los NDA el mismo día.'],
             ['q' => '¿Cuál es su compromiso mínimo?', 'a' => 'Los sprints de descubrimiento y arquitectura comienzan en 2 semanas. Los proyectos de construcción suelen empezar con un equipo integrado de 8 semanas (arquitecto + ingenieros + líder de entrega). Los retainers de soporte son mes a mes.'],
             ['q' => '¿Trabajan con startups en etapa pre-semilla y temprana?', 'a' => 'Sí, junto a scale-ups y empresas globales. Ajustamos el alcance a tu etapa y a tu runway — a menudo eso significa un equipo MVP ágil junto con una ruta de arquitectura clara para no reconstruir todo en la Serie A.'],

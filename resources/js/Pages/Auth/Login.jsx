@@ -1,4 +1,5 @@
 import Checkbox from '@/Components/Checkbox';
+import GoogleIcon from '@/Components/GoogleIcon';
 import InputError from '@/Components/InputError';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
@@ -112,6 +113,19 @@ export default function Login({ status, canResetPassword }) {
                     {t('auth_pages.login.submit')} <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
                 </button>
             </form>
+
+            <div className="mt-space-lg flex items-center gap-space-sm" role="separator">
+                <span className="h-px flex-1 bg-outline-variant/40" aria-hidden="true"></span>
+                <span className="font-label-sm text-label-sm text-on-surface-variant">{t('auth_pages.login.divider_or')}</span>
+                <span className="h-px flex-1 bg-outline-variant/40" aria-hidden="true"></span>
+            </div>
+
+            <a
+                href={route('google.login')}
+                className="mt-space-lg flex h-12 w-full items-center justify-center gap-space-xs rounded-lg border border-outline-variant/50 bg-surface font-label-md text-label-md text-on-surface transition-colors hover:bg-surface-container-high focus:outline-none focus:ring-2 focus:ring-secondary-container/30"
+            >
+                <GoogleIcon /> {t('auth_pages.login.continue_with_google')}
+            </a>
 
             <p className="mt-space-lg text-center font-body-sm text-body-sm text-on-surface-variant">
                 {t('auth_pages.login.create_account_prompt')}{' '}

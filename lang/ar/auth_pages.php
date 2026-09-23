@@ -12,6 +12,8 @@ return [
         'password_placeholder' => 'أدخل كلمة المرور',
         'remember_me' => 'تذكرني',
         'submit' => 'تسجيل الدخول',
+        'divider_or' => 'أو',
+        'continue_with_google' => 'المتابعة باستخدام جوجل',
         'create_account_prompt' => 'جديد لدى أوزي تك؟',
         'create_account_link' => 'إنشاء حساب',
     ],

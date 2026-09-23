@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InquiryController;
@@ -14,6 +15,15 @@ Route::redirect('/', '/en');
 
 Route::get('/media/avatars/{filename}', [AvatarController::class, 'show'])->name('avatar.show');
 
+// Kept outside the {locale} prefix: Google's OAuth redirect URI must be one
+// fixed, exact URL registered in Google Cloud Console, not one that varies
+// per locale. SetLocale still runs (it's global 'web' middleware), so
+// route('login') / route('dashboard') below resolve locale via its defaults.
+Route::middleware('guest')->group(function () {
+    Route::get('/auth/google', [GoogleController::class, 'redirect'])->name('google.login');
+    Route::get('/auth/google/callback', [GoogleController::class, 'callback'])->name('google.callback');
+});
+
 Route::prefix('{locale}')
     ->where(['locale' => '^(en|ar|fr|es)$'])
     ->group(function () {
@@ -27,7 +37,10 @@ Route::prefix('{locale}')
         Route::get('/services/{service}/work', [ProjectController::class, 'show'])->name('services.work');
         Route::get('/policies/{policy}', [PolicyController::class, 'show'])->name('policies.show');
 
-        Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+        Route::middleware(['auth', 'verified'])->group(function () {
+            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            Route::delete('/dashboard/requests/{inquiry}', [InquiryController::class, 'destroy'])->name('dashboard.requests.destroy');
+        });
 
         Route::middleware('auth')->group(function () {
             Route::get('/start-a-project', [PageController::class, 'startAProject'])->name('start-a-project');

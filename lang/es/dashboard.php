@@ -53,10 +53,16 @@ return [
             'cta' => 'Iniciar un proyecto',
         ],
         'status' => [
-            'new' => 'Nueva',
+            'in_review' => 'En revisión',
             'in_progress' => 'En progreso',
-            'responded' => 'Respondida',
-            'closed' => 'Cerrada',
+            'completed' => 'Completada',
+        ],
+        'remove' => [
+            'label' => 'Eliminar solicitud',
+            'title' => '¿Eliminar esta solicitud de proyecto?',
+            'desc' => '¿Seguro que quieres eliminar esta solicitud de proyecto? Esta acción no se puede deshacer.',
+            'confirm' => 'Sí',
+            'cancel' => 'No',
         ],
     ],
 

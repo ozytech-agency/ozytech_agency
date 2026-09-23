@@ -1,6 +1,8 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import Avatar from '@/Components/Avatar';
-import { Head, Link, usePage } from '@inertiajs/react';
+import Modal from '@/Components/Modal';
+import { Head, Link, useForm, usePage } from '@inertiajs/react';
+import { useState } from 'react';
 import { useTranslations } from '@/lib/translations';
 
 const QUICK_LINK_META = [
@@ -29,11 +31,23 @@ export default function Dashboard() {
     const quickLinks = t('dashboard.quick_links.items');
     const topicLabels = t('start_a_project.form.topics');
 
+    const [inquiryPendingRemoval, setInquiryPendingRemoval] = useState(null);
+    const { delete: destroy, processing } = useForm();
+
+    const confirmRemoval = (inquiry) => setInquiryPendingRemoval(inquiry);
+    const cancelRemoval = () => setInquiryPendingRemoval(null);
+
+    const removeInquiry = () => {
+        destroy(route('dashboard.requests.destroy', { locale, inquiry: inquiryPendingRemoval.id }), {
+            preserveScroll: true,
+            onSuccess: () => setInquiryPendingRemoval(null),
+        });
+    };
+
     const statusMeta = {
-        new: { label: t('dashboard.requests.status.new'), classes: 'bg-secondary-container/15 text-secondary-container' },
+        in_review: { label: t('dashboard.requests.status.in_review'), classes: 'bg-secondary-container/15 text-secondary-container' },
         in_progress: { label: t('dashboard.requests.status.in_progress'), classes: 'bg-accent2/15 text-accent2' },
-        responded: { label: t('dashboard.requests.status.responded'), classes: 'bg-tertiary-container/40 text-on-tertiary-container' },
-        closed: { label: t('dashboard.requests.status.closed'), classes: 'bg-surface-container-high text-on-surface-variant' },
+        completed: { label: t('dashboard.requests.status.completed'), classes: 'bg-tertiary-container/40 text-on-tertiary-container' },
     };
 
     const checklistItems = [
@@ -131,11 +145,21 @@ export default function Dashboard() {
                             ) : (
                                 inquiries.map((inquiry) => {
                                     const topicIndex = TOPIC_ORDER.indexOf(inquiry.topic);
-                                    const status = statusMeta[inquiry.status] ?? statusMeta.new;
+                                    const topicLabel = topicIndex >= 0 ? topicLabels[topicIndex] : inquiry.topic;
+                                    const title = inquiry.topic === 'new-project' && inquiry.company ? inquiry.company : topicLabel;
+                                    const status = statusMeta[inquiry.status] ?? statusMeta.in_review;
                                     return (
-                                        <div key={inquiry.id} className="flex items-center justify-between gap-space-md rounded-xl border border-surface-container bg-surface-container-lowest p-space-lg">
+                                        <div key={inquiry.id} className="relative flex items-center justify-between gap-space-md rounded-xl border border-surface-container bg-surface-container-lowest px-space-lg py-10">
+                                            <button
+                                                type="button"
+                                                onClick={() => confirmRemoval(inquiry)}
+                                                aria-label={t('dashboard.requests.remove.label')}
+                                                className="absolute end-0 top-0 flex h-8 w-8 items-center justify-center rounded-full text-on-surface-variant transition-colors hover:bg-error/10 hover:text-error"
+                                            >
+                                                <span className="material-symbols-outlined text-[20px]">close</span>
+                                            </button>
                                             <div className="min-w-0">
-                                                <p className="font-label-md text-label-md text-on-surface">{topicIndex >= 0 ? topicLabels[topicIndex] : inquiry.topic}</p>
+                                                <p className="font-label-md text-label-md text-on-surface">{title}</p>
                                                 <p className="text-body-sm text-on-surface-variant">{formatMemberSince(inquiry.created_at, locale)}</p>
                                             </div>
                                             <span className={`shrink-0 rounded-full px-space-sm py-space-2xs font-label-sm text-label-sm ${status.classes}`}>{status.label}</span>
@@ -218,6 +242,32 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
+
+            <Modal show={inquiryPendingRemoval !== null} onClose={cancelRemoval} maxWidth="sm">
+                <div className="p-space-lg">
+                    <h2 className="font-headline-sm text-headline-sm text-on-surface">{t('dashboard.requests.remove.title')}</h2>
+                    <p className="mt-space-2xs text-body-sm text-on-surface-variant">{t('dashboard.requests.remove.desc')}</p>
+
+                    <div className="mt-space-lg flex justify-end gap-space-sm">
+                        <button
+                            type="button"
+                            onClick={cancelRemoval}
+                            className="inline-flex h-12 items-center justify-center rounded-lg border border-outline-variant px-space-lg font-label-md text-label-md text-on-surface-variant transition-colors hover:border-secondary-container hover:text-on-surface"
+                        >
+                            {t('dashboard.requests.remove.cancel')}
+                        </button>
+
+                        <button
+                            type="button"
+                            onClick={removeInquiry}
+                            disabled={processing}
+                            className="inline-flex h-12 items-center justify-center rounded-lg bg-error px-space-lg font-label-md text-label-md text-on-error transition-colors hover:opacity-90 disabled:opacity-50"
+                        >
+                            {t('dashboard.requests.remove.confirm')}
+                        </button>
+                    </div>
+                </div>
+            </Modal>
         </AuthenticatedLayout>
     );
 }

@@ -12,6 +12,8 @@ return [
         'password_placeholder' => 'Saisissez votre mot de passe',
         'remember_me' => 'Se souvenir de moi',
         'submit' => 'Connexion',
+        'divider_or' => 'OU',
+        'continue_with_google' => 'Continuer avec Google',
         'create_account_prompt' => 'Nouveau chez OzyTech ?',
         'create_account_link' => 'Créer un compte',
     ],

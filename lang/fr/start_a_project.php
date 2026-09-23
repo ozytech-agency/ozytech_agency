@@ -63,11 +63,11 @@ return [
         'privacy_policy_link' => 'Politique de confidentialité',
         'submit' => 'Démarrer un projet',
         'privacy_note_prefix' => 'Nous ne partageons jamais vos informations. Réponse habituelle :',
-        'privacy_note_suffix' => 'sous 4 heures ouvrées.',
+        'privacy_note_suffix' => 'sous 24 heures.',
         'success' => [
             'title' => 'Message reçu — vous êtes entre de bonnes mains',
             'message_prefix' => 'Une confirmation est en route vers',
-            'message_suffix' => 'Un ingénieur principal vous répondra sous 4 heures ouvrées. Pour toute urgence, appelez le',
+            'message_suffix' => 'Un ingénieur principal vous répondra sous 24 heures. Pour toute urgence, appelez le',
             'reset_cta' => 'Envoyer un autre message',
         ],
         'validation' => [
@@ -97,7 +97,7 @@ return [
         'next_steps' => [
             'title' => 'La suite',
             'steps' => [
-                ['title' => 'Nous étudions et orientons', 'desc' => 'Sous 4 heures ouvrées, vers le bon responsable — pas une file d\'attente.'],
+                ['title' => 'Nous étudions et orientons', 'desc' => 'Sous 24 heures, vers le bon responsable — pas une file d\'attente.'],
                 ['title' => 'Appel de découverte & cadrage', 'desc' => '30 à 45 min pour challenger vos objectifs, contraintes, délais et budget.'],
                 ['title' => "Proposition & note d'architecture", 'desc' => 'Sous 2 à 4 jours : périmètre fixe, plan d\'équipe et jalons concrets.'],
             ],
@@ -108,9 +108,10 @@ return [
         'kicker' => 'Avant de nous écrire',
         'title' => 'Questions fréquentes',
         'subtitle' => 'Vous ne savez toujours pas quelle équipe vous concerne ? Envoyez un message général, nous le transmettrons en interne.',
-        'go_to_form' => 'Aller au formulaire',
+        'contact_us' => 'Contactez-nous',
+        'browse_all' => 'Voir toutes les FAQ',
         'items' => [
-            ['q' => 'À quelle vitesse allez-vous me répondre ?', 'a' => 'Le délai médian de première réponse est inférieur à 4 heures ouvrées en semaine. Pour un nouveau projet, attendez-vous à un appel de cadrage programmé sous 2 jours ouvrés. Les incidents de production des clients existants sont accusés réception sous 15 minutes.'],
+            ['q' => 'À quelle vitesse allez-vous me répondre ?', 'a' => 'Le délai médian de première réponse est inférieur à 24 heures. Pour un nouveau projet, attendez-vous à un appel de cadrage programmé sous 2 jours ouvrés. Les incidents de production des clients existants sont accusés réception sous 15 minutes.'],
             ['q' => 'Signez-vous un NDA avant la découverte ?', 'a' => 'Oui. Cochez la case NDA dans le formulaire et nous envoyons un NDA mutuel avant tout échange technique. Si vous avez votre propre document, envoyez-le-nous — notre équipe juridique traite la plupart des NDA le jour même.'],
             ['q' => 'Quel est votre engagement minimum ?', 'a' => "Les sprints de découverte et d'architecture démarrent à 2 semaines. Les missions de construction commencent généralement par une équipe intégrée de 8 semaines (architecte + ingénieurs + responsable de livraison). Les forfaits de support sont mensuels."],
             ['q' => 'Travaillez-vous avec des startups pré-amorçage et en phase précoce ?', 'a' => "Oui, aux côtés des scale-ups et des entreprises mondiales. Nous adaptons le périmètre à votre stade et à votre trésorerie — souvent une équipe MVP légère avec une trajectoire d'architecture claire pour éviter de tout reconstruire en Series A."],

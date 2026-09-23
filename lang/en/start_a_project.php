@@ -63,11 +63,11 @@ return [
         'privacy_policy_link' => 'Privacy Policy',
         'submit' => 'Start a Project',
         'privacy_note_prefix' => 'We never share your information. Typical reply:',
-        'privacy_note_suffix' => 'under 4 business hours.',
+        'privacy_note_suffix' => 'under 24 hours.',
         'success' => [
             'title' => "Message received — you're in the right hands",
             'message_prefix' => 'A confirmation is on its way to',
-            'message_suffix' => 'A principal engineer will reply within 4 business hours. For anything time-critical, call',
+            'message_suffix' => 'A principal engineer will reply within 24 hours. For anything time-critical, call',
             'reset_cta' => 'Send another message',
         ],
         'validation' => [
@@ -97,7 +97,7 @@ return [
         'next_steps' => [
             'title' => 'What happens next',
             'steps' => [
-                ['title' => 'We review & route', 'desc' => 'Within 4 business hours, to the right principal — not a queue.'],
+                ['title' => 'We review & route', 'desc' => 'Within 24 hours, to the right principal — not a queue.'],
                 ['title' => 'Intro & scoping call', 'desc' => '30–45 min to pressure-test goals, constraints, timeline and budget.'],
                 ['title' => 'Proposal & architecture brief', 'desc' => 'In 2–4 days: fixed scope, team plan and milestones you can act on.'],
             ],
@@ -108,9 +108,10 @@ return [
         'kicker' => 'Before you write',
         'title' => 'Questions we get a lot',
         'subtitle' => "Still unsure which team you need? Send a general message and we'll route it internally.",
-        'go_to_form' => 'Go to the form',
+        'contact_us' => 'Contact us',
+        'browse_all' => 'Browse all FAQs',
         'items' => [
-            ['q' => 'How quickly will someone get back to me?', 'a' => 'Median first response is under 4 business hours on weekdays. For a new project, expect a scoping call scheduled within 2 business days. Production incidents from existing clients are acknowledged within 15 minutes.'],
+            ['q' => 'How quickly will someone get back to me?', 'a' => 'Median first response is under 24 hours. For a new project, expect a scoping call scheduled within 2 business days. Production incidents from existing clients are acknowledged within 15 minutes.'],
             ['q' => 'Do you sign an NDA before discovery?', 'a' => 'Yes. Tick the NDA box in the form and we send a mutual NDA before any technical detail is exchanged. If you have your own paper, send it over — our legal team turns most NDAs around same day.'],
             ['q' => 'What is your minimum engagement?', 'a' => 'Discovery & architecture sprints start at 2 weeks. Build engagements typically begin with an 8-week embedded pod (architect + engineers + delivery lead). Support retainers are month-to-month.'],
             ['q' => 'Do you work with pre-seed and early-stage startups?', 'a' => "Yes, alongside scale-ups and global enterprises. We scope to your stage and runway — that often means a lean MVP pod plus a clear architecture path so you don't rebuild at Series A."],

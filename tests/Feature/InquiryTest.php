@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Jobs\RemoveProjectRequestFromGoogleSheet;
 use App\Jobs\SendProjectRequestToGoogleSheet;
 use App\Models\Inquiry;
 use App\Models\User;
@@ -273,5 +274,112 @@ class InquiryTest extends TestCase
         $this->expectException(RequestException::class);
 
         (new SendProjectRequestToGoogleSheet(Inquiry::factory()->create()))->handle();
+    }
+
+    public function test_owner_can_delete_their_own_inquiry(): void
+    {
+        $user = User::factory()->create();
+        $inquiry = Inquiry::factory()->for($user)->create();
+
+        $this->actingAs($user)
+            ->delete(route('dashboard.requests.destroy', ['locale' => 'en', 'inquiry' => $inquiry]))
+            ->assertRedirect(route('dashboard', ['locale' => 'en']));
+
+        $this->assertDatabaseMissing('inquiries', ['id' => $inquiry->id]);
+    }
+
+    public function test_user_cannot_delete_another_users_inquiry(): void
+    {
+        $inquiry = Inquiry::factory()->create();
+
+        $this->actingAs(User::factory()->create())
+            ->delete(route('dashboard.requests.destroy', ['locale' => 'en', 'inquiry' => $inquiry]))
+            ->assertForbidden();
+
+        $this->assertDatabaseHas('inquiries', ['id' => $inquiry->id]);
+    }
+
+    public function test_guest_cannot_delete_an_inquiry(): void
+    {
+        $inquiry = Inquiry::factory()->create();
+
+        $this->delete(route('dashboard.requests.destroy', ['locale' => 'en', 'inquiry' => $inquiry]))
+            ->assertRedirect(route('login', ['locale' => 'en']));
+
+        $this->assertDatabaseHas('inquiries', ['id' => $inquiry->id]);
+    }
+
+    public function test_deleting_a_new_project_request_is_queued_for_removal_from_the_google_sheet(): void
+    {
+        Queue::fake();
+        $user = User::factory()->create();
+        $inquiry = Inquiry::factory()->for($user)->create(['topic' => 'new-project']);
+
+        $this->actingAs($user)
+            ->delete(route('dashboard.requests.destroy', ['locale' => 'en', 'inquiry' => $inquiry]));
+
+        Queue::assertPushed(
+            RemoveProjectRequestFromGoogleSheet::class,
+            fn (RemoveProjectRequestFromGoogleSheet $job) => $job->inquiry->id === $inquiry->id,
+        );
+    }
+
+    public function test_deleting_a_non_new_project_request_does_not_touch_the_google_sheet(): void
+    {
+        Queue::fake();
+        $user = User::factory()->create();
+        $inquiry = Inquiry::factory()->for($user)->create(['topic' => 'support']);
+
+        $this->actingAs($user)
+            ->delete(route('dashboard.requests.destroy', ['locale' => 'en', 'inquiry' => $inquiry]));
+
+        Queue::assertNothingPushed();
+    }
+
+    public function test_google_sheet_removal_job_posts_the_request_id_to_the_webhook(): void
+    {
+        config([
+            'services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec',
+            'services.google_sheets.secret' => 'top-secret',
+        ]);
+        Http::fake(['script.google.com/*' => Http::response(['ok' => true])]);
+        $inquiry = Inquiry::factory()->create();
+
+        (new RemoveProjectRequestFromGoogleSheet($inquiry))->handle();
+
+        Http::assertSent(fn (Request $request) => $request->url() === 'https://script.google.com/macros/s/test/exec'
+            && $request['secret'] === 'top-secret'
+            && $request['action'] === 'remove'
+            && $request['request_id'] === $inquiry->id);
+    }
+
+    public function test_google_sheet_removal_job_does_nothing_without_a_webhook_url(): void
+    {
+        config(['services.google_sheets.webhook_url' => '']);
+        Http::fake();
+
+        (new RemoveProjectRequestFromGoogleSheet(Inquiry::factory()->create()))->handle();
+
+        Http::assertNothingSent();
+    }
+
+    public function test_google_sheet_removal_job_fails_when_the_webhook_rejects_the_request(): void
+    {
+        config(['services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec']);
+        Http::fake(['script.google.com/*' => Http::response(['ok' => false, 'error' => 'not found'])]);
+
+        $this->expectException(RuntimeException::class);
+
+        (new RemoveProjectRequestFromGoogleSheet(Inquiry::factory()->create()))->handle();
+    }
+
+    public function test_google_sheet_removal_job_fails_when_the_webhook_is_down(): void
+    {
+        config(['services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec']);
+        Http::fake(['script.google.com/*' => Http::response('boom', 500)]);
+
+        $this->expectException(RequestException::class);
+
+        (new RemoveProjectRequestFromGoogleSheet(Inquiry::factory()->create()))->handle();
     }
 }

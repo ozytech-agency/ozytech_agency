@@ -33,7 +33,7 @@ class InquiryFactory extends Factory
             'referral' => fake()->randomElement(['Referral / word of mouth', 'Search engine', 'LinkedIn', 'Other']),
             'nda_requested' => fake()->boolean(),
             'consent' => true,
-            'status' => 'new',
+            'status' => 'in_review',
         ];
     }
 }

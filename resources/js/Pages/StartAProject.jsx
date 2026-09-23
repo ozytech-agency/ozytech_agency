@@ -68,7 +68,6 @@ export default function StartAProject() {
     const { data, setData, post, processing, errors } = useForm({ ...inquiryFormFor(user), package: preselectedPackage });
     const [openPackage, setOpenPackage] = useState(preselectedPackage || null);
     const [submitted, setSubmitted] = useState(false);
-    const [openFaq, setOpenFaq] = useState(null);
     const formRef = useRef(null);
 
     const routingItems = t('start_a_project.routing.items');
@@ -76,7 +75,6 @@ export default function StartAProject() {
     const packages = t('packages.cards');
     const referralOptions = t('start_a_project.form.referral_options');
     const nextSteps = t('start_a_project.sidebar.next_steps.steps');
-    const faqs = t('start_a_project.faq.items');
 
     const showFor = (key) => !WHEN_MAP[key] || WHEN_MAP[key].includes(data.topic);
 
@@ -498,61 +496,35 @@ export default function StartAProject() {
                 </div>
             </Reveal>
 
-            <Reveal as="section" id="faq" className="w-full py-space-3xl lg:py-space-4xl bg-surface-container-low">
-                <div className="mx-[6%]">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl">
-                        <div className="lg:col-span-4 flex flex-col gap-space-sm">
-                            <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">{t('start_a_project.faq.kicker')}</span>
-                            <h2 className="font-headline-lg text-headline-lg text-on-surface">{t('start_a_project.faq.title')}</h2>
-                            <p className="font-body-md text-body-md text-on-surface-variant">{t('start_a_project.faq.subtitle')}</p>
-                            <a href="#inquiry-form" className="inline-flex items-center gap-space-xs text-secondary font-label-md text-label-md hover:translate-x-1 transition-transform pt-space-2xs">
-                                {t('start_a_project.faq.go_to_form')} <span className="material-symbols-outlined text-base">arrow_forward</span>
-                            </a>
-                        </div>
-                        <div className="lg:col-span-8 flex flex-col gap-space-xs">
-                            {faqs.map((faq, i) => (
-                                <details
-                                    key={faq.q}
-                                    className="faq group bg-surface-container-low rounded-xl px-space-lg py-space-md"
-                                    open={openFaq === i}
-                                    onToggle={(e) => setOpenFaq(e.target.open ? i : null)}
-                                >
-                                    <summary className="flex items-center justify-between gap-space-md font-label-md text-label-md text-on-surface font-bold">
-                                        <span>{faq.q}</span>
-                                        <span className="faq-icon material-symbols-outlined text-secondary-container shrink-0">add</span>
-                                    </summary>
-                                    <p className="font-body-md text-body-md text-on-surface-variant mt-space-sm">{faq.a}</p>
-                                </details>
-                            ))}
-                        </div>
-                    </div>
+            <Reveal as="section" id="faq" className="relative w-full py-space-3xl lg:py-space-4xl overflow-hidden isolate">
+                <div className="absolute inset-0 -z-20">
+                    <img
+                        src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=2200&q=80"
+                        alt=""
+                        aria-hidden="true"
+                        className="h-full w-full object-cover"
+                    />
                 </div>
-            </Reveal>
-
-            <Reveal
-                as="section"
-                className="relative w-full py-space-3xl lg:py-space-4xl overflow-hidden text-on-secondary-fixed"
-                style={{ background: 'linear-gradient(to right, rgb(var(--c-secondary-container)), rgb(var(--c-secondary-fixed-dim)), rgb(var(--c-secondary)))' }}
-            >
-                <div className="mx-[6%] relative z-10 text-center flex flex-col items-center">
-                    <div className="inline-flex items-center gap-space-2xs px-space-md py-1 bg-surface-container-lowest/30 backdrop-blur-md rounded-full mb-space-sm">
-                        <span className="material-symbols-outlined text-sm text-accent2">bolt</span>
-                        <span className="font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed font-bold">{t('start_a_project.cta.badge')}</span>
-                    </div>
-                    <h2 className="font-display-xl text-display-xl-mobile sm:text-display-xl text-on-secondary-fixed font-bold max-w-3xl leading-tight">{t('start_a_project.cta.title')}</h2>
-                    <p className="font-body-lg text-body-lg text-on-secondary-fixed/90 max-w-2xl mt-space-sm mb-space-xl">{t('start_a_project.cta.subtitle')}</p>
-                    <div className="flex flex-col sm:flex-row items-center gap-space-md">
-                        <a
-                            href="#inquiry-form"
-                            className="inline-flex items-center justify-center gap-space-xs bg-primary-container text-on-primary font-label-md text-label-md px-space-2xl py-space-md rounded-lg shadow-xl hover:bg-primary transition-all hover:-translate-y-0.5"
-                        >
-                            {t('start_a_project.cta.primary')} <span className="material-symbols-outlined text-base">arrow_forward</span>
-                        </a>
+                <div
+                    className="absolute inset-0 -z-10 pointer-events-none"
+                    style={{ background: 'linear-gradient(180deg, rgb(9 14 25 / .92), rgb(9 14 25 / .88))' }}
+                ></div>
+                <div className="mx-[6%] relative z-10 flex flex-col items-center gap-space-md text-center">
+                    <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">{t('start_a_project.faq.kicker')}</span>
+                    <h2 className="font-headline-lg text-headline-lg text-white/[92%]">{t('start_a_project.faq.title')}</h2>
+                    <p className="font-body-md text-body-md text-white/80 max-w-xl">{t('start_a_project.faq.subtitle')}</p>
+                    <div className="flex flex-col sm:flex-row items-center gap-space-md pt-space-xs">
                         <Link
-                            href={route('packages')}
-                            className="inline-flex items-center justify-center gap-space-xs bg-surface-container-lowest/90 text-on-surface font-label-md text-label-md px-space-xl py-space-md rounded-lg shadow-md hover:bg-surface-container-lowest transition-all"
+                            href={route('faq')}
+                            className="inline-flex items-center justify-center gap-space-xs rounded-lg bg-secondary-container px-space-xl py-space-md font-label-md text-label-md text-on-secondary-container transition-all hover:-translate-y-0.5 hover:shadow-lg"
                         >
-                            {t('start_a_project.cta.secondary')}
+                            {t('start_a_project.faq.browse_all')} <span className="material-symbols-outlined text-base">arrow_forward</span>
+                        </Link>
+                        <Link
+                            href={route('contact')}
+                            className="inline-flex items-center gap-space-xs text-secondary font-label-md text-label-md hover:translate-x-1 transition-transform"
+                        >
+                            {t('start_a_project.faq.contact_us')} <span className="material-symbols-outlined text-base">arrow_forward</span>
                         </Link>
                     </div>
                 </div>
