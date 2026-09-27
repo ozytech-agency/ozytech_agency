@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Support\ProjectCatalog;
 use App\Support\ServiceCatalog;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -21,6 +22,7 @@ class ServiceController extends Controller
             'slug' => $service,
             ...$data,
             'related' => ServiceCatalog::related($service),
+            'hasCaseStudy' => ProjectCatalog::exists($service),
         ]);
     }
 }

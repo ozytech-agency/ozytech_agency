@@ -41,11 +41,20 @@ class ProjectCatalog
     {
         $service = ServiceCatalog::find($serviceSlug);
 
-        if (! $service) {
+        if (! $service || ! self::exists($serviceSlug)) {
             return null;
         }
 
         return self::build($serviceSlug, $service);
+    }
+
+    /**
+     * Case studies are still defined in the translation files, so services
+     * created from the admin dashboard don't have one yet.
+     */
+    public static function exists(string $serviceSlug): bool
+    {
+        return is_array(__("projects.{$serviceSlug}"));
     }
 
     /**
