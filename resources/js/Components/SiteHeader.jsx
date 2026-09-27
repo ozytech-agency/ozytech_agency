@@ -67,6 +67,7 @@ export default function SiteHeader() {
                                 </Dropdown.Trigger>
                                 <Dropdown.Content align="right" width="48">
                                     <Dropdown.Link href={route('dashboard')}>{t('nav.dashboard')}</Dropdown.Link>
+                                    {auth.can_access_admin && <Dropdown.Link href={route('admin.dashboard')}>{t('nav.admin')}</Dropdown.Link>}
                                     <Dropdown.Link href={route('profile.edit')}>{t('nav.profile')}</Dropdown.Link>
                                     <Dropdown.Link href={route('logout')} method="post" as="button">
                                         {t('nav.logout')}
@@ -151,6 +152,15 @@ export default function SiteHeader() {
                                 >
                                     {t('nav.dashboard')}
                                 </Link>
+                                {auth.can_access_admin && (
+                                    <Link
+                                        href={route('admin.dashboard')}
+                                        onClick={closeMobile}
+                                        className="block px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md transition-colors"
+                                    >
+                                        {t('nav.admin')}
+                                    </Link>
+                                )}
                                 <Link
                                     href={route('profile.edit')}
                                     onClick={closeMobile}

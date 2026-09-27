@@ -13,6 +13,7 @@ return [
     'login' => 'Connexion',
     'signup' => 'Inscription',
     'dashboard' => 'Tableau de bord',
+    'admin' => 'Administration',
     'profile' => 'Profil',
     'logout' => 'Déconnexion',
     'theme_toggle_to_dark' => 'Passer au thème sombre',

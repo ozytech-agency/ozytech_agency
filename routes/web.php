@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\UploadController as AdminUploadController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AvatarController;
+use App\Http\Controllers\ContentMediaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\PageController;
@@ -14,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/en');
 
 Route::get('/media/avatars/{filename}', [AvatarController::class, 'show'])->name('avatar.show');
+Route::get('/media/content/{filename}', [ContentMediaController::class, 'show'])->name('media.content');
 
 // Kept outside the {locale} prefix: Google's OAuth redirect URI must be one
 // fixed, exact URL registered in Google Cloud Console, not one that varies
@@ -41,6 +45,14 @@ Route::prefix('{locale}')
             Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::delete('/dashboard/requests/{inquiry}', [InquiryController::class, 'destroy'])->name('dashboard.requests.destroy');
         });
+
+        Route::middleware(['auth', 'verified', 'can:access-admin'])
+            ->prefix('admin')
+            ->name('admin.')
+            ->group(function () {
+                Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+                Route::post('/uploads', [AdminUploadController::class, 'store'])->name('uploads.store');
+            });
 
         Route::middleware('auth')->group(function () {
             Route::get('/start-a-project', [PageController::class, 'startAProject'])->name('start-a-project');

@@ -38,16 +38,26 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $canAccessAdmin = (bool) $request->user()?->can('access-admin');
+
+        $namespaces = $canAccessAdmin
+            ? [...$this->translationNamespaces, 'admin']
+            : $this->translationNamespaces;
+
         return [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
+                'can_access_admin' => $canAccessAdmin,
             ],
             'locale' => app()->getLocale(),
             'available_locales' => ['en', 'ar', 'fr', 'es'],
-            'translations' => collect($this->translationNamespaces)
+            'translations' => collect($namespaces)
                 ->mapWithKeys(fn (string $namespace) => [$namespace => __($namespace)])
                 ->all(),
+            'flash' => [
+                'status' => fn () => $request->session()->get('status'),
+            ],
         ];
     }
 }

@@ -13,6 +13,7 @@ return [
     'login' => 'Log in',
     'signup' => 'Sign Up',
     'dashboard' => 'Dashboard',
+    'admin' => 'Admin',
     'profile' => 'Profile',
     'logout' => 'Log out',
     'theme_toggle_to_dark' => 'Switch to dark theme',

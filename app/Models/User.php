@@ -45,6 +45,7 @@ class User extends Authenticatable
             'phone_verified_at' => 'datetime',
             'phone_otp_expires_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
         ];
     }
 }
