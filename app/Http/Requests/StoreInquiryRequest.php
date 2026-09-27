@@ -53,7 +53,7 @@ class StoreInquiryRequest extends FormRequest
             'domain_name' => ['nullable', 'string', 'max:255', 'regex:/^(?!-)([a-z0-9-]{1,63}\.)+[a-z]{2,}$/i'],
             'role' => ['nullable', 'string', 'max:255'],
             'work_area' => ['nullable', 'string', 'max:100'],
-            'package' => ['nullable', 'string', Rule::in(['growth', 'pro', 'ultimate'])],
+            'package' => ['nullable', 'string', Rule::exists('packages', 'key')->where('is_published', true)],
             'message' => ['required', 'string', 'max:1500'],
             'referral' => ['nullable', 'string', 'max:150'],
             'nda_requested' => ['boolean'],

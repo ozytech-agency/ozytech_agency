@@ -3,15 +3,16 @@
 namespace Database\Seeders;
 
 use App\Enums\ServiceItemType;
+use App\Models\Package;
 use App\Models\Service;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Imports the services that used to be hardcoded in the lang files (all
- * locales) into the database, so they can be managed from the admin
- * dashboard.
+ * Imports the services and packages that used to be hardcoded in the lang
+ * files (all locales) into the database, so they can be managed from the
+ * admin dashboard.
  *
  * Safe to re-run: records that already exist (by slug / key) are skipped, so
  * edits made from the admin dashboard are never overwritten.
@@ -143,12 +144,24 @@ class ContentSeeder extends Seeder
     ];
 
     /**
+     * Package keys and icons, in the order of `packages.cards`.
+     *
+     * @var list<array{0: string, 1: string}>
+     */
+    private const PACKAGES = [
+        ['growth', 'fa-solid fa-compass'],
+        ['pro', 'fa-solid fa-rocket'],
+        ['ultimate', 'fa-solid fa-chart-line'],
+    ];
+
+    /**
      * Run the database seeds.
      */
     public function run(): void
     {
         DB::transaction(function () {
             $this->seedServices();
+            $this->seedPackages();
         });
 
         Cache::forget(Service::CACHE_KEY);
@@ -190,6 +203,55 @@ class ContentSeeder extends Seeder
                         'sort_order' => $index,
                     ]);
                 }
+            }
+        }
+    }
+
+    private function seedPackages(): void
+    {
+        foreach (self::PACKAGES as $index => [$key, $icon]) {
+            if (Package::where('key', $key)->exists()) {
+                continue;
+            }
+
+            $base = "packages.cards.{$index}";
+
+            $package = Package::create([
+                'key' => $key,
+                'label' => $this->localized("{$base}.label"),
+                'title' => $this->localized("{$base}.title"),
+                'best_for' => $this->localized("{$base}.best_for"),
+                'description' => $this->localized("{$base}.description"),
+                'cta' => $this->localized("{$base}.cta"),
+                'badge' => $this->localized("{$base}.badge"),
+                'icon' => $icon,
+                'price_amount' => trans("{$base}.price.amount", [], 'en'),
+                'price_period' => $this->localized("{$base}.price.period"),
+                'is_featured' => $this->localized("{$base}.badge") !== null,
+                'sort_order' => $index,
+                'is_published' => true,
+            ]);
+
+            $featureCount = count(trans("{$base}.features", [], 'en'));
+
+            for ($i = 0; $i < $featureCount; $i++) {
+                $text = [];
+                $note = [];
+
+                foreach (self::LOCALES as $locale) {
+                    $feature = trans("{$base}.features.{$i}", [], $locale);
+                    $text[$locale] = is_array($feature) ? $feature['text'] : $feature;
+
+                    if (is_array($feature) && isset($feature['note'])) {
+                        $note[$locale] = $feature['note'];
+                    }
+                }
+
+                $package->features()->create([
+                    'text' => $text,
+                    'note' => $note ?: null,
+                    'sort_order' => $i,
+                ]);
             }
         }
     }

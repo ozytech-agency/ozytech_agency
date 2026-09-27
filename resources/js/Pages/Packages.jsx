@@ -1,15 +1,8 @@
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
 import { useTranslations } from '@/lib/translations';
-import { PACKAGE_KEYS } from '@/lib/packages';
-
-const CARD_META = [
-    { icon: 'fa-solid fa-compass', featured: false },
-    { icon: 'fa-solid fa-rocket', featured: true },
-    { icon: 'fa-solid fa-chart-line', featured: false },
-];
 
 const ASSURANCE_ICONS = ['event_available', 'groups', 'sync_alt'];
 
@@ -58,7 +51,7 @@ function FeatureNote({ note, dark }) {
 
 export default function Packages() {
     const t = useTranslations();
-    const packages = t('packages.cards');
+    const { packages } = usePage().props;
     const assurances = t('packages.assurances');
     const comparisonRows = t('packages.comparison.rows');
     const processSteps = t('packages.process.steps');
@@ -93,11 +86,11 @@ export default function Packages() {
 
             <div className="w-full max-w-[1180px] mx-auto px-gutter-mobile py-space-3xl">
                 <Reveal as="section" stagger className="grid grid-cols-1 gap-4 md:grid-cols-3" aria-label="Available packages">
-                    {packages.map((pkg, i) => (
+                    {packages.map((pkg) => (
                         <article
-                            key={pkg.title}
+                            key={pkg.key}
                             className={`relative flex h-full min-h-[390px] flex-col rounded-2xl border p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl ${
-                                CARD_META[i].featured
+                                pkg.featured
                                     ? 'border-secondary-container/45 bg-primary-container text-on-primary'
                                     : 'border-outline-variant/25 bg-surface-container-lowest'
                             }`}
@@ -109,30 +102,30 @@ export default function Packages() {
                             )}
                             <div
                                 className={`mb-10 flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-2xl text-lg ${
-                                    CARD_META[i].featured ? 'bg-white/15 text-on-primary' : 'bg-secondary-container/10 text-secondary'
+                                    pkg.featured ? 'bg-white/15 text-on-primary' : 'bg-secondary-container/10 text-secondary'
                                 }`}
                             >
-                                <i className={CARD_META[i].icon}></i>
+                                <i className={pkg.icon}></i>
                             </div>
-                            <span className={`font-label-sm text-[0.72rem] font-bold uppercase tracking-widest ${CARD_META[i].featured ? 'text-on-primary' : 'text-secondary'}`}>
+                            <span className={`font-label-sm text-[0.72rem] font-bold uppercase tracking-widest ${pkg.featured ? 'text-on-primary' : 'text-secondary'}`}>
                                 {pkg.label}
                             </span>
                             <h2 className="mt-space-xs font-headline-sm text-2xl font-bold">{pkg.title}</h2>
                             <div
                                 className={`mt-space-sm inline-flex w-fit items-baseline gap-1.5 rounded-lg px-3 py-2 ${
-                                    CARD_META[i].featured ? 'bg-white/10' : 'bg-accent2/10'
+                                    pkg.featured ? 'bg-white/10' : 'bg-accent2/10'
                                 }`}
                             >
-                                <span className={`font-headline-lg text-4xl font-extrabold leading-none tracking-tight ${CARD_META[i].featured ? 'text-white' : 'text-accent2'}`}>
+                                <span className={`font-headline-lg text-4xl font-extrabold leading-none tracking-tight ${pkg.featured ? 'text-white' : 'text-accent2'}`}>
                                     {pkg.price.amount}
                                 </span>
-                                <span className={`font-label-sm text-[0.68rem] font-bold uppercase tracking-wider ${CARD_META[i].featured ? 'text-white/70' : 'text-on-surface-variant'}`}>
+                                <span className={`font-label-sm text-[0.68rem] font-bold uppercase tracking-wider ${pkg.featured ? 'text-white/70' : 'text-on-surface-variant'}`}>
                                     {pkg.price.period}
                                 </span>
                             </div>
-                            <p className={`mt-space-sm font-label-sm text-label-sm ${CARD_META[i].featured ? '' : 'text-on-surface-variant'}`}>{pkg.best_for}</p>
-                            <p className={`mt-space-sm text-sm leading-relaxed ${CARD_META[i].featured ? 'text-white/80' : 'text-on-surface-variant'}`}>{pkg.description}</p>
-                            <ul className={`mt-space-md mb-[30px] flex flex-col gap-4 border-t pt-space-md ${CARD_META[i].featured ? 'border-white/15' : 'border-outline-variant/20'}`}>
+                            <p className={`mt-space-sm font-label-sm text-label-sm ${pkg.featured ? '' : 'text-on-surface-variant'}`}>{pkg.best_for}</p>
+                            <p className={`mt-space-sm text-sm leading-relaxed ${pkg.featured ? 'text-white/80' : 'text-on-surface-variant'}`}>{pkg.description}</p>
+                            <ul className={`mt-space-md mb-[30px] flex flex-col gap-4 border-t pt-space-md ${pkg.featured ? 'border-white/15' : 'border-outline-variant/20'}`}>
                                 {pkg.features.map((feature) => {
                                     const text = typeof feature === 'string' ? feature : feature.text;
                                     const note = typeof feature === 'string' ? null : feature.note;
@@ -141,22 +134,22 @@ export default function Packages() {
                                             <span className="flex items-center gap-2.5">
                                                 <span
                                                     className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[0.6rem] ${
-                                                        CARD_META[i].featured ? 'bg-white/15 text-on-primary' : 'bg-secondary-container/10 text-secondary'
+                                                        pkg.featured ? 'bg-white/15 text-on-primary' : 'bg-secondary-container/10 text-secondary'
                                                     }`}
                                                 >
                                                     <i className="fa-solid fa-check"></i>
                                                 </span>
-                                                <span className={CARD_META[i].featured ? 'text-white/80' : 'text-on-surface-variant'}>{text}</span>
+                                                <span className={pkg.featured ? 'text-white/80' : 'text-on-surface-variant'}>{text}</span>
                                             </span>
-                                            {note && <FeatureNote note={note} dark={CARD_META[i].featured} />}
+                                            {note && <FeatureNote note={note} dark={pkg.featured} />}
                                         </li>
                                     );
                                 })}
                             </ul>
                             <a
-                                href={`${route('start-a-project')}?package=${PACKAGE_KEYS[i]}#inquiry-form`}
+                                href={`${route('start-a-project')}?package=${pkg.key}#inquiry-form`}
                                 className={`mt-auto inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-3 text-sm font-bold transition-all hover:-translate-y-0.5 ${
-                                    CARD_META[i].featured ? 'border-white/30 text-white hover:bg-accent2 hover:border-accent2' : 'border-outline-variant/40 text-on-surface hover:bg-accent2 hover:border-accent2 hover:text-white'
+                                    pkg.featured ? 'border-white/30 text-white hover:bg-accent2 hover:border-accent2' : 'border-outline-variant/40 text-on-surface hover:bg-accent2 hover:border-accent2 hover:text-white'
                                 }`}
                             >
                                 {pkg.cta} <i className="fa-solid fa-arrow-right"></i>
@@ -176,10 +169,10 @@ export default function Packages() {
                             <thead>
                                 <tr className="border-b border-surface-container">
                                     <th className="p-space-md text-left font-label-md text-label-md text-on-surface-variant"></th>
-                                    {packages.map((pkg, i) => (
+                                    {packages.map((pkg) => (
                                         <th
-                                            key={pkg.title}
-                                            className={`p-space-md text-left font-headline-sm text-base font-bold ${CARD_META[i].featured ? 'text-secondary' : 'text-on-surface'}`}
+                                            key={pkg.key}
+                                            className={`p-space-md text-left font-headline-sm text-base font-bold ${pkg.featured ? 'text-secondary' : 'text-on-surface'}`}
                                         >
                                             {pkg.title}
                                         </th>

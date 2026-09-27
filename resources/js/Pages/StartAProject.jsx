@@ -4,7 +4,6 @@ import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
 import PhoneNumberInput from '@/Components/PhoneNumberInput';
 import { useTranslations } from '@/lib/translations';
-import { PACKAGE_KEYS } from '@/lib/packages';
 
 const ROUTE_META = [
     { key: 'new-project', icon: 'rocket_launch', color: 'text-secondary-container' },
@@ -54,17 +53,18 @@ function inquiryFormFor(user) {
 }
 
 // The Packages page links here with ?package=<key> to pre-select a card.
-function packageFromQuery() {
+function packageFromQuery(packageKeys) {
     if (typeof window === 'undefined') return '';
     const key = new URLSearchParams(window.location.search).get('package');
 
-    return PACKAGE_KEYS.includes(key) ? key : '';
+    return packageKeys.includes(key) ? key : '';
 }
 
 export default function StartAProject() {
     const t = useTranslations();
-    const user = usePage().props.auth.user;
-    const preselectedPackage = useRef(packageFromQuery()).current;
+    const { auth, packages } = usePage().props;
+    const user = auth.user;
+    const preselectedPackage = useRef(packageFromQuery(packages.map((pkg) => pkg.key))).current;
     const { data, setData, post, processing, errors } = useForm({ ...inquiryFormFor(user), package: preselectedPackage });
     const [openPackage, setOpenPackage] = useState(preselectedPackage || null);
     const [submitted, setSubmitted] = useState(false);
@@ -72,7 +72,6 @@ export default function StartAProject() {
 
     const routingItems = t('start_a_project.routing.items');
     const workAreaOptions = t('start_a_project.form.work_area_options');
-    const packages = t('packages.cards');
     const referralOptions = t('start_a_project.form.referral_options');
     const nextSteps = t('start_a_project.sidebar.next_steps.steps');
 
@@ -297,8 +296,8 @@ export default function StartAProject() {
                                                     {t('start_a_project.form.package_legend')} <span className="text-outline font-normal">{t('start_a_project.form.optional')}</span>
                                                 </legend>
                                                 <div className="grid grid-cols-1 gap-space-xs sm:grid-cols-3">
-                                                    {packages.map((pkg, i) => {
-                                                        const key = PACKAGE_KEYS[i];
+                                                    {packages.map((pkg) => {
+                                                        const key = pkg.key;
                                                         const selected = data.package === key;
                                                         const open = openPackage === key;
                                                         return (
@@ -346,8 +345,8 @@ export default function StartAProject() {
                                                         );
                                                     })}
                                                 </div>
-                                                {packages.map((pkg, i) => {
-                                                    const key = PACKAGE_KEYS[i];
+                                                {packages.map((pkg) => {
+                                                    const key = pkg.key;
                                                     if (openPackage !== key) return null;
                                                     return (
                                                         <div key={key} id={`package-features-${key}`} className="rounded-xl border border-outline-variant/40 bg-surface-container-lowest p-space-md">

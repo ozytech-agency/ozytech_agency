@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Jobs\RemoveProjectRequestFromGoogleSheet;
 use App\Jobs\SendProjectRequestToGoogleSheet;
 use App\Models\Inquiry;
+use App\Models\Package;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Client\Request;
@@ -17,6 +18,15 @@ use Tests\TestCase;
 class InquiryTest extends TestCase
 {
     use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        foreach (['growth', 'pro', 'ultimate'] as $key) {
+            Package::factory()->create(['key' => $key]);
+        }
+    }
 
     /**
      * @param  array<string, mixed>  $overrides
@@ -173,6 +183,16 @@ class InquiryTest extends TestCase
     {
         $response = $this->actingAs(User::factory()->create())
             ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['package' => 'platinum']));
+
+        $response->assertSessionHasErrors('package');
+    }
+
+    public function test_unpublished_package_is_rejected(): void
+    {
+        Package::factory()->unpublished()->create(['key' => 'legacy']);
+
+        $response = $this->actingAs(User::factory()->create())
+            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['package' => 'legacy']));
 
         $response->assertSessionHasErrors('package');
     }
