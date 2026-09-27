@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Support\ServiceCatalog;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -55,6 +56,7 @@ class HandleInertiaRequests extends Middleware
             'translations' => collect($namespaces)
                 ->mapWithKeys(fn (string $namespace) => [$namespace => __($namespace)])
                 ->all(),
+            'nav' => fn () => ServiceCatalog::nav(),
             'flash' => [
                 'status' => fn () => $request->session()->get('status'),
             ],

@@ -1,9 +1,7 @@
 import { Link } from '@inertiajs/react';
 import { useState } from 'react';
-import { useTranslations } from '@/lib/translations';
 
-export default function MobileNavDropdown({ label, items, namespace, onNavigate }) {
-    const t = useTranslations();
+export default function MobileNavDropdown({ label, items, onNavigate }) {
     const [open, setOpen] = useState(false);
 
     return (
@@ -26,7 +24,7 @@ export default function MobileNavDropdown({ label, items, namespace, onNavigate 
                             className="flex items-center gap-2 rounded-lg px-2 py-2 text-xs font-semibold text-on-surface hover:bg-surface-container-high"
                         >
                             <i className={item.icon}></i>
-                            <span className="truncate">{t(`nav.${namespace}.${item.key}.title`)}</span>
+                            <span className="truncate">{item.title}</span>
                         </Link>
                     ))}
                 </div>

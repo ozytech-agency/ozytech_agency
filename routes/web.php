@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\UploadController as AdminUploadController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AvatarController;
@@ -51,6 +52,7 @@ Route::prefix('{locale}')
             ->name('admin.')
             ->group(function () {
                 Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+                Route::resource('services', AdminServiceController::class)->except('show');
                 Route::post('/uploads', [AdminUploadController::class, 'store'])->name('uploads.store');
             });
 

@@ -1,9 +1,7 @@
 import { Link } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
-import { useTranslations } from '@/lib/translations';
 
-export default function NavDropdown({ label, items, namespace, align = 'start' }) {
-    const t = useTranslations();
+export default function NavDropdown({ label, items, align = 'start' }) {
     const [open, setOpen] = useState(false);
     const ref = useRef(null);
 
@@ -37,8 +35,8 @@ export default function NavDropdown({ label, items, namespace, align = 'start' }
                     <Link key={item.slug} href={route('services.show', item.slug)} role="menuitem" onClick={() => setOpen(false)}>
                         <i className={item.icon}></i>
                         <span className="service-copy min-w-0 flex-1">
-                            <strong className="block overflow-hidden text-ellipsis whitespace-nowrap">{t(`nav.${namespace}.${item.key}.title`)}</strong>
-                            <small>{t(`nav.${namespace}.${item.key}.desc`)}</small>
+                            <strong className="block overflow-hidden text-ellipsis whitespace-nowrap">{item.title}</strong>
+                            <small>{item.desc}</small>
                         </span>
                         <span className="service-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>
                     </Link>

@@ -5,12 +5,11 @@ import NavDropdown from '@/Components/NavDropdown';
 import MobileNavDropdown from '@/Components/MobileNavDropdown';
 import Dropdown from '@/Components/Dropdown';
 import Avatar from '@/Components/Avatar';
-import { servicesNav, websiteNav } from '@/data/nav';
 import { useTranslations } from '@/lib/translations';
 
 export default function SiteHeader() {
     const t = useTranslations();
-    const { auth } = usePage().props;
+    const { auth, nav } = usePage().props;
     const user = auth?.user;
     const [isDark, toggleDark] = useDarkMode();
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -32,11 +31,11 @@ export default function SiteHeader() {
                     <Link href={route('about')} className="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
                         {t('nav.about')}
                     </Link>
-                    <NavDropdown label={t('nav.services_trigger')} items={servicesNav} namespace="services" />
+                    <NavDropdown label={t('nav.services_trigger')} items={nav?.services ?? []} />
                     <Link href={route('packages')} className="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
                         {t('nav.packages')}
                     </Link>
-                    <NavDropdown label={t('nav.website_trigger')} items={websiteNav} namespace="website" align="end" />
+                    <NavDropdown label={t('nav.website_trigger')} items={nav?.website ?? []} align="end" />
                     <Link href={route('blog')} className="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
                         {t('nav.blogs')}
                     </Link>
@@ -120,7 +119,7 @@ export default function SiteHeader() {
                         >
                             {t('nav.about')}
                         </Link>
-                        <MobileNavDropdown label={t('nav.services_trigger')} items={servicesNav} namespace="services" onNavigate={closeMobile} />
+                        <MobileNavDropdown label={t('nav.services_trigger')} items={nav?.services ?? []} onNavigate={closeMobile} />
                         <Link
                             href={route('packages')}
                             onClick={closeMobile}
@@ -128,7 +127,7 @@ export default function SiteHeader() {
                         >
                             {t('nav.packages')}
                         </Link>
-                        <MobileNavDropdown label={t('nav.website_trigger')} items={websiteNav} namespace="website" onNavigate={closeMobile} />
+                        <MobileNavDropdown label={t('nav.website_trigger')} items={nav?.website ?? []} onNavigate={closeMobile} />
                         <Link
                             href={route('blog')}
                             onClick={closeMobile}
