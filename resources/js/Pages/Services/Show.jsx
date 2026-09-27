@@ -10,11 +10,27 @@ export default function ServiceShow({ slug, title, lead, body, offer, build, gal
         <SiteLayout>
             <Head title={`${title} | OzyTech`} />
 
-            <section className="w-full bg-surface">
-                <div className="mx-[6%] max-w-[760px] pt-space-3xl pb-space-xl flex flex-col">
-                    <span className="mb-space-md font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('services.kicker')}</span>
-                    <h1 className="font-display-xl text-display-xl-mobile sm:text-display-xl leading-[1] text-on-surface">{title}</h1>
-                    <p className="mt-space-md max-w-[620px] text-on-surface-variant text-body-lg leading-relaxed">{body}</p>
+            <section className="relative w-full overflow-hidden py-space-3xl isolate">
+                <div className="absolute inset-0 -z-20">
+                    <img
+                        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2200&q=85"
+                        alt=""
+                        aria-hidden="true"
+                        className="h-full w-full object-cover"
+                    />
+                </div>
+                <div
+                    className="absolute inset-0 -z-10 pointer-events-none"
+                    style={{
+                        background:
+                            'linear-gradient(90deg, rgb(9 14 25 / .9) 0%, rgb(9 14 25 / .72) 55%, rgb(9 14 25 / .4) 100%), linear-gradient(180deg, rgb(9 14 25 / .2), rgb(9 14 25 / .5))',
+                    }}
+                ></div>
+                <div className="absolute -right-24 -top-40 h-[34rem] w-[34rem] rounded-full bg-secondary-container/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
+                <div className="relative mx-[6%] max-w-[760px] flex flex-col">
+                    <span className="mb-space-md font-label-sm text-label-sm uppercase tracking-widest text-secondary-fixed-dim font-bold">{t('services.kicker')}</span>
+                    <h1 className="font-display-xl text-display-xl-mobile sm:text-display-xl leading-[1] text-white/[92%]">{title}</h1>
+                    <p className="mt-space-md max-w-[620px] text-white/80 text-body-lg leading-relaxed">{body}</p>
                     <a
                         href={`${route('start-a-project')}#inquiry-form`}
                         className="service-cta inline-flex items-center gap-space-xs self-start mt-space-xl px-space-lg py-space-sm rounded-lg bg-accent2 text-on-primary font-label-md text-label-md shadow-[0_10px_20px_-5px_rgba(233,87,71,0.35)] transition-all hover:-translate-y-0.5"
