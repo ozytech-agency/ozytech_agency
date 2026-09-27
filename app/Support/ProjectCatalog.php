@@ -2,6 +2,9 @@
 
 namespace App\Support;
 
+use App\Models\Project;
+use App\Models\ProjectImage;
+
 class ProjectCatalog
 {
     /**
@@ -35,7 +38,7 @@ class ProjectCatalog
     ];
 
     /**
-     * @return array{title: string, type: string, summary: string, client: array{name: string, role: string, company: string, subtitle: string, avatar: string}, testimonial: string, problems: list<array{problem: string, solution: string}>, technologies: list<string>, previews: list<string>}|null
+     * @return array{title: string, type: string, summary: string, client: array{name: string, role: string, company: string, subtitle: string, avatar: string}, testimonial: string, problems: list<array{problem: string, solution: string}>, technologies: list<string>, previews: list<array{src: string, alt: string|null}>}|null
      */
     public static function find(string $serviceSlug): ?array
     {
@@ -59,16 +62,44 @@ class ProjectCatalog
 
     /**
      * @param  array{gallery: list<string>}  $service
-     * @return array{title: string, type: string, summary: string, client: array{name: string, role: string, company: string, subtitle: string, avatar: string}, testimonial: string, problems: list<array{problem: string, solution: string}>, technologies: list<string>, previews: list<string>}
+     * @return array{title: string, type: string, summary: string, client: array{name: string, role: string, company: string, subtitle: string, avatar: string}, testimonial: string, problems: list<array{problem: string, solution: string}>, technologies: list<string>, previews: list<array{src: string, alt: string|null}>}
      */
     private static function build(string $serviceSlug, array $service): array
     {
         $data = __("projects.{$serviceSlug}");
 
         $data['technologies'] = self::TECHNOLOGIES[$serviceSlug] ?? [];
-        $data['previews'] = array_slice($service['gallery'], 0, 4);
+        $data['previews'] = self::previews($serviceSlug, $service['gallery']);
         $data['client']['avatar'] = 'https://ui-avatars.com/api/?name='.urlencode((string) $data['client']['name']).'&background=1F2937&color=fff&size=128&bold=true';
 
         return $data;
+    }
+
+    /**
+     * The gallery shown in the project details bottom sheet, sourced from
+     * `project_images` (sorted, capped to 4). Services without a migrated
+     * gallery yet fall back to their `services.gallery` photos, so a case
+     * study never shows an empty carousel.
+     *
+     * @param  list<string>  $fallbackGallery
+     * @return list<array{src: string, alt: string|null}>
+     */
+    private static function previews(string $serviceSlug, array $fallbackGallery): array
+    {
+        $project = Project::where('slug', $serviceSlug)->with('images')->first();
+
+        if ($project && $project->images->isNotEmpty()) {
+            return $project->images
+                ->take(4)
+                ->map(fn (ProjectImage $image) => ['src' => $image->url(), 'alt' => $image->alt])
+                ->values()
+                ->all();
+        }
+
+        return collect($fallbackGallery)
+            ->take(4)
+            ->map(fn (string $src) => ['src' => $src, 'alt' => null])
+            ->values()
+            ->all();
     }
 }

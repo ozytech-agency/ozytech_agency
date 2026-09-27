@@ -26,9 +26,9 @@ export default function ProjectWork({ slug, title, summary, client, testimonial,
             {previews?.length > 0 && (
                 <section className="w-full pb-space-2xl bg-surface">
                     <div className="mx-[6%] max-w-[860px] grid grid-cols-1 sm:grid-cols-3 gap-space-md">
-                        {previews.map((src) => (
-                            <div key={src} className="aspect-[4/3] overflow-hidden rounded-xl bg-surface-container-high">
-                                <img src={src} alt="" className="h-full w-full object-cover" />
+                        {previews.map((preview) => (
+                            <div key={preview.src} className="aspect-[4/3] overflow-hidden rounded-xl bg-surface-container-high">
+                                <img src={preview.src} alt={preview.alt ?? ''} className="h-full w-full object-cover" />
                             </div>
                         ))}
                     </div>

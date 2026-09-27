@@ -1,4 +1,5 @@
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react';
+import ProjectGalleryCarousel from '@/Components/ProjectGalleryCarousel';
 import { useTranslations } from '@/lib/translations';
 
 export default function ProjectDetailsSheet({ show, onClose, project }) {
@@ -7,9 +8,6 @@ export default function ProjectDetailsSheet({ show, onClose, project }) {
     if (!project) {
         return null;
     }
-
-    const [hero, ...thumbs] = project.previews ?? [];
-    const thumbsCols = thumbs.length === 1 ? 'grid-cols-1' : thumbs.length === 2 ? 'grid-cols-2' : 'grid-cols-3';
 
     return (
         <Transition show={show} leave="duration-200">
@@ -49,30 +47,7 @@ export default function ProjectDetailsSheet({ show, onClose, project }) {
 
                             <div className="flex-1 overflow-y-auto px-gutter-mobile py-space-xl sm:px-space-2xl">
                                 <div className="mx-auto flex max-w-[880px] flex-col gap-space-2xl">
-                                    <div className="flex flex-col gap-space-sm">
-                                        {hero && (
-                                            <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl bg-surface-container-high">
-                                                <img
-                                                    src={hero}
-                                                    alt={`${project.title} preview 1`}
-                                                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                                                />
-                                            </div>
-                                        )}
-                                        {thumbs.length > 0 && (
-                                            <div className={`grid gap-space-sm ${thumbsCols}`}>
-                                                {thumbs.map((src, i) => (
-                                                    <div key={src} className="aspect-[4/3] overflow-hidden rounded-xl bg-surface-container-high">
-                                                        <img
-                                                            src={src}
-                                                            alt={`${project.title} preview ${i + 2}`}
-                                                            className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                                                        />
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
+                                    <ProjectGalleryCarousel images={project.previews ?? []} title={project.title} />
 
                                     <div className="flex flex-col gap-space-xs">
                                         <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{project.type}</span>
