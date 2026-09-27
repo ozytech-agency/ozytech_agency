@@ -14,10 +14,7 @@ export default function ServiceShow({ slug, title, lead, body, offer, build, gal
                 <div className="mx-[6%] max-w-[760px] pt-space-3xl pb-space-xl flex flex-col">
                     <span className="mb-space-md font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('services.kicker')}</span>
                     <h1 className="font-display-xl text-display-xl-mobile sm:text-display-xl leading-[1] text-on-surface">{title}</h1>
-                    <p className="mt-space-md font-headline-sm text-secondary" style={{ fontSize: 'clamp(1.25rem,3vw,2rem)' }}>
-                        {lead}
-                    </p>
-                    <p className="mt-space-sm max-w-[620px] text-on-surface-variant text-body-lg leading-relaxed">{body}</p>
+                    <p className="mt-space-md max-w-[620px] text-on-surface-variant text-body-lg leading-relaxed">{body}</p>
                     <a
                         href={`${route('start-a-project')}#inquiry-form`}
                         className="service-cta inline-flex items-center gap-space-xs self-start mt-space-xl px-space-lg py-space-sm rounded-lg bg-accent2 text-on-primary font-label-md text-label-md shadow-[0_10px_20px_-5px_rgba(233,87,71,0.35)] transition-all hover:-translate-y-0.5"
