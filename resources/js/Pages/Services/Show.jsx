@@ -1,10 +1,13 @@
 import { Head, Link } from '@inertiajs/react';
+import { useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
+import ProjectDetailsSheet from '@/Components/ProjectDetailsSheet';
 import { useTranslations } from '@/lib/translations';
 
-export default function ServiceShow({ slug, title, lead, body, offer, build, gallery, related, hasCaseStudy }) {
+export default function ServiceShow({ slug, title, lead, body, offer, build, gallery, related, hasCaseStudy, project }) {
     const t = useTranslations();
     const processSteps = t('services.details.process');
+    const [detailsOpen, setDetailsOpen] = useState(false);
 
     return (
         <SiteLayout>
@@ -80,18 +83,19 @@ export default function ServiceShow({ slug, title, lead, body, offer, build, gal
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
                             {gallery.map((src) =>
                                 hasCaseStudy ? (
-                                    <Link
+                                    <button
                                         key={src}
-                                        href={route('services.work', slug)}
-                                        className="group relative block aspect-[4/3] overflow-hidden rounded-xl bg-surface-container-high"
+                                        type="button"
+                                        onClick={() => setDetailsOpen(true)}
+                                        className="group relative block aspect-[4/3] w-full overflow-hidden rounded-xl bg-surface-container-high focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
                                     >
                                         <img src={src} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                                        <span className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 via-black/0 to-black/0 p-space-md opacity-0 transition-opacity group-hover:opacity-100">
-                                            <span className="inline-flex items-center gap-space-2xs font-label-md text-label-md text-white">
-                                                {t('services.details.gallery_cta')} <span className="material-symbols-outlined text-base">arrow_forward</span>
+                                        <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/50 group-focus-visible:bg-black/50">
+                                            <span className="inline-flex translate-y-2 items-center gap-space-2xs rounded-lg bg-accent2 px-space-lg py-space-sm font-label-md text-label-md text-on-primary opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+                                                {t('services.details.view_details')} <span className="material-symbols-outlined text-base">visibility</span>
                                             </span>
                                         </span>
-                                    </Link>
+                                    </button>
                                 ) : (
                                     <div key={src} className="relative block aspect-[4/3] overflow-hidden rounded-xl bg-surface-container-high">
                                         <img src={src} alt="" className="h-full w-full object-cover" />
@@ -102,6 +106,8 @@ export default function ServiceShow({ slug, title, lead, body, offer, build, gal
                     </div>
                 </section>
             )}
+
+            <ProjectDetailsSheet show={detailsOpen} onClose={() => setDetailsOpen(false)} project={project} />
 
             {processSteps?.length > 0 && (
                 <section className="w-full py-space-3xl bg-surface-container-low">

@@ -9,6 +9,7 @@ return [
         'build_label' => 'ما الذي يمكننا بناؤه',
         'gallery_label' => 'أعمال مختارة',
         'gallery_cta' => 'عرض دراسة الحالة',
+        'view_details' => 'عرض التفاصيل',
         'process_label' => 'كيف ننجز العمل',
         'process' => [
             ['title' => 'الاستكشاف', 'desc' => 'فهم أهدافك وقيودك وأنظمتك الحالية.'],
@@ -24,7 +25,12 @@ return [
         'back' => 'العودة إلى الخدمة',
         'client_label' => 'العميل',
         'technologies_label' => 'التقنيات المستخدمة',
+        'gallery_label' => 'معرض المشروع',
+        'problems_label' => 'التحديات والحلول',
+        'problem_label' => 'التحدي',
+        'solution_label' => 'الحل',
         'review_label' => 'رأي العميل',
+        'close' => 'إغلاق',
         'cta' => 'ابدأ مشروعك',
     ],
 

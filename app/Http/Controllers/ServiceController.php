@@ -18,11 +18,14 @@ class ServiceController extends Controller
             throw new NotFoundHttpException;
         }
 
+        $project = ProjectCatalog::find($service);
+
         return Inertia::render('Services/Show', [
             'slug' => $service,
             ...$data,
             'related' => ServiceCatalog::related($service),
-            'hasCaseStudy' => ProjectCatalog::exists($service),
+            'hasCaseStudy' => $project !== null,
+            'project' => $project,
         ]);
     }
 }

@@ -9,6 +9,7 @@ return [
         'build_label' => 'What we can build',
         'gallery_label' => 'Selected work',
         'gallery_cta' => 'View case study',
+        'view_details' => 'View Details',
         'process_label' => 'How we deliver',
         'process' => [
             ['title' => 'Discovery', 'desc' => 'Understand your goals, constraints, and current systems.'],
@@ -24,7 +25,12 @@ return [
         'back' => 'Back to service',
         'client_label' => 'Client',
         'technologies_label' => 'Technologies used',
+        'gallery_label' => 'Project gallery',
+        'problems_label' => 'Challenges & solutions',
+        'problem_label' => 'Problem',
+        'solution_label' => 'Solution',
         'review_label' => 'What the client says',
+        'close' => 'Close',
         'cta' => 'Start your project',
     ],
 

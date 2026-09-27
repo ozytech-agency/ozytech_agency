@@ -9,6 +9,7 @@ return [
         'build_label' => 'Qué podemos construir',
         'gallery_label' => 'Trabajos destacados',
         'gallery_cta' => 'Ver caso de estudio',
+        'view_details' => 'Ver detalles',
         'process_label' => 'Cómo entregamos',
         'process' => [
             ['title' => 'Descubrimiento', 'desc' => 'Entender tus objetivos, restricciones y sistemas actuales.'],
@@ -24,7 +25,12 @@ return [
         'back' => 'Volver al servicio',
         'client_label' => 'Cliente',
         'technologies_label' => 'Tecnologías utilizadas',
+        'gallery_label' => 'Galería del proyecto',
+        'problems_label' => 'Retos y soluciones',
+        'problem_label' => 'Reto',
+        'solution_label' => 'Solución',
         'review_label' => 'Lo que dice el cliente',
+        'close' => 'Cerrar',
         'cta' => 'Inicia tu proyecto',
     ],
 

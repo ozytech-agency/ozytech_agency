@@ -35,7 +35,7 @@ class ProjectCatalog
     ];
 
     /**
-     * @return array{title: string, summary: string, client: array{name: string, role: string, company: string, avatar: string}, testimonial: string, technologies: list<string>, previews: list<string>}|null
+     * @return array{title: string, type: string, summary: string, client: array{name: string, role: string, company: string, subtitle: string, avatar: string}, testimonial: string, problems: list<array{problem: string, solution: string}>, technologies: list<string>, previews: list<string>}|null
      */
     public static function find(string $serviceSlug): ?array
     {
@@ -59,14 +59,14 @@ class ProjectCatalog
 
     /**
      * @param  array{gallery: list<string>}  $service
-     * @return array{title: string, summary: string, client: array{name: string, role: string, company: string, avatar: string}, testimonial: string, technologies: list<string>, previews: list<string>}
+     * @return array{title: string, type: string, summary: string, client: array{name: string, role: string, company: string, subtitle: string, avatar: string}, testimonial: string, problems: list<array{problem: string, solution: string}>, technologies: list<string>, previews: list<string>}
      */
     private static function build(string $serviceSlug, array $service): array
     {
         $data = __("projects.{$serviceSlug}");
 
         $data['technologies'] = self::TECHNOLOGIES[$serviceSlug] ?? [];
-        $data['previews'] = $service['gallery'];
+        $data['previews'] = array_slice($service['gallery'], 0, 4);
         $data['client']['avatar'] = 'https://ui-avatars.com/api/?name='.urlencode((string) $data['client']['name']).'&background=1F2937&color=fff&size=128&bold=true';
 
         return $data;
