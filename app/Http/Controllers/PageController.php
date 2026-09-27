@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
+use App\Models\Post;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -32,7 +33,19 @@ class PageController extends Controller
 
     public function blog(): Response
     {
-        return Inertia::render('Blog');
+        $featured = Post::query()->published()->where('is_featured', true)->latest('published_at')->first();
+
+        $posts = Post::query()
+            ->published()
+            ->when($featured, fn ($query) => $query->whereKeyNot($featured->getKey()))
+            ->latest('published_at')
+            ->paginate(9)
+            ->through(fn (Post $post) => $post->toCardArray());
+
+        return Inertia::render('Blog', [
+            'featuredPost' => $featured?->toCardArray(),
+            'posts' => $posts,
+        ]);
     }
 
     public function packages(): Response

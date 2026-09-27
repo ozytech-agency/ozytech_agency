@@ -4,15 +4,17 @@ namespace Database\Seeders;
 
 use App\Enums\ServiceItemType;
 use App\Models\Package;
+use App\Models\Post;
 use App\Models\Service;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 /**
- * Imports the services and packages that used to be hardcoded in the lang
- * files (all locales) into the database, so they can be managed from the
- * admin dashboard.
+ * Imports the services, packages and blog posts that used to be hardcoded in
+ * the lang files (all locales) into the database, so they can be managed from
+ * the admin dashboard.
  *
  * Safe to re-run: records that already exist (by slug / key) are skipped, so
  * edits made from the admin dashboard are never overwritten.
@@ -154,6 +156,19 @@ class ContentSeeder extends Seeder
         ['ultimate', 'fa-solid fa-chart-line'],
     ];
 
+    private const FEATURED_POST_IMAGE = 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85';
+
+    /**
+     * Cover images, in the order of `blog.posts`.
+     *
+     * @var list<string>
+     */
+    private const POST_IMAGES = [
+        'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=85',
+        'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=85',
+        'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85',
+    ];
+
     /**
      * Run the database seeds.
      */
@@ -162,6 +177,7 @@ class ContentSeeder extends Seeder
         DB::transaction(function () {
             $this->seedServices();
             $this->seedPackages();
+            $this->seedPosts();
         });
 
         Cache::forget(Service::CACHE_KEY);
@@ -253,6 +269,40 @@ class ContentSeeder extends Seeder
                     'sort_order' => $i,
                 ]);
             }
+        }
+    }
+
+    private function seedPosts(): void
+    {
+        $posts = [[
+            'key' => 'blog.featured',
+            'image' => self::FEATURED_POST_IMAGE,
+            'featured' => true,
+        ]];
+
+        foreach (self::POST_IMAGES as $index => $image) {
+            $posts[] = ['key' => "blog.posts.{$index}", 'image' => $image, 'featured' => false];
+        }
+
+        foreach ($posts as $position => $post) {
+            $slug = Str::slug(trans("{$post['key']}.title", [], 'en'));
+
+            if (Post::where('slug', $slug)->exists()) {
+                continue;
+            }
+
+            $excerpt = $this->localized("{$post['key']}.excerpt");
+
+            Post::create([
+                'slug' => $slug,
+                'category' => $this->localized("{$post['key']}.category"),
+                'title' => $this->localized("{$post['key']}.title"),
+                'excerpt' => $excerpt,
+                'body' => $excerpt,
+                'cover_image' => $post['image'],
+                'is_featured' => $post['featured'],
+                'published_at' => now()->subMinutes(count($posts) - $position),
+            ]);
         }
     }
 

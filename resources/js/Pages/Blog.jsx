@@ -3,15 +3,8 @@ import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
 import { useTranslations } from '@/lib/translations';
 
-const POST_LINKS = [
-    { image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=85', href: 'start-a-project' },
-    { image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=85', href: 'home', hash: 'services' },
-    { image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85', href: 'start-a-project' },
-];
-
-export default function Blog() {
+export default function Blog({ featuredPost, posts }) {
     const t = useTranslations();
-    const posts = t('blog.posts');
 
     return (
         <SiteLayout>
@@ -48,25 +41,25 @@ export default function Blog() {
             <section className="w-full py-space-3xl lg:py-space-4xl bg-surface">
                 <div className="mx-[6%]">
                     <div className="flex flex-col lg:flex-row gap-space-xl items-stretch">
-                        <article className="lg:w-3/5 relative overflow-hidden rounded-xl bg-primary-container text-on-primary min-h-[380px] flex items-end">
-                            <img
-                                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85"
-                                alt="Close-up of a circuit board"
-                                className="absolute inset-0 w-full h-full object-cover opacity-35"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/70 to-transparent"></div>
-                            <div className="relative z-10 p-space-xl lg:p-space-2xl">
-                                <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary-fixed-dim">{t('blog.featured.category')}</span>
-                                <h2 className="mt-space-sm font-headline-lg text-headline-lg">{t('blog.featured.title')}</h2>
-                                <p className="mt-space-sm max-w-xl text-primary-fixed-dim">{t('blog.featured.excerpt')}</p>
-                                <Link
-                                    href={route('start-a-project')}
-                                    className="mt-space-lg inline-flex items-center gap-space-xs font-label-md text-label-md text-on-primary hover:text-secondary-fixed-dim transition-colors"
-                                >
-                                    {t('blog.featured.cta')} <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
-                                </Link>
-                            </div>
-                        </article>
+                        {featuredPost && (
+                            <article className="lg:w-3/5 relative overflow-hidden rounded-xl bg-primary-container text-on-primary min-h-[380px] flex items-end">
+                                {featuredPost.cover_image && (
+                                    <img src={featuredPost.cover_image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-35" />
+                                )}
+                                <div className="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/70 to-transparent"></div>
+                                <div className="relative z-10 p-space-xl lg:p-space-2xl">
+                                    <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary-fixed-dim">{featuredPost.category}</span>
+                                    <h2 className="mt-space-sm font-headline-lg text-headline-lg">{featuredPost.title}</h2>
+                                    <p className="mt-space-sm max-w-xl text-primary-fixed-dim">{featuredPost.excerpt}</p>
+                                    <Link
+                                        href={route('blog.show', featuredPost.slug)}
+                                        className="mt-space-lg inline-flex items-center gap-space-xs font-label-md text-label-md text-on-primary hover:text-secondary-fixed-dim transition-colors"
+                                    >
+                                        {t('blog.read_more')} <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                                    </Link>
+                                </div>
+                            </article>
+                        )}
                         <div className="lg:w-2/5 flex flex-col justify-center gap-space-md">
                             <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary">{t('blog.why_blog.label')}</span>
                             <h2 className="font-headline-lg text-headline-lg">{t('blog.why_blog.title')}</h2>
@@ -100,26 +93,45 @@ export default function Blog() {
                         </div>
                     </div>
                     <Reveal as="div" stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
-                        {posts.map((post, i) => (
+                        {posts.data.map((post) => (
                             <article
-                                key={post.title}
+                                key={post.slug}
                                 className="h-full flex flex-col overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm border border-surface-container transition-all hover:-translate-y-1 hover:shadow-lg"
                             >
-                                <img src={POST_LINKS[i].image} alt="" className="w-full aspect-[4/3] object-cover" />
+                                {post.cover_image ? (
+                                    <img src={post.cover_image} alt="" className="w-full aspect-[4/3] object-cover" />
+                                ) : (
+                                    <div className="w-full aspect-[4/3] bg-surface-container-high" aria-hidden="true"></div>
+                                )}
                                 <div className="p-space-lg flex flex-1 flex-col">
                                     <span className="font-label-sm text-label-sm uppercase tracking-wider text-secondary">{post.category}</span>
                                     <h3 className="mt-space-xs font-headline-sm text-headline-sm">{post.title}</h3>
                                     <p className="mt-space-sm text-body-sm text-on-surface-variant">{post.excerpt}</p>
-                                    <a
-                                        href={POST_LINKS[i].hash ? `${route(POST_LINKS[i].href)}#${POST_LINKS[i].hash}` : route(POST_LINKS[i].href)}
+                                    <Link
+                                        href={route('blog.show', post.slug)}
                                         className="mt-auto pt-space-md inline-flex items-center gap-space-xs font-label-md text-label-md text-secondary hover:text-on-surface transition-colors self-start"
                                     >
-                                        {post.cta} <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
-                                    </a>
+                                        {t('blog.read_more')} <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                                    </Link>
                                 </div>
                             </article>
                         ))}
                     </Reveal>
+                    {posts.data.length === 0 && !featuredPost && <p className="text-on-surface-variant">{t('blog.empty')}</p>}
+                    {(posts.prev_page_url || posts.next_page_url) && (
+                        <nav className="mt-space-xl flex justify-center gap-space-sm" aria-label="Pagination">
+                            {posts.prev_page_url && (
+                                <Link href={posts.prev_page_url} preserveScroll className="rounded-lg border border-outline-variant/40 px-space-md py-space-xs font-label-md text-label-md hover:bg-surface-container-high">
+                                    <i className="fa-solid fa-arrow-left text-xs rtl:rotate-180" aria-hidden="true"></i>
+                                </Link>
+                            )}
+                            {posts.next_page_url && (
+                                <Link href={posts.next_page_url} preserveScroll className="rounded-lg border border-outline-variant/40 px-space-md py-space-xs font-label-md text-label-md hover:bg-surface-container-high">
+                                    <i className="fa-solid fa-arrow-right text-xs rtl:rotate-180" aria-hidden="true"></i>
+                                </Link>
+                            )}
+                        </nav>
+                    )}
                 </div>
             </section>
 

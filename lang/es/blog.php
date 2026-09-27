@@ -38,6 +38,15 @@ return [
         ['category' => 'Sistemas de IA', 'title' => 'Dónde encaja la IA agéntica en un producto serio', 'excerpt' => 'Empieza por el flujo de trabajo, define las salvaguardas y gana autonomía paso a paso.', 'cta' => 'Hablar sobre un sistema de IA'],
     ],
 
+    'read_more' => 'Leer el artículo',
+    'empty' => 'Aún no hay artículos publicados — vuelve pronto.',
+
+    'show' => [
+        'back' => 'Volver al blog',
+        'related' => 'Más artículos',
+        'published' => 'Publicado el',
+    ],
+
     'cta_section' => [
         'label' => 'Sigue construyendo',
         'title' => '¿Tienes una pregunta técnica difícil?',

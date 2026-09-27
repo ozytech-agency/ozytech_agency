@@ -12,7 +12,7 @@ return [
     'featured' => [
         'category' => 'À la une / Architecture',
         'title' => 'La décision architecturale qui fait gagner le plus de temps par la suite',
-        'excerpt' => "Une façon pratique de choisir les frontières avant que votre premier incident de production ne les choisisse pour vous.",
+        'excerpt' => 'Une façon pratique de choisir les frontières avant que votre premier incident de production ne les choisisse pour vous.',
         'cta' => 'Discuter de votre architecture',
     ],
 
@@ -36,6 +36,15 @@ return [
         ['category' => 'Livraison', 'title' => 'Comment transformer une idée de produit vague en un brief exploitable', 'excerpt' => "Les questions qui créent de l'élan avant même le premier ticket.", 'cta' => 'Démarrer une conversation'],
         ['category' => 'Cloud', 'title' => 'Une approche plus sereine de la migration cloud', 'excerpt' => 'Séquencer le risque, protéger la continuité et garder le coût total visible.', 'cta' => 'Explorer nos travaux cloud'],
         ['category' => 'Systèmes IA', 'title' => "Où l'IA agentique a sa place dans un produit sérieux", 'excerpt' => "Commencer par le flux de travail, définir les garde-fous, et gagner l'autonomie étape par étape.", 'cta' => "Discuter d'un système IA"],
+    ],
+
+    'read_more' => 'Lire l’article',
+    'empty' => 'Aucun article publié pour le moment — revenez bientôt.',
+
+    'show' => [
+        'back' => 'Retour au blog',
+        'related' => 'Autres articles',
+        'published' => 'Publié le',
     ],
 
     'cta_section' => [

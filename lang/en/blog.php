@@ -38,6 +38,15 @@ return [
         ['category' => 'AI systems', 'title' => 'Where agentic AI belongs in a serious product', 'excerpt' => 'Start with the workflow, define the guardrails, and earn autonomy step by step.', 'cta' => 'Discuss an AI system'],
     ],
 
+    'read_more' => 'Read the note',
+    'empty' => 'No posts published yet — check back soon.',
+
+    'show' => [
+        'back' => 'Back to the blog',
+        'related' => 'More notes',
+        'published' => 'Published',
+    ],
+
     'cta_section' => [
         'label' => 'Keep building',
         'title' => 'Have a hard technical question?',

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PackageController as AdminPackageController;
+use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\UploadController as AdminUploadController;
 use App\Http\Controllers\Auth\GoogleController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PolicyController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
@@ -37,6 +39,7 @@ Route::prefix('{locale}')
         Route::get('/about', [PageController::class, 'about'])->name('about');
         Route::get('/contact', [PageController::class, 'contact'])->name('contact');
         Route::get('/blog', [PageController::class, 'blog'])->name('blog');
+        Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('blog.show');
         Route::get('/packages', [PageController::class, 'packages'])->name('packages');
         Route::get('/faq', [PageController::class, 'faq'])->name('faq');
         Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
@@ -55,6 +58,7 @@ Route::prefix('{locale}')
                 Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
                 Route::resource('services', AdminServiceController::class)->except('show');
                 Route::resource('packages', AdminPackageController::class)->except('show');
+                Route::resource('posts', AdminPostController::class)->except('show');
                 Route::post('/uploads', [AdminUploadController::class, 'store'])->name('uploads.store');
             });
 
