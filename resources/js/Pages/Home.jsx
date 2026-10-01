@@ -20,14 +20,14 @@ const BRAND_ICON_PATHS = {
 };
 
 const SERVICE_CARD_META = [
-    { key: 'itSolutions', icon: 'dns', iconColor: 'text-secondary-container', tags: ['AWS/GCP', 'Kubernetes', 'CyberSec'] },
-    { key: 'llc', icon: 'domain_add', iconColor: 'text-secondary', badgeClass: 'bg-secondary-fixed text-on-secondary-fixed', tags: ['US Delaware', 'EIN Setup', 'Compliance'] },
-    { key: 'payments', icon: 'credit_card', iconColor: 'text-on-tertiary-container', tags: ['Stripe', 'PayPal', 'PCI-DSS'] },
-    { key: 'shopifyCommerce', iconSvg: 'shopify', iconColor: 'text-primary', tags: ['Shopify Plus', 'Liquid', 'Hydrogen'] },
-    { key: 'wordpress', icon: 'web', iconColor: 'text-secondary', tags: ['WordPress', 'WooCommerce', 'GraphQL'] },
-    { key: 'fullstack', icon: 'code', iconColor: 'text-on-tertiary-container', tags: ['React / Next.js', 'Node / Python', 'PostgreSQL'] },
-    { key: 'mobile', icon: 'smartphone', iconColor: 'text-secondary-container', tags: ['Swift', 'Kotlin', 'Flutter/RN'] },
-    { key: 'saas', icon: 'cloud_sync', iconColor: 'text-secondary', badgeClass: 'bg-secondary-fixed text-on-secondary-fixed', tags: ['Multi-Tenant', 'SSO / RBAC', 'GitOps'] },
+    { key: 'itSolutions', icon: 'dns', iconColor: 'text-[#E55E4A]', tags: ['AWS/GCP', 'Kubernetes', 'CyberSec'] },
+    { key: 'llc', icon: 'domain_add', iconColor: 'text-[#E55E4A]', badgeClass: 'bg-secondary-fixed text-on-secondary-fixed', tags: ['US Delaware', 'EIN Setup', 'Compliance'] },
+    { key: 'payments', icon: 'credit_card', iconColor: 'text-[#E55E4A]', tags: ['Stripe', 'PayPal', 'PCI-DSS'] },
+    { key: 'shopifyCommerce', iconSvg: 'shopify', iconColor: 'text-[#E55E4A]', tags: ['Shopify Plus', 'Liquid', 'Hydrogen'] },
+    { key: 'wordpress', icon: 'web', iconColor: 'text-[#E55E4A]', tags: ['WordPress', 'WooCommerce', 'GraphQL'] },
+    { key: 'fullstack', icon: 'code', iconColor: 'text-[#E55E4A]', tags: ['React / Next.js', 'Node / Python', 'PostgreSQL'] },
+    { key: 'mobile', icon: 'smartphone', iconColor: 'text-[#E55E4A]', tags: ['Swift', 'Kotlin', 'Flutter/RN'] },
+    { key: 'saas', icon: 'cloud_sync', iconColor: 'text-[#E55E4A]', badgeClass: 'bg-secondary-fixed text-on-secondary-fixed', tags: ['Multi-Tenant', 'SSO / RBAC', 'GitOps'] },
 ];
 
 const DELIVERY_PHASE_TONES = ['muted', 'active', 'muted'];
