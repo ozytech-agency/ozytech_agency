@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use App\Models\Post;
+use App\Models\TeamMember;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -16,7 +17,14 @@ class PageController extends Controller
 
     public function about(): Response
     {
-        return Inertia::render('About');
+        return Inertia::render('About', [
+            'teamMembers' => TeamMember::query()
+                ->published()
+                ->ordered()
+                ->get()
+                ->map(fn (TeamMember $teamMember) => $teamMember->toPublicArray())
+                ->all(),
+        ]);
     }
 
     public function startAProject(): Response

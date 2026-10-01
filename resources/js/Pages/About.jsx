@@ -7,20 +7,12 @@ const PRINCIPLE_ICONS = ['architecture', 'forum', 'trending_up'];
 
 const TEAM_AVATAR_STYLES = ['bg-secondary-container text-on-secondary-container', 'bg-primary text-on-primary'];
 
-const TEAM_SOCIALS = [
-    [
-        { key: 'x', icon: 'fa-brands fa-x-twitter', href: 'https://x.com/oussamadriouech' },
-        { key: 'instagram', icon: 'fa-brands fa-instagram', href: 'https://instagram.com/oussama.driouech' },
-        { key: 'linkedin', icon: 'fa-brands fa-linkedin-in', href: 'https://linkedin.com/in/oussama-driouech' },
-        { key: 'website', icon: 'fa-solid fa-globe', href: 'https://ozytechagency.com' },
-    ],
-    [
-        { key: 'x', icon: 'fa-brands fa-x-twitter', href: 'https://x.com/zakariaehallaji' },
-        { key: 'instagram', icon: 'fa-brands fa-instagram', href: 'https://instagram.com/zakariae.hallaji' },
-        { key: 'linkedin', icon: 'fa-brands fa-linkedin-in', href: 'https://linkedin.com/in/zakariae-hallaji' },
-        { key: 'website', icon: 'fa-solid fa-globe', href: 'https://ozytechagency.com' },
-    ],
-];
+const SOCIAL_ICONS = {
+    x: 'fa-brands fa-x-twitter',
+    instagram: 'fa-brands fa-instagram',
+    linkedin: 'fa-brands fa-linkedin-in',
+    website: 'fa-solid fa-globe',
+};
 
 function getInitials(name) {
     return name
@@ -31,11 +23,10 @@ function getInitials(name) {
         .toUpperCase();
 }
 
-export default function About() {
+export default function About({ teamMembers }) {
     const t = useTranslations();
     const principles = t('about.principles.cards');
     const numbers = t('about.numbers.items');
-    const teamMembers = t('about.team.members');
 
     return (
         <SiteLayout>
@@ -131,37 +122,47 @@ export default function About() {
                         <h2 className="mt-space-sm font-headline-lg text-headline-lg text-on-surface">{t('about.team.title')}</h2>
                         <p className="mt-space-sm text-on-surface-variant">{t('about.team.description')}</p>
                     </div>
-                    <Reveal as="div" stagger className="grid grid-cols-1 sm:grid-cols-2 gap-space-lg max-w-3xl">
-                        {teamMembers.map((member, i) => (
-                            <article key={member.name} className="h-full flex flex-col overflow-hidden bg-surface-container-lowest border border-surface-container rounded-xl">
-                                <div
-                                    className={`flex aspect-square w-full items-center justify-center font-headline-lg text-5xl font-bold ${TEAM_AVATAR_STYLES[i % TEAM_AVATAR_STYLES.length]}`}
-                                    aria-hidden="true"
-                                >
-                                    {getInitials(member.name)}
-                                </div>
-                                <div className="flex flex-1 flex-col p-space-lg">
-                                    <h3 className="font-headline-sm text-lg font-bold text-on-surface">{member.name}</h3>
-                                    <p className="font-label-sm text-label-sm text-secondary">{member.role}</p>
-                                    <p className="mt-space-xs text-sm text-on-surface-variant leading-relaxed">{member.focus}</p>
-                                    <div className="mt-space-md flex items-center gap-space-xs border-t border-surface-container pt-space-md">
-                                        {TEAM_SOCIALS[i].map((social) => (
-                                            <a
-                                                key={social.key}
-                                                href={social.href}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                aria-label={`${member.name} on ${social.key}`}
-                                                className="flex h-9 w-9 items-center justify-center rounded-lg text-on-surface-variant transition-colors hover:bg-surface-container-high hover:text-on-surface"
-                                            >
-                                                <i className={social.icon} aria-hidden="true"></i>
-                                            </a>
-                                        ))}
+                    {teamMembers.length === 0 ? (
+                        <p className="text-on-surface-variant">{t('about.team.empty')}</p>
+                    ) : (
+                        <Reveal as="div" stagger className="grid grid-cols-1 sm:grid-cols-2 gap-space-lg max-w-3xl">
+                            {teamMembers.map((member, i) => (
+                                <article key={member.name} className="h-full flex flex-col overflow-hidden bg-surface-container-lowest border border-surface-container rounded-xl">
+                                    {member.photo ? (
+                                        <img src={member.photo} alt={member.name} className="aspect-square w-full object-cover" />
+                                    ) : (
+                                        <div
+                                            className={`flex aspect-square w-full items-center justify-center font-headline-lg text-5xl font-bold ${TEAM_AVATAR_STYLES[i % TEAM_AVATAR_STYLES.length]}`}
+                                            aria-hidden="true"
+                                        >
+                                            {getInitials(member.name)}
+                                        </div>
+                                    )}
+                                    <div className="flex flex-1 flex-col p-space-lg">
+                                        <h3 className="font-headline-sm text-lg font-bold text-on-surface">{member.name}</h3>
+                                        <p className="font-label-sm text-label-sm text-secondary">{member.role}</p>
+                                        <p className="mt-space-xs text-sm text-on-surface-variant leading-relaxed">{member.focus}</p>
+                                        {member.socials.length > 0 && (
+                                            <div className="mt-space-md flex items-center gap-space-xs border-t border-surface-container pt-space-md">
+                                                {member.socials.map((social) => (
+                                                    <a
+                                                        key={social.key}
+                                                        href={social.href}
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        aria-label={`${member.name} on ${social.key}`}
+                                                        className="flex h-9 w-9 items-center justify-center rounded-lg text-on-surface-variant transition-colors hover:bg-surface-container-high hover:text-on-surface"
+                                                    >
+                                                        <i className={SOCIAL_ICONS[social.key]} aria-hidden="true"></i>
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
-                                </div>
-                            </article>
-                        ))}
-                    </Reveal>
+                                </article>
+                            ))}
+                        </Reveal>
+                    )}
                 </div>
             </Reveal>
 

@@ -33,12 +33,9 @@ return [
 
     'team' => [
         'label' => 'Con quién vas a trabajar',
-        'title' => 'Los fundadores detrás del trabajo.',
-        'description' => 'Dos cofundadores presentes en persona en cada llamada con el cliente, desde el primer boceto de arquitectura hasta el último despliegue.',
-        'members' => [
-            ['name' => 'Oussama Driouech', 'role' => 'Cofundador de OzyTech y desarrollador Full-Stack', 'focus' => 'Arquitectura full-stack e ingeniería de producto en cada lanzamiento de OzyTech.'],
-            ['name' => 'Zakariae Hallaji', 'role' => 'Desarrollador de aplicaciones móviles y cofundador de OzyTech', 'focus' => 'Experiencias móviles nativas y arquitectura de apps en iOS y Android.'],
-        ],
+        'title' => 'El equipo detrás del trabajo.',
+        'description' => 'El equipo senior que participa en persona en cada llamada con el cliente, desde el primer boceto de arquitectura hasta el último despliegue.',
+        'empty' => 'La página de nuestro equipo se está actualizando. Vuelve pronto.',
     ],
 
     'numbers' => [

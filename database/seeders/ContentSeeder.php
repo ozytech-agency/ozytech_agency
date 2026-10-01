@@ -6,6 +6,7 @@ use App\Enums\ServiceItemType;
 use App\Models\Package;
 use App\Models\Post;
 use App\Models\Service;
+use App\Models\TeamMember;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -156,6 +157,57 @@ class ContentSeeder extends Seeder
         ['ultimate', 'fa-solid fa-chart-line'],
     ];
 
+    /**
+     * The founding team, carried over from the lang files' former
+     * `about.team.members` array into the team_members table.
+     *
+     * @var list<array{name: string, role: array<string, string>, focus: array<string, string>, socials: array<string, string>}>
+     */
+    private const TEAM_MEMBERS = [
+        [
+            'name' => 'Oussama Driouech',
+            'role' => [
+                'en' => 'OzyTech Co-Founder & Full-Stack Developer',
+                'ar' => 'شريك مؤسس في أوزي تك ومطور Full-Stack',
+                'fr' => "Cofondateur d'OzyTech et développeur Full-Stack",
+                'es' => 'Cofundador de OzyTech y desarrollador Full-Stack',
+            ],
+            'focus' => [
+                'en' => 'Full-stack architecture and product engineering across every OzyTech launch.',
+                'ar' => 'معمارية متكاملة وهندسة منتج عبر كل إطلاق لدى أوزي تك.',
+                'fr' => 'Architecture full-stack et ingénierie produit sur chaque lancement OzyTech.',
+                'es' => 'Arquitectura full-stack e ingeniería de producto en cada lanzamiento de OzyTech.',
+            ],
+            'socials' => [
+                'x_url' => 'https://x.com/oussamadriouech',
+                'instagram_url' => 'https://instagram.com/oussama.driouech',
+                'linkedin_url' => 'https://linkedin.com/in/oussama-driouech',
+                'website_url' => 'https://ozytechagency.com',
+            ],
+        ],
+        [
+            'name' => 'Zakariae Hallaji',
+            'role' => [
+                'en' => 'Mobile Application Developer & OzyTech Co-Founder',
+                'ar' => 'مطور تطبيقات الجوال وشريك مؤسس في أوزي تك',
+                'fr' => "Développeur d'applications mobiles et cofondateur d'OzyTech",
+                'es' => 'Desarrollador de aplicaciones móviles y cofundador de OzyTech',
+            ],
+            'focus' => [
+                'en' => 'Native mobile experiences and app architecture across iOS and Android.',
+                'ar' => 'تجارب جوال أصلية ومعمارية تطبيقات عبر iOS وAndroid.',
+                'fr' => "Expériences mobiles natives et architecture d'applications sur iOS et Android.",
+                'es' => 'Experiencias móviles nativas y arquitectura de apps en iOS y Android.',
+            ],
+            'socials' => [
+                'x_url' => 'https://x.com/zakariaehallaji',
+                'instagram_url' => 'https://instagram.com/zakariae.hallaji',
+                'linkedin_url' => 'https://linkedin.com/in/zakariae-hallaji',
+                'website_url' => 'https://ozytechagency.com',
+            ],
+        ],
+    ];
+
     private const FEATURED_POST_IMAGE = 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85';
 
     /**
@@ -178,6 +230,7 @@ class ContentSeeder extends Seeder
             $this->seedServices();
             $this->seedPackages();
             $this->seedPosts();
+            $this->seedTeamMembers();
         });
 
         Cache::forget(Service::CACHE_KEY);
@@ -302,6 +355,24 @@ class ContentSeeder extends Seeder
                 'cover_image' => $post['image'],
                 'is_featured' => $post['featured'],
                 'published_at' => now()->subMinutes(count($posts) - $position),
+            ]);
+        }
+    }
+
+    private function seedTeamMembers(): void
+    {
+        foreach (self::TEAM_MEMBERS as $position => $member) {
+            if (TeamMember::where('name', $member['name'])->exists()) {
+                continue;
+            }
+
+            TeamMember::create([
+                'name' => $member['name'],
+                'role' => $member['role'],
+                'focus' => $member['focus'],
+                ...$member['socials'],
+                'sort_order' => $position,
+                'is_published' => true,
             ]);
         }
     }

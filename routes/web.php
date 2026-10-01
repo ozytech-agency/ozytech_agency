@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PackageController as AdminPackageController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
+use App\Http\Controllers\Admin\TeamMemberController as AdminTeamMemberController;
 use App\Http\Controllers\Admin\UploadController as AdminUploadController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AvatarController;
@@ -59,6 +60,7 @@ Route::prefix('{locale}')
                 Route::resource('services', AdminServiceController::class)->except('show');
                 Route::resource('packages', AdminPackageController::class)->except('show');
                 Route::resource('posts', AdminPostController::class)->except('show');
+                Route::resource('team-members', AdminTeamMemberController::class)->except('show');
                 Route::post('/uploads', [AdminUploadController::class, 'store'])->name('uploads.store');
             });
 

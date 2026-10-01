@@ -33,12 +33,9 @@ return [
 
     'team' => [
         'label' => 'Who you will work with',
-        'title' => 'The founders behind the work.',
-        'description' => 'Two co-founders who show up on every client call personally, from the first architecture sketch to the last deployment.',
-        'members' => [
-            ['name' => 'Oussama Driouech', 'role' => 'OzyTech Co-Founder & Full-Stack Developer', 'focus' => 'Full-stack architecture and product engineering across every OzyTech launch.'],
-            ['name' => 'Zakariae Hallaji', 'role' => 'Mobile Application Developer & OzyTech Co-Founder', 'focus' => 'Native mobile experiences and app architecture across iOS and Android.'],
-        ],
+        'title' => 'The team behind the work.',
+        'description' => 'The senior builders who show up on every client call personally, from the first architecture sketch to the last deployment.',
+        'empty' => 'Our team page is being updated. Check back soon.',
     ],
 
     'numbers' => [

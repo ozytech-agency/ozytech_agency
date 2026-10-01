@@ -7,6 +7,7 @@ return [
         'services' => 'Services',
         'packages' => 'Packages',
         'posts' => 'Blog',
+        'team_members' => 'Team',
         'view_site' => 'View site',
     ],
 
@@ -139,5 +140,24 @@ return [
             'make_draft' => 'Make draft',
         ],
         'author' => 'Author',
+    ],
+
+    'team_members' => [
+        'title' => 'Team',
+        'create' => 'New team member',
+        'edit' => 'Edit team member',
+        'fields' => [
+            'name' => 'Name',
+            'role' => 'Role',
+            'focus' => 'Focus',
+            'photo' => 'Photo',
+            'socials' => 'Social links',
+            'x_url' => 'X (Twitter) URL',
+            'instagram_url' => 'Instagram URL',
+            'linkedin_url' => 'LinkedIn URL',
+            'website_url' => 'Website URL',
+            'sort_order' => 'Display order',
+            'is_published' => 'Published',
+        ],
     ],
 ];
