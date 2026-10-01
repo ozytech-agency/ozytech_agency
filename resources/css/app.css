@@ -138,6 +138,14 @@ html.theme-transition * {
     left: -1rem;
     width: min(640px, calc(100vw - 2rem));
     height: 0.75rem;
+    /*
+     * Off by default so this invisible hover bridge can't swallow the
+     * pointer for an adjacent nav item whose own wide bridge/dropdown
+     * geometrically overlaps it (e.g. "Services" and "Website" sitting
+     * close together in the nav). Only the menu actually being hovered
+     * or opened gets pointer-events back, via the rule below.
+     */
+    pointer-events: none;
 }
 
 .services-dropdown {
@@ -168,6 +176,12 @@ html.theme-transition * {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+}
+
+.services-menu.is-open::before,
+.services-menu:hover::before,
+.services-menu:focus-within::before {
+    pointer-events: auto;
 }
 
 /*
