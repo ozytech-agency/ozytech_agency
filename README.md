@@ -1,4 +1,6 @@
-![OzyTech](public/images/logo.png)
+<p align="center">
+  <img src="public/images/logo.png" alt="OzyTech" width="236">
+</p>
 
 > A localized, Inertia-driven marketing and client-portal site for OzyTech, a software engineering agency. Built on Laravel 13 + React 18, rendered through Inertia.js with no separate REST/JSON API layer.
 
