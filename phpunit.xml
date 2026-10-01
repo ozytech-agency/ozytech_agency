@@ -30,6 +30,9 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="GOOGLE_SHEETS_WEBHOOK_URL" value=""/>
         <env name="GOOGLE_SHEETS_SECRET" value=""/>
+        <env name="TWILIO_SID" value=""/>
+        <env name="TWILIO_AUTH_TOKEN" value=""/>
+        <env name="TWILIO_FROM_NUMBER" value=""/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="PULSE_ENABLED" value="false"/>
         <env name="TELESCOPE_ENABLED" value="false"/>

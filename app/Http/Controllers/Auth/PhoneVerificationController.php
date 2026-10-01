@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Support\Sms;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +25,7 @@ class PhoneVerificationController extends Controller
     }
 
     /**
-     * Generate and log a new phone verification code.
+     * Generate a new phone verification code and text it via Twilio.
      */
     public function send(Request $request): RedirectResponse
     {
@@ -41,9 +42,13 @@ class PhoneVerificationController extends Controller
             'phone_otp_expires_at' => now()->addMinutes(10),
         ])->save();
 
-        // Dev-mode delivery: no SMS provider is configured yet, so the code is logged
-        // instead of texted. Swap this line for a real SMS call once one is added.
-        Log::info("Phone verification code for user #{$user->id} ({$user->phone_number}): {$code}");
+        if (Sms::configured()) {
+            Sms::send($user->phone_number, __('auth_pages.verify_phone.sms_body', ['code' => $code]));
+        } else {
+            // Dev-mode delivery: no SMS provider is configured, so the code is
+            // logged instead of texted.
+            Log::info("Phone verification code for user #{$user->id} ({$user->phone_number}): {$code}");
+        }
 
         return back()->with('status', 'phone-verification-code-sent');
     }

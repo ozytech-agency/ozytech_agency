@@ -85,5 +85,6 @@ return [
         'send_code' => 'Send Verification Code',
         'submit' => 'Verify Phone',
         'logout' => 'Log Out',
+        'sms_body' => 'Your OzyTech verification code is :code. It expires in 10 minutes.',
     ],
 ];

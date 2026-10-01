@@ -85,5 +85,6 @@ return [
         'send_code' => 'Envoyer le code de vérification',
         'submit' => 'Vérifier le téléphone',
         'logout' => 'Déconnexion',
+        'sms_body' => 'Votre code de vérification OzyTech est :code. Il expire dans 10 minutes.',
     ],
 ];
