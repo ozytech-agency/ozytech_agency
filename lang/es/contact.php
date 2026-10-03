@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'title' => 'Contacta con OzyTech',
-    'meta_description' => 'Ponte en contacto con el equipo de ingeniería de OzyTech para hablar sobre tu próximo proyecto de software, nube o IA.',
+    'title' => 'Contacta con Ozytech Agency',
+    'meta_description' => 'Ponte en contacto con el equipo de ingeniería de Ozytech Agency para hablar sobre tu próximo proyecto de software, nube o IA.',
 
     'hero' => [
         'eyebrow' => 'Ponte en contacto',
