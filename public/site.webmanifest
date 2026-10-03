@@ -1,0 +1,20 @@
+{
+    "name": "OzyTech",
+    "short_name": "OzyTech",
+    "icons": [
+        {
+            "src": "/images/favicon.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/logo.png",
+            "sizes": "472x95",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#faf8ff",
+    "background_color": "#faf8ff",
+    "display": "standalone",
+    "start_url": "/"
+}
