@@ -1,2 +1,14 @@
 User-agent: *
-Disallow:
+Disallow: /*/admin
+Disallow: /*/dashboard
+Disallow: /*/login
+Disallow: /*/register
+Disallow: /*/forgot-password
+Disallow: /*/reset-password
+Disallow: /*/confirm-password
+Disallow: /*/verify-email
+Disallow: /*/verify-phone
+Disallow: /*/start-a-project
+Disallow: /*/profile
+
+Sitemap: https://ozytechagency.com/sitemap.xml

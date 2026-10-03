@@ -17,9 +17,12 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/en');
+Route::redirect('/', '/en', 301);
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 Route::get('/media/avatars/{filename}', [AvatarController::class, 'show'])->name('avatar.show');
 Route::get('/media/content/{filename}', [ContentMediaController::class, 'show'])->name('media.content');
