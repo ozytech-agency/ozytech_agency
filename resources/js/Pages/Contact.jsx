@@ -1,3 +1,4 @@
+import { useForm } from '@inertiajs/react';
 import { useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
@@ -6,30 +7,23 @@ import { useTranslations } from '@/lib/translations';
 
 export default function Contact() {
     const t = useTranslations();
-    const [form, setForm] = useState({ name: '', email: '', message: '' });
-    const [error, setError] = useState(null);
+    const { data, setData, post, processing, errors, reset } = useForm({ name: '', email: '', message: '' });
     const [submitted, setSubmitted] = useState(false);
 
     const field = (name) => ({
-        value: form[name],
-        onChange: (e) => setForm((f) => ({ ...f, [name]: e.target.value })),
+        value: data[name],
+        onChange: (e) => setData(name, e.target.value),
     });
 
     const submit = (e) => {
         e.preventDefault();
-        const missing = [];
-        if (!form.name.trim()) missing.push(t('contact.form.validation.name'));
-        if (!form.email.trim()) missing.push(t('contact.form.validation.email'));
-        else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.trim())) missing.push(t('contact.form.validation.valid_email'));
-        if (!form.message.trim()) missing.push(t('contact.form.validation.message'));
-
-        if (missing.length) {
-            setError(`${t('contact.form.validation.prefix')} ${missing.join(', ')}.`);
-            return;
-        }
-        setError(null);
-        setSubmitted(true);
-        setForm({ name: '', email: '', message: '' });
+        post(route('contact.store'), {
+            preserveScroll: true,
+            onSuccess: () => {
+                setSubmitted(true);
+                reset();
+            },
+        });
     };
 
     return (
@@ -131,29 +125,27 @@ export default function Contact() {
                                             {t('contact.form.name_label')}
                                         </label>
                                         <input id="name" className="field" placeholder={t('contact.form.name_placeholder')} {...field('name')} />
+                                        {errors.name && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.name}</p>}
                                     </div>
                                     <div>
                                         <label htmlFor="email" className="mb-space-2xs block font-label-md text-label-md text-on-surface">
                                             {t('contact.form.email_label')}
                                         </label>
                                         <input id="email" type="email" className="field" placeholder={t('contact.form.email_placeholder')} {...field('email')} />
+                                        {errors.email && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.email}</p>}
                                     </div>
                                     <div>
                                         <label htmlFor="message" className="mb-space-2xs block font-label-md text-label-md text-on-surface">
                                             {t('contact.form.message_label')}
                                         </label>
                                         <textarea id="message" className="field min-h-[9rem]" placeholder={t('contact.form.message_placeholder')} {...field('message')} />
+                                        {errors.message && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.message}</p>}
                                     </div>
-
-                                    {error && (
-                                        <p role="alert" className="font-body-sm text-body-sm text-error bg-error-container/50 rounded-lg px-space-md py-space-xs">
-                                            {error}
-                                        </p>
-                                    )}
 
                                     <button
                                         type="submit"
-                                        className="inline-flex items-center justify-center gap-space-xs self-start rounded-lg bg-accent2 px-space-xl py-space-md font-label-md text-label-md text-on-primary shadow-[0_10px_20px_-5px_rgba(233,87,71,0.35)] transition-all hover:-translate-y-0.5"
+                                        disabled={processing}
+                                        className="inline-flex items-center justify-center gap-space-xs self-start rounded-lg bg-accent2 px-space-xl py-space-md font-label-md text-label-md text-on-primary shadow-[0_10px_20px_-5px_rgba(233,87,71,0.35)] transition-all hover:-translate-y-0.5 disabled:opacity-60"
                                     >
                                         {t('contact.form.submit')} <span className="material-symbols-outlined text-base">send</span>
                                     </button>

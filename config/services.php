@@ -52,4 +52,8 @@ return [
         ],
     ],
 
+    'contact' => [
+        'recipient' => env('CONTACT_RECIPIENT_EMAIL', env('MAIL_FROM_ADDRESS')),
+    ],
+
 ];

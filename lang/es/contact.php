@@ -29,12 +29,5 @@ return [
         'message_placeholder' => '¿Cómo podemos ayudarte?',
         'submit' => 'Enviar mensaje',
         'success' => 'Gracias — hemos recibido tu mensaje y responderemos pronto.',
-        'validation' => [
-            'name' => 'Nombre completo',
-            'email' => 'Correo electrónico',
-            'valid_email' => 'un correo válido',
-            'message' => 'Mensaje',
-            'prefix' => 'Por favor completa:',
-        ],
     ],
 ];

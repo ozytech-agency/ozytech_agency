@@ -29,12 +29,5 @@ return [
         'message_placeholder' => 'How can we help?',
         'submit' => 'Send message',
         'success' => "Thanks — we've received your message and will reply soon.",
-        'validation' => [
-            'name' => 'Full name',
-            'email' => 'Email address',
-            'valid_email' => 'a valid email',
-            'message' => 'Message',
-            'prefix' => 'Please add:',
-        ],
     ],
 ];

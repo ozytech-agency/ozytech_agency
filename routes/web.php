@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\TeamMemberController as AdminTeamMemberController
 use App\Http\Controllers\Admin\UploadController as AdminUploadController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AvatarController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContentMediaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InquiryController;
@@ -42,6 +43,7 @@ Route::prefix('{locale}')
         Route::get('/', [PageController::class, 'home'])->name('home');
         Route::get('/about', [PageController::class, 'about'])->name('about');
         Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+        Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
         Route::get('/blog', [PageController::class, 'blog'])->name('blog');
         Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('blog.show');
         Route::get('/packages', [PageController::class, 'packages'])->name('packages');
