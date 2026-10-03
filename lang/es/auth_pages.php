@@ -74,17 +74,4 @@ return [
         'submit' => 'Reenviar correo de verificación',
         'logout' => 'Cerrar sesión',
     ],
-
-    'verify_phone' => [
-        'title' => 'Verificación de teléfono',
-        'kicker' => 'Un paso más',
-        'heading' => 'Verifica tu número de teléfono',
-        'description' => 'Por tu seguridad, confirma el número de teléfono con el que te registraste. Envíate un código de verificación y luego introdúcelo a continuación.',
-        'code_sent' => 'Se ha generado un nuevo código de verificación para el número de teléfono que proporcionaste al registrarte.',
-        'code_label' => 'Código de verificación',
-        'send_code' => 'Enviar código de verificación',
-        'submit' => 'Verificar teléfono',
-        'logout' => 'Cerrar sesión',
-        'sms_body' => 'Tu código de verificación de OzyTech es :code. Caduca en 10 minutos.',
-    ],
 ];

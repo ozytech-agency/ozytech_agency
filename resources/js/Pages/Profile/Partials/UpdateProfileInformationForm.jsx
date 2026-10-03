@@ -164,17 +164,6 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status }) {
                         inputClassName="min-w-0 flex-1 border-0 bg-transparent text-on-surface outline-none placeholder:text-outline"
                     />
                     <InputError message={errors.phone_number} className="mt-2" />
-
-                    {!user.phone_verified_at && (
-                        <div className="mt-space-sm">
-                            <p className="text-body-sm text-on-surface-variant">
-                                {t('profile.phone_unverified_notice')}{' '}
-                                <Link href={route('phone-verification.notice')} className="font-label-md text-label-md text-secondary underline hover:text-on-surface">
-                                    {t('profile.verify_phone_link')}
-                                </Link>
-                            </p>
-                        </div>
-                    )}
                 </div>
 
                 <div className="flex items-center gap-space-md">

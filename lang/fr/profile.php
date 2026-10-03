@@ -43,8 +43,6 @@ return [
     'email_unverified_notice' => "Votre adresse e-mail n'est pas vérifiée.",
     'resend_email_verification' => "Cliquez ici pour renvoyer l'e-mail de vérification.",
     'email_verification_sent' => 'Un nouveau lien de vérification a été envoyé à votre adresse e-mail.',
-    'phone_unverified_notice' => "Votre numéro de téléphone n'est pas vérifié.",
-    'verify_phone_link' => 'Cliquez ici pour vérifier votre numéro de téléphone.',
 
     'save' => 'Enregistrer',
     'saved' => 'Enregistré.',

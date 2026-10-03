@@ -43,8 +43,6 @@ return [
     'email_unverified_notice' => 'Tu dirección de correo no está verificada.',
     'resend_email_verification' => 'Haz clic aquí para reenviar el correo de verificación.',
     'email_verification_sent' => 'Se ha enviado un nuevo enlace de verificación a tu correo electrónico.',
-    'phone_unverified_notice' => 'Tu número de teléfono no está verificado.',
-    'verify_phone_link' => 'Haz clic aquí para verificar tu número de teléfono.',
 
     'save' => 'Guardar',
     'saved' => 'Guardado.',

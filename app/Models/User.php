@@ -14,7 +14,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 #[Fillable(['name', 'email', 'phone_number', 'avatar_path', 'password', 'google_id'])]
-#[Hidden(['password', 'remember_token', 'phone_otp_code', 'avatar_path'])]
+#[Hidden(['password', 'remember_token', 'avatar_path'])]
 #[Appends(['avatar_url'])]
 class User extends Authenticatable
 {
@@ -42,8 +42,6 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'phone_verified_at' => 'datetime',
-            'phone_otp_expires_at' => 'datetime',
             'password' => 'hashed',
             'is_admin' => 'boolean',
         ];

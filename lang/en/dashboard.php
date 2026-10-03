@@ -32,11 +32,6 @@ return [
                 'desc' => 'Confirm your email address to secure your account.',
                 'cta' => 'Verify email',
             ],
-            'verify_phone' => [
-                'title' => 'Verify your phone number',
-                'desc' => 'Confirm the phone number you signed up with.',
-                'cta' => 'Verify phone',
-            ],
             'first_inquiry' => [
                 'title' => 'Submit your first request',
                 'desc' => 'Tell us what you need and get a scoping call within 2 business days.',

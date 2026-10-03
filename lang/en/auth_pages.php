@@ -74,17 +74,4 @@ return [
         'submit' => 'Resend Verification Email',
         'logout' => 'Log Out',
     ],
-
-    'verify_phone' => [
-        'title' => 'Phone Verification',
-        'kicker' => 'One more step',
-        'heading' => 'Verify your phone number',
-        'description' => 'For your security, please confirm the phone number you signed up with. Send yourself a verification code, then enter it below.',
-        'code_sent' => 'A new verification code has been generated for the phone number you provided during registration.',
-        'code_label' => 'Verification code',
-        'send_code' => 'Send Verification Code',
-        'submit' => 'Verify Phone',
-        'logout' => 'Log Out',
-        'sms_body' => 'Your OzyTech verification code is :code. It expires in 10 minutes.',
-    ],
 ];

@@ -30,39 +30,6 @@ class ProfileUpdateTest extends TestCase
         $this->assertSame('+212611111111', $user->phone_number);
     }
 
-    public function test_changing_phone_number_resets_phone_verification(): void
-    {
-        $user = User::factory()->create([
-            'phone_number' => '+212600000000',
-            'phone_verified_at' => now(),
-        ]);
-
-        $this->actingAs($user)->patch(route('profile.update', ['locale' => 'en']), [
-            'name' => $user->name,
-            'email' => $user->email,
-            'phone_number' => '+212622222222',
-        ])->assertSessionHasNoErrors();
-
-        $user->refresh();
-        $this->assertNull($user->phone_verified_at);
-    }
-
-    public function test_leaving_phone_number_unchanged_keeps_verification(): void
-    {
-        $user = User::factory()->create([
-            'phone_number' => '+212600000000',
-            'phone_verified_at' => now(),
-        ]);
-
-        $this->actingAs($user)->patch(route('profile.update', ['locale' => 'en']), [
-            'name' => $user->name,
-            'email' => $user->email,
-            'phone_number' => '+212600000000',
-        ])->assertSessionHasNoErrors();
-
-        $this->assertNotNull($user->refresh()->phone_verified_at);
-    }
-
     public function test_duplicate_phone_number_fails_validation(): void
     {
         User::factory()->create(['phone_number' => '+212633333333']);

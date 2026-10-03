@@ -32,11 +32,6 @@ return [
                 'desc' => 'Confirma tu dirección de correo para proteger tu cuenta.',
                 'cta' => 'Verificar correo',
             ],
-            'verify_phone' => [
-                'title' => 'Verifica tu número de teléfono',
-                'desc' => 'Confirma el número de teléfono con el que te registraste.',
-                'cta' => 'Verificar teléfono',
-            ],
             'first_inquiry' => [
                 'title' => 'Envía tu primera solicitud',
                 'desc' => 'Cuéntanos qué necesitas y consigue una llamada de alcance en 2 días hábiles.',

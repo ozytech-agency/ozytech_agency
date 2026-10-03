@@ -60,14 +60,6 @@ export default function Dashboard() {
             ctaRoute: 'verification.notice',
         },
         {
-            key: 'verify_phone',
-            done: Boolean(user.phone_verified_at),
-            title: t('dashboard.checklist.items.verify_phone.title'),
-            desc: t('dashboard.checklist.items.verify_phone.desc'),
-            ctaLabel: t('dashboard.checklist.items.verify_phone.cta'),
-            ctaRoute: 'phone-verification.notice',
-        },
-        {
             key: 'first_inquiry',
             done: inquiries.length > 0,
             title: t('dashboard.checklist.items.first_inquiry.title'),

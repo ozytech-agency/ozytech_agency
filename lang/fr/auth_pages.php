@@ -74,17 +74,4 @@ return [
         'submit' => "Renvoyer l'e-mail de vérification",
         'logout' => 'Déconnexion',
     ],
-
-    'verify_phone' => [
-        'title' => 'Vérification du téléphone',
-        'kicker' => 'Encore une étape',
-        'heading' => 'Vérifiez votre numéro de téléphone',
-        'description' => 'Pour votre sécurité, veuillez confirmer le numéro de téléphone fourni lors de votre inscription. Envoyez-vous un code de vérification, puis saisissez-le ci-dessous.',
-        'code_sent' => 'Un nouveau code de vérification a été généré pour le numéro de téléphone fourni lors de votre inscription.',
-        'code_label' => 'Code de vérification',
-        'send_code' => 'Envoyer le code de vérification',
-        'submit' => 'Vérifier le téléphone',
-        'logout' => 'Déconnexion',
-        'sms_body' => 'Votre code de vérification OzyTech est :code. Il expire dans 10 minutes.',
-    ],
 ];

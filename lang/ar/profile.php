@@ -43,8 +43,6 @@ return [
     'email_unverified_notice' => 'بريدك الإلكتروني غير موثّق.',
     'resend_email_verification' => 'اضغط هنا لإعادة إرسال رسالة التفعيل.',
     'email_verification_sent' => 'تم إرسال رابط تفعيل جديد إلى بريدك الإلكتروني.',
-    'phone_unverified_notice' => 'رقم هاتفك غير موثّق.',
-    'verify_phone_link' => 'اضغط هنا لتوثيق رقم هاتفك.',
 
     'save' => 'حفظ',
     'saved' => 'تم الحفظ.',
