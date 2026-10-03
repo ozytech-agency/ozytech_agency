@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Support\ServiceCatalog;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Tighten\Ziggy\Ziggy;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -53,6 +54,13 @@ class HandleInertiaRequests extends Middleware
             ],
             'locale' => app()->getLocale(),
             'available_locales' => ['en', 'ar', 'fr', 'es'],
+            // Only consumed by the SSR entry point (resources/js/ssr.jsx), which has
+            // no access to the @routes Blade script that defines route()/Ziggy for
+            // the browser. The browser already gets routes from that script, so this
+            // is otherwise redundant in the page payload.
+            'ziggy' => fn () => [...(new Ziggy)->toArray(), 'location' => $request->url()],
+            'appUrl' => rtrim(config('app.url'), '/'),
+            'currentPath' => '/'.ltrim($request->path(), '/'),
             'translations' => collect($namespaces)
                 ->mapWithKeys(fn (string $namespace) => [$namespace => __($namespace)])
                 ->all(),
