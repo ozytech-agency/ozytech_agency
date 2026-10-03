@@ -1,7 +1,8 @@
-import { Head, usePage } from '@inertiajs/react';
+import { usePage } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
+import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 const ASSURANCE_ICONS = ['event_available', 'groups', 'sync_alt'];
@@ -58,7 +59,7 @@ export default function Packages() {
 
     return (
         <SiteLayout>
-            <Head title={t('packages.title')} />
+            <Seo title={t('packages.title')} description={t('packages.meta_description')} />
 
             <section className="relative overflow-hidden py-space-4xl text-on-primary w-full isolate">
                 <div className="absolute inset-0 -z-20">
@@ -66,6 +67,7 @@ export default function Packages() {
                         src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2200&q=80"
                         alt=""
                         aria-hidden="true"
+                        fetchpriority="high"
                         className="h-full w-full object-cover"
                     />
                 </div>

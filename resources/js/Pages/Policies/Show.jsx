@@ -1,5 +1,5 @@
-import { Head } from '@inertiajs/react';
 import SiteLayout from '@/Layouts/SiteLayout';
+import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 export default function PolicyShow({ title, subtitle, sections }) {
@@ -7,7 +7,7 @@ export default function PolicyShow({ title, subtitle, sections }) {
 
     return (
         <SiteLayout>
-            <Head title={title} />
+            <Seo title={title} description={subtitle} />
 
             <section className="relative overflow-hidden bg-primary-container py-space-4xl text-on-primary">
                 <div className="absolute right-[-8%] top-[-35%] h-[520px] w-[520px] rounded-full bg-secondary-container/15 blur-3xl pointer-events-none" aria-hidden="true"></div>

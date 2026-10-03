@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Paquetes | OzyTech',
+    'meta_description' => 'Compara nuestros paquetes de ingeniería de alcance fijo — Explorar, Construir y Escalar — y encuentra el punto de partida adecuado para tu próximo proyecto de software.',
 
     'hero' => [
         'kicker' => 'Paquetes OzyTech',

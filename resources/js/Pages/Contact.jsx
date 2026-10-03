@@ -1,7 +1,7 @@
-import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
+import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 export default function Contact() {
@@ -34,7 +34,7 @@ export default function Contact() {
 
     return (
         <SiteLayout>
-            <Head title={t('contact.title')} />
+            <Seo title={t('contact.title')} description={t('contact.meta_description')} />
 
             <section className="relative w-full overflow-hidden py-space-4xl text-on-primary isolate">
                 <div className="absolute inset-0 -z-20">
@@ -42,6 +42,7 @@ export default function Contact() {
                         src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=2200&q=80"
                         alt=""
                         aria-hidden="true"
+                        fetchpriority="high"
                         className="h-full w-full object-cover"
                     />
                 </div>

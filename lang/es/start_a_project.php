@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Contacta a OzyTech — Inicia un proyecto, alianza o conversación de soporte',
+    'meta_description' => 'Cuéntale a OzyTech sobre tu proyecto y te conectaremos con el equipo y el paquete adecuados.',
 
     'hero' => [
         'badge' => 'Respondemos en horas, no en semanas',

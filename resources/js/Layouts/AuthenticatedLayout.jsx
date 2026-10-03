@@ -1,8 +1,10 @@
 import SiteLayout from '@/Layouts/SiteLayout';
+import Seo from '@/Components/Seo';
 
 export default function AuthenticatedLayout({ header, children }) {
     return (
         <SiteLayout>
+            <Seo noindex />
             <div className="flex w-full flex-1 flex-col bg-surface-container-low">
                 {header && (
                     <div className="border-b border-surface-container bg-surface-container-lowest">

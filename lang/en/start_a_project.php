@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Contact OzyTech — Start a Project, Partnership or Support Conversation',
+    'meta_description' => 'Tell OzyTech about your project and get matched with the right engineering team and package.',
 
     'hero' => [
         'badge' => 'We reply in hours, not weeks',

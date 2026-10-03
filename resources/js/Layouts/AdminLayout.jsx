@@ -1,5 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
 import SiteLayout from '@/Layouts/SiteLayout';
+import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 const NAV_ITEMS = [
@@ -16,6 +17,7 @@ export default function AdminLayout({ title, actions, children }) {
 
     return (
         <SiteLayout>
+            <Seo title={title} noindex />
             <div className="flex w-full flex-1 flex-col bg-surface-container-low">
                 <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-space-lg px-gutter-mobile py-space-xl lg:flex-row lg:px-gutter-desktop">
                     <aside className="lg:w-56 lg:shrink-0">

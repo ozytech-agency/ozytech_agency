@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Packages | OzyTech',
+    'meta_description' => 'Compare fixed-scope engineering packages — Explore, Build, and Scale — and find the right starting point for your next software project.',
 
     'hero' => [
         'kicker' => 'OzyTech Packages',

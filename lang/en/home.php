@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Ozytech — Enterprise Software, Cloud & AI Engineering Agency',
+    'meta_description' => 'Software engineering agency building enterprise SaaS, cloud infrastructure, mobile apps, and AI-driven systems for ambitious teams worldwide.',
 
     'hero' => [
         'badge' => 'Next-Gen Digital Innovation',

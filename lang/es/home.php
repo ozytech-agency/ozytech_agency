@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Ozytech — Agencia de ingeniería de software, cloud e IA para empresas',
+    'meta_description' => 'Agencia de ingeniería de software que crea SaaS empresariales, infraestructura en la nube, aplicaciones móviles y sistemas impulsados por IA para equipos ambiciosos en todo el mundo.',
 
     'hero' => [
         'badge' => 'Innovación digital de nueva generación',

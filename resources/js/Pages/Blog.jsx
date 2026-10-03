@@ -1,6 +1,7 @@
-import { Head, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
+import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 export default function Blog({ featuredPost, posts }) {
@@ -8,7 +9,7 @@ export default function Blog({ featuredPost, posts }) {
 
     return (
         <SiteLayout>
-            <Head title={t('blog.title')} />
+            <Seo title={t('blog.title')} description={t('blog.hero.description')} />
 
             <section className="relative overflow-hidden py-space-3xl lg:py-space-4xl text-on-primary w-full isolate">
                 <div className="absolute inset-0 -z-20">
@@ -16,6 +17,7 @@ export default function Blog({ featuredPost, posts }) {
                         src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=2200&q=80"
                         alt=""
                         aria-hidden="true"
+                        fetchpriority="high"
                         className="h-full w-full object-cover"
                     />
                 </div>
@@ -44,7 +46,12 @@ export default function Blog({ featuredPost, posts }) {
                         {featuredPost && (
                             <article className="lg:w-3/5 relative overflow-hidden rounded-xl bg-primary-container text-on-primary min-h-[380px] flex items-end">
                                 {featuredPost.cover_image && (
-                                    <img src={featuredPost.cover_image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-35" />
+                                    <img
+                                        src={featuredPost.cover_image}
+                                        alt=""
+                                        aria-hidden="true"
+                                        className="absolute inset-0 w-full h-full object-cover opacity-35"
+                                    />
                                 )}
                                 <div className="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/70 to-transparent"></div>
                                 <div className="relative z-10 p-space-xl lg:p-space-2xl">
@@ -99,7 +106,7 @@ export default function Blog({ featuredPost, posts }) {
                                 className="h-full flex flex-col overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm border border-surface-container transition-all hover:-translate-y-1 hover:shadow-lg"
                             >
                                 {post.cover_image ? (
-                                    <img src={post.cover_image} alt="" className="w-full aspect-[4/3] object-cover" />
+                                    <img src={post.cover_image} alt={post.title} className="w-full aspect-[4/3] object-cover" />
                                 ) : (
                                     <div className="w-full aspect-[4/3] bg-surface-container-high" aria-hidden="true"></div>
                                 )}

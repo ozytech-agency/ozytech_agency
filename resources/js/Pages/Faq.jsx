@@ -1,7 +1,8 @@
-import { Head, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import { useMemo, useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
+import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 export default function Faq() {
@@ -16,9 +17,19 @@ export default function Faq() {
         return faqs.filter((faq) => faq.q.toLowerCase().includes(q) || faq.a.toLowerCase().includes(q));
     }, [faqs, query]);
 
+    const faqJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.q,
+            acceptedAnswer: { '@type': 'Answer', text: faq.a },
+        })),
+    };
+
     return (
         <SiteLayout>
-            <Head title={t('faq.title')} />
+            <Seo title={t('faq.title')} description={t('faq.meta_description')} jsonLd={faqJsonLd} />
 
             <section className="relative w-full overflow-hidden py-space-4xl text-on-primary isolate">
                 <div className="absolute inset-0 -z-20">
@@ -26,6 +37,7 @@ export default function Faq() {
                         src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=2200&q=80"
                         alt=""
                         aria-hidden="true"
+                        fetchpriority="high"
                         className="h-full w-full object-cover"
                     />
                 </div>

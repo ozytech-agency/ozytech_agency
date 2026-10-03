@@ -2,6 +2,7 @@
 
 return [
     'title' => 'FAQ | OzyTech Agency',
+    'meta_description' => "Réponses aux questions courantes sur la collaboration avec OzyTech : tarifs, délais, modèles d'engagement et fonctionnement de notre équipe d'ingénierie.",
 
     'hero' => [
         'eyebrow' => 'Questions fréquentes',

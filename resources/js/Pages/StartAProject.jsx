@@ -1,8 +1,9 @@
-import { Head, Link, useForm, usePage } from '@inertiajs/react';
+import { Link, useForm, usePage } from '@inertiajs/react';
 import { useRef, useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
 import PhoneNumberInput from '@/Components/PhoneNumberInput';
+import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 const ROUTE_META = [
@@ -104,7 +105,7 @@ export default function StartAProject() {
 
     return (
         <SiteLayout>
-            <Head title={t('start_a_project.title')} />
+            <Seo title={t('start_a_project.title')} description={t('start_a_project.meta_description')} noindex />
 
             <section className="relative w-full py-space-3xl lg:py-space-4xl overflow-hidden text-on-primary isolate">
                 <div className="absolute inset-0 -z-20">
@@ -112,6 +113,7 @@ export default function StartAProject() {
                         src="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=2200&q=80"
                         alt=""
                         aria-hidden="true"
+                        fetchpriority="high"
                         className="h-full w-full object-cover"
                     />
                 </div>
@@ -501,6 +503,7 @@ export default function StartAProject() {
                         src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=2200&q=80"
                         alt=""
                         aria-hidden="true"
+                        loading="lazy"
                         className="h-full w-full object-cover"
                     />
                 </div>

@@ -1,5 +1,6 @@
-import { Head, Link, usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import SiteLayout from '@/Layouts/SiteLayout';
+import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 const PROSE_CLASSES = [
@@ -22,9 +23,19 @@ export default function BlogShow({ post, related }) {
 
     const publishedOn = post.published_at ? new Date(post.published_at).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' }) : null;
 
+    const articleJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: post.title,
+        description: post.excerpt,
+        image: post.cover_image,
+        datePublished: post.published_at,
+        author: post.author ? { '@type': 'Person', name: post.author } : { '@type': 'Organization', name: 'OzyTech' },
+    };
+
     return (
         <SiteLayout>
-            <Head title={`${post.title} | OzyTech`} />
+            <Seo title={`${post.title} | OzyTech`} description={post.excerpt} image={post.cover_image} jsonLd={articleJsonLd} />
 
             <article className="w-full bg-surface">
                 <header className="mx-[6%] max-w-[760px] pt-space-3xl lg:mx-auto">
@@ -46,7 +57,7 @@ export default function BlogShow({ post, related }) {
 
                 {post.cover_image && (
                     <div className="mx-[6%] mt-space-xl max-w-[1000px] lg:mx-auto">
-                        <img src={post.cover_image} alt="" className="w-full aspect-[16/9] rounded-xl object-cover" />
+                        <img src={post.cover_image} alt={post.title} className="w-full aspect-[16/9] rounded-xl object-cover" />
                     </div>
                 )}
 
@@ -64,7 +75,7 @@ export default function BlogShow({ post, related }) {
                                     href={route('blog.show', item.slug)}
                                     className="flex flex-col overflow-hidden rounded-xl border border-surface-container bg-surface-container-lowest shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
                                 >
-                                    {item.cover_image && <img src={item.cover_image} alt="" className="w-full aspect-[4/3] object-cover" />}
+                                    {item.cover_image && <img src={item.cover_image} alt={item.title} className="w-full aspect-[4/3] object-cover" />}
                                     <span className="p-space-lg">
                                         <span className="block font-label-sm text-label-sm uppercase tracking-wider text-secondary">{item.category}</span>
                                         <span className="mt-space-xs block font-headline-sm text-headline-sm text-on-surface">{item.title}</span>

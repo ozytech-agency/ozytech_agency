@@ -1,5 +1,6 @@
-import { Head, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import SiteLayout from '@/Layouts/SiteLayout';
+import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 export default function ProjectWork({ slug, title, summary, client, testimonial, technologies, previews }) {
@@ -7,7 +8,7 @@ export default function ProjectWork({ slug, title, summary, client, testimonial,
 
     return (
         <SiteLayout>
-            <Head title={`${title} | OzyTech`} />
+            <Seo title={`${title} | OzyTech`} description={summary} image={previews?.[0]?.src} />
 
             <section className="w-full bg-surface">
                 <div className="mx-[6%] max-w-[860px] pt-space-3xl pb-space-xl flex flex-col">

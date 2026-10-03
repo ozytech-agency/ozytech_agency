@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Offres | OzyTech',
+    'meta_description' => "Comparez nos forfaits d'ingénierie à périmètre fixe — Explorer, Construire et Évoluer — et trouvez le bon point de départ pour votre prochain projet logiciel.",
 
     'hero' => [
         'kicker' => 'Offres OzyTech',

@@ -1,9 +1,10 @@
-import { Head, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
 import CountUp from '@/Components/CountUp';
 import TechMarquee from '@/Components/TechMarquee';
+import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 const HERO_SLIDES = [
@@ -82,7 +83,7 @@ export default function Home() {
 
     return (
         <SiteLayout>
-            <Head title={t('home.title')} />
+            <Seo title={t('home.title')} description={t('home.meta_description')} />
 
             {/* 1. HERO */}
             <section className="relative w-full py-space-3xl lg:py-space-4xl overflow-hidden bg-surface isolate">
@@ -238,7 +239,7 @@ export default function Home() {
                                             <span className="material-symbols-outlined text-sm font-bold">check</span>
                                         </span>
                                         <div>
-                                            <h4 className="font-label-md text-label-md text-on-surface font-bold">{f.title}</h4>
+                                            <h3 className="font-label-md text-label-md text-on-surface font-bold">{f.title}</h3>
                                             <p className="font-body-sm text-body-sm text-on-surface-variant">{f.desc}</p>
                                         </div>
                                     </div>
@@ -298,7 +299,13 @@ export default function Home() {
                                 <div key={colIdx} className={`flex flex-col gap-space-xs ${colIdx === 1 ? 'sm:mt-space-2xl' : ''}`}>
                                     {[ABOUT_PHOTOS[startIdx], ABOUT_PHOTOS[startIdx + 1]].map((src, i) => (
                                         <div key={src} className={`${(colIdx + i) % 2 === 0 ? 'aspect-[3/4]' : 'aspect-square'} rounded-lg overflow-hidden shadow-sm bg-surface-container`}>
-                                            <img className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="" src={src} />
+                                            <img
+                                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                                alt=""
+                                                aria-hidden="true"
+                                                loading="lazy"
+                                                src={src}
+                                            />
                                         </div>
                                     ))}
                                 </div>
@@ -390,7 +397,7 @@ export default function Home() {
                                     <p className="font-body-md text-body-md text-on-surface-variant italic leading-relaxed">{t2.quote}</p>
                                 </div>
                                 <div className="flex items-center gap-space-sm pt-space-md mt-space-md border-t border-surface-container">
-                                    <img className="w-12 h-12 rounded-full object-cover" alt="" src={TESTIMONIAL_AVATARS[i]} />
+                                    <img className="w-12 h-12 rounded-full object-cover" alt={t2.name} loading="lazy" src={TESTIMONIAL_AVATARS[i]} />
                                     <div>
                                         <div className="font-label-md text-label-md font-bold text-on-surface">{t2.name}</div>
                                         <div className="font-body-sm text-body-sm text-outline text-xs">{t2.role}</div>
@@ -422,7 +429,7 @@ export default function Home() {
                             <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-space-md">
                                 <div className="bg-surface-container-lowest p-space-md rounded-xl shadow-xl flex flex-col gap-space-xs">
                                     <span className="font-label-sm text-label-sm text-on-tertiary-container uppercase">{t('home.solutions.card1_eyebrow')}</span>
-                                    <h4 className="font-headline-sm text-headline-sm font-bold text-on-surface">{t('home.solutions.card1_title')}</h4>
+                                    <h3 className="font-headline-sm text-headline-sm font-bold text-on-surface">{t('home.solutions.card1_title')}</h3>
                                     <p className="font-body-sm text-body-sm text-on-surface-variant">{t('home.solutions.card1_desc')}</p>
                                     <div className="mt-space-sm p-space-xs bg-surface-container rounded-md font-mono text-xs text-on-surface-variant">$ terraform apply --auto-approve</div>
                                 </div>
@@ -430,6 +437,8 @@ export default function Home() {
                                     <img
                                         className="w-full h-full object-cover"
                                         alt=""
+                                        aria-hidden="true"
+                                        loading="lazy"
                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWwBRzvLCHwNLjChZfRoWdG6onokqGcZGaPfbUvlAe_FMR8FvxfRDl27EkRZ2ngc9J-FUIcjgRAKhkkF6e0pES7p9pwNz_xXXB0ppY2RvWRj36pkoGwhkkG5z0sx4MODn80ahromdqudOtYF9c3kfpZyr0aLVu_a1VpBEwfZJrm8PgLfdgks8u5YRlk8XCVlQUm0wXkw3_Q3eN2FqOf8X_fUUFKuBC3NlwImaT2oMxZMC4fPmVK7Kc"
                                     />
                                 </div>
@@ -437,13 +446,15 @@ export default function Home() {
                                     <img
                                         className="w-full h-full object-cover"
                                         alt=""
+                                        aria-hidden="true"
+                                        loading="lazy"
                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmvPbOttNKM7IqRevu8N3kykN1ZO0aXeuRdXC2tkC-BbgAdFJWdoGSkgRxqGd9hu41Crld3QK0hH1mfOysWv-tG3nJATPnKzMF3V7Uf_eZyTgXCzwiewB_SG7yyTeYwofxaAY4K5jm8MSu98w96dE_EDVO0HmPWTgScEeDC7ad5FpwYf_ZOGplvGYdIYcW2tHmUoKRlK7dxzeZ0JN2c-tS9f9OTY1LlRPdTTtVPZ_MZKx-EY2KE5QA"
                                     />
                                 </div>
                                 <div className="bg-surface-container-lowest p-space-md rounded-xl shadow-xl flex flex-col justify-between">
                                     <div>
                                         <span className="font-label-sm text-label-sm text-secondary-container uppercase">{t('home.solutions.card4_eyebrow')}</span>
-                                        <h4 className="font-headline-sm text-headline-sm font-bold text-on-surface mt-1">{t('home.solutions.card4_title')}</h4>
+                                        <h3 className="font-headline-sm text-headline-sm font-bold text-on-surface mt-1">{t('home.solutions.card4_title')}</h3>
                                         <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">{t('home.solutions.card4_desc')}</p>
                                     </div>
                                     <div className="flex items-center gap-space-xs text-xs font-mono text-outline">

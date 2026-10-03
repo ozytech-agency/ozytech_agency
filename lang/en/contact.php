@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Contact OzyTech',
+    'meta_description' => "Get in touch with OzyTech's engineering team to start a conversation about your next software, cloud, or AI project.",
 
     'hero' => [
         'eyebrow' => 'Get in touch',

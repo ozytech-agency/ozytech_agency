@@ -1,6 +1,7 @@
-import { Head, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
+import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 const PRINCIPLE_ICONS = ['architecture', 'forum', 'trending_up'];
@@ -30,7 +31,7 @@ export default function About({ teamMembers }) {
 
     return (
         <SiteLayout>
-            <Head title={t('about.title')} />
+            <Seo title={t('about.title')} description={t('about.hero.description')} />
 
             <section className="relative w-full overflow-hidden py-space-4xl isolate">
                 <div className="absolute inset-0 -z-20">
@@ -38,6 +39,7 @@ export default function About({ teamMembers }) {
                         src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2200&q=85"
                         alt=""
                         aria-hidden="true"
+                        fetchpriority="high"
                         className="h-full w-full object-cover"
                     />
                 </div>
@@ -84,6 +86,7 @@ export default function About({ teamMembers }) {
                         <img
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkJPdW8obQp1iA3g-wc5kBgMH7qk_IcokPWD0MjBfqm4V1CKxmKh9bV_rHZccMDPGOIsXgWX9C8JcXwMwAc2fuXXXz1BW9VeXqhKZ8HRHXJrA1EOCdLYBJ10S5K4gbPK6RqmPq6pjmVaBIIGLiY9XV57wE8vmtwOKivhI5D2wbfZ1AWBVU23HqnnPfqZchXyMLMrY1Sa2Zaq675rpx1XGOkgtF37kdBRKS6UFHX0MSn3Z4yFrGZE9c"
                             alt="Senior architect working at a dual-monitor workstation"
+                            loading="lazy"
                             className="w-full aspect-[4/3] object-cover"
                         />
                     </div>
@@ -189,6 +192,7 @@ export default function About({ teamMembers }) {
                         src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2200&q=80"
                         alt=""
                         aria-hidden="true"
+                        loading="lazy"
                         className="h-full w-full object-cover"
                     />
                 </div>
