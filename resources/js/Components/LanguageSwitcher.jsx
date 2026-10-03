@@ -62,7 +62,7 @@ export default function LanguageSwitcher() {
                             }`}
                         >
                             <span className="inline-flex items-center justify-center w-7 h-5 shrink-0 rounded-[4px] overflow-hidden border border-outline-variant/40">
-                                <img src={`https://flagcdn.com/${l.flag}.svg`} alt="" className="w-full h-full object-cover" />
+                                <img src={`https://flagcdn.com/${l.flag}.svg`} alt="" aria-hidden="true" className="w-full h-full object-cover" />
                             </span>
                             <span className={`text-on-surface ${l.code === 'ar' ? 'font-tajawal' : ''}`}>{l.label}</span>
                             <svg

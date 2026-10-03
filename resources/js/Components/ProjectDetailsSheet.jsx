@@ -58,7 +58,7 @@ export default function ProjectDetailsSheet({ show, onClose, project }) {
                                     </div>
 
                                     <div className="flex items-center gap-space-sm rounded-2xl border border-secondary-container/30 bg-secondary-container/10 p-space-lg">
-                                        <img src={project.client.avatar} alt="" className="h-14 w-14 shrink-0 rounded-full object-cover" />
+                                        <img src={project.client.avatar} alt={project.client.name} className="h-14 w-14 shrink-0 rounded-full object-cover" />
                                         <div>
                                             <p className="font-headline-sm text-base font-bold text-on-surface">{project.client.name}</p>
                                             <p className="text-sm text-on-surface-variant">{project.client.company}</p>
@@ -111,7 +111,7 @@ export default function ProjectDetailsSheet({ show, onClose, project }) {
                                             </div>
                                             <p className="font-headline-sm text-lg text-on-surface leading-relaxed">&ldquo;{project.testimonial}&rdquo;</p>
                                             <footer className="mt-space-md flex items-center gap-space-sm">
-                                                <img src={project.client.avatar} alt="" className="h-10 w-10 shrink-0 rounded-full object-cover" />
+                                                <img src={project.client.avatar} alt={project.client.name} className="h-10 w-10 shrink-0 rounded-full object-cover" />
                                                 <div>
                                                     <p className="text-sm font-bold text-on-surface">{project.client.name}</p>
                                                     <p className="text-sm text-on-surface-variant">
