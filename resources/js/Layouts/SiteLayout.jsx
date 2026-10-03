@@ -9,7 +9,7 @@ export default function SiteLayout({ children }) {
     const organizationJsonLd = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
-        name: 'OzyTech',
+        name: 'Ozytech Agency',
         url: appUrl,
         logo: `${appUrl}/images/logo.png`,
         sameAs: ['https://github.com/ozytech-agency', 'https://www.instagram.com/ozyteckagency/'],

@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="public/images/logo.png" alt="OzyTech" width="236">
+  <img src="public/images/logo.png" alt="Ozytech Agency" width="118">
 </p>
 
-> A localized, Inertia-driven marketing and client-portal site for OzyTech, a software engineering agency. Built on Laravel 13 + React 18, rendered through Inertia.js with no separate REST/JSON API layer.
+> A localized, Inertia-driven marketing and client-portal site for Ozytech Agency, a software engineering agency. Built on Laravel 13 + React 18, rendered through Inertia.js with no separate REST/JSON API layer.
 
 ![PHP](https://img.shields.io/badge/PHP-8.3%2B-777bb4?logo=php&logoColor=white)
 ![Laravel](https://img.shields.io/badge/Laravel-13-ff2d20?logo=laravel&logoColor=white)
@@ -33,7 +33,7 @@
 
 ## Overview
 
-OzyTech's site is a single Laravel application that serves both the public marketing site (Home, About, Services, Packages, Blog, FAQ, Contact, Start a Project) and an authenticated client area (Dashboard, Profile) — all through **one monolithic Inertia stack**, no separate frontend/backend deployment or JSON API to maintain.
+Ozytech Agency's site is a single Laravel application that serves both the public marketing site (Home, About, Services, Packages, Blog, FAQ, Contact, Start a Project) and an authenticated client area (Dashboard, Profile) — all through **one monolithic Inertia stack**, no separate frontend/backend deployment or JSON API to maintain.
 
 Every page is a **React component rendered server-side per request** via Inertia — the server decides which component to render and what props/translations to hand it; React only takes over in the browser for interactivity and client-side navigation between pages.
 

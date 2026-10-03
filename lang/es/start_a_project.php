@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'title' => 'Contacta a OzyTech — Inicia un proyecto, alianza o conversación de soporte',
-    'meta_description' => 'Cuéntale a OzyTech sobre tu proyecto y te conectaremos con el equipo y el paquete adecuados.',
+    'title' => 'Contacta a Ozytech Agency — Inicia un proyecto, alianza o conversación de soporte',
+    'meta_description' => 'Cuéntale a Ozytech Agency sobre tu proyecto y te conectaremos con el equipo y el paquete adecuados.',
 
     'hero' => [
         'badge' => 'Respondemos en horas, no en semanas',
@@ -60,7 +60,7 @@ return [
         'referral' => '¿Cómo te enteraste de nosotros?',
         'referral_options' => ['Referido / boca a boca', 'Motor de búsqueda', 'LinkedIn', 'GitHub / código abierto', 'Conferencia o evento', 'Nuestros artículos / newsletter', 'Cliente existente', 'Otro'],
         'nda_consent' => 'Por favor envía un NDA mutuo antes de nuestra primera llamada.',
-        'consent' => 'Acepto que OzyTech procese mis datos para responder a esta consulta, conforme a la',
+        'consent' => 'Acepto que Ozytech Agency procese mis datos para responder a esta consulta, conforme a la',
         'privacy_policy_link' => 'Política de privacidad',
         'submit' => 'Iniciar un proyecto',
         'privacy_note_prefix' => 'Nunca compartimos tu información. Respuesta habitual:',

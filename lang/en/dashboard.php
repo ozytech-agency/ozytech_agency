@@ -7,7 +7,7 @@ return [
     'hero' => [
         'eyebrow' => 'Client workspace',
         'title' => 'Welcome back, :name.',
-        'subtitle' => "Everything for your OzyTech engagement lives here — delivery updates, direct access to your team, and every contract you've signed with us.",
+        'subtitle' => "Everything for your Ozytech Agency engagement lives here — delivery updates, direct access to your team, and every contract you've signed with us.",
     ],
 
     'workspace' => [

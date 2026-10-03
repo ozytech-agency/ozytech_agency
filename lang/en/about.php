@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'title' => 'About OzyTech | Engineering the Work Behind the Next',
+    'title' => 'About Ozytech Agency | Engineering the Work Behind the Next',
 
     'hero' => [
         'eyebrow' => 'The people behind the systems',
         'title' => 'Built for the work that matters.',
-        'description' => 'OzyTech is a global engineering guild for ambitious teams. We bring principal-level thinking, careful craft, and practical momentum to the software that moves your business forward.',
+        'description' => 'Ozytech Agency is a global engineering guild for ambitious teams. We bring principal-level thinking, careful craft, and practical momentum to the software that moves your business forward.',
         'cta_primary' => 'Start your project',
         'cta_secondary' => 'Our principles',
         'stat_number' => '01',

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'OzyTech Blog | Engineering Notes for Ambitious Teams',
+    'title' => 'Ozytech Agency Blog | Engineering Notes for Ambitious Teams',
 
     'hero' => [
         'badge' => 'Engineering notes',

@@ -8,7 +8,7 @@ export default function ProjectWork({ slug, title, summary, client, testimonial,
 
     return (
         <SiteLayout>
-            <Seo title={`${title} | OzyTech`} description={summary} image={previews?.[0]?.src} />
+            <Seo title={`${title} | Ozytech Agency`} description={summary} image={previews?.[0]?.src} />
 
             <section className="w-full bg-surface">
                 <div className="mx-[6%] max-w-[860px] pt-space-3xl pb-space-xl flex flex-col">

@@ -74,7 +74,7 @@ export default function TechMarquee() {
     }, []);
 
     return (
-        <section className="border-y border-surface-container bg-surface py-space-xl" aria-label="Technologies OzyTech works with">
+        <section className="border-y border-surface-container bg-surface py-space-xl" aria-label="Technologies Ozytech Agency works with">
             <div className="flex justify-center px-gutter-mobile lg:px-gutter-desktop mb-[40px]">
                 <span className="inline-flex items-center gap-space-xs rounded-full bg-surface-container-high px-space-md py-space-2xs font-label-sm text-label-sm uppercase tracking-widest text-secondary-container shadow-sm">
                     <span className="h-2 w-2 rounded-full bg-accent2 animate-pulse" aria-hidden="true"></span> {t('home.tech_marquee.badge')}

@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'title' => 'Preguntas frecuentes | OzyTech Agency',
-    'meta_description' => 'Respuestas a preguntas frecuentes sobre trabajar con OzyTech: precios, plazos, modelos de colaboración y cómo funciona nuestro equipo de ingeniería.',
+    'title' => 'Preguntas frecuentes | Ozytech Agency',
+    'meta_description' => 'Respuestas a preguntas frecuentes sobre trabajar con Ozytech Agency: precios, plazos, modelos de colaboración y cómo funciona nuestro equipo de ingeniería.',
 
     'hero' => [
         'eyebrow' => 'Preguntas frecuentes',

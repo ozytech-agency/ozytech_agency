@@ -167,16 +167,16 @@ class ContentSeeder extends Seeder
         [
             'name' => 'Oussama Driouech',
             'role' => [
-                'en' => 'OzyTech Co-Founder & Full-Stack Developer',
+                'en' => 'Ozytech Agency Co-Founder & Full-Stack Developer',
                 'ar' => 'شريك مؤسس في أوزي تك ومطور Full-Stack',
-                'fr' => "Cofondateur d'OzyTech et développeur Full-Stack",
-                'es' => 'Cofundador de OzyTech y desarrollador Full-Stack',
+                'fr' => "Cofondateur d'Ozytech Agency et développeur Full-Stack",
+                'es' => 'Cofundador de Ozytech Agency y desarrollador Full-Stack',
             ],
             'focus' => [
-                'en' => 'Full-stack architecture and product engineering across every OzyTech launch.',
+                'en' => 'Full-stack architecture and product engineering across every Ozytech Agency launch.',
                 'ar' => 'معمارية متكاملة وهندسة منتج عبر كل إطلاق لدى أوزي تك.',
-                'fr' => 'Architecture full-stack et ingénierie produit sur chaque lancement OzyTech.',
-                'es' => 'Arquitectura full-stack e ingeniería de producto en cada lanzamiento de OzyTech.',
+                'fr' => 'Architecture full-stack et ingénierie produit sur chaque lancement Ozytech Agency.',
+                'es' => 'Arquitectura full-stack e ingeniería de producto en cada lanzamiento de Ozytech Agency.',
             ],
             'socials' => [
                 'x_url' => 'https://x.com/oussamadriouech',
@@ -188,10 +188,10 @@ class ContentSeeder extends Seeder
         [
             'name' => 'Zakariae Hallaji',
             'role' => [
-                'en' => 'Mobile Application Developer & OzyTech Co-Founder',
+                'en' => 'Mobile Application Developer & Ozytech Agency Co-Founder',
                 'ar' => 'مطور تطبيقات الجوال وشريك مؤسس في أوزي تك',
-                'fr' => "Développeur d'applications mobiles et cofondateur d'OzyTech",
-                'es' => 'Desarrollador de aplicaciones móviles y cofundador de OzyTech',
+                'fr' => "Développeur d'applications mobiles et cofondateur d'Ozytech Agency",
+                'es' => 'Desarrollador de aplicaciones móviles y cofundador de Ozytech Agency',
             ],
             'focus' => [
                 'en' => 'Native mobile experiences and app architecture across iOS and Android.',

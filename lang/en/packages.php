@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'title' => 'Packages | OzyTech',
+    'title' => 'Packages | Ozytech Agency',
     'meta_description' => 'Compare fixed-scope engineering packages — Explore, Build, and Scale — and find the right starting point for your next software project.',
 
     'hero' => [
-        'kicker' => 'OzyTech Packages',
+        'kicker' => 'Ozytech Agency Packages',
         'title' => 'Choose the right starting point.',
         'lead' => 'Focused engagements for teams that want clear momentum without unnecessary ceremony.',
     ],

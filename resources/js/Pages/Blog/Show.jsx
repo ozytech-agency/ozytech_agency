@@ -30,12 +30,12 @@ export default function BlogShow({ post, related }) {
         description: post.excerpt,
         image: post.cover_image,
         datePublished: post.published_at,
-        author: post.author ? { '@type': 'Person', name: post.author } : { '@type': 'Organization', name: 'OzyTech' },
+        author: post.author ? { '@type': 'Person', name: post.author } : { '@type': 'Organization', name: 'Ozytech Agency' },
     };
 
     return (
         <SiteLayout>
-            <Seo title={`${post.title} | OzyTech`} description={post.excerpt} image={post.cover_image} jsonLd={articleJsonLd} />
+            <Seo title={`${post.title} | Ozytech Agency`} description={post.excerpt} image={post.cover_image} jsonLd={articleJsonLd} />
 
             <article className="w-full bg-surface">
                 <header className="mx-[6%] max-w-[760px] pt-space-3xl lg:mx-auto">

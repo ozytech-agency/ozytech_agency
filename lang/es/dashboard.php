@@ -7,7 +7,7 @@ return [
     'hero' => [
         'eyebrow' => 'Espacio del cliente',
         'title' => 'Bienvenido de nuevo, :name.',
-        'subtitle' => 'Todo lo relacionado con tu proyecto con OzyTech está aquí — actualizaciones de entrega, acceso directo a tu equipo y cada contrato que has firmado con nosotros.',
+        'subtitle' => 'Todo lo relacionado con tu proyecto con Ozytech Agency está aquí — actualizaciones de entrega, acceso directo a tu equipo y cada contrato que has firmado con nosotros.',
     ],
 
     'workspace' => [

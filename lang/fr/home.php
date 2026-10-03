@@ -80,7 +80,7 @@ return [
         'title_prefix' => 'Une',
         'title_highlight' => 'équipe tout-en-un',
         'title_suffix' => 'qui accélère la livraison',
-        'subtitle' => "Cessez de jongler avec des freelances dispersés et des agences bureaucratiques. OzyTech opère comme votre équipe d'ingénierie principale intégrée, de la conception au déploiement en entreprise.",
+        'subtitle' => "Cessez de jongler avec des freelances dispersés et des agences bureaucratiques. Ozytech Agency opère comme votre équipe d'ingénierie principale intégrée, de la conception au déploiement en entreprise.",
         'features' => [
             ['title' => 'Sprints agiles à haute fréquence', 'desc' => 'Intégration continue automatisée avec du code en production livré tous les 10 jours ouvrés.'],
             ['title' => 'Architectes principaux dédiés', 'desc' => "Binôme direct avec des experts en ingénierie ayant fait évoluer des systèmes vers des millions d'utilisateurs."],
@@ -118,9 +118,9 @@ return [
         'prev' => 'Témoignage précédent',
         'next' => 'Témoignage suivant',
         'items' => [
-            ['quote' => '« OzyTech a reconstruit notre moteur de traitement des transactions en moins de 90 jours. Notre latence a chuté de 68 % et nous avons géré le volume du Black Friday sans aucune interruption. »', 'name' => 'Elena Rostova', 'role' => 'CTO chez FinScale Global'],
+            ['quote' => '« Ozytech Agency a reconstruit notre moteur de traitement des transactions en moins de 90 jours. Notre latence a chuté de 68 % et nous avons géré le volume du Black Friday sans aucune interruption. »', 'name' => 'Elena Rostova', 'role' => 'CTO chez FinScale Global'],
             ['quote' => "« Leur équipe IA n'a pas simplement enveloppé les API OpenAI ; ils ont construit des modèles affinés sur mesure avec des embeddings localisés qui ont réduit de moitié nos coûts de calcul cloud. »", 'name' => 'Marcus Thorne', 'role' => 'Fondateur & PDG, PulseAI'],
-            ['quote' => "« La vélocité d'ingénierie est un euphémisme. OzyTech opère avec une discipline chirurgicale. Nous avons réussi notre audit SOC2 Type II dès la première soumission. »", 'name' => 'Samantha Chen', 'role' => 'VP Produit, Vertex Systems'],
+            ['quote' => "« La vélocité d'ingénierie est un euphémisme. Ozytech Agency opère avec une discipline chirurgicale. Nous avons réussi notre audit SOC2 Type II dès la première soumission. »", 'name' => 'Samantha Chen', 'role' => 'VP Produit, Vertex Systems'],
         ],
     ],
 
@@ -128,7 +128,7 @@ return [
         'badge' => 'Capacités complètes',
         'title_prefix' => 'Toutes les',
         'title_highlight' => 'fonctionnalités critiques',
-        'subtitle' => "Cessez de jongler avec des freelances dispersés et des agences bureaucratiques. OzyTech opère comme votre équipe d'ingénierie principale intégrée, de la conception au déploiement en entreprise.",
+        'subtitle' => "Cessez de jongler avec des freelances dispersés et des agences bureaucratiques. Ozytech Agency opère comme votre équipe d'ingénierie principale intégrée, de la conception au déploiement en entreprise.",
         'cta' => 'Voir toutes les spécifications de service',
         'card1_eyebrow' => "NOTE D'ARCHITECTURE",
         'card1_title' => 'Migration cloud Zero-Trust',

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Blog OzyTech | Notes d\'ingénierie pour équipes ambitieuses',
+    'title' => 'Blog Ozytech Agency | Notes d\'ingénierie pour équipes ambitieuses',
 
     'hero' => [
         'badge' => "Notes d'ingénierie",

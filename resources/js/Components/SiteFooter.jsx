@@ -25,7 +25,7 @@ export default function SiteFooter() {
                     <div className="lg:col-span-3 flex flex-col gap-space-md">
                         <div className="w-fit">
                             <Link href={route('home')}>
-                                <img src="/images/logo.png" alt="OzyTech" className="h-7 w-auto brightness-0 invert" />
+                                <img src="/images/logo.png" alt="Ozytech Agency" className="h-7 w-auto brightness-0 invert" />
                             </Link>
                         </div>
                         <p className="font-body-sm text-body-sm text-outline-variant max-w-sm">{t('footer.about')}</p>
@@ -34,7 +34,7 @@ export default function SiteFooter() {
                                 target="_blank"
                                 rel="noreferrer"
                                 href="https://github.com/ozytech-agency"
-                                aria-label="OzyTech on GitHub"
+                                aria-label="Ozytech Agency on GitHub"
                                 className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors"
                             >
                                 <img src="/images/patterns/github.svg" alt="" aria-hidden="true" className="w-4 h-4 scale-[1.21]" />
@@ -43,22 +43,22 @@ export default function SiteFooter() {
                                 target="_blank"
                                 rel="noreferrer"
                                 href="https://www.instagram.com/ozyteckagency/"
-                                aria-label="OzyTech on Instagram"
+                                aria-label="Ozytech Agency on Instagram"
                                 className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors"
                             >
                                 <i className="fa-brands fa-instagram scale-[1.21]" aria-hidden="true"></i>
                             </a>
-                            <a href="#" aria-label="OzyTech on Facebook" className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors">
+                            <a href="#" aria-label="Ozytech Agency on Facebook" className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors">
                                 <i className="fa-brands fa-facebook scale-[1.21]" aria-hidden="true"></i>
                             </a>
-                            <a href="#" aria-label="OzyTech on TikTok" className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors">
+                            <a href="#" aria-label="Ozytech Agency on TikTok" className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors">
                                 <i className="fa-brands fa-tiktok scale-[1.21]" aria-hidden="true"></i>
                             </a>
                             <a
                                 target="_blank"
                                 rel="noreferrer"
                                 href="https://www.youtube.com/channel/UC7W51ZBkPRZkXjA3cxhD-wQ"
-                                aria-label="OzyTech on YouTube"
+                                aria-label="Ozytech Agency on YouTube"
                                 className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors"
                             >
                                 <i className="fa-brands fa-youtube scale-[1.21]" aria-hidden="true"></i>
@@ -172,7 +172,7 @@ export default function SiteFooter() {
                 <div className="pt-space-xl flex flex-col sm:flex-row items-center justify-between gap-space-md">
                     <p className="font-body-sm text-body-sm text-outline">{t('footer.copyright').replace(':year', new Date().getFullYear())}</p>
                     <p className="font-body-sm text-body-sm text-outline">
-                        {t('footer.powered_by')} <span className="px-1">OzyTech Agency Inc.</span>
+                        {t('footer.powered_by')} <span className="px-1">Ozytech Agency Inc.</span>
                     </p>
                 </div>
             </div>

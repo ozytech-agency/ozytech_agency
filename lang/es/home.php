@@ -80,7 +80,7 @@ return [
         'title_prefix' => 'Un',
         'title_highlight' => 'equipo todo en uno',
         'title_suffix' => 'que acelera la entrega',
-        'subtitle' => 'Deja de lidiar con freelancers dispersos y agencias burocráticas. OzyTech funciona como tu equipo de ingeniería principal integrado, desde el diseño conceptual hasta el lanzamiento empresarial.',
+        'subtitle' => 'Deja de lidiar con freelancers dispersos y agencias burocráticas. Ozytech Agency funciona como tu equipo de ingeniería principal integrado, desde el diseño conceptual hasta el lanzamiento empresarial.',
         'features' => [
             ['title' => 'Sprints ágiles de alta frecuencia', 'desc' => 'Integración continua automatizada con código en producción entregado cada 10 días hábiles.'],
             ['title' => 'Arquitectos principales dedicados', 'desc' => 'Colaboración directa con líderes de ingeniería expertos que han escalado sistemas a millones de usuarios.'],
@@ -118,9 +118,9 @@ return [
         'prev' => 'Testimonio anterior',
         'next' => 'Siguiente testimonio',
         'items' => [
-            ['quote' => '"OzyTech reconstruyó nuestro motor de procesamiento de transacciones en menos de 90 días. Nuestra latencia se redujo un 68% y gestionamos el volumen del Black Friday sin ninguna interrupción."', 'name' => 'Elena Rostova', 'role' => 'CTO en FinScale Global'],
+            ['quote' => '"Ozytech Agency reconstruyó nuestro motor de procesamiento de transacciones en menos de 90 días. Nuestra latencia se redujo un 68% y gestionamos el volumen del Black Friday sin ninguna interrupción."', 'name' => 'Elena Rostova', 'role' => 'CTO en FinScale Global'],
             ['quote' => '"Su equipo de IA no se limitó a envolver las APIs de OpenAI; construyeron modelos afinados a medida con embeddings localizados que redujeron a la mitad nuestros costos de cómputo en la nube."', 'name' => 'Marcus Thorne', 'role' => 'Fundador y CEO, PulseAI'],
-            ['quote' => '"La velocidad de ingeniería se queda corta. OzyTech opera con disciplina quirúrgica. Aprobamos nuestra auditoría SOC2 Tipo II en la primera presentación."', 'name' => 'Samantha Chen', 'role' => 'VP de Producto, Vertex Systems'],
+            ['quote' => '"La velocidad de ingeniería se queda corta. Ozytech Agency opera con disciplina quirúrgica. Aprobamos nuestra auditoría SOC2 Tipo II en la primera presentación."', 'name' => 'Samantha Chen', 'role' => 'VP de Producto, Vertex Systems'],
         ],
     ],
 
@@ -128,7 +128,7 @@ return [
         'badge' => 'Capacidades integrales',
         'title_prefix' => 'Todas las',
         'title_highlight' => 'funciones críticas',
-        'subtitle' => 'Deja de lidiar con freelancers dispersos y agencias burocráticas. OzyTech funciona como tu equipo de ingeniería principal integrado, desde el diseño conceptual hasta el lanzamiento empresarial.',
+        'subtitle' => 'Deja de lidiar con freelancers dispersos y agencias burocráticas. Ozytech Agency funciona como tu equipo de ingeniería principal integrado, desde el diseño conceptual hasta el lanzamiento empresarial.',
         'cta' => 'Ver todas las especificaciones de servicio',
         'card1_eyebrow' => 'RESUMEN DE ARQUITECTURA',
         'card1_title' => 'Migración a la nube Zero-Trust',

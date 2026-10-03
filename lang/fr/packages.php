@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'title' => 'Offres | OzyTech',
+    'title' => 'Offres | Ozytech Agency',
     'meta_description' => "Comparez nos forfaits d'ingénierie à périmètre fixe — Explorer, Construire et Évoluer — et trouvez le bon point de départ pour votre prochain projet logiciel.",
 
     'hero' => [
-        'kicker' => 'Offres OzyTech',
+        'kicker' => 'Offres Ozytech Agency',
         'title' => 'Choisissez le bon point de départ.',
         'lead' => 'Des missions ciblées pour les équipes qui veulent avancer clairement, sans cérémonie inutile.',
     ],

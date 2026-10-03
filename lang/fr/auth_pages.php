@@ -14,13 +14,13 @@ return [
         'submit' => 'Connexion',
         'divider_or' => 'OU',
         'continue_with_google' => 'Continuer avec Google',
-        'create_account_prompt' => 'Nouveau chez OzyTech ?',
+        'create_account_prompt' => 'Nouveau chez Ozytech Agency ?',
         'create_account_link' => 'Créer un compte',
     ],
 
     'register' => [
         'title' => 'Inscription',
-        'kicker' => 'Démarrer avec OzyTech',
+        'kicker' => 'Démarrer avec Ozytech Agency',
         'heading' => 'Créez votre compte',
         'subtitle' => 'Configurez votre accès à vos projets, mises à jour et espace client.',
         'name_label' => 'Nom complet',

@@ -1,3 +1,3 @@
 export default function ApplicationLogo(props) {
-    return <img src="/images/logo.png" alt="OzyTech" {...props} />;
+    return <img src="/images/logo.png" alt="Ozytech Agency" {...props} />;
 }

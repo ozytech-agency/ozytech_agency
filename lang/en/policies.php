@@ -6,7 +6,7 @@ return [
 
     'privacy-policy' => [
         'title' => 'Privacy Policy',
-        'subtitle' => 'A clear account of how we handle information when you visit our site or work with OzyTech.',
+        'subtitle' => 'A clear account of how we handle information when you visit our site or work with Ozytech Agency.',
         'sections' => [
             ['heading' => 'Information we collect', 'body' => 'We may receive information you submit through an inquiry, consultation request, newsletter form, or support conversation. This can include your name, work email, company details, project context, and the contents of your message. We also receive limited technical information such as browser type, device information, and pages visited.'],
             ['heading' => 'How we use information', 'body' => 'We use information to respond to requests, scope and deliver services, provide support, send requested updates, improve our website, protect our systems, and meet legal or contractual obligations. We do not sell personal information.'],
@@ -18,13 +18,13 @@ return [
 
     'terms-of-service' => [
         'title' => 'Terms of Service',
-        'subtitle' => 'The working principles for clear, accountable, and effective engagements with OzyTech.',
+        'subtitle' => 'The working principles for clear, accountable, and effective engagements with Ozytech Agency.',
         'sections' => [
-            ['heading' => 'Working together', 'body' => 'These terms apply to services provided by OzyTech. A signed proposal, statement of work, or order form may add project-specific terms. If there is a conflict, the signed project document controls for that engagement.'],
+            ['heading' => 'Working together', 'body' => 'These terms apply to services provided by Ozytech Agency. A signed proposal, statement of work, or order form may add project-specific terms. If there is a conflict, the signed project document controls for that engagement.'],
             ['heading' => 'Scope and delivery', 'body' => 'We agree the scope, milestones, assumptions, responsibilities, and acceptance criteria before work begins. Changes to scope, timing, or dependencies should be documented so both teams can make informed decisions.'],
             ['heading' => 'Client responsibilities', 'body' => 'Clients provide timely access, feedback, decisions, content, and information reasonably needed for delivery. Delays caused by missing dependencies may affect milestones and estimates.'],
             ['heading' => 'Fees and payment', 'body' => 'Fees, payment dates, expenses, and taxes are defined in the applicable project document. Work may be paused when undisputed invoices remain overdue after reasonable notice.'],
-            ['heading' => 'Intellectual property and confidentiality', 'body' => 'Each party keeps ownership of its pre-existing materials. Unless the project document says otherwise, clients receive the agreed deliverables after payment, while OzyTech may retain general methods, skills, and reusable know-how. Both parties should protect confidential information shared during the engagement.'],
+            ['heading' => 'Intellectual property and confidentiality', 'body' => 'Each party keeps ownership of its pre-existing materials. Unless the project document says otherwise, clients receive the agreed deliverables after payment, while Ozytech Agency may retain general methods, skills, and reusable know-how. Both parties should protect confidential information shared during the engagement.'],
             ['heading' => 'Contact', 'body' => 'For questions about an engagement, contact contact@ozy-tech.com. These terms may be updated as our services or legal requirements evolve.'],
         ],
     ],

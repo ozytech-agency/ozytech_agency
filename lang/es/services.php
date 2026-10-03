@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'kicker' => 'Servicios de OzyTech',
+    'kicker' => 'Servicios de Ozytech Agency',
     'cta' => 'Habla de tu proyecto',
 
     'details' => [

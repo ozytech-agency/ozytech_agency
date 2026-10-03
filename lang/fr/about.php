@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'title' => "À propos d'OzyTech | L'ingénierie derrière la suite",
+    'title' => "À propos d'Ozytech Agency | L'ingénierie derrière la suite",
 
     'hero' => [
         'eyebrow' => 'Les personnes derrière les systèmes',
         'title' => 'Conçus pour le travail qui compte.',
-        'description' => "OzyTech est une guilde d'ingénierie mondiale pour les équipes ambitieuses. Nous apportons une réflexion de niveau principal, un savoir-faire rigoureux et une dynamique concrète aux logiciels qui font avancer votre entreprise.",
+        'description' => "Ozytech Agency est une guilde d'ingénierie mondiale pour les équipes ambitieuses. Nous apportons une réflexion de niveau principal, un savoir-faire rigoureux et une dynamique concrète aux logiciels qui font avancer votre entreprise.",
         'cta_primary' => 'Démarrez votre projet',
         'cta_secondary' => 'Nos principes',
         'stat_number' => '01',

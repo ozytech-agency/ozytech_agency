@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'title' => 'Contact OzyTech — Start a Project, Partnership or Support Conversation',
-    'meta_description' => 'Tell OzyTech about your project and get matched with the right engineering team and package.',
+    'title' => 'Contact Ozytech Agency — Start a Project, Partnership or Support Conversation',
+    'meta_description' => 'Tell Ozytech Agency about your project and get matched with the right engineering team and package.',
 
     'hero' => [
         'badge' => 'We reply in hours, not weeks',
@@ -60,7 +60,7 @@ return [
         'referral' => 'How did you hear about us?',
         'referral_options' => ['Referral / word of mouth', 'Search engine', 'LinkedIn', 'GitHub / open source', 'Conference or event', 'Our writing / newsletter', 'Existing client', 'Other'],
         'nda_consent' => 'Please send a mutual NDA before our first call.',
-        'consent' => 'I agree to OzyTech processing my details to respond to this enquiry, per the',
+        'consent' => 'I agree to Ozytech Agency processing my details to respond to this enquiry, per the',
         'privacy_policy_link' => 'Privacy Policy',
         'submit' => 'Start a Project',
         'privacy_note_prefix' => 'We never share your information. Typical reply:',

@@ -6,7 +6,7 @@ return [
 
     'privacy-policy' => [
         'title' => 'Política de privacidad',
-        'subtitle' => 'Una explicación clara de cómo manejamos la información cuando visitas nuestro sitio o trabajas con OzyTech.',
+        'subtitle' => 'Una explicación clara de cómo manejamos la información cuando visitas nuestro sitio o trabajas con Ozytech Agency.',
         'sections' => [
             ['heading' => 'Información que recopilamos', 'body' => 'Podemos recibir información que envíes a través de una consulta, solicitud de asesoría, formulario de newsletter o conversación de soporte. Esto puede incluir tu nombre, correo profesional, datos de la empresa, contexto del proyecto y el contenido de tu mensaje. También recibimos información técnica limitada como el tipo de navegador, información del dispositivo y las páginas visitadas.'],
             ['heading' => 'Cómo usamos la información', 'body' => 'Usamos la información para responder solicitudes, definir y entregar servicios, brindar soporte, enviar actualizaciones solicitadas, mejorar nuestro sitio, proteger nuestros sistemas y cumplir con obligaciones legales o contractuales. No vendemos información personal.'],
@@ -18,13 +18,13 @@ return [
 
     'terms-of-service' => [
         'title' => 'Términos de servicio',
-        'subtitle' => 'Los principios de trabajo para colaboraciones claras, responsables y efectivas con OzyTech.',
+        'subtitle' => 'Los principios de trabajo para colaboraciones claras, responsables y efectivas con Ozytech Agency.',
         'sections' => [
-            ['heading' => 'Trabajando juntos', 'body' => 'Estos términos se aplican a los servicios prestados por OzyTech. Una propuesta firmada, un alcance de trabajo o una orden de compra pueden agregar términos específicos del proyecto. En caso de conflicto, el documento de proyecto firmado prevalece para ese proyecto.'],
+            ['heading' => 'Trabajando juntos', 'body' => 'Estos términos se aplican a los servicios prestados por Ozytech Agency. Una propuesta firmada, un alcance de trabajo o una orden de compra pueden agregar términos específicos del proyecto. En caso de conflicto, el documento de proyecto firmado prevalece para ese proyecto.'],
             ['heading' => 'Alcance y entrega', 'body' => 'Acordamos el alcance, los hitos, las suposiciones, las responsabilidades y los criterios de aceptación antes de comenzar el trabajo. Los cambios en el alcance, el cronograma o las dependencias deben documentarse para que ambos equipos puedan tomar decisiones informadas.'],
             ['heading' => 'Responsabilidades del cliente', 'body' => 'Los clientes brindan acceso oportuno, retroalimentación, decisiones, contenido e información razonablemente necesarios para la entrega. Los retrasos causados por dependencias faltantes pueden afectar los hitos y las estimaciones.'],
             ['heading' => 'Tarifas y pago', 'body' => 'Las tarifas, fechas de pago, gastos e impuestos se definen en el documento de proyecto aplicable. El trabajo puede pausarse cuando facturas no disputadas permanezcan vencidas tras un aviso razonable.'],
-            ['heading' => 'Propiedad intelectual y confidencialidad', 'body' => 'Cada parte conserva la propiedad de sus materiales preexistentes. A menos que el documento de proyecto indique lo contrario, los clientes reciben los entregables acordados después del pago, mientras que OzyTech puede conservar métodos generales, habilidades y conocimientos reutilizables. Ambas partes deben proteger la información confidencial compartida durante el proyecto.'],
+            ['heading' => 'Propiedad intelectual y confidencialidad', 'body' => 'Cada parte conserva la propiedad de sus materiales preexistentes. A menos que el documento de proyecto indique lo contrario, los clientes reciben los entregables acordados después del pago, mientras que Ozytech Agency puede conservar métodos generales, habilidades y conocimientos reutilizables. Ambas partes deben proteger la información confidencial compartida durante el proyecto.'],
             ['heading' => 'Contacto', 'body' => 'Para preguntas sobre un proyecto, contacta a contact@ozy-tech.com. Estos términos pueden actualizarse a medida que evolucionen nuestros servicios o requisitos legales.'],
         ],
     ],

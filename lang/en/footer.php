@@ -15,7 +15,7 @@ return [
     ],
     'company_heading' => 'Company',
     'company' => [
-        'about' => 'About OzyTech',
+        'about' => 'About Ozytech Agency',
     ],
     'support_heading' => 'Support',
     'support' => [
@@ -34,6 +34,6 @@ return [
         'success' => 'Thanks — check your inbox to confirm your subscription.',
         'invalid' => 'Please enter a valid work email address.',
     ],
-    'copyright' => ':year OzyTech Agency Inc. All rights reserved.',
+    'copyright' => ':year Ozytech Agency Inc. All rights reserved.',
     'powered_by' => 'Powered by',
 ];

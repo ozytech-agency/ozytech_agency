@@ -80,7 +80,7 @@ return [
         'title_prefix' => 'An',
         'title_highlight' => 'all-in-one squad',
         'title_suffix' => 'that accelerates delivery',
-        'subtitle' => 'Stop juggling fragmented freelancers and bureaucratic agencies. OzyTech operates as your embedded Principal Engineering pod from concept design to enterprise release.',
+        'subtitle' => 'Stop juggling fragmented freelancers and bureaucratic agencies. Ozytech Agency operates as your embedded Principal Engineering pod from concept design to enterprise release.',
         'features' => [
             ['title' => 'Agile High-Frequency Sprints', 'desc' => 'Continuous automated integration with production code shipped every 10 working days.'],
             ['title' => 'Dedicated Principal Architects', 'desc' => 'Direct pairing with elite engineering leads who have scaled systems to millions of users.'],
@@ -118,9 +118,9 @@ return [
         'prev' => 'Previous Testimonial',
         'next' => 'Next Testimonial',
         'items' => [
-            ['quote' => '"OzyTech rebuilt our core transaction processing engine in under 90 days. Our latency dropped by 68% and we handled Black Friday volume with zero downtime."', 'name' => 'Elena Rostova', 'role' => 'CTO at FinScale Global'],
+            ['quote' => '"Ozytech Agency rebuilt our core transaction processing engine in under 90 days. Our latency dropped by 68% and we handled Black Friday volume with zero downtime."', 'name' => 'Elena Rostova', 'role' => 'CTO at FinScale Global'],
             ['quote' => '"Their AI squad didn\'t just wrap OpenAI APIs; they built custom fine-tuned models with localized embeddings that cut our cloud compute costs by half."', 'name' => 'Marcus Thorne', 'role' => 'Founder & CEO, PulseAI'],
-            ['quote' => '"Engineering velocity is an understatement. OzyTech operates with surgical discipline. We passed our SOC2 Type II audit on our first submission."', 'name' => 'Samantha Chen', 'role' => 'VP Product, Vertex Systems'],
+            ['quote' => '"Engineering velocity is an understatement. Ozytech Agency operates with surgical discipline. We passed our SOC2 Type II audit on our first submission."', 'name' => 'Samantha Chen', 'role' => 'VP Product, Vertex Systems'],
         ],
     ],
 
@@ -128,7 +128,7 @@ return [
         'badge' => 'Comprehensive Capabilities',
         'title_prefix' => 'All the mission-critical',
         'title_highlight' => 'features',
-        'subtitle' => 'Stop juggling fragmented freelancers and bureaucratic agencies. OzyTech operates as your embedded Principal Engineering pod from concept design to enterprise release.',
+        'subtitle' => 'Stop juggling fragmented freelancers and bureaucratic agencies. Ozytech Agency operates as your embedded Principal Engineering pod from concept design to enterprise release.',
         'cta' => 'View all service specifications',
         'card1_eyebrow' => 'ARCHITECTURE BRIEF',
         'card1_title' => 'Zero-Trust Cloud Migration',
