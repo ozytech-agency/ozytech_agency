@@ -8,29 +8,9 @@ return [
         'badge' => 'We reply in hours, not weeks',
         'title' => "Let's scope the system you actually need",
         'subtitle' => "Tell us where you are and where you're heading. Your message is routed straight to a principal engineer — not a generic inbox — who can talk architecture, timelines and budget on the first call.",
-        'cta_primary' => 'Start your inquiry',
-        'cta_secondary' => 'Book a 30-min call',
-        'stats' => [
-            ['label' => 'Median first reply', 'value' => '< 4 hrs'],
-            ['label' => 'Global offices', 'value' => '6 regions'],
-            ['label' => 'Before discovery', 'value' => 'Mutual NDA'],
-            ['label' => 'Security posture', 'value' => 'SOC2 II'],
-        ],
+        'cta_primary' => 'Contact us',
     ],
 
-    'routing' => [
-        'kicker' => 'Pick a lane',
-        'title' => 'Route your message to the right team',
-        'subtitle' => 'Choose the closest match. It pre-fills the form below and sends your inquiry to the correct principal, with the right SLA.',
-        'items' => [
-            ['title' => 'New project', 'desc' => 'Product builds, platform re-architecture, AI systems, cloud migration. Scoping call within 2 business days.', 'cta' => 'Brief the team'],
-            ['title' => 'Partnerships', 'desc' => 'Technology alliances, referral & agency partnerships, co-selling, integration partners.', 'cta' => 'Propose a partnership'],
-            ['title' => 'Client support', 'desc' => 'Existing engagement, retainer request, or a production incident. Incidents: 15-min acknowledgement.', 'cta' => 'Open a support thread'],
-            ['title' => 'Careers', 'desc' => 'Join the guild — principal engineers, architects, designers and delivery leads across our regions.', 'cta' => 'Introduce yourself'],
-            ['title' => 'Press & media', 'desc' => 'Interviews, expert commentary, speaking, and brand assets. Same-day response for deadlines.', 'cta' => 'Request an interview'],
-            ['title' => 'Something else', 'desc' => "Vendor, invoicing, procurement, or a question that doesn't fit a box. We'll route it internally.", 'cta' => 'Send a note'],
-        ],
-    ],
 
     'form' => [
         'title' => 'Send us the details',
@@ -86,9 +66,8 @@ return [
     'sidebar' => [
         'schedule' => [
             'title' => 'Prefer to talk it through?',
-            'desc' => 'Grab 30 minutes with a principal engineer. No sales script — a working session on your architecture, scope and timeline.',
-            'cta' => 'Book a call',
-            'slots_note' => 'Slots in GMT, GMT−5 and GMT+8. Same-week availability most weeks.',
+            'desc' => 'Message us directly on WhatsApp. No sales script — just a real conversation about your project, scope and timeline.',
+            'cta' => 'Contact us on WhatsApp',
         ],
         'channels' => [
             'title' => 'Direct channels',

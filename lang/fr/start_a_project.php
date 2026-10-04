@@ -8,29 +8,9 @@ return [
         'badge' => 'Nous répondons en heures, pas en semaines',
         'title' => 'Définissons ensemble le système dont vous avez vraiment besoin',
         'subtitle' => 'Dites-nous où vous en êtes et où vous allez. Votre message est directement transmis à un ingénieur principal — pas à une boîte de réception générique — capable de parler architecture, délais et budget dès le premier appel.',
-        'cta_primary' => 'Démarrer votre demande',
-        'cta_secondary' => 'Réserver un appel de 30 min',
-        'stats' => [
-            ['label' => 'Délai médian de première réponse', 'value' => '< 4 h'],
-            ['label' => 'Bureaux dans le monde', 'value' => '6 régions'],
-            ['label' => 'Avant la découverte', 'value' => 'NDA mutuel'],
-            ['label' => 'Posture de sécurité', 'value' => 'SOC2 II'],
-        ],
+        'cta_primary' => 'Contactez-nous',
     ],
 
-    'routing' => [
-        'kicker' => 'Choisissez une voie',
-        'title' => 'Orientez votre message vers la bonne équipe',
-        'subtitle' => "Choisissez l'option la plus proche. Cela pré-remplit le formulaire ci-dessous et transmet votre demande au bon responsable, avec le bon niveau de service.",
-        'items' => [
-            ['title' => 'Nouveau projet', 'desc' => 'Créations de produits, refonte de plateforme, systèmes IA, migration cloud. Appel de cadrage sous 2 jours ouvrés.', 'cta' => "Briefer l'équipe"],
-            ['title' => 'Partenariats', 'desc' => "Alliances technologiques, partenariats d'apport d'affaires et d'agences, co-vente, partenaires d'intégration.", 'cta' => 'Proposer un partenariat'],
-            ['title' => 'Support client', 'desc' => 'Mission en cours, demande de forfait de support, ou incident de production. Incidents : accusé de réception en 15 min.', 'cta' => 'Ouvrir un ticket de support'],
-            ['title' => 'Carrières', 'desc' => 'Rejoignez la guilde — ingénieurs principaux, architectes, designers et responsables de livraison dans toutes nos régions.', 'cta' => 'Présentez-vous'],
-            ['title' => 'Presse & médias', 'desc' => 'Interviews, commentaires d\'experts, interventions publiques et éléments de marque. Réponse le jour même pour les échéances.', 'cta' => 'Demander une interview'],
-            ['title' => 'Autre chose', 'desc' => 'Fournisseur, facturation, achats, ou une question qui ne rentre dans aucune case. Nous la transmettrons en interne.', 'cta' => 'Envoyer un message'],
-        ],
-    ],
 
     'form' => [
         'title' => 'Envoyez-nous les détails',
@@ -86,9 +66,8 @@ return [
     'sidebar' => [
         'schedule' => [
             'title' => 'Vous préférez en discuter directement ?',
-            'desc' => 'Réservez 30 minutes avec un ingénieur principal. Pas de discours commercial — une session de travail sur votre architecture, votre périmètre et vos délais.',
-            'cta' => 'Réserver un appel',
-            'slots_note' => 'Créneaux en GMT, GMT−5 et GMT+8. Disponibilité la même semaine la plupart du temps.',
+            'desc' => 'Écrivez-nous directement sur WhatsApp. Sans discours commercial — un vrai échange sur votre projet, votre périmètre et vos délais.',
+            'cta' => 'Contactez-nous sur WhatsApp',
         ],
         'channels' => [
             'title' => 'Canaux directs',

@@ -6,15 +6,6 @@ import PhoneNumberInput from '@/Components/PhoneNumberInput';
 import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
-const ROUTE_META = [
-    { key: 'new-project', icon: 'rocket_launch', color: 'text-secondary-container' },
-    { key: 'partnership', icon: 'handshake', color: 'text-secondary' },
-    { key: 'support', icon: 'support_agent', color: 'text-accent2' },
-    { key: 'careers', icon: 'badge', color: 'text-secondary-container' },
-    { key: 'press', icon: 'newspaper', color: 'text-secondary' },
-    { key: 'general', icon: 'chat_bubble', color: 'text-on-tertiary-container' },
-];
-
 const WHEN_MAP = {
     company: ['new-project', 'partnership', 'support', 'general'],
     workArea: ['new-project', 'partnership', 'support', 'general'],
@@ -71,18 +62,11 @@ export default function StartAProject() {
     const [submitted, setSubmitted] = useState(false);
     const formRef = useRef(null);
 
-    const routingItems = t('start_a_project.routing.items');
     const workAreaOptions = t('start_a_project.form.work_area_options');
     const referralOptions = t('start_a_project.form.referral_options');
     const nextSteps = t('start_a_project.sidebar.next_steps.steps');
 
     const showFor = (key) => !WHEN_MAP[key] || WHEN_MAP[key].includes(data.topic);
-
-    const selectRoute = (key) => {
-        setData('topic', key);
-        document.getElementById('inquiry-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setTimeout(() => document.getElementById('message')?.focus(), 400);
-    };
 
     const submit = (e) => {
         e.preventDefault();
@@ -134,54 +118,13 @@ export default function StartAProject() {
                         <h1 className="font-display-xl text-display-xl leading-[1.1] tracking-tight text-white/[92%]">{t('start_a_project.hero.title')}</h1>
                         <p className="font-body-lg text-body-lg text-white/80 max-w-2xl">{t('start_a_project.hero.subtitle')}</p>
                         <div className="flex flex-wrap gap-space-sm pt-space-xs">
-                            <a href="#inquiry-form" className="inline-flex items-center gap-space-xs bg-accent2 text-on-primary font-label-md text-label-md px-space-xl py-space-sm rounded-lg shadow-[0_12px_24px_-8px_rgba(233,87,71,0.45)] transition-all hover:-translate-y-0.5">
-                                {t('start_a_project.hero.cta_primary')} <span className="material-symbols-outlined text-base">arrow_downward</span>
-                            </a>
-                            <a href="#schedule" className="inline-flex items-center gap-space-xs px-space-lg py-space-sm bg-surface-container-lowest text-on-surface font-label-md text-label-md rounded-lg shadow-sm hover:shadow-md transition-all">
-                                <span className="material-symbols-outlined text-base text-secondary">videocam</span> {t('start_a_project.hero.cta_secondary')}
+                            <a href={route('contact')} className="inline-flex items-center gap-space-xs bg-accent2 text-on-primary font-label-md text-label-md px-space-xl py-space-sm rounded-lg shadow-[0_12px_24px_-8px_rgba(233,87,71,0.45)] transition-all hover:-translate-y-0.5">
+                                {t('start_a_project.hero.cta_primary')} <span className="material-symbols-outlined text-base">arrow_forward</span>
                             </a>
                         </div>
-                        <dl className="grid grid-cols-2 sm:grid-cols-4 gap-space-md w-full pt-space-lg border-t border-white/15 mt-space-sm">
-                            {t('start_a_project.hero.stats').map((stat) => (
-                                <div key={stat.label} className="flex flex-col gap-space-2xs">
-                                    <dt className="font-label-sm text-label-sm uppercase tracking-wider text-white/60">{stat.label}</dt>
-                                    <dd className="font-headline-sm text-headline-sm font-bold text-white/[92%]">{stat.value}</dd>
-                                </div>
-                            ))}
-                        </dl>
                     </div>
                 </div>
             </section>
-
-            <Reveal as="section" className="w-full py-space-3xl bg-surface-container-low" id="inquiries">
-                <div className="mx-[6%]">
-                    <div className="max-w-2xl flex flex-col gap-space-xs mb-space-2xl">
-                        <span className="font-label-sm text-label-sm text-secondary-container uppercase tracking-widest font-bold">{t('start_a_project.routing.kicker')}</span>
-                        <h2 className="font-headline-lg text-headline-lg text-on-surface">{t('start_a_project.routing.title')}</h2>
-                        <p className="font-body-md text-body-md text-on-surface-variant">{t('start_a_project.routing.subtitle')}</p>
-                    </div>
-                    <Reveal as="div" stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
-                        {routingItems.map((r, i) => (
-                            <button
-                                key={ROUTE_META[i].key}
-                                type="button"
-                                onClick={() => selectRoute(ROUTE_META[i].key)}
-                                className="h-full text-left bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all border border-surface-container group"
-                            >
-                                <div className={`w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center ${ROUTE_META[i].color} mb-space-sm group-hover:scale-110 transition-transform`}>
-                                    <span className="material-symbols-outlined text-2xl">{ROUTE_META[i].icon}</span>
-                                </div>
-                                <h3 className="font-headline-sm text-xl font-bold text-on-surface">{r.title}</h3>
-                                <p className="font-body-sm text-body-sm text-on-surface-variant mt-space-2xs">{r.desc}</p>
-                                <span className="inline-flex items-center gap-space-2xs mt-space-sm font-label-md text-label-md text-secondary">
-                                    {r.cta} <span className="material-symbols-outlined text-base">arrow_forward</span>
-                                </span>
-                            </button>
-                        ))}
-                    </Reveal>
-                </div>
-            </Reveal>
-
             <Reveal as="section" className="w-full py-space-3xl lg:py-space-4xl bg-surface" id="inquiry-form">
                 <div className="mx-[6%]">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl">
@@ -448,12 +391,13 @@ export default function StartAProject() {
                                 <h3 className="font-headline-sm text-headline-sm font-bold text-on-primary">{t('start_a_project.sidebar.schedule.title')}</h3>
                                 <p className="font-body-sm text-body-sm text-outline-variant mt-space-2xs">{t('start_a_project.sidebar.schedule.desc')}</p>
                                 <a
-                                    href="#inquiry-form"
+                                    href="https://wa.me/212654092321"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="inline-flex items-center justify-center gap-space-xs w-full mt-space-md bg-secondary-container text-on-primary font-label-md text-label-md px-space-lg py-space-sm rounded-lg hover:bg-secondary transition-colors"
                                 >
-                                    {t('start_a_project.sidebar.schedule.cta')} <span className="material-symbols-outlined text-base">arrow_outward</span>
+                                    {t('start_a_project.sidebar.schedule.cta')} <i className="fa-brands fa-whatsapp text-base" aria-hidden="true"></i>
                                 </a>
-                                <p className="font-body-sm text-body-sm text-outline-variant mt-space-xs">{t('start_a_project.sidebar.schedule.slots_note')}</p>
                             </div>
 
                             <div className="bg-surface-container-lowest rounded-xl border border-surface-container shadow-sm p-space-lg flex flex-col gap-space-md">

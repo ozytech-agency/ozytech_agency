@@ -8,29 +8,9 @@ return [
         'badge' => 'Respondemos en horas, no en semanas',
         'title' => 'Definamos el sistema que realmente necesitas',
         'subtitle' => 'Cuéntanos dónde estás y hacia dónde vas. Tu mensaje se envía directamente a un ingeniero principal, no a una bandeja de entrada genérica, que puede hablar de arquitectura, plazos y presupuesto desde la primera llamada.',
-        'cta_primary' => 'Inicia tu consulta',
-        'cta_secondary' => 'Agenda una llamada de 30 min',
-        'stats' => [
-            ['label' => 'Tiempo medio de primera respuesta', 'value' => '< 4 h'],
-            ['label' => 'Oficinas globales', 'value' => '6 regiones'],
-            ['label' => 'Antes del descubrimiento', 'value' => 'NDA mutuo'],
-            ['label' => 'Postura de seguridad', 'value' => 'SOC2 II'],
-        ],
+        'cta_primary' => 'Contáctanos',
     ],
 
-    'routing' => [
-        'kicker' => 'Elige un carril',
-        'title' => 'Dirige tu mensaje al equipo correcto',
-        'subtitle' => 'Elige la opción más cercana. Esto precompleta el formulario y envía tu consulta al responsable correcto, con el SLA adecuado.',
-        'items' => [
-            ['title' => 'Nuevo proyecto', 'desc' => 'Construcción de productos, rearquitectura de plataformas, sistemas de IA, migración a la nube. Llamada de alcance en 2 días hábiles.', 'cta' => 'Presenta tu proyecto'],
-            ['title' => 'Alianzas', 'desc' => 'Alianzas tecnológicas, alianzas de referidos y agencias, co-venta, socios de integración.', 'cta' => 'Propón una alianza'],
-            ['title' => 'Soporte al cliente', 'desc' => 'Proyecto en curso, solicitud de retainer o un incidente de producción. Incidentes: reconocimiento en 15 min.', 'cta' => 'Abrir un hilo de soporte'],
-            ['title' => 'Carreras', 'desc' => 'Únete al gremio: ingenieros principales, arquitectos, diseñadores y líderes de entrega en todas nuestras regiones.', 'cta' => 'Preséntate'],
-            ['title' => 'Prensa y medios', 'desc' => 'Entrevistas, comentarios de expertos, ponencias y materiales de marca. Respuesta el mismo día para plazos ajustados.', 'cta' => 'Solicitar una entrevista'],
-            ['title' => 'Algo más', 'desc' => 'Proveedores, facturación, compras, o una pregunta que no encaja en ninguna categoría. La derivaremos internamente.', 'cta' => 'Envía una nota'],
-        ],
-    ],
 
     'form' => [
         'title' => 'Envíanos los detalles',
@@ -86,9 +66,8 @@ return [
     'sidebar' => [
         'schedule' => [
             'title' => '¿Prefieres hablarlo directamente?',
-            'desc' => 'Reserva 30 minutos con un ingeniero principal. Sin guion de ventas: una sesión de trabajo sobre tu arquitectura, alcance y cronograma.',
-            'cta' => 'Reservar una llamada',
-            'slots_note' => 'Horarios en GMT, GMT−5 y GMT+8. Disponibilidad la misma semana la mayoría de las veces.',
+            'desc' => 'Escríbenos directamente por WhatsApp. Sin guion de ventas: una conversación real sobre tu proyecto, alcance y cronograma.',
+            'cta' => 'Contáctanos por WhatsApp',
         ],
         'channels' => [
             'title' => 'Canales directos',
