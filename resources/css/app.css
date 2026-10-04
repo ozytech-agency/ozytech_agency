@@ -7,7 +7,7 @@
 :root {
     color-scheme: light;
     --c-on-tertiary: 255 255 255;
-    --c-surface-dim: 244 214 210;
+    --c-surface-dim: 228 232 240;
     --c-tertiary-fixed-dim: 248 183 174;
     --c-on-secondary-container: 86 24 17;
     --c-on-tertiary-fixed: 86 24 17;
@@ -15,15 +15,15 @@
     --c-on-tertiary-container: 233 87 71;
     --c-on-background: 19 27 46;
     --c-tertiary-fixed: 251 227 223;
-    --c-surface-container: 248 236 234;
+    --c-surface-container: 233 236 242;
     --c-primary: 0 0 0;
     --c-outline: 118 119 125;
-    --c-outline-variant: 198 198 205;
+    --c-outline-variant: 206 209 217;
     --c-inverse-primary: 246 190 183;
     --c-inverse-surface: 40 48 68;
-    --c-surface: 250 248 255;
-    --c-on-surface-variant: 69 71 77;
-    --c-background: 250 248 255;
+    --c-surface: 244 245 249;
+    --c-on-surface-variant: 60 64 74;
+    --c-background: 244 245 249;
     --c-secondary-fixed: 249 216 210;
     --c-on-error: 255 255 255;
     --c-primary-fixed: 251 227 223;
@@ -36,21 +36,21 @@
     --c-on-primary-fixed: 18 27 47;
     --c-on-surface: 19 27 46;
     --c-secondary-fixed-dim: 245 170 160;
-    --c-surface-container-lowest: 255 255 255;
-    --c-surface-container-highest: 249 225 221;
-    --c-surface-container-low: 252 243 241;
+    --c-surface-container-lowest: 252 252 253;
+    --c-surface-container-highest: 217 222 232;
+    --c-surface-container-low: 239 241 246;
     --c-on-secondary-fixed: 86 24 17;
     --c-on-primary-fixed-variant: 61 71 92;
-    --c-surface-variant: 249 225 221;
+    --c-surface-variant: 226 230 238;
     --c-on-primary-container: 122 132 156;
     --c-tertiary-container: 86 24 17;
-    --c-surface-bright: 250 248 255;
+    --c-surface-bright: 247 248 251;
     --c-primary-container: 18 27 47;
     --c-inverse-on-surface: 238 240 255;
     --c-error: 186 26 26;
     --c-on-error-container: 147 0 10;
     --c-on-primary: 255 255 255;
-    --c-surface-container-high: 248 231 228;
+    --c-surface-container-high: 226 230 238;
     --c-on-tertiary-fixed-variant: 116 35 25;
     --c-on-secondary: 255 255 255;
     --c-surface-tint: 150 72 62;
@@ -273,7 +273,7 @@ html.theme-transition * {
 .services-dropdown a:hover .service-arrow {
     opacity: 1;
     transform: translateX(0);
-    color: rgb(197 69 55);
+    color: rgb(197, 69, 55);
 }
 
 [dir='rtl'] .service-arrow {
