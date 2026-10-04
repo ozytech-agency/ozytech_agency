@@ -65,18 +65,18 @@ class GoogleController extends Controller
             ->orWhere('email', $googleUser->getEmail())
             ->first();
 
+        // email_verified_at is not mass-assignable, so it is set explicitly.
+        // Google already verified the mailbox, which unblocks an unverified
+        // local account from the 'verified' middleware.
         if ($user) {
-            $user->fill([
-                'google_id' => $user->google_id ?: $googleUser->getId(),
-                // Google already verified this mailbox, so an unverified local
-                // account can be unblocked from the 'verified' middleware.
-                'email_verified_at' => $user->email_verified_at ?: now(),
-            ])->save();
+            $user->google_id = $user->google_id ?: $googleUser->getId();
+            $user->email_verified_at = $user->email_verified_at ?: now();
+            $user->save();
 
             return $user;
         }
 
-        return User::create([
+        $user = new User([
             'name' => $googleUser->getName() ?: $googleUser->getNickname() ?: Str::before($googleUser->getEmail(), '@'),
             'email' => $googleUser->getEmail(),
             'google_id' => $googleUser->getId(),
@@ -85,7 +85,10 @@ class GoogleController extends Controller
             // this user can only ever sign in through Google unless they use
             // "forgot password" to set a real one.
             'password' => Hash::make(Str::random(40)),
-            'email_verified_at' => now(),
         ]);
+        $user->email_verified_at = now();
+        $user->save();
+
+        return $user;
     }
 }
