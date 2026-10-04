@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/images/logo.png" alt="Ozytech Agency" width="118">
+  <img src="public/images/logo.png" alt="Ozytech Agency" width="250">
 </p>
 
 > A localized, Inertia-driven marketing and client-portal site for Ozytech Agency, a software engineering agency. Built on Laravel 13 + React 18, rendered through Inertia.js with no separate REST/JSON API layer.
