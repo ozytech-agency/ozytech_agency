@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Models\Post;
 use App\Models\TeamMember;
+use App\Support\ServiceCatalog;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -12,7 +13,11 @@ class PageController extends Controller
 {
     public function home(): Response
     {
-        return Inertia::render('Home');
+        return Inertia::render('Home', [
+            'serviceImages' => collect(ServiceCatalog::all())
+                ->map(fn (array $service) => $service['gallery'][0] ?? null)
+                ->all(),
+        ]);
     }
 
     public function about(): Response

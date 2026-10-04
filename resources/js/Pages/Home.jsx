@@ -21,14 +21,14 @@ const BRAND_ICON_PATHS = {
 };
 
 const SERVICE_CARD_META = [
-    { key: 'itSolutions', icon: 'dns', iconColor: 'text-[#E55E4A]', tags: ['AWS/GCP', 'Kubernetes', 'CyberSec'] },
-    { key: 'llc', icon: 'domain_add', iconColor: 'text-[#E55E4A]', badgeClass: 'bg-secondary-fixed text-on-secondary-fixed', tags: ['US Delaware', 'EIN Setup', 'Compliance'] },
-    { key: 'payments', icon: 'credit_card', iconColor: 'text-[#E55E4A]', tags: ['Stripe', 'PayPal', 'PCI-DSS'] },
-    { key: 'shopifyCommerce', iconSvg: 'shopify', iconColor: 'text-[#E55E4A]', tags: ['Shopify Plus', 'Liquid', 'Hydrogen'] },
-    { key: 'wordpress', icon: 'web', iconColor: 'text-[#E55E4A]', tags: ['WordPress', 'WooCommerce', 'GraphQL'] },
-    { key: 'fullstack', icon: 'code', iconColor: 'text-[#E55E4A]', tags: ['React / Next.js', 'Node / Python', 'PostgreSQL'] },
-    { key: 'mobile', icon: 'smartphone', iconColor: 'text-[#E55E4A]', tags: ['Swift', 'Kotlin', 'Flutter/RN'] },
-    { key: 'saas', icon: 'cloud_sync', iconColor: 'text-[#E55E4A]', badgeClass: 'bg-secondary-fixed text-on-secondary-fixed', tags: ['Multi-Tenant', 'SSO / RBAC', 'GitOps'] },
+    { key: 'itSolutions', slug: 'it-infrastructure', icon: 'dns', iconColor: 'text-[#E55E4A]' },
+    { key: 'llc', slug: 'llc-incorporation', icon: 'domain_add', iconColor: 'text-[#E55E4A]' },
+    { key: 'payments', slug: 'payment-solutions', icon: 'credit_card', iconColor: 'text-[#E55E4A]' },
+    { key: 'shopifyCommerce', slug: 'shopify-store-development', iconSvg: 'shopify', iconColor: 'text-[#E55E4A]' },
+    { key: 'wordpress', slug: 'cms-development', icon: 'web', iconColor: 'text-[#E55E4A]' },
+    { key: 'fullstack', slug: 'web-development', icon: 'code', iconColor: 'text-[#E55E4A]' },
+    { key: 'mobile', slug: 'mobile-apps', icon: 'smartphone', iconColor: 'text-[#E55E4A]' },
+    { key: 'saas', slug: 'software-development', icon: 'cloud_sync', iconColor: 'text-[#E55E4A]' },
 ];
 
 const DELIVERY_PHASE_TONES = ['muted', 'active', 'muted'];
@@ -58,7 +58,7 @@ function StarRow() {
     );
 }
 
-export default function Home() {
+export default function Home({ serviceImages = {} }) {
     const t = useTranslations();
     const [slide, setSlide] = useState(0);
     const gridRef = useRef(null);
@@ -174,48 +174,54 @@ export default function Home() {
                         <p className="font-body-md text-body-md text-on-surface-variant mt-space-2xs max-w-2xl">{t('home.services.subtitle')}</p>
                     </div>
                     <Reveal as="div" stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg w-full">
-                        {SERVICE_CARD_META.map((card) => (
-                            <div
-                                key={card.key}
-                                className="h-full bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between border border-surface-container group"
-                            >
-                                <div className="flex flex-col gap-space-sm">
-                                    <div className="flex items-center justify-between">
-                                        <div className={`w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center ${card.iconColor} group-hover:scale-110 transition-transform`}>
+                        {SERVICE_CARD_META.map((card) => {
+                            const title = t(`home.services.cards.${card.key}.title`);
+                            const image = serviceImages[card.slug];
+
+                            return (
+                                <div
+                                    key={card.key}
+                                    className="group relative flex h-full min-h-[380px] flex-col items-center justify-center overflow-hidden rounded-xl border border-surface-container bg-primary-container text-center shadow-sm transition-shadow hover:shadow-md"
+                                >
+                                    <div
+                                        aria-hidden="true"
+                                        className="absolute inset-0 bg-cover bg-center motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-[1.08]"
+                                        style={{
+                                            backgroundImage: `linear-gradient(180deg, rgb(9 14 25 / .45) 0%, rgb(9 14 25 / .78) 60%, rgb(9 14 25 / .92) 100%)${image ? `, url('${image}')` : ''}`,
+                                        }}
+                                    />
+
+                                    <div className="relative z-10 flex flex-col items-center gap-space-sm px-space-lg py-space-xl">
+                                        <div
+                                            aria-hidden="true"
+                                            className={`flex h-14 w-14 items-center justify-center rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm ${card.iconColor}`}
+                                        >
                                             {card.iconSvg ? (
-                                                <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" className="h-7 w-7 fill-current">
                                                     <path d={BRAND_ICON_PATHS[card.iconSvg]} />
                                                 </svg>
                                             ) : (
-                                                <span className="material-symbols-outlined text-2xl">{card.icon}</span>
+                                                <span className="material-symbols-outlined text-3xl">{card.icon}</span>
                                             )}
                                         </div>
-                                        <span className={`font-label-sm text-label-sm px-space-xs py-1 rounded font-semibold ${card.badgeClass || 'bg-surface-container text-on-surface-variant'}`}>
-                                            {t(`home.services.cards.${card.key}.badge`)}
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <h3 className="font-headline-sm text-xl font-bold text-on-surface mt-space-2xs">{t(`home.services.cards.${card.key}.title`)}</h3>
-                                        <p className="font-body-sm text-body-sm text-on-surface-variant mt-space-2xs">{t(`home.services.cards.${card.key}.desc`)}</p>
-                                    </div>
-                                    <div className="flex flex-col gap-space-2xs pt-space-2xs border-t border-surface-container">
-                                        {t(`home.services.cards.${card.key}.bullets`).map((b) => (
-                                            <div key={b} className="flex items-center gap-space-xs text-xs text-on-surface">
-                                                <span className="material-symbols-outlined text-sm text-secondary-container">check_circle</span>
-                                                <span>{b}</span>
-                                            </div>
-                                        ))}
+
+                                        <h3 className="font-headline-sm text-xl font-bold text-white">{title}</h3>
+                                        <p className="max-w-xs font-body-sm text-body-sm text-white/80">{t(`home.services.cards.${card.key}.desc`)}</p>
+
+                                        <Link
+                                            href={route('services.show', { service: card.slug })}
+                                            className="group/cta mt-space-xs inline-flex items-center gap-space-xs rounded-lg bg-accent2 px-space-md py-space-2xs font-label-md text-label-md text-on-primary shadow-[0_10px_20px_-8px_rgba(233,87,71,0.6)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary-container hover:shadow-[0_14px_28px_-10px_rgba(233,87,71,0.7)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                                        >
+                                            <span>{t('home.services.cta')}</span>
+                                            <span className="sr-only">: {title}</span>
+                                            <span aria-hidden="true" className="material-symbols-outlined text-base transition-transform duration-300 motion-safe:group-hover/cta:translate-x-1">
+                                                arrow_forward
+                                            </span>
+                                        </Link>
                                     </div>
                                 </div>
-                                <div className="pt-space-md mt-space-md border-t border-surface-container flex flex-wrap gap-space-2xs">
-                                    {card.tags.map((tag) => (
-                                        <span key={tag} className="px-2 py-0.5 rounded-full bg-surface-container-low text-xs font-mono text-outline">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </Reveal>
                 </div>
             </Reveal>
