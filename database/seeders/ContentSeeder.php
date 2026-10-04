@@ -233,6 +233,8 @@ class ContentSeeder extends Seeder
             $this->seedTeamMembers();
         });
 
+        $this->call(ProjectSeeder::class);
+
         Cache::forget(Service::CACHE_KEY);
     }
 

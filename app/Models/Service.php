@@ -55,6 +55,11 @@ class Service extends Model
         ];
     }
 
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class);
+    }
+
     public function items(): HasMany
     {
         return $this->hasMany(ServiceItem::class)->orderBy('sort_order');

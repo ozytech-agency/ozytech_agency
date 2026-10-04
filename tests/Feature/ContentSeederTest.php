@@ -61,12 +61,10 @@ class ContentSeederTest extends TestCase
                 ->where('title', trans('services.web-development.title', [], 'en'))
                 ->has('gallery', 3)
                 ->has('related', 3)
-                ->where('hasCaseStudy', true)
+                ->has('projects')
                 ->has('nav.services', 10)
                 ->has('nav.website', 6)
             );
-
-        $this->get(route('services.work', ['locale' => 'en', 'service' => 'web-development']))->assertOk();
 
         $this->get(route('packages', ['locale' => 'en']))
             ->assertInertia(fn (Assert $page) => $page->has('packages', 3)->where('packages.1.badge', trans('packages.cards.1.badge', [], 'en')));

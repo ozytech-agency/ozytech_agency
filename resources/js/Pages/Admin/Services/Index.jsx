@@ -41,7 +41,10 @@ export default function ServicesIndex({ services }) {
                                             {service.title}
                                         </Link>
                                         <span className="text-outline">
-                                            /{service.slug} · {t('admin.services.items_count').replace(':count', service.items_count)}
+                                            /{service.slug} · {t('admin.services.items_count').replace(':count', service.items_count)} ·{' '}
+                                            <Link href={route('admin.projects.index', { service: service.id })} className="text-secondary hover:text-on-surface">
+                                                {t('admin.services.projects_count').replace(':count', service.projects_count)}
+                                            </Link>
                                         </span>
                                     </td>
                                     <td className="p-space-md">

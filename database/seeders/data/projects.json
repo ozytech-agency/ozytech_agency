@@ -1,0 +1,542 @@
+[
+    {
+        "service_slug": "software-development",
+        "slug": "streamline-multi-tenant-billing-platform",
+        "title": {
+            "ar": "Streamline: منصة فوترة متعددة المستأجرين",
+            "en": "Streamline: Multi-Tenant Billing Platform",
+            "es": "Streamline: plataforma de facturación multiempresa",
+            "fr": "Streamline : plateforme de facturation multi-tenant"
+        },
+        "short_description": {
+            "ar": "منصة فوترة SaaS بُنيت من الصفر تخدم أكثر من 40,000 مشترك عبر ثلاث فئات أسعار، أُعيد بناؤها لتكون موثوقة وقابلة للتوسع.",
+            "en": "A ground-up SaaS billing platform serving 40,000+ subscribers across three pricing tiers, rebuilt for reliability and scale.",
+            "es": "Una plataforma de facturación SaaS construida desde cero que atiende a más de 40,000 suscriptores en tres niveles de precio, rediseñada para ser fiable y escalable.",
+            "fr": "Une plateforme de facturation SaaS construite de zéro, au service de plus de 40 000 abonnés répartis sur trois formules, reconstruite pour la fiabilité et l'échelle."
+        },
+        "description": {
+            "ar": "> أعادت أوزي تك بناء محرك الاشتراكات لدينا من الصفر. انتقلنا من أعطال فوترة أسبوعية إلى صفر توقف في الإنتاج.\n\n**التحدي:** كان نظام الفوترة القديم لدى Ledgerly يسبب أعطالاً أسبوعية ولم يعد قادرًا على التوسع بعد تصميمه الأصلي لخمسة آلاف مشترك فقط.\n\n**الحل:** أعادت أوزي تك بناء محرك الفوترة على بنية متعددة المستأجرين مع تجاوز تلقائي للأعطال، ما ألغى التوقف مع نمو قاعدة المشتركين إلى أكثر من 40,000.\n\n**التحدي:** كانت المطابقة اليدوية بين نظام الفوترة ودفاتر فريق المحاسبة تستهلك ساعات كل أسبوع وتنتج تباينات متكررة.\n\n**الحل:** بنت أوزي تك خط مطابقة آلي يزامن أحداث الاشتراك مع دفتر الحسابات لحظيًا، ما ألغى الإدخال اليدوي تمامًا.",
+            "en": "> Ozytech Agency rebuilt our subscription engine from the ground up. We went from weekly billing incidents to zero downtime in production.\n\n**Challenge:** Ledgerly's legacy billing system caused weekly outages and couldn't scale past its original 5,000-subscriber design.\n\n**Solution:** Ozytech Agency rebuilt the billing engine on a multi-tenant architecture with automated failover, eliminating downtime as the subscriber base grew past 40,000.\n\n**Challenge:** Manual reconciliation between the billing system and the accounting team's books consumed hours every week and produced frequent discrepancies.\n\n**Solution:** Ozytech Agency built an automated reconciliation pipeline that syncs subscription events to the ledger in real time, removing manual entry entirely.",
+            "es": "> Ozytech Agency reconstruyó nuestro motor de suscripciones desde cero. Pasamos de tener incidentes de facturación cada semana a cero tiempo de inactividad en producción.\n\n**Desafío:** El sistema de facturación heredado de Ledgerly causaba interrupciones semanales y no podía escalar más allá de su diseño original para 5,000 suscriptores.\n\n**Solución:** Ozytech Agency reconstruyó el motor de facturación sobre una arquitectura multiempresa con failover automatizado, eliminando el tiempo de inactividad a medida que la base de suscriptores superaba los 40,000.\n\n**Desafío:** La conciliación manual entre el sistema de facturación y los libros del equipo de contabilidad consumía horas cada semana y generaba discrepancias frecuentes.\n\n**Solución:** Ozytech Agency construyó un pipeline de conciliación automatizado que sincroniza los eventos de suscripción con el libro contable en tiempo real, eliminando por completo la entrada manual.",
+            "fr": "> Ozytech Agency a entièrement reconstruit notre moteur d'abonnement. Nous sommes passés d'incidents de facturation hebdomadaires à zéro interruption en production.\n\n**Défi:** Le système de facturation historique de Ledgerly provoquait des pannes hebdomadaires et ne pouvait pas dépasser sa conception initiale limitée à 5 000 abonnés.\n\n**Solution:** Ozytech Agency a reconstruit le moteur de facturation sur une architecture multi-tenant avec basculement automatisé, éliminant les interruptions à mesure que la base d'abonnés dépassait 40 000.\n\n**Défi:** Le rapprochement manuel entre le système de facturation et les comptes de l'équipe comptable consommait des heures chaque semaine et générait des écarts fréquents.\n\n**Solution:** Ozytech Agency a construit un pipeline de rapprochement automatisé qui synchronise les événements d'abonnement avec le grand livre en temps réel, supprimant totalement la saisie manuelle."
+        },
+        "client_name": "Elena Vasquez, CTO · Ledgerly",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 0
+    },
+    {
+        "service_slug": "mobile-apps",
+        "slug": "transit-now-real-time-commuter-app",
+        "title": {
+            "ar": "Transit Now: تطبيق تنقل لحظي",
+            "en": "Transit Now: Real-Time Commuter App",
+            "es": "Transit Now: app de transporte en tiempo real",
+            "fr": "Transit Now : application de transport en temps réel"
+        },
+        "short_description": {
+            "ar": "تطبيق جوال متعدد المنصات يساعد أكثر من 200,000 راكب على تتبع الحافلات والقطارات لحظيًا عبر أربعة أنظمة مترو.",
+            "en": "A cross-platform mobile app helping 200,000+ riders track buses and trains in real time across four metro systems.",
+            "es": "Una app móvil multiplataforma que ayuda a más de 200,000 pasajeros a rastrear autobuses y trenes en tiempo real en cuatro sistemas de metro.",
+            "fr": "Une application mobile multiplateforme aidant plus de 200 000 usagers à suivre bus et trains en temps réel sur quatre réseaux de métro."
+        },
+        "description": {
+            "ar": "> قفز تقييم تطبيقنا في المتجر من 2.8 إلى 4.7 نجوم خلال شهرين من إعادة بناء أوزي تك له.\n\n**التحدي:** لم يكن لدى الركاب طريقة موثوقة لمعرفة مواقع الحافلات والقطارات لحظيًا، ما أدى إلى فوات الرحلات وتقييم للتطبيق بـ 2.8 نجوم.\n\n**الحل:** بنت أوزي تك تطبيقًا متعدد المنصات بتتبع GPS مباشر وأوقات وصول تنبؤية عبر أربعة أنظمة مترو.\n\n**التحدي:** كان التطبيق الحالي يتعطل بشكل متكرر خلال ساعات الذروة عندما يرتفع الحمل على الخوادم.\n\n**الحل:** أعادت أوزي تك هيكلة الخلفية البرمجية للتوسع الأفقي وأضافت التخزين المؤقت دون اتصال، ما ثبّت التطبيق تحت الحمل الذروي.",
+            "en": "> Our app store rating jumped from 2.8 to 4.7 stars within two months of the Ozytech Agency rebuild.\n\n**Challenge:** Riders had no reliable way to see real-time bus and train positions, leading to missed connections and a 2.8-star app rating.\n\n**Solution:** Ozytech Agency built a cross-platform app with live GPS tracking and predictive arrival times across four metro systems.\n\n**Challenge:** The existing app crashed frequently during peak commute hours when server load spiked.\n\n**Solution:** Ozytech Agency re-architected the backend for horizontal scaling and added offline caching, stabilizing the app under peak load.",
+            "es": "> Nuestra calificación en la tienda de apps subió de 2.8 a 4.7 estrellas en dos meses tras la reconstrucción de Ozytech Agency.\n\n**Desafío:** Los pasajeros no tenían una forma confiable de ver la posición de autobuses y trenes en tiempo real, lo que provocaba conexiones perdidas y una calificación de 2.8 estrellas.\n\n**Solución:** Ozytech Agency construyó una app multiplataforma con rastreo GPS en vivo y tiempos de llegada predictivos en cuatro sistemas de metro.\n\n**Desafío:** La app existente se bloqueaba con frecuencia durante las horas pico de transporte cuando aumentaba la carga del servidor.\n\n**Solución:** Ozytech Agency rediseñó el backend para escalado horizontal y agregó almacenamiento en caché sin conexión, estabilizando la app bajo carga máxima.",
+            "fr": "> Notre note sur les stores est passée de 2,8 à 4,7 étoiles en deux mois après la refonte Ozytech Agency.\n\n**Défi:** Les usagers n'avaient aucun moyen fiable de suivre la position des bus et des trains en temps réel, entraînant des correspondances manquées et une note de 2,8 étoiles.\n\n**Solution:** Ozytech Agency a développé une application multiplateforme avec suivi GPS en direct et estimations d'arrivée prédictives sur quatre réseaux de métro.\n\n**Défi:** L'application existante plantait fréquemment aux heures de pointe lorsque la charge serveur augmentait.\n\n**Solution:** Ozytech Agency a repensé le backend pour une mise à l'échelle horizontale et ajouté une mise en cache hors ligne, stabilisant l'application sous forte charge."
+        },
+        "client_name": "Marcus Bellweather, Head of Product · Transit Now",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 1
+    },
+    {
+        "service_slug": "mvp-development",
+        "slug": "fundrise-investor-waitlist-mvp",
+        "title": {
+            "ar": "Fundrise: منتج أولي لقائمة انتظار المستثمرين",
+            "en": "Fundrise: Investor Waitlist MVP",
+            "es": "Fundrise: MVP de lista de espera para inversores",
+            "fr": "Fundrise : MVP de liste d'attente investisseurs"
+        },
+        "short_description": {
+            "ar": "منتج أولي أُنجز خلال ستة أسابيع مكّن مؤسسة شركة تقنية مالية من التحقق من الطلب وإغلاق جولة تمويل أولية قبل كتابة سطر واحد من كود الإنتاج.",
+            "en": "A six-week MVP that let a fintech founder validate demand and close a seed round before writing a single line of production code.",
+            "es": "Un MVP de seis semanas que permitió a un fundador fintech validar la demanda y cerrar una ronda semilla antes de escribir una sola línea de código de producción.",
+            "fr": "Un MVP réalisé en six semaines qui a permis à une fondatrice fintech de valider la demande et de boucler une levée de fonds d'amorçage avant même d'écrire une ligne de code de production."
+        },
+        "description": {
+            "ar": "> استخدمنا النموذج الأولي من أوزي تك لإغلاق جولة التمويل الأولية بعد أسبوعين من الإطلاق. لقد أدى الغرض منه تمامًا.\n\n**التحدي:** احتاجت المؤسِّسة إلى إثبات طلب المستثمرين قبل تخصيص ميزانية هندسية لبناء منتج كامل.\n\n**الحل:** أطلقت أوزي تك منتجًا أوليًا مركّزًا خلال ستة أسابيع مع قائمة انتظار ولوحة تحكم للمستثمرين، ما ولّد بيانات الجذب اللازمة للعرض.\n\n**التحدي:** بدون فريق هندسي داخلي بعد، احتاجت المؤسِّسة إلى بناء يمكن تسليمه بسلاسة لموظفين مستقبليين.\n\n**الحل:** وثّقت أوزي تك البنية المعمارية وسلّمت قاعدة كود منظمة ليتمكن فريق جديد من توسيعها دون إعادة كتابة.",
+            "en": "> We used the Ozytech Agency prototype to close our seed round two weeks after launch. It did exactly what it needed to.\n\n**Challenge:** The founder needed to prove investor demand before committing engineering budget to a full product build.\n\n**Solution:** Ozytech Agency shipped a focused six-week MVP with a waitlist and investor dashboard, generating the traction data needed to pitch.\n\n**Challenge:** With no in-house engineering team yet, the founder needed a build that could hand off cleanly to future hires.\n\n**Solution:** Ozytech Agency documented the architecture and delivered a codebase structured for a new team to extend without a rewrite.",
+            "es": "> Usamos el prototipo de Ozytech Agency para cerrar nuestra ronda semilla dos semanas después del lanzamiento. Hizo exactamente lo que necesitábamos.\n\n**Desafío:** La fundadora necesitaba demostrar demanda de los inversores antes de comprometer presupuesto de ingeniería en un producto completo.\n\n**Solución:** Ozytech Agency entregó un MVP enfocado en seis semanas con lista de espera y panel para inversores, generando los datos de tracción necesarios para el pitch.\n\n**Desafío:** Sin equipo de ingeniería interno todavía, la fundadora necesitaba una construcción que pudiera traspasarse limpiamente a futuras contrataciones.\n\n**Solución:** Ozytech Agency documentó la arquitectura y entregó una base de código estructurada para que un nuevo equipo pudiera extenderla sin reescribirla.",
+            "fr": "> Nous avons utilisé le prototype Ozytech Agency pour boucler notre levée d'amorçage deux semaines après le lancement. Il a fait exactement ce qu'il fallait.\n\n**Défi:** La fondatrice devait prouver la demande des investisseurs avant d'engager un budget d'ingénierie pour un produit complet.\n\n**Solution:** Ozytech Agency a livré un MVP ciblé en six semaines avec liste d'attente et tableau de bord investisseurs, générant les données de traction nécessaires au pitch.\n\n**Défi:** Sans équipe d'ingénierie interne pour l'instant, la fondatrice avait besoin d'une base transmissible proprement à de futures recrues.\n\n**Solution:** Ozytech Agency a documenté l'architecture et livré une base de code structurée pour qu'une nouvelle équipe puisse l'étendre sans tout réécrire."
+        },
+        "client_name": "Priya Anand, Founder · Fundrise Labs",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 2
+    },
+    {
+        "service_slug": "llc-incorporation",
+        "slug": "northwind-studio-us-market-entry",
+        "title": {
+            "ar": "Northwind Studio: دخول السوق الأمريكية",
+            "en": "Northwind Studio: US Market Entry",
+            "es": "Northwind Studio: entrada al mercado de EE. UU.",
+            "fr": "Northwind Studio : entrée sur le marché américain"
+        },
+        "short_description": {
+            "ar": "تأسيس كامل في ديلاوير، وإعداد EIN، وتسليم الامتثال من الألف إلى الياء لاستوديو أوروبي كان يتوسع إلى السوق الأمريكية.",
+            "en": "End-to-end Delaware incorporation, EIN setup, and compliance handoff for a European studio expanding into the US market.",
+            "es": "Constitución en Delaware, obtención de EIN y traspaso de cumplimiento normativo de principio a fin para un estudio europeo que se expandía al mercado estadounidense.",
+            "fr": "Constitution au Delaware, obtention de l'EIN et transfert de conformité de bout en bout pour un studio européen qui s'implantait aux États-Unis."
+        },
+        "description": {
+            "ar": "> تولت أوزي تك كامل عملية تأسيسنا في الولايات المتحدة خلال ثلاثة أسابيع. كنا نوقّع عقودًا مع عملاء أمريكيين قبل أن نتوقع حتى أن نكون مسجلين.\n\n**التحدي:** احتاج Northwind Studio إلى توقيع عقود أمريكية لكن لم يكن لديه كيان قانوني أو رقم EIN أو وكيل مسجل في البلاد.\n\n**الحل:** تولت أوزي تك تأسيس الشركة في ديلاوير وتسجيل EIN وإعداد الوكيل المسجل من الألف إلى الياء خلال ثلاثة أسابيع.\n\n**التحدي:** لم يكن الاستوديو على دراية بالتزامات الامتثال الأمريكية وكان معرضًا لخطر تفويت مواعيد التقديم بعد التأسيس.\n\n**الحل:** أعدّت أوزي تك تقويم امتثال ووثائق تسليم ليتمكن الاستوديو من العمل باستقلالية لاحقًا.",
+            "en": "> Ozytech Agency handled our entire US formation in three weeks. We were signing contracts with American clients before we expected to even be registered.\n\n**Challenge:** Northwind Studio needed to sign US contracts but had no legal entity, EIN, or registered agent in the country.\n\n**Solution:** Ozytech Agency handled Delaware incorporation, EIN registration, and registered agent setup end to end within three weeks.\n\n**Challenge:** The studio was unfamiliar with US compliance obligations and risked missing filing deadlines after formation.\n\n**Solution:** Ozytech Agency set up a compliance calendar and handoff documentation so the studio could operate independently going forward.",
+            "es": "> Ozytech Agency gestionó toda nuestra constitución en EE. UU. en tres semanas. Ya firmábamos contratos con clientes estadounidenses antes de lo que esperábamos estar registrados.\n\n**Desafío:** Northwind Studio necesitaba firmar contratos en EE. UU. pero no tenía entidad legal, EIN ni agente registrado en el país.\n\n**Solución:** Ozytech Agency gestionó la constitución en Delaware, el registro del EIN y la configuración del agente registrado de principio a fin en tres semanas.\n\n**Desafío:** El estudio no estaba familiarizado con las obligaciones de cumplimiento normativo de EE. UU. y corría el riesgo de perder plazos de presentación tras la constitución.\n\n**Solución:** Ozytech Agency estableció un calendario de cumplimiento y documentación de traspaso para que el estudio pudiera operar de forma independiente en adelante.",
+            "fr": "> Ozytech Agency a géré toute notre constitution américaine en trois semaines. Nous signions des contrats avec des clients américains avant même de nous attendre à être enregistrés.\n\n**Défi:** Northwind Studio devait signer des contrats aux États-Unis mais ne disposait d'aucune entité juridique, d'EIN ni d'agent enregistré dans le pays.\n\n**Solution:** Ozytech Agency a géré la constitution au Delaware, l'enregistrement de l'EIN et la mise en place de l'agent enregistré de bout en bout en trois semaines.\n\n**Défi:** Le studio ne connaissait pas les obligations de conformité américaines et risquait de manquer des échéances de dépôt après la constitution.\n\n**Solution:** Ozytech Agency a mis en place un calendrier de conformité et une documentation de transfert permettant au studio d'opérer ensuite en autonomie."
+        },
+        "client_name": "Lukas Feldmann, Managing Director · Northwind Studio",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 3
+    },
+    {
+        "service_slug": "web-development",
+        "slug": "arbor-co-corporate-platform-rebuild",
+        "title": {
+            "ar": "Arbor & Co: إعادة بناء المنصة المؤسسية",
+            "en": "Arbor & Co: Corporate Platform Rebuild",
+            "es": "Arbor & Co: reconstrucción de plataforma corporativa",
+            "fr": "Arbor & Co : refonte de la plateforme institutionnelle"
+        },
+        "short_description": {
+            "ar": "إعادة بناء كاملة لموقع مؤسسي تركز على سرعة الصفحة وإتاحة الوصول ونموذج محتوى يستطيع فريق العميل نفسه إدارته.",
+            "en": "A full corporate website rebuild focused on page speed, accessibility, and a content model the client's own team could operate.",
+            "es": "Una reconstrucción completa del sitio corporativo centrada en la velocidad, la accesibilidad y un modelo de contenido que el propio equipo del cliente pudiera operar.",
+            "fr": "Une refonte complète du site institutionnel axée sur la vitesse, l'accessibilité et un modèle de contenu que l'équipe du client pouvait gérer elle-même."
+        },
+        "description": {
+            "ar": "> يُحمَّل موقعنا الجديد في أقل من ثانية، وفريقنا أخيرًا يعدّل الصفحات دون فتح تذكرة دعم.\n\n**التحدي:** كان موقع Arbor & Co القديم يستغرق أكثر من ست ثوانٍ للتحميل، وكان كل تعديل في المحتوى يتطلب فتح تذكرة لدى المطورين.\n\n**الحل:** أعادت أوزي تك بناء الموقع على بنية تقنية تعطي الأولوية للأداء مع نموذج محتوى يستطيع فريق التسويق تشغيله مباشرة.\n\n**التحدي:** فشل الموقع في اختبارات إتاحة الوصول الأساسية، ما استبعد الزوار الذين يستخدمون قارئات الشاشة أو التنقل عبر لوحة المفاتيح.\n\n**الحل:** أعادت أوزي تك بناء كل صفحة لتلبية معايير WCAG، مع التحقق عبر اختبارات آلية ويدوية لإتاحة الوصول.",
+            "en": "> Our new site loads in under a second and our team finally edits pages without filing a ticket.\n\n**Challenge:** Arbor & Co's old site took over six seconds to load and every content change required filing a developer ticket.\n\n**Solution:** Ozytech Agency rebuilt the site on a performance-first stack with a content model the marketing team could operate directly.\n\n**Challenge:** The site failed basic accessibility checks, excluding visitors using screen readers or keyboard navigation.\n\n**Solution:** Ozytech Agency rebuilt every page to meet WCAG standards, verified with automated and manual accessibility testing.",
+            "es": "> Nuestro nuevo sitio carga en menos de un segundo y nuestro equipo por fin edita páginas sin abrir un ticket.\n\n**Desafío:** El sitio antiguo de Arbor & Co tardaba más de seis segundos en cargar y cada cambio de contenido requería abrir un ticket con desarrollo.\n\n**Solución:** Ozytech Agency reconstruyó el sitio sobre una arquitectura centrada en el rendimiento con un modelo de contenido que el equipo de marketing podía operar directamente.\n\n**Desafío:** El sitio no pasaba las pruebas básicas de accesibilidad, excluyendo a visitantes que usaban lectores de pantalla o navegación por teclado.\n\n**Solución:** Ozytech Agency reconstruyó cada página para cumplir con los estándares WCAG, verificados mediante pruebas de accesibilidad automatizadas y manuales.",
+            "fr": "> Notre nouveau site se charge en moins d'une seconde et notre équipe modifie enfin les pages sans ouvrir de ticket.\n\n**Défi:** L'ancien site d'Arbor & Co mettait plus de six secondes à charger et chaque modification de contenu exigeait l'ouverture d'un ticket auprès des développeurs.\n\n**Solution:** Ozytech Agency a reconstruit le site sur une stack orientée performance avec un modèle de contenu que l'équipe marketing pouvait gérer directement.\n\n**Défi:** Le site échouait aux contrôles d'accessibilité de base, excluant les visiteurs utilisant un lecteur d'écran ou la navigation au clavier.\n\n**Solution:** Ozytech Agency a reconstruit chaque page pour respecter les normes WCAG, vérifiées par des tests d'accessibilité automatisés et manuels."
+        },
+        "client_name": "Rachel Kim, Marketing Director · Arbor & Co",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 4
+    },
+    {
+        "service_slug": "cms-development",
+        "slug": "bramwell-journal-editorial-platform",
+        "title": {
+            "ar": "Bramwell Journal: منصة تحريرية",
+            "en": "Bramwell Journal: Editorial Platform",
+            "es": "Bramwell Journal: plataforma editorial",
+            "fr": "Bramwell Journal : plateforme éditoriale"
+        },
+        "short_description": {
+            "ar": "إعادة بناء مخصصة لووردبريس لمنشور رقمي يدير أكثر من 40 كاتبًا مساهمًا ومواعيد تحريرية يومية.",
+            "en": "A custom WordPress rebuild for a digital publication managing 40+ contributing writers and daily editorial deadlines.",
+            "es": "Una reconstrucción de WordPress a medida para una publicación digital que gestiona a más de 40 redactores colaboradores y plazos editoriales diarios.",
+            "fr": "Une refonte WordPress sur mesure pour une publication numérique gérant plus de 40 rédacteurs contributeurs et des délais éditoriaux quotidiens."
+        },
+        "description": {
+            "ar": "> تحوّل النشر من عملية شاقة تستغرق 20 دقيقة إلى مهمة تستغرق دقيقتين. كتّابنا يستمتعون الآن باستخدام نظام إدارة المحتوى.\n\n**التحدي:** كان أكثر من 40 كاتبًا مساهمًا يشاركون إعداد ووردبريس واحدًا مرهقًا جعل النشر عملية شاقة تستغرق 20 دقيقة تحت ضغط مواعيد يومية.\n\n**الحل:** أعادت أوزي تك بناء نظام إدارة المحتوى بكتل مخصصة وسير عمل تحريري مبسّط، ما خفّض وقت النشر إلى دقيقتين.\n\n**التحدي:** لم يكن لدى المحررين وسيلة لإدارة صلاحيات المساهمين، ما أدى إلى تعديلات عرضية على مقالات منشورة بالفعل.\n\n**الحل:** أدخلت أوزي تك صلاحيات قائمة على الأدوار وقائمة مراجعة بحيث تُعتمد التعديلات قبل نشرها.",
+            "en": "> Publishing went from a 20-minute ordeal to a two-minute task. Our writers actually enjoy using the CMS now.\n\n**Challenge:** 40+ contributing writers shared one clunky WordPress setup that made publishing a 20-minute ordeal under daily deadlines.\n\n**Solution:** Ozytech Agency rebuilt the CMS with custom blocks and a streamlined editorial workflow, cutting publishing time to two minutes.\n\n**Challenge:** Editors had no way to manage contributor permissions, leading to accidental edits on live articles.\n\n**Solution:** Ozytech Agency introduced role-based permissions and a review queue so edits are approved before going live.",
+            "es": "> Publicar pasó de ser un proceso de 20 minutos a una tarea de dos minutos. Nuestros redactores ahora disfrutan usando el CMS.\n\n**Desafío:** Más de 40 redactores colaboradores compartían una configuración de WordPress poco práctica que convertía la publicación en un proceso de 20 minutos bajo plazos diarios.\n\n**Solución:** Ozytech Agency reconstruyó el CMS con bloques personalizados y un flujo editorial optimizado, reduciendo el tiempo de publicación a dos minutos.\n\n**Desafío:** Los editores no tenían forma de gestionar los permisos de los colaboradores, lo que provocaba ediciones accidentales en artículos ya publicados.\n\n**Solución:** Ozytech Agency introdujo permisos basados en roles y una cola de revisión para que las ediciones se aprobaran antes de publicarse.",
+            "fr": "> Publier est passé d'une corvée de 20 minutes à une tâche de deux minutes. Nos rédacteurs apprécient désormais utiliser le CMS.\n\n**Défi:** Plus de 40 rédacteurs contributeurs partageaient une installation WordPress peu pratique, transformant la publication en une corvée de 20 minutes sous des délais quotidiens.\n\n**Solution:** Ozytech Agency a reconstruit le CMS avec des blocs personnalisés et un flux éditorial simplifié, ramenant le temps de publication à deux minutes.\n\n**Défi:** Les rédacteurs en chef n'avaient aucun moyen de gérer les permissions des contributeurs, ce qui entraînait des modifications accidentelles sur des articles déjà publiés.\n\n**Solution:** Ozytech Agency a introduit des permissions basées sur les rôles et une file de validation afin que les modifications soient approuvées avant publication."
+        },
+        "client_name": "Tobias Reyes, Editor-in-Chief · Bramwell Journal",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 5
+    },
+    {
+        "service_slug": "shopify-store-development",
+        "slug": "solstice-goods-direct-to-consumer-launch",
+        "title": {
+            "ar": "Solstice Goods: إطلاق بيع مباشر للمستهلك",
+            "en": "Solstice Goods: Direct-to-Consumer Launch",
+            "es": "Solstice Goods: lanzamiento directo al consumidor",
+            "fr": "Solstice Goods : lancement en vente directe"
+        },
+        "short_description": {
+            "ar": "متجر Shopify صُمم لإطلاق علامة تجارية جديدة للسلع الاستهلاكية، من تخصيص صفحة الدفع إلى إعداد التكاملات.",
+            "en": "A Shopify storefront built to launch a new consumer goods brand, from checkout customization to app integrations.",
+            "es": "Una tienda Shopify creada para lanzar una nueva marca de bienes de consumo, desde la personalización del checkout hasta la configuración de integraciones.",
+            "fr": "Une boutique Shopify conçue pour lancer une nouvelle marque de biens de consommation, de la personnalisation du checkout à la configuration des intégrations."
+        },
+        "description": {
+            "ar": "> حققنا هدف مبيعات الشهر الأول خلال أحد عشر يومًا. تدفق الدفع الذي بنته أوزي تك يحوّل بمعدل أعلى بكثير من متجرنا القديم.\n\n**التحدي:** كانت Solstice Goods تطلق علامة تجارية جديدة دون متجر إلكتروني أو تدفق دفع أو تكاملات تطبيقات جاهزة.\n\n**الحل:** بنت أوزي تك متجر Shopify يركز على التحويل مع صفحة دفع مخصصة والتكاملات اللازمة ليوم الإطلاق.\n\n**التحدي:** احتاج المؤسسون إلى إطلاق المتجر قبل انتهاء نافذة مبيعات الشهر الأول.\n\n**الحل:** سلّمت أوزي تك البناء الكامل في الوقت المناسب للإطلاق، ما ساعد العلامة على تحقيق هدف مبيعات الشهر الأول خلال أحد عشر يومًا.",
+            "en": "> We hit our first-month sales target in eleven days. The checkout flow Ozytech Agency built converts far better than our old store.\n\n**Challenge:** Solstice Goods was launching a new brand with no storefront, checkout flow, or app integrations in place.\n\n**Solution:** Ozytech Agency built a conversion-focused Shopify store with a customized checkout and the integrations needed for launch day.\n\n**Challenge:** The founders needed the store live before their first-month sales window closed.\n\n**Solution:** Ozytech Agency delivered the full build in time to launch, helping the brand hit its first-month sales target in eleven days.",
+            "es": "> Alcanzamos nuestra meta de ventas del primer mes en once días. El flujo de pago que construyó Ozytech Agency convierte mucho mejor que nuestra tienda anterior.\n\n**Desafío:** Solstice Goods lanzaba una nueva marca sin tienda, flujo de pago ni integraciones de apps en su lugar.\n\n**Solución:** Ozytech Agency construyó una tienda Shopify enfocada en la conversión con un checkout personalizado y las integraciones necesarias para el día del lanzamiento.\n\n**Desafío:** Los fundadores necesitaban tener la tienda activa antes de que cerrara su ventana de ventas del primer mes.\n\n**Solución:** Ozytech Agency entregó toda la construcción a tiempo para el lanzamiento, ayudando a la marca a alcanzar su meta de ventas del primer mes en once días.",
+            "fr": "> Nous avons atteint notre objectif de ventes du premier mois en onze jours. Le tunnel de paiement conçu par Ozytech Agency convertit bien mieux que notre ancienne boutique.\n\n**Défi:** Solstice Goods lançait une nouvelle marque sans boutique, sans tunnel de paiement ni intégrations d'applications en place.\n\n**Solution:** Ozytech Agency a construit une boutique Shopify orientée conversion avec un checkout personnalisé et les intégrations nécessaires pour le jour du lancement.\n\n**Défi:** Les fondateurs devaient mettre la boutique en ligne avant la fin de leur fenêtre de ventes du premier mois.\n\n**Solution:** Ozytech Agency a livré l'ensemble du projet à temps pour le lancement, aidant la marque à atteindre son objectif de ventes du premier mois en onze jours."
+        },
+        "client_name": "Ines Duarte, Co-Founder · Solstice Goods",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 6
+    },
+    {
+        "service_slug": "payment-solutions",
+        "slug": "marketplace-pay-multi-currency-checkout",
+        "title": {
+            "ar": "Marketplace Pay: دفع متعدد العملات",
+            "en": "Marketplace Pay: Multi-Currency Checkout",
+            "es": "Marketplace Pay: checkout multidivisa",
+            "fr": "Marketplace Pay : paiement multidevise"
+        },
+        "short_description": {
+            "ar": "تجديد شامل لبنية الدفع يتيح الدفع متعدد العملات والتحويلات الآلية لسوق إلكتروني ثنائي الأطراف.",
+            "en": "A payment infrastructure overhaul enabling multi-currency checkout and automated payouts for a two-sided marketplace.",
+            "es": "Una renovación de la infraestructura de pagos que habilita el checkout multidivisa y pagos automatizados para un marketplace de dos lados.",
+            "fr": "Une refonte de l'infrastructure de paiement permettant un checkout multidevise et des versements automatisés pour une marketplace à deux faces."
+        },
+        "description": {
+            "ar": "> انخفضت المدفوعات الفاشلة بنسبة 80% بعد التكامل. فريقنا المالي بات أخيرًا يثق بالأرقام.\n\n**التحدي:** كان السوق الإلكتروني يقبل عملة واحدة فقط، ما أعاق التوسع إلى مناطق جديدة.\n\n**الحل:** بنت أوزي تك صفحة دفع متعددة العملات عبر Stripe Connect، ما أتاح المعاملات بالعملات التي يحتاجها كل سوق.\n\n**التحدي:** كانت المدفوعات الفاشلة شائعة ولم يكن لدى الفريق المالي وسيلة موثوقة لمطابقة التحويلات.\n\n**الحل:** أتمتت أوزي تك مطابقة التحويلات وحسّنت منطق إعادة المحاولة، ما خفّض المدفوعات الفاشلة بنسبة 80%.",
+            "en": "> Failed payments dropped by 80% after the integration. Our finance team finally trusts the numbers.\n\n**Challenge:** The marketplace could only accept a single currency, blocking expansion into new regions.\n\n**Solution:** Ozytech Agency built multi-currency checkout on Stripe Connect, enabling transactions in the currencies each market needed.\n\n**Challenge:** Failed payments were common and the finance team had no reliable way to reconcile payouts.\n\n**Solution:** Ozytech Agency automated payout reconciliation and improved retry logic, cutting failed payments by 80%.",
+            "es": "> Los pagos fallidos bajaron un 80% tras la integración. Nuestro equipo financiero por fin confía en los números.\n\n**Desafío:** El marketplace solo podía aceptar una moneda, lo que bloqueaba la expansión a nuevas regiones.\n\n**Solución:** Ozytech Agency construyó un checkout multidivisa sobre Stripe Connect, habilitando transacciones en las monedas que cada mercado necesitaba.\n\n**Desafío:** Los pagos fallidos eran comunes y el equipo financiero no tenía una forma confiable de conciliar los pagos a proveedores.\n\n**Solución:** Ozytech Agency automatizó la conciliación de pagos y mejoró la lógica de reintentos, reduciendo los pagos fallidos en un 80%.",
+            "fr": "> Les paiements échoués ont chuté de 80 % après l'intégration. Notre équipe finance fait enfin confiance aux chiffres.\n\n**Défi:** La marketplace ne pouvait accepter qu'une seule devise, ce qui bloquait l'expansion vers de nouvelles régions.\n\n**Solution:** Ozytech Agency a mis en place un checkout multidevise sur Stripe Connect, permettant des transactions dans les devises requises par chaque marché.\n\n**Défi:** Les paiements échoués étaient fréquents et l'équipe finance n'avait aucun moyen fiable de rapprocher les versements.\n\n**Solution:** Ozytech Agency a automatisé le rapprochement des versements et amélioré la logique de relance, réduisant les paiements échoués de 80 %."
+        },
+        "client_name": "Daniel Osei, VP Engineering · Marketplace Pay",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 7
+    },
+    {
+        "service_slug": "cloud-management",
+        "slug": "vertex-cloud-observability-overhaul",
+        "title": {
+            "ar": "Vertex Cloud: تجديد إمكانية المراقبة",
+            "en": "Vertex Cloud: Observability Overhaul",
+            "es": "Vertex Cloud: renovación de observabilidad",
+            "fr": "Vertex Cloud : refonte de l'observabilité"
+        },
+        "short_description": {
+            "ar": "برنامج شامل للمراقبة وحوكمة التكاليف لمنصة تشغّل أكثر من 200 خدمة مصغّرة عبر عدة مناطق.",
+            "en": "A full observability and cost-governance program for a platform running 200+ microservices across multiple regions.",
+            "es": "Un programa completo de observabilidad y gobernanza de costos para una plataforma que ejecuta más de 200 microservicios en varias regiones.",
+            "fr": "Un programme complet d'observabilité et de gouvernance des coûts pour une plateforme exécutant plus de 200 microservices sur plusieurs régions."
+        },
+        "description": {
+            "ar": "> خفّضنا فاتورة السحابة بمقدار الثلث، وأصبحنا نعرف أخيرًا ما الذي تسبب في كل حادثة قبل أن يلاحظها العملاء.\n\n**التحدي:** مع أكثر من 200 خدمة مصغّرة عبر عدة مناطق، لم يكن لدى الفريق رؤية موحدة لما يسبب الحوادث.\n\n**الحل:** بنت أوزي تك حزمة مراقبة مركزية مع تتبع موزع بحيث يمكن تتبع الحوادث إلى سببها الجذري فورًا.\n\n**التحدي:** كان إنفاق السحابة ينمو أسرع من الاستخدام، دون رؤية لأي الخدمات تدفع التكلفة.\n\n**الحل:** أدخلت أوزي تك لوحات حوكمة تكاليف وسياسات لضبط الحجم، ما خفّض فاتورة السحابة بمقدار الثلث.",
+            "en": "> We cut our cloud bill by a third and finally know what triggered every incident before customers notice.\n\n**Challenge:** With 200+ microservices across multiple regions, the team had no unified view of what triggered incidents.\n\n**Solution:** Ozytech Agency built a centralized observability stack with distributed tracing so incidents can be traced to their root cause instantly.\n\n**Challenge:** Cloud spend was growing faster than usage, with no visibility into which services were driving cost.\n\n**Solution:** Ozytech Agency introduced cost-governance dashboards and rightsizing policies, cutting the cloud bill by a third.",
+            "es": "> Redujimos nuestra factura de nube en un tercio y por fin sabemos qué causó cada incidente antes de que los clientes lo noten.\n\n**Desafío:** Con más de 200 microservicios en varias regiones, el equipo no tenía una vista unificada de qué causaba los incidentes.\n\n**Solución:** Ozytech Agency construyó una pila de observabilidad centralizada con trazado distribuido para poder rastrear los incidentes hasta su causa raíz al instante.\n\n**Desafío:** El gasto en la nube crecía más rápido que el uso, sin visibilidad sobre qué servicios generaban el costo.\n\n**Solución:** Ozytech Agency introdujo paneles de gobernanza de costos y políticas de rightsizing, reduciendo la factura de la nube en un tercio.",
+            "fr": "> Nous avons réduit notre facture cloud d'un tiers et nous savons enfin ce qui a déclenché chaque incident avant que les clients ne le remarquent.\n\n**Défi:** Avec plus de 200 microservices répartis sur plusieurs régions, l'équipe n'avait aucune vision unifiée de ce qui déclenchait les incidents.\n\n**Solution:** Ozytech Agency a construit une stack d'observabilité centralisée avec du tracing distribué pour remonter instantanément à la cause racine de chaque incident.\n\n**Défi:** Les dépenses cloud augmentaient plus vite que l'usage, sans visibilité sur les services responsables des coûts.\n\n**Solution:** Ozytech Agency a introduit des tableaux de bord de gouvernance des coûts et des politiques de rightsizing, réduisant la facture cloud d'un tiers."
+        },
+        "client_name": "Samuel Okafor, Director of Infrastructure · Vertex Systems",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 8
+    },
+    {
+        "service_slug": "cloud-migration",
+        "slug": "halcyon-retail-cloud-native-migration",
+        "title": {
+            "ar": "Halcyon Retail: ترحيل إلى بيئة سحابية أصلية",
+            "en": "Halcyon Retail: Cloud-Native Migration",
+            "es": "Halcyon Retail: migración cloud-native",
+            "fr": "Halcyon Retail : migration cloud-native"
+        },
+        "short_description": {
+            "ar": "ترحيل بدون توقف لمنصة تجزئة قديمة من خوادم محلية إلى معمارية سحابية أصلية حديثة.",
+            "en": "A zero-downtime migration of a legacy retail platform from on-premise servers to a modern cloud-native architecture.",
+            "es": "Una migración sin tiempo de inactividad de una plataforma de retail heredada desde servidores locales hacia una arquitectura cloud-native moderna.",
+            "fr": "Une migration sans interruption d'une plateforme retail historique, de serveurs sur site vers une architecture cloud-native moderne."
+        },
+        "description": {
+            "ar": "> رحّلنا منصتنا بالكامل دون دقيقة واحدة من التوقف خلال ساعات العمل. تنفيذ مثير للإعجاب.\n\n**التحدي:** احتاجت Halcyon Retail إلى الانتقال من خوادم محلية قديمة دون تعطيل حركة المرور خلال ساعات العمل.\n\n**الحل:** خططت أوزي تك لانتقال تدريجي دون توقف إلى بنية سحابية أصلية، مع ترحيل دون أي انقطاع خلال ساعات العمل.\n\n**التحدي:** كانت المنصة القديمة تحتوي خدمات مترابطة بإحكام جعلت النقل المباشر عالي الخطورة.\n\n**الحل:** فصلت أوزي تك الخدمات الحرجة قبل الترحيل، وحوّلتها إلى حاويات لانتقال أنظف إلى السحابة.",
+            "en": "> We migrated our entire platform without a single minute of downtime during business hours. Impressive execution.\n\n**Challenge:** Halcyon Retail needed to move off aging on-premise servers without disrupting business-hours traffic.\n\n**Solution:** Ozytech Agency planned a phased, zero-downtime cutover to a cloud-native architecture, migrating with no interruption during business hours.\n\n**Challenge:** The legacy platform had tightly coupled services that made a straight lift-and-shift risky.\n\n**Solution:** Ozytech Agency decoupled critical services ahead of migration, containerizing them for a cleaner move to the cloud.",
+            "es": "> Migramos toda nuestra plataforma sin un solo minuto de inactividad en horario laboral. Una ejecución impresionante.\n\n**Desafío:** Halcyon Retail necesitaba migrar desde servidores locales obsoletos sin interrumpir el tráfico en horario laboral.\n\n**Solución:** Ozytech Agency planificó una transición por fases y sin tiempo de inactividad hacia una arquitectura cloud-native, migrando sin ninguna interrupción durante el horario laboral.\n\n**Desafío:** La plataforma heredada tenía servicios fuertemente acoplados que hacían arriesgada una migración directa tipo lift-and-shift.\n\n**Solución:** Ozytech Agency desacopló los servicios críticos antes de la migración, contenerizándolos para un traslado más limpio a la nube.",
+            "fr": "> Nous avons migré toute notre plateforme sans une seule minute d'interruption pendant les heures d'ouverture. Une exécution impressionnante.\n\n**Défi:** Halcyon Retail devait quitter des serveurs sur site vieillissants sans perturber le trafic pendant les heures d'ouverture.\n\n**Solution:** Ozytech Agency a planifié une bascule progressive et sans interruption vers une architecture cloud-native, migrant sans aucune coupure pendant les heures d'ouverture.\n\n**Défi:** La plateforme historique reposait sur des services fortement couplés, rendant un simple lift-and-shift risqué.\n\n**Solution:** Ozytech Agency a découplé les services critiques avant la migration, les conteneurisant pour un passage plus propre vers le cloud."
+        },
+        "client_name": "Grace Whitfield, CTO · Halcyon Retail",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 9
+    },
+    {
+        "service_slug": "it-infrastructure",
+        "slug": "meridian-labs-office-it-foundation",
+        "title": {
+            "ar": "Meridian Labs: أساس تقني للمكتب",
+            "en": "Meridian Labs: Office IT Foundation",
+            "es": "Meridian Labs: base de TI para oficina",
+            "fr": "Meridian Labs : fondations informatiques de bureau"
+        },
+        "short_description": {
+            "ar": "إعداد شبكة وخوادم آمن لمختبر أبحاث وتطوير سريع النمو كان يتوسع إلى مكتب ثانٍ.",
+            "en": "A secure network and server infrastructure build-out for a fast-growing R&D lab expanding to a second office.",
+            "es": "Una implementación de red y servidores segura para un laboratorio de I+D en rápido crecimiento que se expandía a una segunda oficina.",
+            "fr": "Un déploiement de réseau et de serveurs sécurisé pour un laboratoire de R&D en pleine croissance ouvrant un second bureau."
+        },
+        "description": {
+            "ar": "> كان مكتبنا الجديد جاهزًا للعمل بالكامل في اليوم الأول، الشبكة والخوادم وكل شيء، بفضل توثيق التسليم.\n\n**التحدي:** كانت Meridian Labs تفتتح مكتبًا ثانيًا دون تخطيط لشبكة أو خوادم أو بنية أمنية.\n\n**الحل:** صممت أوزي تك ونشرت أساسًا آمنًا للشبكة والخوادم جاهزًا قبل افتتاح المكتب.\n\n**التحدي:** لم يكن لدى فريق العمليات أي توثيق لصيانة الأنظمة بعد التسليم.\n\n**الحل:** سلّمت أوزي تك توثيق تسليم كاملاً، ما سمح للمكتب الجديد بالعمل بكامل طاقته منذ اليوم الأول.",
+            "en": "> Our new office was fully operational on day one, network, servers, and all, thanks to the handoff documentation.\n\n**Challenge:** Meridian Labs was opening a second office with no network, server, or security infrastructure planned.\n\n**Solution:** Ozytech Agency designed and deployed a secure network and server foundation ready before the office opened.\n\n**Challenge:** The operations team had no documentation to maintain the systems after handoff.\n\n**Solution:** Ozytech Agency delivered full handoff documentation, letting the new office run fully operational from day one.",
+            "es": "> Nuestra nueva oficina estuvo completamente operativa el primer día, red, servidores y todo, gracias a la documentación de traspaso.\n\n**Desafío:** Meridian Labs estaba abriendo una segunda oficina sin red, servidores ni infraestructura de seguridad planificados.\n\n**Solución:** Ozytech Agency diseñó y desplegó una base segura de red y servidores lista antes de la apertura de la oficina.\n\n**Desafío:** El equipo de operaciones no contaba con documentación para mantener los sistemas después del traspaso.\n\n**Solución:** Ozytech Agency entregó documentación de traspaso completa, permitiendo que la nueva oficina operara a plena capacidad desde el primer día.",
+            "fr": "> Notre nouveau bureau était pleinement opérationnel dès le premier jour, réseau, serveurs, tout, grâce à la documentation de transfert.\n\n**Défi:** Meridian Labs ouvrait un second bureau sans aucun réseau, serveur ni infrastructure de sécurité prévus.\n\n**Solution:** Ozytech Agency a conçu et déployé des fondations réseau et serveurs sécurisées, prêtes avant l'ouverture du bureau.\n\n**Défi:** L'équipe des opérations ne disposait d'aucune documentation pour maintenir les systèmes après le transfert.\n\n**Solution:** Ozytech Agency a livré une documentation de transfert complète, permettant au nouveau bureau d'être pleinement opérationnel dès le premier jour."
+        },
+        "client_name": "Owen Whitaker, Operations Manager · Meridian Labs",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 10
+    },
+    {
+        "service_slug": "cyber-security",
+        "slug": "ferro-bank-security-hardening-program",
+        "title": {
+            "ar": "Ferro Bank: برنامج تعزيز الأمان",
+            "en": "Ferro Bank: Security Hardening Program",
+            "es": "Ferro Bank: programa de fortalecimiento de seguridad",
+            "fr": "Ferro Bank : programme de renforcement de la sécurité"
+        },
+        "short_description": {
+            "ar": "برنامج تقييم مخاطر وتعزيز وصول لشركة تقنية مالية تتعامل مع بيانات مالية حساسة للعملاء.",
+            "en": "A risk assessment and access-hardening program for a fintech handling sensitive customer financial data.",
+            "es": "Un programa de evaluación de riesgos y fortalecimiento de accesos para una fintech que maneja datos financieros sensibles de clientes.",
+            "fr": "Un programme d'évaluation des risques et de renforcement des accès pour une fintech traitant des données financières client sensibles."
+        },
+        "description": {
+            "ar": "> اجتزنا أول تدقيق SOC2 لنا دون أي ملاحظة جوهرية، وهي سابقة في تاريخ شركتنا.\n\n**التحدي:** احتاج Ferro Bank إلى اجتياز تدقيق SOC2 لكنه لم يخضع قط لتقييم مخاطر رسمي.\n\n**الحل:** أجرت أوزي تك تقييم مخاطر كاملاً وعزّزت ضوابط الوصول عبر المؤسسة قبل التدقيق.\n\n**التحدي:** افتقرت بيانات العملاء المالية الحساسة إلى ضوابط وصول متسقة عبر الفرق.\n\n**الحل:** نفّذت أوزي تك سياسات وصول بأقل امتياز وخطط استجابة للحوادث، ما أغلق الثغرات قبل وصول المدققين.",
+            "en": "> We passed our first SOC2 audit without a single major finding, a first in our company's history.\n\n**Challenge:** Ferro Bank needed to pass a SOC2 audit but had never undergone a formal risk assessment.\n\n**Solution:** Ozytech Agency ran a full risk assessment and hardened access controls across the organization ahead of the audit.\n\n**Challenge:** Sensitive customer financial data lacked consistent access controls across teams.\n\n**Solution:** Ozytech Agency implemented least-privilege access policies and incident response playbooks, closing the gaps before auditors arrived.",
+            "es": "> Pasamos nuestra primera auditoría SOC2 sin un solo hallazgo importante, una primera vez en la historia de nuestra empresa.\n\n**Desafío:** Ferro Bank necesitaba pasar una auditoría SOC2 pero nunca había realizado una evaluación de riesgos formal.\n\n**Solución:** Ozytech Agency llevó a cabo una evaluación de riesgos completa y reforzó los controles de acceso en toda la organización antes de la auditoría.\n\n**Desafío:** Los datos financieros sensibles de los clientes carecían de controles de acceso consistentes entre equipos.\n\n**Solución:** Ozytech Agency implementó políticas de acceso de mínimo privilegio y guías de respuesta a incidentes, cerrando las brechas antes de que llegaran los auditores.",
+            "fr": "> Nous avons réussi notre premier audit SOC2 sans aucune non-conformité majeure, une première dans l'histoire de notre entreprise.\n\n**Défi:** Ferro Bank devait réussir un audit SOC2 mais n'avait jamais mené d'évaluation des risques formelle.\n\n**Solution:** Ozytech Agency a mené une évaluation des risques complète et renforcé les contrôles d'accès dans toute l'organisation avant l'audit.\n\n**Défi:** Les données financières sensibles des clients manquaient de contrôles d'accès cohérents entre les équipes.\n\n**Solution:** Ozytech Agency a mis en place des politiques d'accès selon le principe du moindre privilège et des playbooks de réponse aux incidents, comblant les lacunes avant l'arrivée des auditeurs."
+        },
+        "client_name": "Isabelle Moreau, Head of Security · Ferro Bank",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 11
+    },
+    {
+        "service_slug": "consulting-training",
+        "slug": "bright-path-health-engineering-playbook",
+        "title": {
+            "ar": "Bright Path Health: دليل هندسي",
+            "en": "Bright Path Health: Engineering Playbook",
+            "es": "Bright Path Health: manual de ingeniería",
+            "fr": "Bright Path Health : manuel d'ingénierie"
+        },
+        "short_description": {
+            "ar": "مراجعة معمارية وبرنامج تدريب للفريق منح مهندسي شركة تقنية صحية متنامية إطار قرار مشتركًا.",
+            "en": "An architecture review and team training program that gave a growing healthtech's engineers a shared decision-making framework.",
+            "es": "Una revisión de arquitectura y un programa de formación de equipo que dio a los ingenieros de una healthtech en crecimiento un marco de decisión compartido.",
+            "fr": "Une revue d'architecture et un programme de formation d'équipe qui ont donné aux ingénieurs d'une healthtech en croissance un cadre de décision commun."
+        },
+        "description": {
+            "ar": "> بات فريقنا يسلّم بثلث النقاشات المتكررة التي كنا نخوضها. الورش عادت بفائدتها خلال شهر واحد.\n\n**التحدي:** لم يكن لدى فريق الهندسة المتنامي في Bright Path Health إطار مشترك لاتخاذ القرارات المعمارية، ما تسبب في نقاشات متكررة.\n\n**الحل:** أجرت أوزي تك مراجعة معمارية وبنت إطار قرار مشتركًا يستطيع الفريق تطبيقه مستقبلًا.\n\n**التحدي:** افتقر المهندسون المبتدئون إلى توجيه منظم، ما أبطأ عملية التأهيل ودورات مراجعة الكود.\n\n**الحل:** قدّمت أوزي تك ورش عمل تطبيقية منحت المهندسين مفردات مشتركة ومعيار مراجعة موحد.",
+            "en": "> Our team ships with a third of the back-and-forth we used to have. The workshops paid for themselves in a month.\n\n**Challenge:** Bright Path Health's growing engineering team had no shared framework for making architecture decisions, causing repeated back-and-forth.\n\n**Solution:** Ozytech Agency ran an architecture review and built a shared decision-making framework the team could apply going forward.\n\n**Challenge:** Junior engineers lacked structured guidance, slowing onboarding and code review cycles.\n\n**Solution:** Ozytech Agency delivered hands-on workshops that gave engineers a common vocabulary and review standard.",
+            "es": "> Nuestro equipo entrega con un tercio de las idas y vueltas que solíamos tener. Los talleres se pagaron solos en un mes.\n\n**Desafío:** El creciente equipo de ingeniería de Bright Path Health no tenía un marco compartido para tomar decisiones de arquitectura, lo que causaba idas y vueltas repetidas.\n\n**Solución:** Ozytech Agency realizó una revisión de arquitectura y construyó un marco de decisión compartido que el equipo pudo aplicar en adelante.\n\n**Desafío:** Los ingenieros junior carecían de una guía estructurada, lo que ralentizaba la incorporación y los ciclos de revisión de código.\n\n**Solución:** Ozytech Agency impartió talleres prácticos que dieron a los ingenieros un vocabulario común y un estándar de revisión compartido.",
+            "fr": "> Notre équipe livre avec un tiers des allers-retours que nous avions avant. Les ateliers se sont rentabilisés en un mois.\n\n**Défi:** L'équipe d'ingénierie en croissance de Bright Path Health n'avait aucun cadre partagé pour prendre des décisions d'architecture, ce qui provoquait des allers-retours répétés.\n\n**Solution:** Ozytech Agency a mené une revue d'architecture et construit un cadre de décision commun que l'équipe pouvait appliquer par la suite.\n\n**Défi:** Les ingénieurs juniors manquaient d'accompagnement structuré, ralentissant l'onboarding et les cycles de revue de code.\n\n**Solution:** Ozytech Agency a animé des ateliers pratiques donnant aux ingénieurs un vocabulaire commun et un standard de revue partagé."
+        },
+        "client_name": "Nathaniel Cross, VP Engineering · Bright Path Health",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 12
+    },
+    {
+        "service_slug": "remote-team",
+        "slug": "quantum-freight-extended-engineering-pod",
+        "title": {
+            "ar": "Quantum Freight: فريق هندسي موسّع عن بُعد",
+            "en": "Quantum Freight: Extended Engineering Pod",
+            "es": "Quantum Freight: equipo de ingeniería extendido",
+            "fr": "Quantum Freight : équipe d'ingénierie étendue"
+        },
+        "short_description": {
+            "ar": "فريق هندسي عن بُعد مخصص اندمج مع الفريق الداخلي لتسريع خارطة طريق منصة لوجستية.",
+            "en": "A dedicated remote engineering pod embedded with an in-house team to accelerate a logistics platform's roadmap.",
+            "es": "Un equipo de ingeniería remoto dedicado, integrado con el equipo interno, para acelerar la hoja de ruta de una plataforma de logística.",
+            "fr": "Une équipe d'ingénierie à distance dédiée, intégrée à l'équipe interne, pour accélérer la feuille de route d'une plateforme logistique."
+        },
+        "description": {
+            "ar": "> توقف الأمر عن الشعور وكأنه إسناد خارجي بعد الأسبوع الثاني. مهندسو أوزي تك أصبحوا ببساطة جزءًا من فريقنا.\n\n**التحدي:** كانت خارطة طريق Quantum Freight تتحرك أسرع مما يستطيع فريقها الداخلي تسليمه.\n\n**الحل:** أدمجت أوزي تك فريقًا هندسيًا مخصصًا عن بُعد اندمج مباشرة مع الفريق الحالي وعملياته.\n\n**التحدي:** شعرت التعاقدات الخارجية السابقة بالانفصال عن المنتج وبضعف التواصل.\n\n**الحل:** انضم مهندسو أوزي تك إلى الاجتماعات اليومية والتخطيط مباشرة، وأصبحوا لا يُميَّزون عن الفريق الداخلي خلال أسابيع.",
+            "en": "> It stopped feeling like outsourcing after the second week. The Ozytech Agency engineers just became part of our team.\n\n**Challenge:** Quantum Freight's roadmap was moving faster than its in-house team could deliver.\n\n**Solution:** Ozytech Agency embedded a dedicated remote engineering pod that integrated directly with the existing team and process.\n\n**Challenge:** Previous outsourcing engagements felt disconnected from the product and communicated poorly.\n\n**Solution:** Ozytech Agency engineers joined daily standups and planning directly, becoming indistinguishable from the in-house team within weeks.",
+            "es": "> Dejó de sentirse como outsourcing después de la segunda semana. Los ingenieros de Ozytech Agency simplemente se volvieron parte de nuestro equipo.\n\n**Desafío:** La hoja de ruta de Quantum Freight avanzaba más rápido de lo que su equipo interno podía entregar.\n\n**Solución:** Ozytech Agency integró un equipo de ingeniería remoto dedicado que se integró directamente con el equipo y los procesos existentes.\n\n**Desafío:** Las anteriores colaboraciones de outsourcing se sentían desconectadas del producto y con mala comunicación.\n\n**Solución:** Los ingenieros de Ozytech Agency se unieron directamente a las reuniones diarias y la planificación, volviéndose indistinguibles del equipo interno en cuestión de semanas.",
+            "fr": "> Ça a cessé de ressembler à de la sous-traitance dès la deuxième semaine. Les ingénieurs Ozytech Agency sont simplement devenus membres de notre équipe.\n\n**Défi:** La feuille de route de Quantum Freight avançait plus vite que ce que son équipe interne pouvait livrer.\n\n**Solution:** Ozytech Agency a intégré une équipe d'ingénierie à distance dédiée, directement intégrée à l'équipe et aux process existants.\n\n**Défi:** Les précédentes collaborations en sous-traitance semblaient déconnectées du produit et mal communiquées.\n\n**Solution:** Les ingénieurs Ozytech Agency ont rejoint directement les stand-ups quotidiens et la planification, devenant indiscernables de l'équipe interne en quelques semaines."
+        },
+        "client_name": "Felicity Adeyemi, CTO · Quantum Freight",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 13
+    },
+    {
+        "service_slug": "data-refinement",
+        "slug": "clearline-logistics-reporting-overhaul",
+        "title": {
+            "ar": "Clearline Logistics: تجديد التقارير",
+            "en": "Clearline Logistics: Reporting Overhaul",
+            "es": "Clearline Logistics: renovación de reportes",
+            "fr": "Clearline Logistics : refonte du reporting"
+        },
+        "short_description": {
+            "ar": "مشروع لتنظيف البيانات وأتمتة خطوط الأنابيب حوّل سنوات من بيانات لوجستية غير متسقة إلى تقارير موثوقة.",
+            "en": "A data cleaning and pipeline automation project that turned years of inconsistent logistics data into trustworthy reporting.",
+            "es": "Un proyecto de limpieza de datos y automatización de pipelines que convirtió años de datos logísticos inconsistentes en reportes confiables.",
+            "fr": "Un projet de nettoyage de données et d'automatisation de pipelines qui a transformé des années de données logistiques incohérentes en reporting fiable."
+        },
+        "description": {
+            "ar": "> لأول مرة، تثق قيادتنا بأرقام لوحة التحكم بما يكفي لاتخاذ قرارات بناءً عليها.\n\n**التحدي:** جعلت سنوات من البيانات اللوجستية غير المتسقة القيادة لا تثق بلوحات التقارير.\n\n**الحل:** نظّفت أوزي تك ووحّدت البيانات التاريخية، وأعادت بناء خطوط الأنابيب التي تغذي لوحات التحكم.\n\n**التحدي:** كانت التقارير تُنشأ يدويًا كل أسبوع، ما يؤخر القرارات لأيام.\n\n**الحل:** أتمتت أوزي تك خط التقارير من الألف إلى الياء، ما منح القيادة أرقامًا محدّثة دائمًا يمكن الوثوق بها.",
+            "en": "> For the first time, our leadership team trusts the dashboard numbers enough to make decisions from them.\n\n**Challenge:** Years of inconsistent logistics data made leadership distrust the reporting dashboards.\n\n**Solution:** Ozytech Agency cleaned and standardized the historical data, rebuilding the pipelines that feed the dashboards.\n\n**Challenge:** Reports were generated manually each week, delaying decisions by days.\n\n**Solution:** Ozytech Agency automated the reporting pipeline end to end, giving leadership always-current numbers they could trust.",
+            "es": "> Por primera vez, nuestro equipo directivo confía lo suficiente en los números del panel como para tomar decisiones a partir de ellos.\n\n**Desafío:** Años de datos logísticos inconsistentes hicieron que la dirección desconfiara de los paneles de reportes.\n\n**Solución:** Ozytech Agency limpió y estandarizó los datos históricos, reconstruyendo los pipelines que alimentan los paneles.\n\n**Desafío:** Los reportes se generaban manualmente cada semana, retrasando las decisiones por días.\n\n**Solución:** Ozytech Agency automatizó el pipeline de reportes de principio a fin, dando a la dirección cifras siempre actualizadas en las que podía confiar.",
+            "fr": "> Pour la première fois, notre direction fait suffisamment confiance aux chiffres du tableau de bord pour prendre des décisions à partir d'eux.\n\n**Défi:** Des années de données logistiques incohérentes avaient miné la confiance de la direction envers les tableaux de bord de reporting.\n\n**Solution:** Ozytech Agency a nettoyé et standardisé les données historiques, en reconstruisant les pipelines qui alimentent les tableaux de bord.\n\n**Défi:** Les rapports étaient générés manuellement chaque semaine, retardant les décisions de plusieurs jours.\n\n**Solution:** Ozytech Agency a automatisé le pipeline de reporting de bout en bout, donnant à la direction des chiffres toujours à jour et fiables."
+        },
+        "client_name": "Victor Almeida, Head of Analytics · Clearline Logistics",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 14
+    },
+    {
+        "service_slug": "localization",
+        "slug": "aurelia-beauty-five-market-expansion",
+        "title": {
+            "ar": "Aurelia Beauty: التوسع إلى خمسة أسواق",
+            "en": "Aurelia Beauty: Five-Market Expansion",
+            "es": "Aurelia Beauty: expansión a cinco mercados",
+            "fr": "Aurelia Beauty : expansion sur cinq marchés"
+        },
+        "short_description": {
+            "ar": "جهد شامل لتوطين المنتج والتسويق دعم توسع علامة تجميل إلى خمسة أسواق دولية جديدة.",
+            "en": "A full product and marketing localization effort supporting a beauty brand's expansion into five new international markets.",
+            "es": "Un esfuerzo completo de localización de producto y marketing que respaldó la expansión de una marca de belleza a cinco nuevos mercados internacionales.",
+            "fr": "Un effort complet de localisation produit et marketing accompagnant l'expansion d'une marque de beauté vers cinq nouveaux marchés internationaux."
+        },
+        "description": {
+            "ar": "> طابق معدل التحويل في الأسواق الجديدة معدل سوقنا الأساسي خلال الربع الأول، وهو أمر لا يحدث أبدًا.\n\n**التحدي:** كانت Aurelia Beauty تتوسع إلى خمسة أسواق جديدة بمحتوى منتج وتسويق بدا وكأنه مترجم آليًا.\n\n**الحل:** قادت أوزي تك جهد توطين شامل كيّف اللغة والصور وسير العمل لكل سوق.\n\n**التحدي:** لم يكن للمنتج دعم للكتابة من اليمين لليسار، ما أعاق إطلاقًا سليمًا في الأسواق التي تعتمد هذا الاتجاه.\n\n**الحل:** أعادت أوزي تك بناء الواجهة بدعم كامل للكتابة من اليمين لليسار واختبار خاص بكل لغة قبل الإطلاق.",
+            "en": "> Our conversion rate in new markets matched our home market within the first quarter, that never happens.\n\n**Challenge:** Aurelia Beauty was expanding into five new markets with product and marketing content that read as machine-translated.\n\n**Solution:** Ozytech Agency led a full localization effort adapting language, imagery, and workflows for each market.\n\n**Challenge:** The product had no RTL support, blocking a clean launch in right-to-left markets.\n\n**Solution:** Ozytech Agency rebuilt the interface with full RTL support and locale-specific testing before launch.",
+            "es": "> Nuestra tasa de conversión en los nuevos mercados igualó a la de nuestro mercado local en el primer trimestre, algo que nunca pasa.\n\n**Desafío:** Aurelia Beauty se expandía a cinco nuevos mercados con contenido de producto y marketing que parecía traducido automáticamente.\n\n**Solución:** Ozytech Agency lideró un esfuerzo de localización completo, adaptando idioma, imágenes y flujos de trabajo para cada mercado.\n\n**Desafío:** El producto no tenía soporte RTL, lo que impedía un lanzamiento adecuado en mercados de escritura de derecha a izquierda.\n\n**Solución:** Ozytech Agency reconstruyó la interfaz con soporte RTL completo y pruebas específicas por región antes del lanzamiento.",
+            "fr": "> Notre taux de conversion sur les nouveaux marchés a rejoint celui de notre marché d'origine dès le premier trimestre, ce qui n'arrive jamais.\n\n**Défi:** Aurelia Beauty s'étendait vers cinq nouveaux marchés avec un contenu produit et marketing qui semblait traduit automatiquement.\n\n**Solution:** Ozytech Agency a mené un effort de localisation complet, adaptant langue, imagerie et flux de travail pour chaque marché.\n\n**Défi:** Le produit ne disposait d'aucun support RTL, bloquant un lancement propre sur les marchés utilisant l'écriture de droite à gauche.\n\n**Solution:** Ozytech Agency a reconstruit l'interface avec un support RTL complet et des tests spécifiques à chaque locale avant le lancement."
+        },
+        "client_name": "Camille Laurent, International Growth Lead · Aurelia Beauty",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 15
+    },
+    {
+        "service_slug": "ecommerce",
+        "slug": "woodland-supply-co-storefront-relaunch",
+        "title": {
+            "ar": "Woodland Supply Co: إعادة إطلاق المتجر",
+            "en": "Woodland Supply Co: Storefront Relaunch",
+            "es": "Woodland Supply Co: relanzamiento de tienda",
+            "fr": "Woodland Supply Co : relance de la boutique"
+        },
+        "short_description": {
+            "ar": "إعادة إطلاق كاملة للتجارة الإلكترونية بمتجر جديد وإعداد دفع ونظام مخزون لتاجر تجزئة متنامٍ لمعدات خارجية.",
+            "en": "A complete e-commerce relaunch with a new storefront, payment setup, and inventory system for a growing outdoor goods retailer.",
+            "es": "Un relanzamiento completo de e-commerce con una nueva tienda, configuración de pagos y sistema de inventario para un minorista de productos de exterior en crecimiento.",
+            "fr": "Une relance e-commerce complète avec une nouvelle boutique, une configuration de paiement et un système d'inventaire pour un détaillant d'articles de plein air en croissance."
+        },
+        "description": {
+            "ar": "> انخفض التخلي عن سلة الشراء بنسبة 30% بعد إطلاق صفحة الدفع الجديدة. أفضل استثمار قمنا به هذا العام.\n\n**التحدي:** كانت Woodland Supply Co تفقد ما يقارب ثلث عملائها عند الدفع في متجرها القديم.\n\n**الحل:** أعادت أوزي تك إطلاق المتجر بصفحة دفع مبسّطة وإعداد دفع حديث.\n\n**التحدي:** كان تتبع المخزون يدويًا، ما تسبب في بيع عناصر نفدت من المخزون.\n\n**الحل:** دمجت أوزي تك نظام مخزون مباشر متصلاً مباشرة بالمتجر.",
+            "en": "> Cart abandonment dropped by 30% after the new checkout went live. Best investment we made this year.\n\n**Challenge:** Woodland Supply Co was losing nearly a third of customers at checkout on their old storefront.\n\n**Solution:** Ozytech Agency relaunched the storefront with a streamlined checkout and modern payment setup.\n\n**Challenge:** Inventory tracking was manual, causing overselling of out-of-stock items.\n\n**Solution:** Ozytech Agency integrated a live inventory system connected directly to the storefront.",
+            "es": "> El abandono de carrito bajó un 30% tras lanzar el nuevo checkout. La mejor inversión que hicimos este año.\n\n**Desafío:** Woodland Supply Co perdía casi un tercio de sus clientes en el checkout de su tienda antigua.\n\n**Solución:** Ozytech Agency relanzó la tienda con un checkout optimizado y una configuración de pagos moderna.\n\n**Desafío:** El seguimiento de inventario era manual, lo que causaba sobreventa de artículos agotados.\n\n**Solución:** Ozytech Agency integró un sistema de inventario en vivo conectado directamente a la tienda.",
+            "fr": "> L'abandon de panier a chuté de 30 % après la mise en ligne du nouveau checkout. Le meilleur investissement de l'année pour nous.\n\n**Défi:** Woodland Supply Co perdait près d'un tiers de ses clients au moment du paiement sur son ancienne boutique.\n\n**Solution:** Ozytech Agency a relancé la boutique avec un checkout simplifié et une configuration de paiement moderne.\n\n**Défi:** Le suivi des stocks était manuel, entraînant la survente d'articles en rupture.\n\n**Solution:** Ozytech Agency a intégré un système d'inventaire en direct connecté directement à la boutique."
+        },
+        "client_name": "Henry Caldwell, Owner · Woodland Supply Co",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 16
+    },
+    {
+        "service_slug": "ui-ux-design",
+        "slug": "fintra-banking-app-redesign",
+        "title": {
+            "ar": "Fintra: إعادة تصميم تطبيق مصرفي",
+            "en": "Fintra: Banking App Redesign",
+            "es": "Fintra: rediseño de app bancaria",
+            "fr": "Fintra : refonte d'application bancaire"
+        },
+        "short_description": {
+            "ar": "إعادة تصميم شاملة قائمة على البحث لواجهة تطبيق مالي شخصي، خفّضت تسرّب الإعداد الأولي بشكل كبير.",
+            "en": "A full research-led redesign of a personal finance app's interface, cutting onboarding drop-off dramatically.",
+            "es": "Un rediseño completo basado en investigación de la interfaz de una app de finanzas personales, que redujo drásticamente el abandono durante el onboarding.",
+            "fr": "Une refonte complète, guidée par la recherche, de l'interface d'une application de finances personnelles, réduisant fortement l'abandon à l'onboarding."
+        },
+        "description": {
+            "ar": "> ارتفع معدل إتمام الإعداد الأولي من 54% إلى 89%. المستخدمون أخيرًا يفهمون التطبيق من المحاولة الأولى.\n\n**التحدي:** فقد تدفق الإعداد الأولي في Fintra 46% من المستخدمين الجدد قبل وصولهم إلى المنتج الأساسي.\n\n**الحل:** قادت أوزي تك إعادة تصميم قائمة على البحث لتدفق الإعداد الأولي، وبسّطت كل خطوة إلى جوهرها.\n\n**التحدي:** كان المستخدمون كثيرًا ما يسيئون فهم الميزات المصرفية الأساسية، ما رفع عدد تذاكر الدعم.\n\n**الحل:** أعادت أوزي تك تصميم الواجهة حول أنماط واضحة ومُختبرة تتماشى مع الطريقة التي يفكر بها المستخدمون فعليًا بأموالهم.",
+            "en": "> Onboarding completion went from 54% to 89%. Users finally understand the app on the first try.\n\n**Challenge:** Fintra's onboarding flow lost 46% of new users before they reached the core product.\n\n**Solution:** Ozytech Agency led a research-backed redesign of the onboarding flow, simplifying every step to its essentials.\n\n**Challenge:** Users frequently misunderstood core banking features, driving support tickets up.\n\n**Solution:** Ozytech Agency redesigned the interface around clear, tested patterns that matched how users actually think about their money.",
+            "es": "> La finalización del onboarding pasó del 54% al 89%. Los usuarios por fin entienden la app al primer intento.\n\n**Desafío:** El flujo de onboarding de Fintra perdía al 46% de los nuevos usuarios antes de que llegaran al producto principal.\n\n**Solución:** Ozytech Agency lideró un rediseño basado en investigación del flujo de onboarding, simplificando cada paso a lo esencial.\n\n**Desafío:** Los usuarios solían malinterpretar las funciones bancarias principales, lo que aumentaba los tickets de soporte.\n\n**Solución:** Ozytech Agency rediseñó la interfaz alrededor de patrones claros y probados que coincidían con la forma en que los usuarios realmente piensan sobre su dinero.",
+            "fr": "> Le taux de complétion de l'onboarding est passé de 54 % à 89 %. Les utilisateurs comprennent enfin l'application dès le premier essai.\n\n**Défi:** Le parcours d'onboarding de Fintra perdait 46 % des nouveaux utilisateurs avant qu'ils n'atteignent le produit principal.\n\n**Solution:** Ozytech Agency a mené une refonte guidée par la recherche du parcours d'onboarding, simplifiant chaque étape à l'essentiel.\n\n**Défi:** Les utilisateurs comprenaient fréquemment mal les fonctionnalités bancaires principales, ce qui augmentait les tickets de support.\n\n**Solution:** Ozytech Agency a repensé l'interface autour de modèles clairs et testés, correspondant à la façon dont les utilisateurs pensent réellement leur argent."
+        },
+        "client_name": "Sophie Tanaka, Head of Design · Fintra",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 17
+    },
+    {
+        "service_slug": "seo-optimization",
+        "slug": "coastal-realty-group-organic-growth",
+        "title": {
+            "ar": "Coastal Realty Group: نمو عضوي",
+            "en": "Coastal Realty Group: Organic Growth",
+            "es": "Coastal Realty Group: crecimiento orgánico",
+            "fr": "Coastal Realty Group : croissance organique"
+        },
+        "short_description": {
+            "ar": "تجديد تقني لمحركات البحث والمحتوى ضاعف حركة البحث العضوية لشركة عقارية إقليمية ثلاث مرات خلال ستة أشهر.",
+            "en": "A technical SEO and content overhaul that tripled a regional real estate firm's organic search traffic in six months.",
+            "es": "Una renovación técnica de SEO y contenido que triplicó el tráfico de búsqueda orgánico de una inmobiliaria regional en seis meses.",
+            "fr": "Une refonte SEO technique et éditoriale qui a triplé le trafic de recherche organique d'une agence immobilière régionale en six mois."
+        },
+        "description": {
+            "ar": "> تضاعفت العملاء المحتملون العضويون ثلاث مرات دون زيادة إنفاقنا الإعلاني بدولار واحد. التدقيق التقني وحده كان يستحق العناء.\n\n**التحدي:** نادرًا ما ظهرت قوائم Coastal Realty Group بعد الصفحة الثانية من نتائج البحث، ما حرم فريق المبيعات من العملاء المحتملين العضويين.\n\n**الحل:** أجرت أوزي تك تدقيقًا تقنيًا لمحركات البحث وأعادت بناء استراتيجية المحتوى حول المصطلحات التي يبحث عنها المشترون فعليًا.\n\n**التحدي:** أضرت سرعة الصفحات البطيئة بكل من الترتيب والتحويل على الجوال.\n\n**الحل:** حسّنت أوزي تك مؤشرات Core Web Vitals عبر الموقع، ما حسّن ترتيب البحث والتحويل على الجوال معًا.",
+            "en": "> Organic leads tripled without increasing our ad spend by a single dollar. The technical audit alone was worth it.\n\n**Challenge:** Coastal Realty Group's listings rarely appeared past page two of search results, starving the sales team of organic leads.\n\n**Solution:** Ozytech Agency ran a technical SEO audit and rebuilt the content strategy around the terms buyers actually search.\n\n**Challenge:** Slow page speeds were hurting both rankings and conversion on mobile.\n\n**Solution:** Ozytech Agency optimized Core Web Vitals across the site, improving both search rank and mobile conversion.",
+            "es": "> Los leads orgánicos se triplicaron sin aumentar nuestro gasto en publicidad ni un solo dólar. La auditoría técnica por sí sola ya valió la pena.\n\n**Desafío:** Los listados de Coastal Realty Group rara vez aparecían más allá de la segunda página de resultados de búsqueda, privando al equipo de ventas de leads orgánicos.\n\n**Solución:** Ozytech Agency realizó una auditoría técnica de SEO y reconstruyó la estrategia de contenido en torno a los términos que realmente buscan los compradores.\n\n**Desafío:** La lentitud de las páginas perjudicaba tanto el posicionamiento como la conversión móvil.\n\n**Solución:** Ozytech Agency optimizó los Core Web Vitals en todo el sitio, mejorando tanto el posicionamiento en búsquedas como la conversión móvil.",
+            "fr": "> Les leads organiques ont triplé sans augmenter notre budget publicitaire d'un seul euro. L'audit technique valait déjà le coup à lui seul.\n\n**Défi:** Les annonces de Coastal Realty Group apparaissaient rarement au-delà de la deuxième page des résultats de recherche, privant l'équipe commerciale de leads organiques.\n\n**Solution:** Ozytech Agency a mené un audit SEO technique et reconstruit la stratégie de contenu autour des termes réellement recherchés par les acheteurs.\n\n**Défi:** La lenteur des pages nuisait à la fois au classement et à la conversion mobile.\n\n**Solution:** Ozytech Agency a optimisé les Core Web Vitals sur l'ensemble du site, améliorant à la fois le classement dans les résultats et la conversion mobile."
+        },
+        "client_name": "Andre Bellamy, Marketing Director · Coastal Realty Group",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 18
+    },
+    {
+        "service_slug": "website-maintenance",
+        "slug": "hearth-home-ongoing-site-reliability",
+        "title": {
+            "ar": "Hearth & Home: موثوقية مستمرة للموقع",
+            "en": "Hearth & Home: Ongoing Site Reliability",
+            "es": "Hearth & Home: fiabilidad continua del sitio",
+            "fr": "Hearth & Home : fiabilité continue du site"
+        },
+        "short_description": {
+            "ar": "برنامج صيانة مستمر ثبّت موقع تجارة إلكترونية عالي الحركة كان يعاني من أعطال متكررة وإصدارات بطيئة.",
+            "en": "An ongoing maintenance program that stabilized a high-traffic e-commerce site plagued by recurring outages and slow releases.",
+            "es": "Un programa de mantenimiento continuo que estabilizó un sitio de e-commerce de alto tráfico afectado por caídas recurrentes y lanzamientos lentos.",
+            "fr": "Un programme de maintenance continue qui a stabilisé un site e-commerce à fort trafic sujet à des pannes récurrentes et des mises en ligne lentes."
+        },
+        "description": {
+            "ar": "> لم نواجه أي عطل غير مخطط له منذ تولت أوزي تك الصيانة. تضاعف أيضًا معدل إصداراتنا.\n\n**التحدي:** عانى Hearth & Home من أعطال متكررة غير مخطط لها خلال فعاليات المبيعات عالية الحركة.\n\n**الحل:** شخّصت أوزي تك الأسباب الجذرية ووضعت مراقبة وتنبيهات مستمرة لرصد المشكلات قبل أن يلاحظها العملاء.\n\n**التحدي:** كانت الإصدارات بطيئة ومحفوفة بالمخاطر، ما حدّ من وتيرة تحسينات الفريق.\n\n**الحل:** بسّطت أوزي تك عملية الإصدار، وضاعفت وتيرة إطلاق الفريق دون إضافة أعطال.",
+            "en": "> We haven't had a single unplanned outage since Ozytech Agency took over maintenance. Our release cadence doubled too.\n\n**Challenge:** Hearth & Home suffered recurring, unplanned outages during high-traffic sales events.\n\n**Solution:** Ozytech Agency diagnosed the root causes and put continuous monitoring and alerting in place to catch issues before customers noticed.\n\n**Challenge:** Releases were slow and risky, limiting how often the team could ship improvements.\n\n**Solution:** Ozytech Agency streamlined the release process, doubling the team's shipping cadence without adding incidents.",
+            "es": "> No hemos tenido ni una sola caída imprevista desde que Ozytech Agency se hizo cargo del mantenimiento. Nuestro ritmo de lanzamientos también se duplicó.\n\n**Desafío:** Hearth & Home sufría caídas recurrentes e imprevistas durante eventos de venta de alto tráfico.\n\n**Solución:** Ozytech Agency diagnosticó las causas raíz e implementó monitoreo y alertas continuas para detectar problemas antes de que los clientes los notaran.\n\n**Desafío:** Los lanzamientos eran lentos y riesgosos, limitando la frecuencia con la que el equipo podía entregar mejoras.\n\n**Solución:** Ozytech Agency optimizó el proceso de lanzamiento, duplicando el ritmo de entregas del equipo sin agregar incidentes.",
+            "fr": "> Nous n'avons connu aucune panne imprévue depuis qu'Ozytech Agency assure la maintenance. Notre cadence de mise en production a aussi doublé.\n\n**Défi:** Hearth & Home subissait des pannes récurrentes et imprévues pendant les événements de vente à fort trafic.\n\n**Solution:** Ozytech Agency a diagnostiqué les causes racines et mis en place une surveillance et des alertes continues pour détecter les problèmes avant que les clients ne les remarquent.\n\n**Défi:** Les mises en production étaient lentes et risquées, limitant la fréquence des améliorations livrées par l'équipe.\n\n**Solution:** Ozytech Agency a simplifié le processus de mise en production, doublant la cadence de livraison de l'équipe sans ajouter d'incidents."
+        },
+        "client_name": "Miriam Solberg, Head of E-Commerce · Hearth & Home",
+        "project_url": null,
+        "featured_image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=900&q=80",
+        "status": "published",
+        "display_order": 19
+    }
+]

@@ -83,7 +83,7 @@ class AdminServiceManagementTest extends TestCase
                 ->where('lead', 'Put AI to work in your product.')
                 ->has('offer', 2)
                 ->where('build.0.icon', 'check_circle')
-                ->where('hasCaseStudy', false)
+                ->has('projects', 0)
                 ->where('nav.services.0.slug', 'ai-integration')
                 ->where('nav.website', [])
             );

@@ -21,7 +21,7 @@ class ServiceController extends Controller
         return Inertia::render('Admin/Services/Index', [
             'services' => Service::query()
                 ->ordered()
-                ->withCount('items')
+                ->withCount(['items', 'projects'])
                 ->get()
                 ->map(fn (Service $service) => [
                     'id' => $service->id,
@@ -31,6 +31,7 @@ class ServiceController extends Controller
                     'is_published' => $service->is_published,
                     'sort_order' => $service->sort_order,
                     'items_count' => $service->items_count,
+                    'projects_count' => $service->projects_count,
                 ]),
         ]);
     }
