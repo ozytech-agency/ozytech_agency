@@ -4,10 +4,11 @@ return [
     'kicker' => 'خدمات أوزي تك',
     'cta' => 'ناقش مشروعك',
 
+    'projects' => ['view' => 'عرض المشروع', 'visit' => 'زيارة الموقع', 'client' => 'العميل', 'service' => 'الخدمة'],
     'details' => [
         'offer_label' => 'ما الذي نقدمه',
         'build_label' => 'ما الذي يمكننا بناؤه',
-        'gallery_label' => 'أعمال مختارة',
+        'projects_label' => 'مشاريع مختارة',
         'gallery_cta' => 'عرض دراسة الحالة',
         'view_details' => 'عرض التفاصيل',
         'process_label' => 'كيف ننجز العمل',
@@ -25,7 +26,6 @@ return [
         'back' => 'العودة إلى الخدمة',
         'client_label' => 'العميل',
         'technologies_label' => 'التقنيات المستخدمة',
-        'gallery_label' => 'معرض المشروع',
         'prev_image' => 'الصورة السابقة',
         'next_image' => 'الصورة التالية',
         'reset_zoom' => 'إعادة ضبط التكبير',

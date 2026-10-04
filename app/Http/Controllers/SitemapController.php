@@ -41,8 +41,8 @@ class SitemapController extends Controller
             fn (string $slug) => $urls->push($this->alternates('services.show', ['service' => $slug]))
         );
 
-        Project::query()->pluck('slug')->each(
-            fn (string $slug) => $urls->push($this->alternates('services.work', ['service' => $slug]))
+        Project::query()->published()->pluck('slug')->each(
+            fn (string $slug) => $urls->push($this->alternates('projects.show', ['project' => $slug]))
         );
 
         Post::query()->published()->pluck('slug')->each(

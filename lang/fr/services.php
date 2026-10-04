@@ -4,10 +4,11 @@ return [
     'kicker' => 'Services Ozytech Agency',
     'cta' => 'Discuter de votre projet',
 
+    'projects' => ['view' => 'Voir le projet', 'visit' => 'Visiter le site', 'client' => 'Client', 'service' => 'Service'],
     'details' => [
         'offer_label' => 'Ce que nous proposons',
         'build_label' => 'Ce que nous pouvons construire',
-        'gallery_label' => 'Réalisations sélectionnées',
+        'projects_label' => 'Projets sélectionnés',
         'gallery_cta' => 'Voir l\'étude de cas',
         'view_details' => 'Voir les détails',
         'process_label' => 'Comment nous livrons',
@@ -25,7 +26,6 @@ return [
         'back' => 'Retour au service',
         'client_label' => 'Client',
         'technologies_label' => 'Technologies utilisées',
-        'gallery_label' => 'Galerie du projet',
         'prev_image' => 'Image précédente',
         'next_image' => 'Image suivante',
         'reset_zoom' => 'Réinitialiser le zoom',

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PackageController as AdminPackageController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\TeamMemberController as AdminTeamMemberController;
 use App\Http\Controllers\Admin\UploadController as AdminUploadController;
@@ -49,7 +50,7 @@ Route::prefix('{locale}')
         Route::get('/packages', [PageController::class, 'packages'])->name('packages');
         Route::get('/faq', [PageController::class, 'faq'])->name('faq');
         Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
-        Route::get('/services/{service}/work', [ProjectController::class, 'show'])->name('services.work');
+        Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
         Route::get('/policies/{policy}', [PolicyController::class, 'show'])->name('policies.show');
 
         Route::middleware(['auth', 'verified'])->group(function () {
@@ -66,6 +67,7 @@ Route::prefix('{locale}')
                 Route::resource('packages', AdminPackageController::class)->except('show');
                 Route::resource('posts', AdminPostController::class)->except('show');
                 Route::resource('team-members', AdminTeamMemberController::class)->except('show');
+                Route::resource('projects', AdminProjectController::class)->except('show');
                 Route::post('/uploads', [AdminUploadController::class, 'store'])->name('uploads.store');
             });
 
