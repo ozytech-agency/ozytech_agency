@@ -29,7 +29,7 @@ export default function Faq() {
 
     return (
         <SiteLayout>
-            <Seo title={t('faq.title')} description={t('faq.meta_description')} jsonLd={faqJsonLd} />
+            <Seo title={t('faq.title')} description={t('faq.meta_description')} jsonLd={faqJsonLd} breadcrumbs={[{ name: 'FAQ', path: '/faq' }]} />
 
             <section className="relative w-full overflow-hidden py-space-4xl text-on-primary isolate">
                 <div className="absolute inset-0 -z-20">

@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
@@ -60,8 +60,16 @@ function StarRow() {
 
 export default function Home({ serviceImages = {} }) {
     const t = useTranslations();
+    const { appUrl } = usePage().props;
     const [slide, setSlide] = useState(0);
     const gridRef = useRef(null);
+
+    const websiteJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Ozytech Agency',
+        url: appUrl,
+    };
 
     useEffect(() => {
         if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -83,7 +91,9 @@ export default function Home({ serviceImages = {} }) {
 
     return (
         <SiteLayout>
-            <Seo title={t('home.title')} description={t('home.meta_description')} />
+            <Seo title={t('home.title')} description={t('home.meta_description')} jsonLd={websiteJsonLd}>
+                <link rel="preload" as="image" href={HERO_SLIDES[0]} fetchpriority="high" head-key="hero-preload" />
+            </Seo>
 
             {/* 1. HERO */}
             <section className="relative w-full py-space-3xl lg:py-space-4xl overflow-hidden bg-surface isolate">

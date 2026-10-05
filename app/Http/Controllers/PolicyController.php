@@ -17,6 +17,6 @@ class PolicyController extends Controller
             throw new NotFoundHttpException;
         }
 
-        return Inertia::render('Policies/Show', $data);
+        return Inertia::render('Policies/Show', [...$data, 'slug' => $policy]);
     }
 }

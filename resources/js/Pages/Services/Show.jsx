@@ -18,7 +18,13 @@ export default function ServiceShow({ slug, title, lead, body, offer, build, gal
 
     return (
         <SiteLayout>
-            <Seo title={`${title} | Ozytech Agency`} description={lead} image={gallery?.[0]} jsonLd={serviceJsonLd} />
+            <Seo
+                title={`${title} | Ozytech Agency`}
+                description={lead}
+                image={gallery?.[0]}
+                jsonLd={serviceJsonLd}
+                breadcrumbs={[{ name: title, path: `/services/${slug}` }]}
+            />
 
             <section className="relative w-full overflow-hidden py-space-3xl isolate">
                 <div className="absolute inset-0 -z-20">

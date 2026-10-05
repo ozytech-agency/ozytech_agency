@@ -6,15 +6,17 @@ const LOCALES = ['en', 'ar', 'fr', 'es'];
  * Centralizes the per-page <head> content that matters for search engines:
  * title + meta description, a self-referencing canonical, hreflang
  * alternates for the other 3 locales (+ x-default), Open Graph / Twitter
- * Card tags, an optional `noindex` guard for auth-gated pages, and an
- * optional JSON-LD payload.
+ * Card tags, an optional `noindex` guard for auth-gated pages, an optional
+ * JSON-LD payload, and an optional BreadcrumbList JSON-LD built from
+ * `breadcrumbs` (a list of `{ name, path }`, path relative to the locale
+ * root — e.g. `{ name: 'Packages', path: '/packages' }`).
  *
  * Only meaningful now that SSR is enabled (see resources/js/ssr.jsx) — these
  * tags are rendered via Inertia's <Head>, which previously only reached the
  * DOM after the JS bundle executed, invisible to crawlers that don't render
  * JS.
  */
-export default function Seo({ title, description, image, noindex = false, jsonLd, children }) {
+export default function Seo({ title, description, image, noindex = false, jsonLd, breadcrumbs, children }) {
     const { props } = usePage();
     const { appUrl, currentPath, locale } = props;
     const resolvedImage = image ?? `${appUrl}/images/logo.png`;
@@ -25,6 +27,23 @@ export default function Seo({ title, description, image, noindex = false, jsonLd
 
     const urlFor = (loc) => `${appUrl}/${loc}${rest ? `/${rest}` : ''}`;
     const canonical = hasLocale ? urlFor(locale) : appUrl;
+    const homeUrl = `${appUrl}/${locale}`;
+
+    const breadcrumbJsonLd = hasLocale && breadcrumbs?.length
+        ? {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: homeUrl },
+                ...breadcrumbs.map((crumb, i) => ({
+                    '@type': 'ListItem',
+                    position: i + 2,
+                    name: crumb.name,
+                    item: `${homeUrl}${crumb.path}`,
+                })),
+            ],
+        }
+        : null;
 
     return (
         <Head title={title}>
@@ -50,6 +69,12 @@ export default function Seo({ title, description, image, noindex = false, jsonLd
             {jsonLd && (
                 <script type="application/ld+json" head-key="json-ld">
                     {JSON.stringify(jsonLd)}
+                </script>
+            )}
+
+            {breadcrumbJsonLd && (
+                <script type="application/ld+json" head-key="breadcrumb-json-ld">
+                    {JSON.stringify(breadcrumbJsonLd)}
                 </script>
             )}
 

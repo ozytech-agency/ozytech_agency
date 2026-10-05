@@ -8,7 +8,14 @@ export default function ProjectShow({ project }) {
 
     return (
         <SiteLayout>
-            <Seo title={project.title} description={project.short_description ?? undefined} />
+            <Seo
+                title={`${project.title} | Ozytech Agency`}
+                description={project.short_description ?? undefined}
+                breadcrumbs={[
+                    { name: project.service.title, path: `/services/${project.service.slug}` },
+                    { name: project.title, path: `/projects/${project.slug}` },
+                ]}
+            />
 
             <article className="w-full py-space-3xl lg:py-space-4xl bg-surface">
                 <div className="mx-[6%] flex flex-col gap-space-lg">

@@ -59,7 +59,7 @@ export default function Packages() {
 
     return (
         <SiteLayout>
-            <Seo title={t('packages.title')} description={t('packages.meta_description')} />
+            <Seo title={t('packages.title')} description={t('packages.meta_description')} breadcrumbs={[{ name: 'Packages', path: '/packages' }]} />
 
             <section className="relative overflow-hidden py-space-4xl text-on-primary w-full isolate">
                 <div className="absolute inset-0 -z-20">

@@ -28,7 +28,7 @@ export default function Contact() {
 
     return (
         <SiteLayout>
-            <Seo title={t('contact.title')} description={t('contact.meta_description')} />
+            <Seo title={t('contact.title')} description={t('contact.meta_description')} breadcrumbs={[{ name: 'Contact', path: '/contact' }]} />
 
             <section className="relative w-full overflow-hidden py-space-4xl text-on-primary isolate">
                 <div className="absolute inset-0 -z-20">

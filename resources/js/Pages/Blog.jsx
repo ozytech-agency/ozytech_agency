@@ -9,7 +9,7 @@ export default function Blog({ featuredPost, posts }) {
 
     return (
         <SiteLayout>
-            <Seo title={t('blog.title')} description={t('blog.hero.description')} />
+            <Seo title={t('blog.title')} description={t('blog.hero.description')} breadcrumbs={[{ name: 'Blog', path: '/blog' }]} />
 
             <section className="relative overflow-hidden py-space-3xl lg:py-space-4xl text-on-primary w-full isolate">
                 <div className="absolute inset-0 -z-20">

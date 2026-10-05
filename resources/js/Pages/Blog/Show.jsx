@@ -25,7 +25,7 @@ export default function BlogShow({ post, related }) {
 
     const articleJsonLd = {
         '@context': 'https://schema.org',
-        '@type': 'Article',
+        '@type': 'BlogPosting',
         headline: post.title,
         description: post.excerpt,
         image: post.cover_image,
@@ -35,7 +35,13 @@ export default function BlogShow({ post, related }) {
 
     return (
         <SiteLayout>
-            <Seo title={`${post.title} | Ozytech Agency`} description={post.excerpt} image={post.cover_image} jsonLd={articleJsonLd} />
+            <Seo
+                title={`${post.title} | Ozytech Agency`}
+                description={post.excerpt}
+                image={post.cover_image}
+                jsonLd={articleJsonLd}
+                breadcrumbs={[{ name: 'Blog', path: '/blog' }, { name: post.title, path: `/blog/${post.slug}` }]}
+            />
 
             <article className="w-full bg-surface">
                 <header className="mx-[6%] max-w-[760px] pt-space-3xl lg:mx-auto">
