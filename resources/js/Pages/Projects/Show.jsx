@@ -6,11 +6,23 @@ import { useTranslations } from '@/lib/translations';
 export default function ProjectShow({ project }) {
     const t = useTranslations();
 
+    const projectJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'CreativeWork',
+        name: project.title,
+        description: project.short_description ?? undefined,
+        image: project.featured_image ?? undefined,
+        creator: { '@type': 'Organization', name: 'Ozytech Agency' },
+        about: project.service.title,
+    };
+
     return (
         <SiteLayout>
             <Seo
                 title={`${project.title} | Ozytech Agency`}
                 description={project.short_description ?? undefined}
+                image={project.featured_image ?? undefined}
+                jsonLd={projectJsonLd}
                 breadcrumbs={[
                     { name: project.service.title, path: `/services/${project.service.slug}` },
                     { name: project.title, path: `/projects/${project.slug}` },
