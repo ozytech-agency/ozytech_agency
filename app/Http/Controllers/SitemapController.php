@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Service;
 use App\Support\PolicyCatalog;
 use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 /**
@@ -23,34 +24,36 @@ class SitemapController extends Controller
     private const LOCALES = ['en', 'ar', 'fr', 'es'];
 
     /**
-     * Static pages, named by their route.
+     * Static pages, named by their route. These have no backing record to
+     * take a lastmod from, so they're omitted (optional per the sitemap spec)
+     * rather than guessed.
      *
      * @var list<string>
      */
-    private const STATIC_ROUTES = ['home', 'about', 'contact', 'blog', 'packages', 'faq'];
+    private const STATIC_ROUTES = ['home', 'about', 'contact', 'blog', 'packages', 'faq', 'services.index', 'projects.index'];
 
     public function index(): Response
     {
         $urls = collect();
 
         foreach (self::STATIC_ROUTES as $routeName) {
-            $urls->push($this->alternates($routeName));
+            $urls->push($this->entry($routeName));
         }
 
-        Service::query()->published()->ordered()->pluck('slug')->each(
-            fn (string $slug) => $urls->push($this->alternates('services.show', ['service' => $slug]))
+        Service::query()->published()->ordered()->get(['slug', 'updated_at'])->each(
+            fn (Service $service) => $urls->push($this->entry('services.show', ['service' => $service->slug], $service->updated_at))
         );
 
-        Project::query()->published()->pluck('slug')->each(
-            fn (string $slug) => $urls->push($this->alternates('projects.show', ['project' => $slug]))
+        Project::query()->published()->get(['slug', 'updated_at'])->each(
+            fn (Project $project) => $urls->push($this->entry('projects.show', ['project' => $project->slug], $project->updated_at))
         );
 
-        Post::query()->published()->pluck('slug')->each(
-            fn (string $slug) => $urls->push($this->alternates('blog.show', ['post' => $slug]))
+        Post::query()->published()->get(['slug', 'updated_at'])->each(
+            fn (Post $post) => $urls->push($this->entry('blog.show', ['post' => $post->slug], $post->updated_at))
         );
 
         collect(PolicyCatalog::all())->keys()->each(
-            fn (string $slug) => $urls->push($this->alternates('policies.show', ['policy' => $slug]))
+            fn (string $slug) => $urls->push($this->entry('policies.show', ['policy' => $slug]))
         );
 
         return response()
@@ -60,12 +63,15 @@ class SitemapController extends Controller
 
     /**
      * @param  array<string, string>  $params
-     * @return Collection<string, string>
+     * @return array{alternates: Collection<string, string>, lastmod: string|null}
      */
-    private function alternates(string $routeName, array $params = []): Collection
+    private function entry(string $routeName, array $params = [], ?Carbon $lastmod = null): array
     {
-        return collect(self::LOCALES)->mapWithKeys(
-            fn (string $locale) => [$locale => route($routeName, [...$params, 'locale' => $locale])]
-        );
+        return [
+            'alternates' => collect(self::LOCALES)->mapWithKeys(
+                fn (string $locale) => [$locale => route($routeName, [...$params, 'locale' => $locale])]
+            ),
+            'lastmod' => $lastmod?->toAtomString(),
+        ];
     }
 }
