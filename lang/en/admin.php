@@ -100,6 +100,8 @@ return [
             'slug' => 'Slug',
             'title' => 'Title',
             'lead' => 'Lead (short tagline)',
+            'meta_description' => 'Meta description',
+            'meta_description_help' => 'Shown in search results and social previews, not on the page itself. Aim for 130–155 characters.',
             'body' => 'Description',
             'nav_description' => 'Menu description',
             'nav_icon' => 'Menu icon (Font Awesome class)',

@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Cache;
 
 #[Fillable([
-    'slug', 'title', 'lead', 'body', 'nav_description', 'nav_icon', 'nav_groups',
+    'slug', 'title', 'lead', 'meta_description', 'body', 'nav_description', 'nav_icon', 'nav_groups',
     'gallery', 'sort_order', 'is_published',
 ])]
 class Service extends Model
@@ -47,6 +47,7 @@ class Service extends Model
         return [
             'title' => 'array',
             'lead' => 'array',
+            'meta_description' => 'array',
             'body' => 'array',
             'nav_description' => 'array',
             'nav_groups' => 'array',

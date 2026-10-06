@@ -4,15 +4,16 @@ import ProjectCard from '@/Components/ProjectCard';
 import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
-export default function ServiceShow({ slug, title, lead, body, offer, build, gallery, related, projects }) {
+export default function ServiceShow({ slug, title, lead, metaDescription, body, offer, build, gallery, related, projects }) {
     const t = useTranslations();
     const processSteps = t('services.details.process');
+    const description = metaDescription || lead;
 
     const serviceJsonLd = {
         '@context': 'https://schema.org',
         '@type': 'Service',
         name: title,
-        description: lead,
+        description,
         provider: { '@type': 'Organization', name: 'Ozytech Agency' },
     };
 
@@ -20,7 +21,7 @@ export default function ServiceShow({ slug, title, lead, body, offer, build, gal
         <SiteLayout>
             <Seo
                 title={`${title} | Ozytech Agency`}
-                description={lead}
+                description={description}
                 image={gallery?.[0]}
                 jsonLd={serviceJsonLd}
                 breadcrumbs={[{ name: title, path: `/services/${slug}` }]}

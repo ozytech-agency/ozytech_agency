@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Cache;
 class ServiceCatalog
 {
     /**
-     * @return array<string, array{title: string, lead: string, body: string, offer: list<array{label: string, icon: string}>, build: list<array{label: string, icon: string}>, gallery: list<string>}>
+     * @return array<string, array{title: string, lead: string, metaDescription: string|null, body: string, offer: list<array{label: string, icon: string}>, build: list<array{label: string, icon: string}>, gallery: list<string>}>
      */
     public static function all(): array
     {
@@ -28,7 +28,7 @@ class ServiceCatalog
     }
 
     /**
-     * @return array{title: string, lead: string, body: string, offer: list<array{label: string, icon: string}>, build: list<array{label: string, icon: string}>, gallery: list<string>}|null
+     * @return array{title: string, lead: string, metaDescription: string|null, body: string, offer: list<array{label: string, icon: string}>, build: list<array{label: string, icon: string}>, gallery: list<string>}|null
      */
     public static function find(string $slug): ?array
     {
@@ -103,7 +103,7 @@ class ServiceCatalog
             ->with('items')
             ->get()
             ->map(fn (Service $service) => [
-                ...$service->only(['slug', 'title', 'lead', 'body', 'nav_description', 'nav_icon', 'nav_groups', 'gallery']),
+                ...$service->only(['slug', 'title', 'lead', 'meta_description', 'body', 'nav_description', 'nav_icon', 'nav_groups', 'gallery']),
                 'items' => $service->items
                     ->map(fn (ServiceItem $item) => ['type' => $item->type->value, 'label' => $item->label, 'icon' => $item->icon])
                     ->all(),
@@ -113,7 +113,7 @@ class ServiceCatalog
 
     /**
      * @param  array<string, mixed>  $service
-     * @return array{title: string, lead: string, body: string, offer: list<array{label: string, icon: string}>, build: list<array{label: string, icon: string}>, gallery: list<string>}
+     * @return array{title: string, lead: string, metaDescription: string|null, body: string, offer: list<array{label: string, icon: string}>, build: list<array{label: string, icon: string}>, gallery: list<string>}
      */
     private static function present(array $service): array
     {
@@ -129,6 +129,7 @@ class ServiceCatalog
         return [
             'title' => Service::pickLocale($service['title']),
             'lead' => Service::pickLocale($service['lead']),
+            'metaDescription' => Service::pickLocale($service['meta_description'] ?? null),
             'body' => Service::pickLocale($service['body']),
             'offer' => $itemsOfType(ServiceItemType::Offer),
             'build' => $itemsOfType(ServiceItemType::Build),

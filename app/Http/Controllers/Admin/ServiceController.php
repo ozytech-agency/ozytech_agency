@@ -63,7 +63,7 @@ class ServiceController extends Controller
 
         return Inertia::render('Admin/Services/Form', [
             'service' => [
-                ...$service->only(['id', 'slug', 'title', 'lead', 'body', 'nav_description', 'nav_icon', 'nav_groups', 'gallery', 'sort_order', 'is_published']),
+                ...$service->only(['id', 'slug', 'title', 'lead', 'meta_description', 'body', 'nav_description', 'nav_icon', 'nav_groups', 'gallery', 'sort_order', 'is_published']),
                 ...collect(ServiceItemType::cases())->mapWithKeys(fn (ServiceItemType $type) => [
                     $type->value => $service->items
                         ->where('type', $type)

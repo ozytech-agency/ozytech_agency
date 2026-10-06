@@ -17,6 +17,7 @@ function initialData(service, nextSortOrder) {
         slug: service?.slug ?? '',
         title: localizedOrEmpty(service?.title),
         lead: localizedOrEmpty(service?.lead),
+        meta_description: localizedOrEmpty(service?.meta_description),
         body: localizedOrEmpty(service?.body),
         nav_description: localizedOrEmpty(service?.nav_description),
         nav_icon: service?.nav_icon ?? '',
@@ -86,6 +87,15 @@ export default function ServiceForm({ service, navGroups, nextSortOrder }) {
                             required
                         />
                         <LocalizedInput label={t('admin.services.fields.lead')} name="lead" value={data.lead} errors={errors} onChange={(value) => setData('lead', value)} />
+                        <LocalizedInput
+                            label={t('admin.services.fields.meta_description')}
+                            name="meta_description"
+                            value={data.meta_description}
+                            errors={errors}
+                            required={false}
+                            help={t('admin.services.fields.meta_description_help')}
+                            onChange={(value) => setData('meta_description', value)}
+                        />
                         <LocalizedInput label={t('admin.services.fields.body')} name="body" value={data.body} errors={errors} multiline rows={5} onChange={(value) => setData('body', value)} />
                     </Section>
 
