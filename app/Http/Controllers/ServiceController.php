@@ -12,6 +12,21 @@ class ServiceController extends Controller
 {
     private const PROJECTS_PER_SERVICE = 6;
 
+    public function index(): Response
+    {
+        return Inertia::render('Services/Index', [
+            'services' => collect(ServiceCatalog::all())
+                ->map(fn (array $service, string $slug) => [
+                    'slug' => $slug,
+                    'title' => $service['title'],
+                    'lead' => $service['lead'],
+                    'image' => $service['gallery'][0] ?? null,
+                ])
+                ->values()
+                ->all(),
+        ]);
+    }
+
     public function show(string $locale, string $service): Response
     {
         $data = ServiceCatalog::find($service);

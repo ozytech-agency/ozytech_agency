@@ -10,6 +10,20 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProjectController extends Controller
 {
+    public function index(): Response
+    {
+        return Inertia::render('Projects/Index', [
+            'projects' => Project::query()
+                ->published()
+                ->with('service:id,slug,title')
+                ->orderBy('display_order')
+                ->latest('id')
+                ->get()
+                ->map(fn (Project $project) => $project->toCardArray())
+                ->all(),
+        ]);
+    }
+
     public function show(string $locale, Project $project): Response
     {
         if (! $project->isPublished()) {

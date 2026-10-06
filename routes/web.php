@@ -49,7 +49,9 @@ Route::prefix('{locale}')
         Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('blog.show');
         Route::get('/packages', [PageController::class, 'packages'])->name('packages');
         Route::get('/faq', [PageController::class, 'faq'])->name('faq');
+        Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
         Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
+        Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
         Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
         Route::get('/policies/{policy}', [PolicyController::class, 'show'])->name('policies.show');
 

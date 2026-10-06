@@ -13,9 +13,11 @@ return [
         ['label' => 'هندسة تطبيقات الجوال', 'slug' => 'mobile-apps'],
         ['label' => 'تطوير منتجات SaaS', 'slug' => 'software-development'],
     ],
+    'services_view_all' => 'عرض جميع الخدمات',
     'company_heading' => 'الشركة',
     'company' => [
         'about' => 'عن أوزي تك',
+        'our_work' => 'أعمالنا',
     ],
     'support_heading' => 'الدعم',
     'support' => [
@@ -24,6 +26,7 @@ return [
         'privacy_policy' => 'سياسة الخصوصية',
         'terms_of_service' => 'شروط الخدمة',
         'refunds_policy' => 'سياسة الاسترداد',
+        'trust_security' => 'الثقة والأمان',
         'my_account' => 'حسابي',
     ],
     'contact_heading' => 'بيانات التواصل',

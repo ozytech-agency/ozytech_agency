@@ -13,9 +13,11 @@ return [
         ['label' => 'Mobile App Engineering', 'slug' => 'mobile-apps'],
         ['label' => 'SaaS Product Development', 'slug' => 'software-development'],
     ],
+    'services_view_all' => 'View all services',
     'company_heading' => 'Company',
     'company' => [
         'about' => 'About Ozytech Agency',
+        'our_work' => 'Our Work',
     ],
     'support_heading' => 'Support',
     'support' => [
@@ -24,6 +26,7 @@ return [
         'privacy_policy' => 'Privacy Policy',
         'terms_of_service' => 'Terms of Service',
         'refunds_policy' => 'Refunds Policy',
+        'trust_security' => 'Trust & Security',
         'my_account' => 'My Account',
     ],
     'contact_heading' => 'Contact Details',

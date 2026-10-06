@@ -13,9 +13,11 @@ return [
         ['label' => 'Ingeniería de apps móviles', 'slug' => 'mobile-apps'],
         ['label' => 'Desarrollo de productos SaaS', 'slug' => 'software-development'],
     ],
+    'services_view_all' => 'Ver todos los servicios',
     'company_heading' => 'Empresa',
     'company' => [
         'about' => 'Sobre Ozytech Agency',
+        'our_work' => 'Nuestro trabajo',
     ],
     'support_heading' => 'Soporte',
     'support' => [
@@ -24,6 +26,7 @@ return [
         'privacy_policy' => 'Política de privacidad',
         'terms_of_service' => 'Términos de servicio',
         'refunds_policy' => 'Política de reembolsos',
+        'trust_security' => 'Confianza y seguridad',
         'my_account' => 'Mi cuenta',
     ],
     'contact_heading' => 'Datos de contacto',

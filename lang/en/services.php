@@ -4,6 +4,11 @@ return [
     'kicker' => 'Ozytech Agency Services',
     'cta' => 'Discuss your project',
 
+    'index' => [
+        'title' => 'Our Services',
+        'description' => 'Explore every service Ozytech Agency offers — from cloud and AI engineering to e-commerce, mobile apps, and ongoing support.',
+    ],
+
     'projects' => ['view' => 'View project', 'visit' => 'Visit site', 'client' => 'Client', 'service' => 'Service'],
     'details' => [
         'offer_label' => 'What we offer',
@@ -22,6 +27,10 @@ return [
     ],
 
     'work' => [
+        'index' => [
+            'title' => 'Our Work',
+            'description' => "A selection of products and platforms we've shipped for clients across industries.",
+        ],
         'kicker' => 'Case study',
         'back' => 'Back to service',
         'client_label' => 'Client',

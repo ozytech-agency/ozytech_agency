@@ -4,6 +4,11 @@ return [
     'kicker' => 'Services Ozytech Agency',
     'cta' => 'Discuter de votre projet',
 
+    'index' => [
+        'title' => 'Nos services',
+        'description' => "Découvrez tous les services proposés par Ozytech Agency — du cloud et de l'ingénierie IA à l'e-commerce, aux applications mobiles et au support continu.",
+    ],
+
     'projects' => ['view' => 'Voir le projet', 'visit' => 'Visiter le site', 'client' => 'Client', 'service' => 'Service'],
     'details' => [
         'offer_label' => 'Ce que nous proposons',
@@ -22,6 +27,10 @@ return [
     ],
 
     'work' => [
+        'index' => [
+            'title' => 'Nos réalisations',
+            'description' => 'Une sélection de produits et de plateformes livrés pour nos clients dans différents secteurs.',
+        ],
         'kicker' => 'Étude de cas',
         'back' => 'Retour au service',
         'client_label' => 'Client',

@@ -78,6 +78,9 @@ export default function SiteFooter() {
                                     {service.label}
                                 </Link>
                             ))}
+                            <Link href={route('services.index')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
+                                {t('footer.services_view_all')}
+                            </Link>
                         </div>
                     </div>
 
@@ -86,6 +89,9 @@ export default function SiteFooter() {
                         <div className="flex flex-col gap-space-xs">
                             <Link href={route('about')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
                                 {t('footer.company.about')}
+                            </Link>
+                            <Link href={route('projects.index')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
+                                {t('footer.company.our_work')}
                             </Link>
                             <Link href={route('packages')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
                                 {t('nav.packages')}
@@ -116,6 +122,9 @@ export default function SiteFooter() {
                             </Link>
                             <Link href={route('policies.show', 'refunds-policy')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
                                 {t('footer.support.refunds_policy')}
+                            </Link>
+                            <Link href={route('policies.show', 'trust-security')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
+                                {t('footer.support.trust_security')}
                             </Link>
                             <Link href={route(user ? 'dashboard' : 'login')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
                                 {t('footer.support.my_account')}
