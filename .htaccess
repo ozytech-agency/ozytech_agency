@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Some hosts point the domain's document root at this project root
+    # instead of at public/, which also makes the public/ directory
+    # reachable directly (e.g. /public/en) in addition to the clean URL —
+    # a duplicate URL space for crawlers. Collapse any direct /public/
+    # request back to its clean equivalent.
+    RewriteCond %{THE_REQUEST} \s/public/(\S*)\s [NC]
+    RewriteRule ^public/(.*)$ /$1 [R=301,L]
+
+    # Normalize trailing slashes on the ORIGINAL request, before internally
+    # rewriting into public/ below. Laravel's own public/.htaccess also
+    # redirects trailing slashes, but by the time a request reaches it here
+    # it has already been internally rewritten to .../public/..., so its
+    # redirect would otherwise leak that path to the browser. Handling it
+    # here, first, means that rule never has a trailing slash left to fire on.
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} ^/(.+)/$
+    RewriteRule ^ /%1 [R=301,L]
+
+    # Serve everything else from public/ without changing the visible URL.
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

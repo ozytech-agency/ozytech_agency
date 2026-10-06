@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /public/
 Disallow: /*/admin
 Disallow: /*/dashboard
 Disallow: /*/login
@@ -7,7 +8,6 @@ Disallow: /*/forgot-password
 Disallow: /*/reset-password
 Disallow: /*/confirm-password
 Disallow: /*/verify-email
-Disallow: /*/verify-phone
 Disallow: /*/start-a-project
 Disallow: /*/profile
 
