@@ -3,6 +3,10 @@
 return [
     'title' => 'About Ozytech Agency | Engineering the Work Behind the Next',
 
+    'meta' => [
+        'description' => "Ozytech Agency is a global engineering guild bringing principal-level thinking and practical momentum to ambitious teams' software.",
+    ],
+
     'hero' => [
         'eyebrow' => 'The people behind the systems',
         'title' => 'Built for the work that matters.',

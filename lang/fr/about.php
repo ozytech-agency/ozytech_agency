@@ -3,6 +3,10 @@
 return [
     'title' => "À propos d'Ozytech Agency | L'ingénierie derrière la suite",
 
+    'meta' => [
+        'description' => "Ozytech Agency, guilde d'ingénierie mondiale, apporte réflexion de haut niveau et dynamisme concret aux logiciels des équipes ambitieuses.",
+    ],
+
     'hero' => [
         'eyebrow' => 'Les personnes derrière les systèmes',
         'title' => 'Conçus pour le travail qui compte.',

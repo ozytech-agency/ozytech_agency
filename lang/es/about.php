@@ -3,6 +3,10 @@
 return [
     'title' => 'Sobre Ozytech Agency | La ingeniería detrás de lo que viene',
 
+    'meta' => [
+        'description' => 'Ozytech Agency es un gremio de ingeniería global que aporta pensamiento experto e impulso práctico al software de equipos ambiciosos.',
+    ],
+
     'hero' => [
         'eyebrow' => 'Las personas detrás de los sistemas',
         'title' => 'Construidos para el trabajo que importa.',

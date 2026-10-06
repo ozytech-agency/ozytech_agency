@@ -31,7 +31,7 @@ export default function About({ teamMembers }) {
 
     return (
         <SiteLayout>
-            <Seo title={t('about.title')} description={t('about.hero.description')} breadcrumbs={[{ name: 'About', path: '/about' }]} />
+            <Seo title={t('about.title')} description={t('about.meta.description')} breadcrumbs={[{ name: 'About', path: '/about' }]} />
 
             <section className="relative w-full overflow-hidden py-space-4xl isolate">
                 <div className="absolute inset-0 -z-20">
