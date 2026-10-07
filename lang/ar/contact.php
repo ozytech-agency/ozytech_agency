@@ -17,6 +17,7 @@ return [
         'address_label' => 'المكتب',
         'hours_label' => 'ساعات العمل',
         'hours_value' => 'الإثنين–الجمعة، 09:00–18:00 (GMT+1)',
+        'social_label' => 'تابعنا',
     ],
 
     'form' => [

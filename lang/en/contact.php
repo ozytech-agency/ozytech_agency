@@ -17,6 +17,7 @@ return [
         'address_label' => 'Office',
         'hours_label' => 'Hours',
         'hours_value' => 'Mon–Fri, 09:00–18:00 (GMT+1)',
+        'social_label' => 'Follow us',
     ],
 
     'form' => [

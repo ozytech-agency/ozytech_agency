@@ -42,16 +42,28 @@ export default function SiteFooter() {
                             <a
                                 target="_blank"
                                 rel="noreferrer"
-                                href="https://www.instagram.com/ozyteckagency/"
+                                href="https://www.instagram.com/ozytechaagency"
                                 aria-label="Ozytech Agency on Instagram"
                                 className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors"
                             >
                                 <i className="fa-brands fa-instagram scale-[1.21]" aria-hidden="true"></i>
                             </a>
-                            <a href="#" aria-label="Ozytech Agency on Facebook" className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors">
+                            <a
+                                target="_blank"
+                                rel="noreferrer"
+                                href="https://web.facebook.com/profile.php?id=61594837992868&_rdc=1&_rdr#"
+                                aria-label="Ozytech Agency on Facebook"
+                                className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors"
+                            >
                                 <i className="fa-brands fa-facebook scale-[1.21]" aria-hidden="true"></i>
                             </a>
-                            <a href="#" aria-label="Ozytech Agency on TikTok" className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors">
+                            <a
+                                target="_blank"
+                                rel="noreferrer"
+                                href="https://www.tiktok.com/@ozytech_agency"
+                                aria-label="Ozytech Agency on TikTok"
+                                className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors"
+                            >
                                 <i className="fa-brands fa-tiktok scale-[1.21]" aria-hidden="true"></i>
                             </a>
                             <a

@@ -106,6 +106,48 @@ export default function Contact() {
                                     </div>
                                 </div>
                             </dl>
+
+                            <div className="mt-space-lg border-t border-surface-container pt-space-lg">
+                                <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline">{t('contact.details.social_label')}</span>
+                                <div className="mt-space-sm flex items-center gap-space-xs">
+                                    <a
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        href="https://www.instagram.com/ozytechaagency"
+                                        aria-label="Ozytech Agency on Instagram"
+                                        className="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant transition-colors hover:bg-secondary-container hover:text-on-primary"
+                                    >
+                                        <i className="fa-brands fa-instagram scale-[1.21]" aria-hidden="true"></i>
+                                    </a>
+                                    <a
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        href="https://web.facebook.com/profile.php?id=61594837992868&_rdc=1&_rdr#"
+                                        aria-label="Ozytech Agency on Facebook"
+                                        className="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant transition-colors hover:bg-secondary-container hover:text-on-primary"
+                                    >
+                                        <i className="fa-brands fa-facebook scale-[1.21]" aria-hidden="true"></i>
+                                    </a>
+                                    <a
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        href="https://www.tiktok.com/@ozytech_agency"
+                                        aria-label="Ozytech Agency on TikTok"
+                                        className="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant transition-colors hover:bg-secondary-container hover:text-on-primary"
+                                    >
+                                        <i className="fa-brands fa-tiktok scale-[1.21]" aria-hidden="true"></i>
+                                    </a>
+                                    <a
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        href="https://www.youtube.com/channel/UC7W51ZBkPRZkXjA3cxhD-wQ"
+                                        aria-label="Ozytech Agency on YouTube"
+                                        className="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant transition-colors hover:bg-secondary-container hover:text-on-primary"
+                                    >
+                                        <i className="fa-brands fa-youtube scale-[1.21]" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </aside>
 

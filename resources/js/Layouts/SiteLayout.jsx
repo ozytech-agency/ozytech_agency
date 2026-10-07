@@ -12,7 +12,12 @@ export default function SiteLayout({ children }) {
         name: 'Ozytech Agency',
         url: appUrl,
         logo: `${appUrl}/images/logo.png`,
-        sameAs: ['https://github.com/ozytech-agency', 'https://www.instagram.com/ozyteckagency/'],
+        sameAs: [
+            'https://github.com/ozytech-agency',
+            'https://www.instagram.com/ozytechaagency',
+            'https://web.facebook.com/profile.php?id=61594837992868',
+            'https://www.tiktok.com/@ozytech_agency',
+        ],
     };
 
     return (

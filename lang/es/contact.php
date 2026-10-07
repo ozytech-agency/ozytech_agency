@@ -17,6 +17,7 @@ return [
         'address_label' => 'Oficina',
         'hours_label' => 'Horario',
         'hours_value' => 'Lun–Vie, 09:00–18:00 (GMT+1)',
+        'social_label' => 'Síguenos',
     ],
 
     'form' => [

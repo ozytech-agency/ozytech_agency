@@ -17,6 +17,7 @@ return [
         'address_label' => 'Bureau',
         'hours_label' => 'Horaires',
         'hours_value' => 'Lun–Ven, 09h00–18h00 (GMT+1)',
+        'social_label' => 'Suivez-nous',
     ],
 
     'form' => [
