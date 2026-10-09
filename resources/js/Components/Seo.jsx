@@ -18,7 +18,7 @@ const LOCALES = ['en', 'ar', 'fr', 'es'];
  */
 export default function Seo({ title, description, image, noindex = false, jsonLd, breadcrumbs, children }) {
     const { props } = usePage();
-    const { appUrl, currentPath, locale } = props;
+    const { appUrl, currentPath, locale, translations } = props;
     const resolvedImage = image ?? `${appUrl}/images/logo.png`;
 
     const segments = (currentPath ?? '').split('/').filter(Boolean);
@@ -34,7 +34,7 @@ export default function Seo({ title, description, image, noindex = false, jsonLd
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: homeUrl },
+                { '@type': 'ListItem', position: 1, name: translations?.nav?.home ?? 'Home', item: homeUrl },
                 ...breadcrumbs.map((crumb, i) => ({
                     '@type': 'ListItem',
                     position: i + 2,
