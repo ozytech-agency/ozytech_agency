@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Models\Post;
 use App\Models\TeamMember;
+use App\Support\SeoMeta;
 use App\Support\ServiceCatalog;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -29,7 +30,12 @@ class PageController extends Controller
                 ->get()
                 ->map(fn (TeamMember $teamMember) => $teamMember->toPublicArray())
                 ->all(),
-        ]);
+        ])->withViewData('seo', SeoMeta::forPage(
+            path: '/about',
+            title: __('about.title'),
+            description: __('about.meta.description'),
+            breadcrumbs: [['name' => __('nav.about'), 'path' => '/about']],
+        ));
     }
 
     public function startAProject(): Response

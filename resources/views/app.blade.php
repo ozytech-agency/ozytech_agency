@@ -52,6 +52,27 @@
         @viteReactRefresh
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
         @inertiaHead
+        {{-- Inertia's client head manager replaces every [inertia] element on mount, so these never duplicate the tags Seo.jsx renders. --}}
+        @if (empty($__inertiaSsrResponse) && isset($seo))
+            <title inertia>{{ $seo['title'] }}</title>
+            <meta name="description" content="{{ $seo['description'] }}" inertia>
+            <link rel="canonical" href="{{ $seo['canonical'] }}" inertia="canonical">
+            @foreach ($seo['alternates'] as $hreflang => $href)
+                <link rel="alternate" hreflang="{{ $hreflang }}" href="{{ $href }}" inertia="hreflang-{{ $hreflang }}">
+            @endforeach
+            <meta property="og:type" content="website" inertia>
+            <meta property="og:title" content="{{ $seo['title'] }}" inertia>
+            <meta property="og:description" content="{{ $seo['description'] }}" inertia>
+            <meta property="og:image" content="{{ $seo['image'] }}" inertia>
+            <meta property="og:url" content="{{ $seo['canonical'] }}" inertia>
+            <meta name="twitter:card" content="summary_large_image" inertia>
+            <meta name="twitter:title" content="{{ $seo['title'] }}" inertia>
+            <meta name="twitter:description" content="{{ $seo['description'] }}" inertia>
+            <meta name="twitter:image" content="{{ $seo['image'] }}" inertia>
+            @foreach ($seo['jsonLd'] as $headKey => $schema)
+                <script type="application/ld+json" inertia="{{ $headKey }}">{!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
+            @endforeach
+        @endif
     </head>
     <body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-primary">
         @inertia
