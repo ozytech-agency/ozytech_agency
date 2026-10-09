@@ -3,7 +3,7 @@ import './bootstrap';
 
 import { createInertiaApp, router } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { hydrateRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 
 // Keep Ziggy's default route parameters in sync with the current page's
 // locale. Ziggy.defaults is only ever set once, from the server, on the very
@@ -36,7 +36,13 @@ createInertiaApp({
             import.meta.glob('./Pages/**/*.jsx'),
         ),
     setup({ el, App, props }) {
-        hydrateRoot(el, <App {...props} />);
+        // Without server-rendered markup (SSR down), hydrating an empty
+        // container throws a hydration error and React re-renders anyway.
+        if (el.hasChildNodes()) {
+            hydrateRoot(el, <App {...props} />);
+        } else {
+            createRoot(el).render(<App {...props} />);
+        }
     },
     progress: {
         color: '#4B5563',
