@@ -30,6 +30,7 @@ class GoogleAuthenticationTest extends TestCase
     private function mockSocialiteUser(SocialiteUserContract $googleUser): void
     {
         $provider = Mockery::mock(Provider::class);
+        $provider->shouldReceive('redirectUrl')->andReturnSelf();
         $provider->shouldReceive('user')->andReturn($googleUser);
 
         Socialite::shouldReceive('driver')->with('google')->andReturn($provider);
@@ -41,6 +42,16 @@ class GoogleAuthenticationTest extends TestCase
 
         $response->assertRedirect();
         $this->assertStringContainsString('accounts.google.com', $response->headers->get('Location'));
+    }
+
+    public function test_redirect_uri_is_the_callback_route_even_when_configured_with_a_double_slash(): void
+    {
+        config(['services.google.redirect' => 'https://ozytechagency.com//auth/google/callback']);
+
+        $location = $this->get(route('google.login'))->headers->get('Location');
+        parse_str((string) parse_url($location, PHP_URL_QUERY), $query);
+
+        $this->assertSame(route('google.callback'), $query['redirect_uri']);
     }
 
     public function test_existing_user_is_matched_by_email_instead_of_duplicated(): void

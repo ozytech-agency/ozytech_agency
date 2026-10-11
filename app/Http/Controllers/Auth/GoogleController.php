@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Laravel\Socialite\Contracts\Provider;
 use Laravel\Socialite\Contracts\User as SocialiteUser;
 use Laravel\Socialite\Facades\Socialite;
 use Throwable;
@@ -21,7 +22,7 @@ class GoogleController extends Controller
      */
     public function redirect(): RedirectResponse
     {
-        return Socialite::driver('google')->redirect();
+        return $this->google()->redirect();
     }
 
     /**
@@ -33,7 +34,7 @@ class GoogleController extends Controller
     public function callback(Request $request): RedirectResponse
     {
         try {
-            $googleUser = Socialite::driver('google')->user();
+            $googleUser = $this->google()->user();
         } catch (Throwable $e) {
             Log::warning('Google OAuth sign-in failed.', ['error' => $e->getMessage()]);
 
@@ -53,6 +54,17 @@ class GoogleController extends Controller
         $request->session()->regenerate();
 
         return redirect()->intended(route('dashboard', absolute: false));
+    }
+
+    /**
+     * The callback URL comes from the named route rather than config, so a
+     * trailing slash in APP_URL (which made it ".com//auth/google/callback")
+     * can't break the exact match Google requires. Both the redirect and the
+     * token exchange must send the same value.
+     */
+    private function google(): Provider
+    {
+        return Socialite::driver('google')->redirectUrl(route('google.callback'));
     }
 
     /**
