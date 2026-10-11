@@ -1,4 +1,7 @@
 User-agent: *
+
+Allow: /
+
 Disallow: /public/
 Disallow: /*/admin
 Disallow: /*/dashboard
