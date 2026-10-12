@@ -6,7 +6,8 @@ const LOCALES = ['en', 'ar', 'fr', 'es'];
  * Centralizes the per-page <head> content that matters for search engines:
  * title + meta description, a self-referencing canonical, hreflang
  * alternates for the other 3 locales (+ x-default), Open Graph / Twitter
- * Card tags, an optional `noindex` guard for auth-gated pages, an optional
+ * Card tags, an optional `noindex` guard for auth-gated pages (or a custom
+ * `robots` value such as "noindex, follow", which takes precedence), an optional
  * JSON-LD payload, and an optional BreadcrumbList JSON-LD built from
  * `breadcrumbs` (a list of `{ name, path }`, path relative to the locale
  * root — e.g. `{ name: 'Packages', path: '/packages' }`).
@@ -16,8 +17,9 @@ const LOCALES = ['en', 'ar', 'fr', 'es'];
  * DOM after the JS bundle executed, invisible to crawlers that don't render
  * JS.
  */
-export default function Seo({ title, description, image, noindex = false, jsonLd, breadcrumbs, children }) {
+export default function Seo({ title, description, image, noindex = false, robots, jsonLd, breadcrumbs, children }) {
     const { props } = usePage();
+    const robotsContent = robots ?? (noindex ? 'noindex, nofollow' : null);
     const { appUrl, currentPath, locale, translations } = props;
     const resolvedImage = image ?? `${appUrl}/images/logo.png`;
 
@@ -54,7 +56,7 @@ export default function Seo({ title, description, image, noindex = false, jsonLd
                 LOCALES.map((loc) => <link key={loc} rel="alternate" hreflang={loc} href={urlFor(loc)} head-key={`hreflang-${loc}`} />)}
             {hasLocale && <link rel="alternate" hreflang="x-default" href={urlFor('en')} head-key="hreflang-x-default" />}
 
-            {noindex && <meta name="robots" content="noindex, nofollow" />}
+            {robotsContent && <meta name="robots" content={robotsContent} />}
 
             <meta property="og:type" content="website" />
             {title && <meta property="og:title" content={title} />}
