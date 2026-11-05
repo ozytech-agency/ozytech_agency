@@ -37,6 +37,6 @@ return [
         'success' => 'Gracias — revisa tu bandeja de entrada para confirmar tu suscripción.',
         'invalid' => 'Introduce una dirección de correo profesional válida.',
     ],
-    'copyright' => ':year Ozytech Agency Inc. Todos los derechos reservados.',
+    'copyright' => ':year Ozytech Agency. Todos los derechos reservados.',
     'powered_by' => 'Desarrollado por',
 ];

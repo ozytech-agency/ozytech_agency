@@ -193,7 +193,7 @@ export default function SiteFooter() {
                 <div className="pt-space-xl flex flex-col sm:flex-row items-center justify-between gap-space-md">
                     <p className="font-body-sm text-body-sm text-outline">{t('footer.copyright').replace(':year', new Date().getFullYear())}</p>
                     <p className="font-body-sm text-body-sm text-outline">
-                        {t('footer.powered_by')} <span className="px-1">Ozytech Agency Inc.</span>
+                        {t('footer.powered_by')} <span className="px-1">Ozytech Agency</span>
                     </p>
                 </div>
             </div>

@@ -37,6 +37,6 @@ return [
         'success' => 'Thanks — check your inbox to confirm your subscription.',
         'invalid' => 'Please enter a valid work email address.',
     ],
-    'copyright' => ':year Ozytech Agency Inc. All rights reserved.',
+    'copyright' => ':year Ozytech Agency. All rights reserved.',
     'powered_by' => 'Powered by',
 ];
