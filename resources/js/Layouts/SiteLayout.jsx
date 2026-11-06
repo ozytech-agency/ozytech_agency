@@ -2,6 +2,7 @@ import { Head, usePage } from '@inertiajs/react';
 import SiteHeader from '@/Components/SiteHeader';
 import SiteFooter from '@/Components/SiteFooter';
 import LanguageSwitcher from '@/Components/LanguageSwitcher';
+import WhatsAppButton from '@/Components/WhatsAppButton';
 
 export default function SiteLayout({ children }) {
     const { appUrl } = usePage().props;
@@ -32,6 +33,7 @@ export default function SiteLayout({ children }) {
                 <div className="flex flex-1 flex-col w-full overflow-hidden">{children}</div>
             </main>
             <SiteFooter />
+            <WhatsAppButton />
             <LanguageSwitcher />
         </>
     );
