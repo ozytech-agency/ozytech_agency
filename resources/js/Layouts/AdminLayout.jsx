@@ -10,6 +10,8 @@ const NAV_ITEMS = [
     { route: 'admin.posts.index', match: 'admin.posts.*', icon: 'article', label: 'admin.nav.posts' },
     { route: 'admin.projects.index', match: 'admin.projects.*', icon: 'work', label: 'admin.nav.projects' },
     { route: 'admin.team-members.index', match: 'admin.team-members.*', icon: 'groups', label: 'admin.nav.team_members' },
+    { route: 'admin.reviews.index', match: 'admin.reviews.*', icon: 'reviews', label: 'admin.nav.reviews' },
+    { route: 'admin.policies.index', match: 'admin.policies.*', icon: 'gavel', label: 'admin.nav.policies' },
 ];
 
 export default function AdminLayout({ title, actions, children }) {

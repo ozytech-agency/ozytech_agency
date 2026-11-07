@@ -5,6 +5,8 @@ import Reveal from '@/Components/Reveal';
 import CountUp from '@/Components/CountUp';
 import TechMarquee from '@/Components/TechMarquee';
 import Seo from '@/Components/Seo';
+import Avatar from '@/Components/Avatar';
+import { StarRating } from '@/Components/StarRating';
 import { useTranslations } from '@/lib/translations';
 
 const HERO_SLIDES = [
@@ -48,17 +50,7 @@ const TESTIMONIAL_AVATARS = [
     'https://lh3.googleusercontent.com/aida-public/AB6AXuDC-rv7KbuUbaH9Usmwujp1qQjHkDe2rhGL1IU6MuSIZ55kbavp8sPV2-YQG9VAzbPF3rBiK8JO1GwD5W5eKNuTmaj3nuY_A6l8UFZjxXs5BKD1GTS9f759eDsBIxoakL7MPE9zd_oGCt0logfshaNOXQOmo9ZtTNJ592OF5raq9RBGOtb8MnlrourSs8j47SX66IcBpVtDqXApm-cDQ8Cs2PAygnSJlYd56RuPab29eB6o3Zyi9Mm9',
 ];
 
-function StarRow() {
-    return (
-        <div className="flex items-center gap-1 text-secondary-container mb-space-sm">
-            {[0, 1, 2, 3, 4].map((i) => (
-                <span key={i} className="material-symbols-outlined text-sm icon-fill">star</span>
-            ))}
-        </div>
-    );
-}
-
-export default function Home({ serviceImages = {} }) {
+export default function Home({ serviceImages = {}, reviews = [] }) {
     const t = useTranslations();
     const { appUrl } = usePage().props;
     const [slide, setSlide] = useState(0);
@@ -87,7 +79,17 @@ export default function Home({ serviceImages = {} }) {
 
     const deliveryFeatures = t('home.delivery.features');
     const deliveryPhases = t('home.delivery.phases');
-    const testimonials = t('home.testimonials.items');
+    // Published client reviews; the built-in testimonials only show until the first one is published.
+    const testimonials = reviews.length
+        ? reviews.map((review) => ({
+              key: `review-${review.id}`,
+              quote: `“${review.review}”`,
+              name: review.name,
+              role: review.role,
+              rating: review.rating,
+              avatarUrl: review.avatar_url,
+          }))
+        : t('home.testimonials.items').map((item, i) => ({ key: item.name, ...item, rating: 5, avatarUrl: TESTIMONIAL_AVATARS[i] }));
 
     return (
         <SiteLayout>
@@ -406,21 +408,29 @@ export default function Home({ serviceImages = {} }) {
                         </div>
                     </div>
                     <div ref={gridRef} className="flex gap-space-md lg:gap-space-lg overflow-x-auto snap-x snap-mandatory pb-space-xs md:grid md:grid-cols-3 md:overflow-visible">
-                        {testimonials.map((t2, i) => (
-                            <div key={t2.name} className="bg-surface-container-lowest p-space-lg rounded-xl shadow-md flex flex-col justify-between shrink-0 w-[85%] snap-center md:w-auto md:shrink">
+                        {testimonials.map((item) => (
+                            <div key={item.key} className="bg-surface-container-lowest p-space-lg rounded-xl shadow-md flex flex-col justify-between shrink-0 w-[85%] snap-center md:w-auto md:shrink">
                                 <div>
-                                    <StarRow />
-                                    <p className="font-body-md text-body-md text-on-surface-variant italic leading-relaxed">{t2.quote}</p>
+                                    <StarRating rating={item.rating} label={t('reviews.form.rating_star').replace(':count', item.rating)} className="mb-space-sm" />
+                                    <p className="font-body-md text-body-md text-on-surface-variant italic leading-relaxed whitespace-pre-line">{item.quote}</p>
                                 </div>
                                 <div className="flex items-center gap-space-sm pt-space-md mt-space-md border-t border-surface-container">
-                                    <img className="w-12 h-12 rounded-full object-cover" alt={t2.name} loading="lazy" src={TESTIMONIAL_AVATARS[i]} />
+                                    <Avatar user={{ name: item.name, avatar_url: item.avatarUrl }} className="w-12 h-12 text-sm" />
                                     <div>
-                                        <div className="font-label-md text-label-md font-bold text-on-surface">{t2.name}</div>
-                                        <div className="font-body-sm text-body-sm text-outline text-xs">{t2.role}</div>
+                                        <div className="font-label-md text-label-md font-bold text-on-surface">{item.name}</div>
+                                        {item.role && <div className="font-body-sm text-body-sm text-outline text-xs">{item.role}</div>}
                                     </div>
                                 </div>
                             </div>
                         ))}
+                    </div>
+                    <div className="mt-space-2xl flex justify-center">
+                        <Link
+                            href={route('reviews.create')}
+                            className="inline-flex items-center justify-center gap-space-xs rounded-lg bg-accent2 px-space-2xl py-space-md font-label-md text-label-md text-on-primary shadow-[0_12px_24px_-8px_rgba(233,87,71,0.45)] transition-all hover:-translate-y-0.5 hover:bg-secondary-container"
+                        >
+                            <span className="material-symbols-outlined text-base">rate_review</span> {t('home.testimonials.submit_cta')}
+                        </Link>
                     </div>
                 </div>
             </Reveal>

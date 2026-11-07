@@ -110,6 +110,7 @@ return [
         'title' => 'What engineering leaders say',
         'prev' => 'Previous Testimonial',
         'next' => 'Next Testimonial',
+        'submit_cta' => 'Submit your review',
         'items' => [
             ['quote' => '"Ozytech Agency rebuilt our core transaction processing engine in under 90 days. Our latency dropped by 68% and we handled Black Friday volume with zero downtime."', 'name' => 'Elena Rostova', 'role' => 'CTO at FinScale Global'],
             ['quote' => '"Their AI squad didn\'t just wrap OpenAI APIs; they built custom fine-tuned models with localized embeddings that cut our cloud compute costs by half."', 'name' => 'Marcus Thorne', 'role' => 'Founder & CEO, PulseAI'],

@@ -110,6 +110,7 @@ return [
         'title' => "Ce que disent les responsables de l'ingénierie",
         'prev' => 'Témoignage précédent',
         'next' => 'Témoignage suivant',
+        'submit_cta' => 'Laisser votre avis',
         'items' => [
             ['quote' => '« Ozytech Agency a reconstruit notre moteur de traitement des transactions en moins de 90 jours. Notre latence a chuté de 68 % et nous avons géré le volume du Black Friday sans aucune interruption. »', 'name' => 'Elena Rostova', 'role' => 'CTO chez FinScale Global'],
             ['quote' => "« Leur équipe IA n'a pas simplement enveloppé les API OpenAI ; ils ont construit des modèles affinés sur mesure avec des embeddings localisés qui ont réduit de moitié nos coûts de calcul cloud. »", 'name' => 'Marcus Thorne', 'role' => 'Fondateur & PDG, PulseAI'],

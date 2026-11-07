@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use App\Models\Post;
+use App\Models\Reviews;
 use App\Models\TeamMember;
 use App\Support\SeoMeta;
 use App\Support\ServiceCatalog;
@@ -17,6 +18,14 @@ class PageController extends Controller
         return Inertia::render('Home', [
             'serviceImages' => collect(ServiceCatalog::all())
                 ->map(fn (array $service) => $service['gallery'][0] ?? null)
+                ->all(),
+            'reviews' => Reviews::query()
+                ->published()
+                ->with('user')
+                ->latest()
+                ->limit(6)
+                ->get()
+                ->map(fn (Reviews $review) => $review->toPublicArray())
                 ->all(),
         ]);
     }

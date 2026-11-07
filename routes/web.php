@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PackageController as AdminPackageController;
+use App\Http\Controllers\Admin\PolicyController as AdminPolicyController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\TeamMemberController as AdminTeamMemberController;
 use App\Http\Controllers\Admin\UploadController as AdminUploadController;
@@ -18,6 +20,7 @@ use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
@@ -53,7 +56,15 @@ Route::prefix('{locale}')
         Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
         Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
         Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
-        Route::get('/policies/{policy}', [PolicyController::class, 'show'])->name('policies.show');
+        Route::get('/policies/{policy:slug}', [PolicyController::class, 'show'])->name('policies.show');
+        Route::get('/start-a-project', [PageController::class, 'startAProject'])->name('start-a-project');
+        Route::get('/reviews', [ReviewsController::class, 'create'])->name('reviews.create');
+        Route::post('/reviews', [ReviewsController::class, 'store'])
+            ->middleware('throttle:6,1')
+            ->name('reviews.store');
+        Route::post('/start-a-project', [InquiryController::class, 'store'])
+            ->middleware('throttle:6,1')
+            ->name('start-a-project.store');
 
         Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -70,13 +81,12 @@ Route::prefix('{locale}')
                 Route::resource('posts', AdminPostController::class)->except('show');
                 Route::resource('team-members', AdminTeamMemberController::class)->except('show');
                 Route::resource('projects', AdminProjectController::class)->except('show');
+                Route::resource('policies', AdminPolicyController::class)->except('show');
+                Route::resource('reviews', AdminReviewController::class)->except('show');
                 Route::post('/uploads', [AdminUploadController::class, 'store'])->name('uploads.store');
             });
 
         Route::middleware('auth')->group(function () {
-            Route::get('/start-a-project', [PageController::class, 'startAProject'])->name('start-a-project');
-            Route::post('/start-a-project', [InquiryController::class, 'store'])->name('start-a-project.store');
-
             Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
             Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
             Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

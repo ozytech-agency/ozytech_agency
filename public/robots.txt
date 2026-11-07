@@ -12,6 +12,7 @@ Disallow: /*/reset-password
 Disallow: /*/confirm-password
 Disallow: /*/verify-email
 Disallow: /*/start-a-project
+Disallow: /*/reviews
 Disallow: /*/profile
 
 Sitemap: https://ozytechagency.com/sitemap.xml

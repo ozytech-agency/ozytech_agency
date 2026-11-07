@@ -140,12 +140,14 @@ All routes below are additionally prefixed with `/{locale}`.
 | `/` | `home` | `PageController@home` | No |
 | `/about` | `about` | `PageController@about` | No |
 | `/start-a-project` | `start-a-project` | `PageController@startAProject` | No |
+| `/start-a-project` (POST) | `start-a-project.store` | `InquiryController@store` | No (`throttle:6,1`) |
 | `/contact` | `contact` | `PageController@contact` | No |
 | `/blog` | `blog` | `PageController@blog` | No |
 | `/packages` | `packages` | `PageController@packages` | No |
 | `/faq` | `faq` | `PageController@faq` | No |
 | `/services/{service}` | `services.show` | `ServiceController@show` | No |
-| `/policies/{policy}` | `policies.show` | `PolicyController@show` | No |
+| `/policies/{policy:slug}` | `policies.show` | `PolicyController@show` | No |
+| `/admin/policies` | `admin.policies.*` | `Admin\PolicyController` (resource, no `show`) | Yes (`auth`, `verified`, `can:access-admin`) |
 | `/dashboard` | `dashboard` | Closure in `routes/web.php` | Yes (`auth`, `verified`) |
 | `/profile` | `profile.edit` / `.update` / `.destroy` | `ProfileController` | Yes (`auth`) |
 | `/login`, `/register`, `/forgot-password`, `/reset-password`, `/verify-email`, `/confirm-password` | — | Breeze `Auth\*` controllers (`routes/auth.php`) | Mixed (guest/auth) |
@@ -156,11 +158,11 @@ All routes below are additionally prefixed with `/{locale}`.
 - **About** — photo hero, founder profiles with initials-avatars and social links (data currently inlined per-locale in `lang/*/about.php` + `TEAM_SOCIALS`/`TEAM_AVATAR_STYLES` in `About.jsx`), operating principles, numbers section, closing CTA.
 - **Services `/services/{slug}`** — dynamically rendered from `ServiceCatalog`: title, lead, body, feature list, image gallery, related-services cross-links. 20 services are defined (see [Content Catalogs](#content-catalogs)).
 - **Packages** — three pricing tiers (Growth / Pro / Ultimate), each with a price + billing period, a feature list where individual features can carry an info-tooltip (`FeatureNote` component) explaining a caveat (e.g. "Website: Shopify, WooCommerce, or WordPress — pick whichever fits your business").
-- **Start a Project** — the primary lead-generation funnel: hero, inquiry routing guidance, a multi-field inquiry form (client-side only — see [Known Limitations](#known-limitations--roadmap)), office locations, and an FAQ accordion scoped to project-starting questions.
+- **Start a Project** — the primary lead-generation funnel: hero, inquiry routing guidance, a multi-field inquiry form open to guests and signed-in clients alike (guests type their name/email/phone; signed-in clients submit as their account), saved as an `Inquiry` and, for new-project requests, synced to a Google Sheet by a queued job (needs `GOOGLE_SHEETS_WEBHOOK_URL`, `GOOGLE_SHEETS_SECRET` and a running queue worker), office locations, and an FAQ accordion scoped to project-starting questions.
 - **Contact** — a lighter-weight alternative to Start a Project: contact details (phone/WhatsApp/email/address) without the full inquiry form.
 - **FAQ `/faq`** — standalone, site-wide FAQ page (split out from the Start-a-Project-scoped FAQ section).
 - **Blog** — hero + featured post + latest-posts grid + CTA (currently static/demo content, no CMS/database backing).
-- **Policies `/policies/{slug}`** — legal pages driven by `PolicyCatalog`: `privacy-policy`, `terms-of-service`, `refunds-policy`, `trust-security`.
+- **Policies `/policies/{slug}`** — legal pages stored in the `policies` table and managed from **Admin → Policies** with a rich-text editor (Tiptap). Published policies also appear, in display order, in the footer and the sitemap. `ContentSeeder` imports the original four (`privacy-policy`, `terms-of-service`, `refunds-policy`, `trust-security`) from `lang/*/policies.php`.
 - **Dashboard** (auth-only) — personalized greeting, workspace feature highlights, quick links (Start a Project / Packages / Contact / FAQ), and an account summary card (email verification status, member-since date, edit-profile/logout actions).
 - **Auth pages** (`Login`, `Register`, `ForgotPassword`, `ResetPassword`, `ConfirmPassword`, `VerifyEmail`) — standard Breeze flows, now rendered inside the shared marketing `SiteLayout` (header/footer/language switcher) rather than a bespoke auth-only chrome.
 
@@ -179,10 +181,9 @@ Two content types are modeled as **PHP value catalogs** instead of database tabl
 
 > **Renaming or removing a service** means updating `SLUGS`/`GALLERIES` in this class *and* the matching key in all four `lang/*/services.php` files (and `nav.js` / `lang/*/nav.php` if it's also in the header mega-menu) — there is no runtime validation keeping these in sync beyond the `services.show` route 404ing via `NotFoundHttpException` if a slug isn't in `SLUGS`.
 
-### `App\Support\PolicyCatalog`
+### `App\Support\RichText`
 
-- `SLUGS` — `privacy-policy`, `terms-of-service`, `refunds-policy`, `trust-security`.
-- `PolicyCatalog::all()` / `::find($slug)` — pull each policy's `{title, subtitle, sections[]}` structure straight from `__("policies.{$slug}")`.
+- `RichText::sanitize($html)` — rebuilds editor HTML from an allowlist (paragraphs, H2/H3, bold/italic/underline/strike, lists, quotes, dividers, and `http`/`https`/`mailto`/`tel`/relative links). The `Policy` model runs it on every write to `body`, so unsafe markup can never be stored.
 
 ---
 
@@ -211,7 +212,7 @@ app/
   Providers/AppServiceProvider.php
   Support/
     ServiceCatalog.php     # 20 services: slugs, galleries, related-service lookup
-    PolicyCatalog.php      # 4 legal pages
+    RichText.php           # allowlist sanitizer for rich-text (policy) HTML
 
 lang/{en,ar,fr,es}/
   nav.php  footer.php  home.php  about.php  blog.php  packages.php
@@ -296,7 +297,7 @@ composer run dev
 
 ## Known Limitations & Roadmap
 
-- **Start a Project / inquiry form is not persisted.** `StartAProject.jsx` manages the form entirely in local React state (`useState`) and simulates a success screen — there is no backend route, validation, database table, or notification/email wired up yet. Turning this into a real lead pipeline (a `POST` route, an `Inquiry` model, and an email/Slack notification) is the most impactful backend gap.
+- **Google Sheets sync depends on the queue.** New-project inquiries reach the sheet only when a worker (`php artisan queue:work`) is running. Deliveries that fail — including when the webhook URL or secret is unset — land in `failed_jobs` and can be replayed with `php artisan queue:retry all`. The Apps Script behind the webhook lives outside this repository.
 - **Blog has no CMS.** Posts on `/blog` are static/demo content hard-coded in `Blog.jsx`; there's no `Post` model, admin authoring UI, or pagination.
 - **Dashboard is presentation-only.** It has no real client-portal data (project status, invoices, support tickets) — only navigational shortcuts and account info.
-- **Content/translation drift risk.** Because `ServiceCatalog`/`PolicyCatalog` slugs and the four per-locale translation files are updated independently by hand, a mismatched key across locales fails silently on the client (the `t()` helper falls back to the raw key or an explicit fallback) rather than erroring loudly — worth a CI check that diffs key sets across `lang/{en,ar,fr,es}/*.php` if this grows further.
+- **Content/translation drift risk.** Because `ServiceCatalog` slugs and the four per-locale translation files are updated independently by hand, a mismatched key across locales fails silently on the client (the `t()` helper falls back to the raw key or an explicit fallback) rather than erroring loudly — worth a CI check that diffs key sets across `lang/{en,ar,fr,es}/*.php` if this grows further.

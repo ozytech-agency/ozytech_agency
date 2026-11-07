@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Policy;
 use App\Support\ServiceCatalog;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -30,7 +31,7 @@ class HandleInertiaRequests extends Middleware
      * @var list<string>
      */
     protected array $translationNamespaces = [
-        'nav', 'footer', 'home', 'about', 'blog', 'packages', 'contact', 'start_a_project', 'services', 'policies', 'auth_pages', 'faq', 'dashboard', 'profile',
+        'nav', 'footer', 'home', 'about', 'blog', 'packages', 'contact', 'start_a_project', 'services', 'policies', 'reviews', 'auth_pages', 'faq', 'dashboard', 'profile',
     ];
 
     /**
@@ -65,6 +66,12 @@ class HandleInertiaRequests extends Middleware
                 ->mapWithKeys(fn (string $namespace) => [$namespace => __($namespace)])
                 ->all(),
             'nav' => fn () => ServiceCatalog::nav(),
+            'policyLinks' => fn () => Policy::query()
+                ->published()
+                ->ordered()
+                ->get(['slug', 'title'])
+                ->map(fn (Policy $policy) => ['slug' => $policy->slug, 'title' => $policy->localized('title')])
+                ->all(),
             'flash' => [
                 'status' => fn () => $request->session()->get('status'),
             ],

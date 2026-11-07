@@ -110,6 +110,7 @@ return [
         'title' => 'Lo que dicen los líderes de ingeniería',
         'prev' => 'Testimonio anterior',
         'next' => 'Siguiente testimonio',
+        'submit_cta' => 'Deja tu opinión',
         'items' => [
             ['quote' => '"Ozytech Agency reconstruyó nuestro motor de procesamiento de transacciones en menos de 90 días. Nuestra latencia se redujo un 68% y gestionamos el volumen del Black Friday sin ninguna interrupción."', 'name' => 'Elena Rostova', 'role' => 'CTO en FinScale Global'],
             ['quote' => '"Su equipo de IA no se limitó a envolver las APIs de OpenAI; construyeron modelos afinados a medida con embeddings localizados que redujeron a la mitad nuestros costos de cómputo en la nube."', 'name' => 'Marcus Thorne', 'role' => 'Fundador y CEO, PulseAI'],

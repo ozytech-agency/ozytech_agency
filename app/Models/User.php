@@ -26,6 +26,11 @@ class User extends Authenticatable
         return $this->hasMany(Inquiry::class);
     }
 
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Reviews::class);
+    }
+
     protected function avatarUrl(): Attribute
     {
         return Attribute::make(
