@@ -19,7 +19,7 @@ class InquiryController extends Controller
         $inquiry = Inquiry::create([
             ...$validated,
             'last_name' => $validated['last_name'] ?? '',
-            'user_id' => $request->user()->id,
+            'user_id' => $request->user()?->id,
         ]);
 
         if ($inquiry->topic === 'new-project') {
@@ -38,7 +38,7 @@ class InquiryController extends Controller
         $inquiry->delete();
 
         if ($wasSyncedToSheet) {
-            RemoveProjectRequestFromGoogleSheet::dispatch($inquiry)->afterCommit();
+            RemoveProjectRequestFromGoogleSheet::dispatch($inquiry->id)->afterCommit();
         }
 
         return Redirect::route('dashboard');

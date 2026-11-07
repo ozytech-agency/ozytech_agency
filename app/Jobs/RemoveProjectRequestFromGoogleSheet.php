@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Models\Inquiry;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Http;
@@ -14,7 +13,11 @@ class RemoveProjectRequestFromGoogleSheet implements ShouldQueue
 
     public int $tries = 5;
 
-    public function __construct(public Inquiry $inquiry) {}
+    /**
+     * Takes the id rather than the model: the inquiry is already deleted, so a
+     * serialized model could not be restored when the worker picks the job up.
+     */
+    public function __construct(public int $requestId) {}
 
     /**
      * Seconds to wait before each retry.
@@ -33,7 +36,10 @@ class RemoveProjectRequestFromGoogleSheet implements ShouldQueue
     {
         $url = config('services.google_sheets.webhook_url');
 
-        if (blank($url)) {
+        // Fail loudly (into failed_jobs, replayable with queue:retry) rather than leaving a stale row.
+        if (blank($url) || blank(config('services.google_sheets.secret'))) {
+            $this->fail(new RuntimeException('Google Sheets delivery is not configured: set GOOGLE_SHEETS_WEBHOOK_URL and GOOGLE_SHEETS_SECRET.'));
+
             return;
         }
 
@@ -42,7 +48,7 @@ class RemoveProjectRequestFromGoogleSheet implements ShouldQueue
             ->post($url, [
                 'secret' => config('services.google_sheets.secret'),
                 'action' => 'remove',
-                'request_id' => $this->inquiry->id,
+                'request_id' => $this->requestId,
             ])
             ->throw();
 
