@@ -31,8 +31,11 @@ const INITIAL_INQUIRY_FORM = {
 
 const LOCKED_FIELD_CLASS = 'field cursor-not-allowed opacity-70';
 
-// Identity fields are locked to the registered account (the server enforces this too).
+// For a signed-in visitor, identity fields are locked to the account (the server enforces this too).
+// Guests fill them in themselves.
 function inquiryFormFor(user) {
+    if (!user) return INITIAL_INQUIRY_FORM;
+
     const [firstName, ...rest] = (user.name ?? '').trim().split(/\s+/);
 
     return {
@@ -55,7 +58,8 @@ function packageFromQuery(packageKeys) {
 export default function StartAProject() {
     const t = useTranslations();
     const { auth, packages } = usePage().props;
-    const user = auth.user;
+    const user = auth?.user ?? null;
+    const identityClass = user ? LOCKED_FIELD_CLASS : 'field';
     const preselectedPackage = useRef(packageFromQuery(packages.map((pkg) => pkg.key))).current;
     const { data, setData, post, processing, errors } = useForm({ ...inquiryFormFor(user), package: preselectedPackage });
     const [openPackage, setOpenPackage] = useState(preselectedPackage || null);
@@ -156,14 +160,30 @@ export default function StartAProject() {
                                                 <label htmlFor="firstName" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
                                                     {t('start_a_project.form.first_name')} <span className="text-secondary-container">*</span>
                                                 </label>
-                                                <input id="firstName" className={LOCKED_FIELD_CLASS} disabled {...field('first_name')} />
+                                                <input
+                                                    id="firstName"
+                                                    className={identityClass}
+                                                    disabled={!!user}
+                                                    required
+                                                    autoComplete="given-name"
+                                                    placeholder={user ? undefined : t('start_a_project.form.first_name_placeholder')}
+                                                    {...field('first_name')}
+                                                />
                                                 {errors.first_name && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.first_name}</p>}
                                             </div>
                                             <div>
                                                 <label htmlFor="lastName" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
                                                     {t('start_a_project.form.last_name')} <span className="text-secondary-container">*</span>
                                                 </label>
-                                                <input id="lastName" className={LOCKED_FIELD_CLASS} disabled {...field('last_name')} />
+                                                <input
+                                                    id="lastName"
+                                                    className={identityClass}
+                                                    disabled={!!user}
+                                                    required={!user}
+                                                    autoComplete="family-name"
+                                                    placeholder={user ? undefined : t('start_a_project.form.last_name_placeholder')}
+                                                    {...field('last_name')}
+                                                />
                                                 {errors.last_name && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.last_name}</p>}
                                             </div>
                                         </div>
@@ -173,7 +193,16 @@ export default function StartAProject() {
                                                 <label htmlFor="email" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
                                                     {t('start_a_project.form.email')} <span className="text-secondary-container">*</span>
                                                 </label>
-                                                <input id="email" type="email" className={LOCKED_FIELD_CLASS} disabled {...field('email')} />
+                                                <input
+                                                    id="email"
+                                                    type="email"
+                                                    className={identityClass}
+                                                    disabled={!!user}
+                                                    required
+                                                    autoComplete="email"
+                                                    placeholder={user ? undefined : 'amina@company.com'}
+                                                    {...field('email')}
+                                                />
                                                 {errors.email && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.email}</p>}
                                             </div>
                                             <div>
@@ -185,20 +214,29 @@ export default function StartAProject() {
                                                     value={data.phone}
                                                     onChange={(value) => setData('phone', value)}
                                                     placeholder="6 12 34 56 78"
-                                                    disabled
-                                                    boxClassName={`${LOCKED_FIELD_CLASS} flex items-center gap-space-xs`}
+                                                    disabled={!!user}
+                                                    boxClassName={`${identityClass} flex items-center gap-space-xs`}
                                                     selectClassName="shrink-0 overflow-hidden text-ellipsis whitespace-nowrap border-outline-variant/40 bg-transparent p-0 pe-space-xs text-on-surface outline-none [border-inline-end-width:1px] [max-width:9.5rem]"
                                                     inputClassName="min-w-0 flex-1 border-0 bg-transparent p-0 text-on-surface outline-none placeholder:text-outline"
                                                 />
                                                 {errors.phone && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.phone}</p>}
                                             </div>
                                         </div>
-                                        <p className="-mt-2 font-body-sm text-body-sm text-outline">
-                                            {t('start_a_project.form.account_note')}{' '}
-                                            <Link href={route('profile.edit')} className="text-secondary font-semibold underline">
-                                                {t('start_a_project.form.account_note_link')}
-                                            </Link>
-                                        </p>
+                                        {user ? (
+                                            <p className="-mt-2 font-body-sm text-body-sm text-outline">
+                                                {t('start_a_project.form.account_note')}{' '}
+                                                <Link href={route('profile.edit')} className="text-secondary font-semibold underline">
+                                                    {t('start_a_project.form.account_note_link')}
+                                                </Link>
+                                            </p>
+                                        ) : (
+                                            <p className="-mt-2 font-body-sm text-body-sm text-outline">
+                                                {t('start_a_project.form.guest_note')}{' '}
+                                                <Link href={route('login')} className="text-secondary font-semibold underline">
+                                                    {t('start_a_project.form.guest_note_link')}
+                                                </Link>
+                                            </p>
+                                        )}
 
                                         {showFor('company') && (
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">

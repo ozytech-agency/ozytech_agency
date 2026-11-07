@@ -11,12 +11,13 @@ return [
         'cta_primary' => 'Contact us',
     ],
 
-
     'form' => [
         'title' => 'Send us the details',
         'required_note' => 'Fields marked * are required. The more context you share, the sharper our first response.',
         'account_note' => 'Your name, email and phone come from your account.',
         'account_note_link' => 'Update them in your profile.',
+        'guest_note' => 'No account needed. Already a client?',
+        'guest_note_link' => 'Log in to fill these in from your profile.',
         'topics' => ['New project', 'Partnership', 'Support', 'Careers', 'Press', 'General'],
         'first_name' => 'First name',
         'first_name_placeholder' => 'Amina',

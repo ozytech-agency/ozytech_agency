@@ -11,12 +11,13 @@ return [
         'cta_primary' => 'Contáctanos',
     ],
 
-
     'form' => [
         'title' => 'Envíanos los detalles',
         'required_note' => 'Los campos marcados con * son obligatorios. Cuanto más contexto compartas, más precisa será nuestra primera respuesta.',
         'account_note' => 'Tu nombre, correo y teléfono provienen de tu cuenta.',
         'account_note_link' => 'Actualízalos en tu perfil.',
+        'guest_note' => 'No necesitas una cuenta. ¿Ya eres cliente?',
+        'guest_note_link' => 'Inicia sesión para rellenarlos desde tu perfil.',
         'topics' => ['Nuevo proyecto', 'Alianza', 'Soporte', 'Carreras', 'Prensa', 'General'],
         'first_name' => 'Nombre',
         'first_name_placeholder' => 'Amina',

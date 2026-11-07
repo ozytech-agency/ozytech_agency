@@ -11,12 +11,13 @@ return [
         'cta_primary' => 'Contactez-nous',
     ],
 
-
     'form' => [
         'title' => 'Envoyez-nous les détails',
         'required_note' => 'Les champs marqués * sont obligatoires. Plus vous partagez de contexte, plus notre première réponse sera précise.',
         'account_note' => 'Votre nom, e-mail et téléphone proviennent de votre compte.',
         'account_note_link' => 'Modifiez-les dans votre profil.',
+        'guest_note' => 'Aucun compte requis. Déjà client ?',
+        'guest_note_link' => 'Connectez-vous pour les remplir depuis votre profil.',
         'topics' => ['Nouveau projet', 'Partenariat', 'Support', 'Carrières', 'Presse', 'Général'],
         'first_name' => 'Prénom',
         'first_name_placeholder' => 'Amina',

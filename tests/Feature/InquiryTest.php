@@ -12,6 +12,7 @@ use Illuminate\Http\Client\Request;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Queue;
+use Inertia\Testing\AssertableInertia as Assert;
 use RuntimeException;
 use Tests\TestCase;
 
@@ -52,18 +53,82 @@ class InquiryTest extends TestCase
         ], $overrides);
     }
 
-    public function test_guest_is_redirected_to_login_when_visiting_start_a_project(): void
+    public function test_guest_can_view_start_a_project(): void
     {
-        $this->get(route('start-a-project', ['locale' => 'en']))
-            ->assertRedirect(route('login', ['locale' => 'en']));
+        $this->get(route('start-a-project', ['locale' => 'fr']))
+            ->assertOk()
+            ->assertInertia(fn (Assert $page) => $page
+                ->component('StartAProject')
+                ->where('auth.user', null)
+                ->has('packages', 3));
     }
 
-    public function test_guest_cannot_submit_inquiry(): void
+    public function test_guest_can_submit_inquiry_with_their_own_identity(): void
     {
-        $response = $this->post(route('start-a-project.store', ['locale' => 'en']), $this->payload());
+        Queue::fake();
 
-        $response->assertRedirect(route('login', ['locale' => 'en']));
+        $this->post(route('start-a-project.store', ['locale' => 'en']), $this->payload())
+            ->assertSessionHasNoErrors()
+            ->assertRedirect(route('start-a-project', ['locale' => 'en']));
+
+        $this->assertDatabaseHas('inquiries', [
+            'user_id' => null,
+            'topic' => 'new-project',
+            'first_name' => 'Amina',
+            'last_name' => 'Benali',
+            'email' => 'amina@company.com',
+            'phone' => '+212612345678',
+            'role' => 'VP Engineering',
+            'referral' => 'Search engine',
+            'nda_requested' => true,
+        ]);
+        Queue::assertPushed(
+            SendProjectRequestToGoogleSheet::class,
+            fn (SendProjectRequestToGoogleSheet $job) => $job->inquiry->user_id === null && $job->inquiry->email === 'amina@company.com',
+        );
+    }
+
+    public function test_guest_identity_fields_are_validated(): void
+    {
+        Queue::fake();
+
+        $this->post(route('start-a-project.store', ['locale' => 'en']), $this->payload([
+            'first_name' => '',
+            'last_name' => '',
+            'email' => 'not-an-email',
+            'phone' => 'call me maybe',
+        ]))->assertSessionHasErrors(['first_name', 'last_name', 'email', 'phone']);
+
         $this->assertDatabaseCount('inquiries', 0);
+        Queue::assertNothingPushed();
+    }
+
+    public function test_guest_phone_is_optional(): void
+    {
+        $this->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['phone' => '']))
+            ->assertSessionHasNoErrors();
+
+        $this->assertDatabaseHas('inquiries', ['user_id' => null, 'phone' => null]);
+    }
+
+    public function test_guest_submissions_are_rate_limited(): void
+    {
+        Queue::fake();
+
+        for ($attempt = 0; $attempt < 6; $attempt++) {
+            $this->post(route('start-a-project.store', ['locale' => 'en']), $this->payload())->assertRedirect();
+        }
+
+        $this->post(route('start-a-project.store', ['locale' => 'en']), $this->payload())->assertTooManyRequests();
+        $this->assertDatabaseCount('inquiries', 6);
+    }
+
+    public function test_account_routes_still_require_login(): void
+    {
+        foreach (['dashboard', 'profile.edit', 'admin.dashboard'] as $routeName) {
+            $this->get(route($routeName, ['locale' => 'en']))
+                ->assertRedirect(route('login', ['locale' => 'en']));
+        }
     }
 
     public function test_authenticated_user_can_view_start_a_project(): void
@@ -72,7 +137,8 @@ class InquiryTest extends TestCase
 
         $this->actingAs($user)
             ->get(route('start-a-project', ['locale' => 'en']))
-            ->assertOk();
+            ->assertOk()
+            ->assertInertia(fn (Assert $page) => $page->where('auth.user.id', $user->id));
     }
 
     public function test_inquiry_identity_fields_come_from_the_account_not_the_request(): void
@@ -239,46 +305,86 @@ class InquiryTest extends TestCase
         ]);
         Http::fake(['script.google.com/*' => Http::response(['ok' => true])]);
         $inquiry = Inquiry::factory()->create([
+            'user_id' => null,
             'first_name' => 'Amina',
             'last_name' => 'Benali',
             'email' => 'amina@company.com',
             'phone' => '+212612345678',
             'company' => 'Acme Inc.',
             'domain_name' => 'acme.com',
+            'role' => 'VP Engineering',
             'work_area' => 'Technology & SaaS',
             'package' => 'pro',
             'message' => 'We need a portal.',
+            'referral' => 'Search engine',
+            'nda_requested' => true,
         ]);
 
         (new SendProjectRequestToGoogleSheet($inquiry))->handle();
 
         Http::assertSent(fn (Request $request) => $request->url() === 'https://script.google.com/macros/s/test/exec'
-            && $request['secret'] === 'top-secret'
-            && $request['request_id'] === $inquiry->id
-            && $request['submitted_at'] === $inquiry->created_at->toDateString()
-            && $request['full_name'] === 'Amina Benali'
-            && $request['email'] === 'amina@company.com'
-            && $request['phone'] === '+212612345678'
-            && $request['company'] === 'Acme Inc.'
-            && $request['domain_name'] === 'acme.com'
-            && $request['work_area'] === 'Technology & SaaS'
-            && $request['package'] === 'Pro'
-            && $request['message'] === 'We need a portal.');
+            && $request->data() === [
+                'secret' => 'top-secret',
+                'request_id' => $inquiry->id,
+                'submitted_at' => $inquiry->created_at->toDateString(),
+                'full_name' => 'Amina Benali',
+                'email' => 'amina@company.com',
+                'phone' => '+212612345678',
+                'company' => 'Acme Inc.',
+                'domain_name' => 'acme.com',
+                'role' => 'VP Engineering',
+                'work_area' => 'Technology & SaaS',
+                'package' => 'Pro',
+                'message' => 'We need a portal.',
+                'referral' => 'Search engine',
+                'nda_requested' => 'Yes',
+                'account' => 'Guest',
+            ]);
     }
 
-    public function test_google_sheet_job_does_nothing_without_a_webhook_url(): void
+    public function test_google_sheet_job_marks_a_registered_clients_request(): void
     {
-        config(['services.google_sheets.webhook_url' => '']);
+        config([
+            'services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec',
+            'services.google_sheets.secret' => 'top-secret',
+        ]);
+        Http::fake(['script.google.com/*' => Http::response(['ok' => true])]);
+        $inquiry = Inquiry::factory()->for(User::factory())->create(['nda_requested' => false, 'package' => null]);
+
+        (new SendProjectRequestToGoogleSheet($inquiry))->handle();
+
+        Http::assertSent(fn (Request $request) => $request['account'] === 'Registered'
+            && $request['nda_requested'] === 'No'
+            && $request['package'] === '');
+    }
+
+    public function test_google_sheet_job_fails_when_delivery_is_not_configured(): void
+    {
+        config(['services.google_sheets.webhook_url' => '', 'services.google_sheets.secret' => 'top-secret']);
         Http::fake();
+        $job = (new SendProjectRequestToGoogleSheet(Inquiry::factory()->create()))->withFakeQueueInteractions();
 
-        (new SendProjectRequestToGoogleSheet(Inquiry::factory()->create()))->handle();
+        $job->handle();
 
+        $job->assertFailed();
+        Http::assertNothingSent();
+    }
+
+    public function test_google_sheet_job_fails_without_a_secret(): void
+    {
+        config(['services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec', 'services.google_sheets.secret' => '']);
+        Http::fake();
+        $job = (new SendProjectRequestToGoogleSheet(Inquiry::factory()->create()))->withFakeQueueInteractions();
+
+        $job->handle();
+
+        $job->assertFailed();
         Http::assertNothingSent();
     }
 
     public function test_google_sheet_job_fails_when_the_webhook_rejects_the_request(): void
     {
-        config(['services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec']);
+        config(['services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec', 'services.google_sheets.secret' => 'top-secret']);
         Http::fake(['script.google.com/*' => Http::response(['ok' => false, 'error' => 'unauthorized'])]);
 
         $this->expectException(RuntimeException::class);
@@ -288,7 +394,7 @@ class InquiryTest extends TestCase
 
     public function test_google_sheet_job_fails_when_the_webhook_is_down(): void
     {
-        config(['services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec']);
+        config(['services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec', 'services.google_sheets.secret' => 'top-secret']);
         Http::fake(['script.google.com/*' => Http::response('boom', 500)]);
 
         $this->expectException(RequestException::class);
@@ -340,8 +446,17 @@ class InquiryTest extends TestCase
 
         Queue::assertPushed(
             RemoveProjectRequestFromGoogleSheet::class,
-            fn (RemoveProjectRequestFromGoogleSheet $job) => $job->inquiry->id === $inquiry->id,
+            fn (RemoveProjectRequestFromGoogleSheet $job) => $job->requestId === $inquiry->id,
         );
+    }
+
+    public function test_google_sheet_removal_job_survives_serialization_after_the_inquiry_is_deleted(): void
+    {
+        $inquiry = Inquiry::factory()->create();
+        $serialized = serialize(new RemoveProjectRequestFromGoogleSheet($inquiry->id));
+        $inquiry->delete();
+
+        $this->assertSame($inquiry->id, unserialize($serialized)->requestId);
     }
 
     public function test_deleting_a_non_new_project_request_does_not_touch_the_google_sheet(): void
@@ -365,7 +480,7 @@ class InquiryTest extends TestCase
         Http::fake(['script.google.com/*' => Http::response(['ok' => true])]);
         $inquiry = Inquiry::factory()->create();
 
-        (new RemoveProjectRequestFromGoogleSheet($inquiry))->handle();
+        (new RemoveProjectRequestFromGoogleSheet($inquiry->id))->handle();
 
         Http::assertSent(fn (Request $request) => $request->url() === 'https://script.google.com/macros/s/test/exec'
             && $request['secret'] === 'top-secret'
@@ -373,33 +488,35 @@ class InquiryTest extends TestCase
             && $request['request_id'] === $inquiry->id);
     }
 
-    public function test_google_sheet_removal_job_does_nothing_without_a_webhook_url(): void
+    public function test_google_sheet_removal_job_fails_when_delivery_is_not_configured(): void
     {
-        config(['services.google_sheets.webhook_url' => '']);
+        config(['services.google_sheets.webhook_url' => '', 'services.google_sheets.secret' => 'top-secret']);
         Http::fake();
+        $job = (new RemoveProjectRequestFromGoogleSheet(42))->withFakeQueueInteractions();
 
-        (new RemoveProjectRequestFromGoogleSheet(Inquiry::factory()->create()))->handle();
+        $job->handle();
 
+        $job->assertFailed();
         Http::assertNothingSent();
     }
 
     public function test_google_sheet_removal_job_fails_when_the_webhook_rejects_the_request(): void
     {
-        config(['services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec']);
+        config(['services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec', 'services.google_sheets.secret' => 'top-secret']);
         Http::fake(['script.google.com/*' => Http::response(['ok' => false, 'error' => 'not found'])]);
 
         $this->expectException(RuntimeException::class);
 
-        (new RemoveProjectRequestFromGoogleSheet(Inquiry::factory()->create()))->handle();
+        (new RemoveProjectRequestFromGoogleSheet(Inquiry::factory()->create()->id))->handle();
     }
 
     public function test_google_sheet_removal_job_fails_when_the_webhook_is_down(): void
     {
-        config(['services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec']);
+        config(['services.google_sheets.webhook_url' => 'https://script.google.com/macros/s/test/exec', 'services.google_sheets.secret' => 'top-secret']);
         Http::fake(['script.google.com/*' => Http::response('boom', 500)]);
 
         $this->expectException(RequestException::class);
 
-        (new RemoveProjectRequestFromGoogleSheet(Inquiry::factory()->create()))->handle();
+        (new RemoveProjectRequestFromGoogleSheet(Inquiry::factory()->create()->id))->handle();
     }
 }
