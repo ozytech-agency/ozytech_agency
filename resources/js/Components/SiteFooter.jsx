@@ -4,7 +4,7 @@ import { useTranslations } from '@/lib/translations';
 
 export default function SiteFooter() {
     const t = useTranslations();
-    const { auth } = usePage().props;
+    const { auth, policyLinks = [] } = usePage().props;
     const user = auth?.user;
     const [email, setEmail] = useState('');
     const [note, setNote] = useState(null);
@@ -126,18 +126,11 @@ export default function SiteFooter() {
                             <Link href={route('contact')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
                                 {t('footer.support.client_support')}
                             </Link>
-                            <Link href={route('policies.show', 'privacy-policy')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
-                                {t('footer.support.privacy_policy')}
-                            </Link>
-                            <Link href={route('policies.show', 'terms-of-service')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
-                                {t('footer.support.terms_of_service')}
-                            </Link>
-                            <Link href={route('policies.show', 'refunds-policy')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
-                                {t('footer.support.refunds_policy')}
-                            </Link>
-                            <Link href={route('policies.show', 'trust-security')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
-                                {t('footer.support.trust_security')}
-                            </Link>
+                            {policyLinks.map((policy) => (
+                                <Link key={policy.slug} href={route('policies.show', policy.slug)} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
+                                    {policy.title}
+                                </Link>
+                            ))}
                             <Link href={route(user ? 'dashboard' : 'login')} className="font-body-sm text-body-sm text-outline-variant hover:text-on-primary transition-colors">
                                 {t('footer.support.my_account')}
                             </Link>

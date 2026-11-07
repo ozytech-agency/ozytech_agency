@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'last_updated' => 'Last updated: September 12, 2026',
+    'last_updated' => 'Last updated: :date',
     'eyebrow' => 'Policies',
 
     'privacy-policy' => [

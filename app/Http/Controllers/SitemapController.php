@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Policy;
 use App\Models\Post;
 use App\Models\Project;
 use App\Models\Service;
-use App\Support\PolicyCatalog;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -52,8 +52,8 @@ class SitemapController extends Controller
             fn (Post $post) => $urls->push($this->entry('blog.show', ['post' => $post->slug], $post->updated_at))
         );
 
-        collect(PolicyCatalog::all())->keys()->each(
-            fn (string $slug) => $urls->push($this->entry('policies.show', ['policy' => $slug]))
+        Policy::query()->published()->ordered()->get(['slug', 'updated_at'])->each(
+            fn (Policy $policy) => $urls->push($this->entry('policies.show', ['policy' => $policy->slug], $policy->updated_at))
         );
 
         return response()

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Enums\ServiceItemType;
 use App\Models\Package;
+use App\Models\Policy;
 use App\Models\Post;
 use App\Models\Service;
 use App\Models\TeamMember;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 /**
- * Imports the services, packages and blog posts that used to be hardcoded in
+ * Imports the services, packages, blog posts and policies that used to be hardcoded in
  * the lang files (all locales) into the database, so they can be managed from
  * the admin dashboard.
  *
@@ -208,6 +209,13 @@ class ContentSeeder extends Seeder
         ],
     ];
 
+    /**
+     * Policy slugs, in footer order.
+     *
+     * @var list<string>
+     */
+    private const POLICY_SLUGS = ['privacy-policy', 'terms-of-service', 'refunds-policy', 'trust-security'];
+
     private const FEATURED_POST_IMAGE = 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85';
 
     /**
@@ -231,6 +239,7 @@ class ContentSeeder extends Seeder
             $this->seedPackages();
             $this->seedPosts();
             $this->seedTeamMembers();
+            $this->seedPolicies();
         });
 
         $this->call(ProjectSeeder::class);
@@ -374,6 +383,36 @@ class ContentSeeder extends Seeder
                 'focus' => $member['focus'],
                 ...$member['socials'],
                 'sort_order' => $position,
+                'is_published' => true,
+            ]);
+        }
+    }
+
+    /**
+     * Each policy's heading/body sections become one HTML body per locale,
+     * the format the admin rich-text editor works with.
+     */
+    private function seedPolicies(): void
+    {
+        foreach (self::POLICY_SLUGS as $position => $slug) {
+            if (Policy::where('slug', $slug)->exists()) {
+                continue;
+            }
+
+            $body = collect(self::LOCALES)
+                ->mapWithKeys(fn (string $locale) => [$locale => trans("policies.{$slug}.sections", [], $locale)])
+                ->filter(fn (mixed $sections) => is_array($sections))
+                ->map(fn (array $sections) => collect($sections)
+                    ->map(fn (array $section) => '<h2>'.e($section['heading']).'</h2><p>'.e($section['body']).'</p>')
+                    ->implode(''))
+                ->all();
+
+            Policy::create([
+                'slug' => $slug,
+                'title' => $this->localized("policies.{$slug}.title"),
+                'summary' => $this->localized("policies.{$slug}.subtitle"),
+                'body' => $body,
+                'sort_order' => $position + 1,
                 'is_published' => true,
             ]);
         }

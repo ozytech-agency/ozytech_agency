@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'last_updated' => 'آخر تحديث: 12 سبتمبر 2026',
+    'last_updated' => 'آخر تحديث: :date',
     'eyebrow' => 'السياسات',
 
     'privacy-policy' => [

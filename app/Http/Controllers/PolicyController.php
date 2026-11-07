@@ -2,21 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Support\PolicyCatalog;
+use App\Models\Policy;
 use Inertia\Inertia;
 use Inertia\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PolicyController extends Controller
 {
-    public function show(string $locale, string $policy): Response
+    public function show(string $locale, Policy $policy): Response
     {
-        $data = PolicyCatalog::find($policy);
+        abort_unless($policy->is_published, 404);
 
-        if (! $data) {
-            throw new NotFoundHttpException;
-        }
-
-        return Inertia::render('Policies/Show', [...$data, 'slug' => $policy]);
+        return Inertia::render('Policies/Show', [
+            'policy' => [
+                'slug' => $policy->slug,
+                'title' => $policy->localized('title'),
+                'summary' => $policy->localized('summary'),
+                'body_html' => $policy->localized('body') ?? '',
+                'updated_at' => $policy->updated_at->toIso8601String(),
+            ],
+        ]);
     }
 }

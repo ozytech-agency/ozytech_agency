@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 import InputError from '@/Components/InputError';
+import RichTextEditor from '@/Components/Admin/RichTextEditor';
 import { CONTENT_LOCALES } from '@/lib/admin';
 import { useTranslations } from '@/lib/translations';
 
@@ -82,6 +83,40 @@ export function LocalizedInput({ label, name, value, onChange, errors = {}, mult
             {multiline ? <textarea rows={rows} {...inputProps} /> : <input type="text" {...inputProps} />}
             {help && <p className="mt-1 font-body-sm text-body-sm text-outline">{help}</p>}
             <InputError className="mt-1" message={errors[`${name}.${locale}`] ?? errors[name]} />
+        </div>
+    );
+}
+
+/**
+ * A rich-text editor bound to `value[locale]` of a localized HTML field.
+ * The editor is remounted per locale so each language keeps its own content and undo history.
+ */
+export function LocalizedRichText({ label, name, value, onChange, errors = {}, required = true, help }) {
+    const { locale } = useEditingLocale();
+    const id = `${name}.${locale}`.replace(/\./g, '-');
+    const error = errors[`${name}.${locale}`] ?? errors[name];
+
+    return (
+        <div>
+            {label && (
+                <span id={`${id}-label`} className="block font-label-md text-label-md text-on-surface">
+                    {label}
+                    <span className="ms-1 font-label-sm text-label-sm uppercase text-outline">{locale}</span>
+                    {required && locale === 'en' && <span className="ms-1 text-error">*</span>}
+                </span>
+            )}
+            <RichTextEditor
+                key={locale}
+                id={id}
+                labelledBy={label ? `${id}-label` : undefined}
+                value={value?.[locale] ?? ''}
+                dir={locale === 'ar' ? 'rtl' : 'ltr'}
+                lang={locale}
+                invalid={Boolean(error)}
+                onChange={(html) => onChange({ ...(value ?? {}), [locale]: html })}
+            />
+            {help && <p className="mt-1 font-body-sm text-body-sm text-outline">{help}</p>}
+            <InputError className="mt-1" message={error} />
         </div>
     );
 }
