@@ -221,7 +221,7 @@ export default function Home({ serviceImages = {}, reviews = [] }) {
                                         <p className="max-w-xs font-body-sm text-body-sm text-white/80">{t(`home.services.cards.${card.key}.desc`)}</p>
 
                                         <Link
-                                            href={route('services.show', { service: card.slug })}
+                                            href={route('services.index')}
                                             className="group/cta mt-space-xs inline-flex items-center gap-space-xs rounded-lg bg-accent2 px-space-md py-space-2xs font-label-md text-label-md text-on-primary shadow-[0_10px_20px_-8px_rgba(233,87,71,0.6)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary-container hover:shadow-[0_14px_28px_-10px_rgba(233,87,71,0.7)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                                         >
                                             <span>{t('home.services.cta')}</span>
