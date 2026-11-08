@@ -33,7 +33,6 @@ const SERVICE_CARD_META = [
     { key: 'saas', slug: 'software-development', icon: 'cloud_sync', iconColor: 'text-[#E55E4A]' },
 ];
 
-const DELIVERY_PHASE_TONES = ['muted', 'active', 'muted'];
 
 const ABOUT_PHOTOS = [
     'https://lh3.googleusercontent.com/aida-public/AB6AXuDkJPdW8obQp1iA3g-wc5kBgMH7qk_IcokPWD0MjBfqm4V1CKxmKh9bV_rHZccMDPGOIsXgWX9C8JcXwMwAc2fuXXXz1BW9VeXqhKZ8HRHXJrA1EOCdLYBJ10S5K4gbPK6RqmPq6pjmVaBIIGLiY9XV57wE8vmtwOKivhI5D2wbfZ1AWBVU23HqnnPfqZchXyMLMrY1Sa2Zaq675rpx1XGOkgtF37kdBRKS6UFHX0MSn3Z4yFrGZE9c',
@@ -78,7 +77,6 @@ export default function Home({ serviceImages = {}, reviews = [] }) {
     };
 
     const deliveryFeatures = t('home.delivery.features');
-    const deliveryPhases = t('home.delivery.phases');
     // Published client reviews; the built-in testimonials only show until the first one is published.
     const testimonials = reviews.length
         ? reviews.map((review) => ({
@@ -277,30 +275,10 @@ export default function Home({ serviceImages = {}, reviews = [] }) {
                                     <iframe
                                         className="h-full w-full"
                                         src="https://www.youtube.com/embed/"
-                                        title={t('home.delivery.video_caption')}
+                                        title={t('home.delivery.badge')}
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                         allowFullScreen
                                     ></iframe>
-                                    <div className="absolute bottom-3 left-3 bg-surface-container-lowest/80 backdrop-blur-md px-space-sm py-1 rounded-md text-xs font-mono text-on-surface">
-                                        {t('home.delivery.video_caption')}
-                                    </div>
-                                </div>
-                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-space-sm mt-space-md">
-                                    {deliveryPhases.map((phase, i) => (
-                                        <div
-                                            key={phase.label}
-                                            className={`p-space-sm rounded-lg flex flex-col justify-between ${DELIVERY_PHASE_TONES[i] === 'active' ? 'bg-surface-container-high shadow-sm' : 'bg-surface-container-low'}`}
-                                        >
-                                            <div>
-                                                <span className={`font-label-sm text-label-sm uppercase ${DELIVERY_PHASE_TONES[i] === 'active' ? 'text-secondary font-bold' : 'text-secondary-container'}`}>
-                                                    {phase.label}
-                                                </span>
-                                                <h5 className="font-label-md text-label-md font-bold text-on-surface mt-1">{phase.title}</h5>
-                                                <p className="font-body-sm text-body-sm text-on-surface-variant text-xs mt-1">{phase.desc}</p>
-                                            </div>
-                                            <span className={`text-xs font-mono mt-3 ${DELIVERY_PHASE_TONES[i] === 'active' ? 'text-secondary font-semibold' : 'text-outline'}`}>{phase.footer}</span>
-                                        </div>
-                                    ))}
                                 </div>
                             </div>
                         </div>

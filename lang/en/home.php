@@ -80,12 +80,6 @@ return [
             ['title' => 'Continuous Quality & DevSecOps', 'desc' => 'Full automated test coverage, static code analysis, and automated vulnerability scanning.'],
         ],
         'cta' => 'Learn more about our methodology',
-        'video_caption' => 'Sprint Review: Phase 04 / Core Engine',
-        'phases' => [
-            ['label' => 'PHASE 01', 'title' => 'Discovery & Arch', 'desc' => 'Deep system audits and architectural specs.', 'footer' => 'Duration: 2 Wks'],
-            ['label' => 'PHASE 02', 'title' => 'Rapid Build', 'desc' => 'Full-stack builds with daily staging deployments.', 'footer' => 'Active Sprints'],
-            ['label' => 'PHASE 03', 'title' => 'Global Launch', 'desc' => 'Load tests, penetration tests & cloud cutover.', 'footer' => '99.99% SLA'],
-        ],
     ],
 
     'guild' => [

@@ -80,12 +80,6 @@ return [
             ['title' => 'Qualité continue & DevSecOps', 'desc' => 'Couverture de tests automatisée complète, analyse statique du code et détection automatisée des vulnérabilités.'],
         ],
         'cta' => 'En savoir plus sur notre méthodologie',
-        'video_caption' => 'Revue de sprint : Phase 04 / Moteur principal',
-        'phases' => [
-            ['label' => 'PHASE 01', 'title' => 'Découverte & architecture', 'desc' => "Audits système approfondis et spécifications d'architecture.", 'footer' => 'Durée : 2 sem.'],
-            ['label' => 'PHASE 02', 'title' => 'Construction rapide', 'desc' => 'Développement full-stack avec déploiements quotidiens en staging.', 'footer' => 'Sprints actifs'],
-            ['label' => 'PHASE 03', 'title' => 'Lancement mondial', 'desc' => 'Tests de charge, tests d\'intrusion & bascule cloud.', 'footer' => 'SLA 99,99 %'],
-        ],
     ],
 
     'guild' => [
