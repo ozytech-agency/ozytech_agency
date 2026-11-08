@@ -10,7 +10,7 @@ use RuntimeException;
 
 class SendProjectRequestToGoogleSheet implements ShouldQueue
 {
-    use Queueable; 
+    use Queueable;
 
     public int $tries = 5;
 
@@ -69,15 +69,16 @@ class SendProjectRequestToGoogleSheet implements ShouldQueue
             'submitted_at' => $inquiry->created_at->toDateString(),
             'full_name' => trim("{$inquiry->first_name} {$inquiry->last_name}"),
             'email' => $inquiry->email,
+            'second_email' => $inquiry->second_email,
             'phone' => $inquiry->phone,
-            'company' => $inquiry->company,
-            'domain_name' => $inquiry->domain_name,
+            'llc_name' => $inquiry->llc_name,
+            'second_llc_name' => $inquiry->second_llc_name,
+            'website' => $inquiry->website,
             'role' => $inquiry->role,
             'work_area' => $inquiry->work_area,
             'package' => $inquiry->package ? ucfirst($inquiry->package) : '',
             'message' => $inquiry->message,
             'referral' => $inquiry->referral,
-            'nda_requested' => $inquiry->nda_requested ? 'Yes' : 'No',
             'account' => $inquiry->user_id ? 'Registered' : 'Guest',
         ];
     }

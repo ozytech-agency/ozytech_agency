@@ -7,7 +7,8 @@ import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 const WHEN_MAP = {
-    company: ['new-project', 'partnership', 'support', 'general'],
+    llc: ['new-project', 'partnership', 'support', 'general'],
+    website: ['new-project', 'partnership', 'support', 'general'],
     workArea: ['new-project', 'partnership', 'support', 'general'],
     packages: ['new-project', 'partnership'],
 };
@@ -17,15 +18,17 @@ const INITIAL_INQUIRY_FORM = {
     first_name: '',
     last_name: '',
     email: '',
+    second_email: '',
     phone: '',
-    company: '',
-    domain_name: '',
+    llc_name: '',
+    second_llc_name: '',
+    has_website: false,
+    website: '',
     role: '',
     work_area: '',
     package: '',
     message: '',
     referral: '',
-    nda_requested: false,
     consent: false,
 };
 
@@ -206,14 +209,29 @@ export default function StartAProject() {
                                                 {errors.email && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.email}</p>}
                                             </div>
                                             <div>
+                                                <label htmlFor="secondEmail" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
+                                                    {t('start_a_project.form.second_email')} <span className="text-outline font-normal">{t('start_a_project.form.optional')}</span>
+                                                </label>
+                                                <input
+                                                    id="secondEmail"
+                                                    type="email"
+                                                    className="field"
+                                                    autoComplete="off"
+                                                    placeholder="amina@gmail.com"
+                                                    {...field('second_email')}
+                                                />
+                                                {errors.second_email && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.second_email}</p>}
+                                            </div>
+                                            <div>
                                                 <label htmlFor="phone" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
-                                                    {t('start_a_project.form.phone')} <span className="text-outline font-normal">{t('start_a_project.form.phone_optional')}</span>
+                                                    {t('start_a_project.form.phone')} <span className="text-secondary-container">*</span>
                                                 </label>
                                                 <PhoneNumberInput
                                                     id="phone"
                                                     value={data.phone}
                                                     onChange={(value) => setData('phone', value)}
                                                     placeholder="6 12 34 56 78"
+                                                    required={!user}
                                                     disabled={!!user}
                                                     boxClassName={`${identityClass} flex items-center gap-space-xs`}
                                                     selectClassName="shrink-0 overflow-hidden text-ellipsis whitespace-nowrap border-outline-variant/40 bg-transparent p-0 pe-space-xs text-on-surface outline-none [border-inline-end-width:1px] [max-width:9.5rem]"
@@ -238,17 +256,17 @@ export default function StartAProject() {
                                             </p>
                                         )}
 
-                                        {showFor('company') && (
+                                        {showFor('llc') && (
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
                                                 <div>
-                                                    <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.company')}</label>
-                                                    <input className="field" placeholder="Acme Inc." {...field('company')} />
-                                                    {errors.company && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.company}</p>}
+                                                    <label htmlFor="llcName" className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.llc_name')}</label>
+                                                    <input id="llcName" className="field" placeholder="Acme Ventures LLC" {...field('llc_name')} />
+                                                    {errors.llc_name && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.llc_name}</p>}
                                                 </div>
                                                 <div>
-                                                    <label className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.domain_name')}</label>
-                                                    <input className="field" placeholder="acme.com" autoCapitalize="none" {...field('domain_name')} />
-                                                    {errors.domain_name && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.domain_name}</p>}
+                                                    <label htmlFor="secondLlcName" className="block font-label-md text-label-md text-on-surface mb-space-2xs">{t('start_a_project.form.second_llc_name')}</label>
+                                                    <input id="secondLlcName" className="field" placeholder="Acme Labs LLC" {...field('second_llc_name')} />
+                                                    {errors.second_llc_name && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.second_llc_name}</p>}
                                                 </div>
                                             </div>
                                         )}
@@ -272,6 +290,31 @@ export default function StartAProject() {
                                                 </div>
                                             )}
                                         </div>
+
+                                        {showFor('website') && (
+                                            <div className="flex flex-col gap-space-xs">
+                                                <label className="flex items-start gap-space-xs cursor-pointer">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={data.has_website}
+                                                        onChange={(e) => setData('has_website', e.target.checked)}
+                                                        aria-controls="website"
+                                                        aria-expanded={data.has_website}
+                                                        className="mt-1 w-4 h-4 accent-secondary-container shrink-0"
+                                                    />
+                                                    <span className="font-label-md text-label-md text-on-surface">{t('start_a_project.form.has_website')}</span>
+                                                </label>
+                                                {data.has_website && (
+                                                    <div>
+                                                        <label htmlFor="website" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
+                                                            {t('start_a_project.form.website')} <span className="text-secondary-container">*</span>
+                                                        </label>
+                                                        <input id="website" className="field" required placeholder="acme.com" autoCapitalize="none" autoComplete="url" {...field('website')} />
+                                                        {errors.website && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.website}</p>}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
 
                                         {showFor('packages') && (
                                             <fieldset className="flex flex-col gap-space-xs">
@@ -386,10 +429,6 @@ export default function StartAProject() {
                                         </div>
 
                                         <div className="flex flex-col gap-space-xs pt-space-2xs">
-                                            <label className="flex items-start gap-space-xs cursor-pointer">
-                                                <input type="checkbox" checked={data.nda_requested} onChange={(e) => setData('nda_requested', e.target.checked)} className="mt-1 w-4 h-4 accent-secondary-container shrink-0" />
-                                                <span className="font-body-sm text-body-sm text-on-surface-variant">{t('start_a_project.form.nda_consent')}</span>
-                                            </label>
                                             <label className="flex items-start gap-space-xs cursor-pointer">
                                                 <input type="checkbox" checked={data.consent} onChange={(e) => setData('consent', e.target.checked)} className="mt-1 w-4 h-4 accent-secondary-container shrink-0" />
                                                 <span className="font-body-sm text-body-sm text-on-surface-variant">

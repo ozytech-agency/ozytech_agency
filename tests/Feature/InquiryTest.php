@@ -40,15 +40,17 @@ class InquiryTest extends TestCase
             'first_name' => 'Amina',
             'last_name' => 'Benali',
             'email' => 'amina@company.com',
+            'second_email' => 'amina@gmail.com',
             'phone' => '+212612345678',
-            'company' => 'Acme Inc.',
-            'domain_name' => 'acme.com',
+            'llc_name' => 'Acme Ventures LLC',
+            'second_llc_name' => 'Acme Labs LLC',
+            'has_website' => true,
+            'website' => 'acme.com',
             'role' => 'VP Engineering',
             'work_area' => 'Technology & SaaS',
             'package' => 'pro',
             'message' => 'We need help building a new customer portal.',
             'referral' => 'Search engine',
-            'nda_requested' => true,
             'consent' => true,
         ], $overrides);
     }
@@ -77,10 +79,13 @@ class InquiryTest extends TestCase
             'first_name' => 'Amina',
             'last_name' => 'Benali',
             'email' => 'amina@company.com',
+            'second_email' => 'amina@gmail.com',
             'phone' => '+212612345678',
+            'llc_name' => 'Acme Ventures LLC',
+            'second_llc_name' => 'Acme Labs LLC',
+            'website' => 'acme.com',
             'role' => 'VP Engineering',
             'referral' => 'Search engine',
-            'nda_requested' => true,
         ]);
         Queue::assertPushed(
             SendProjectRequestToGoogleSheet::class,
@@ -103,12 +108,12 @@ class InquiryTest extends TestCase
         Queue::assertNothingPushed();
     }
 
-    public function test_guest_phone_is_optional(): void
+    public function test_guest_phone_is_required(): void
     {
         $this->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['phone' => '']))
-            ->assertSessionHasNoErrors();
+            ->assertSessionHasErrors('phone');
 
-        $this->assertDatabaseHas('inquiries', ['user_id' => null, 'phone' => null]);
+        $this->assertDatabaseCount('inquiries', 0);
     }
 
     public function test_guest_submissions_are_rate_limited(): void
@@ -186,15 +191,53 @@ class InquiryTest extends TestCase
         $response->assertSessionHasErrors('topic');
     }
 
-    public function test_domain_name_is_normalised_to_a_bare_host(): void
+    public function test_website_is_normalised_to_a_bare_host(): void
     {
         $user = User::factory()->create();
 
         $this->actingAs($user)
-            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['domain_name' => 'https://www.Acme.com/about?x=1']))
+            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['website' => 'https://www.Acme.com/about?x=1']))
             ->assertSessionHasNoErrors();
 
-        $this->assertDatabaseHas('inquiries', ['user_id' => $user->id, 'domain_name' => 'acme.com', 'work_area' => 'Technology & SaaS']);
+        $this->assertDatabaseHas('inquiries', ['user_id' => $user->id, 'website' => 'acme.com', 'work_area' => 'Technology & SaaS']);
+    }
+
+    public function test_website_is_required_when_the_visitor_has_one(): void
+    {
+        $response = $this->actingAs(User::factory()->create())
+            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['has_website' => true, 'website' => '']));
+
+        $response->assertSessionHasErrors('website');
+    }
+
+    public function test_website_is_discarded_when_the_visitor_has_none(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)
+            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['has_website' => false, 'website' => 'not a domain']))
+            ->assertSessionHasNoErrors();
+
+        $this->assertDatabaseHas('inquiries', ['user_id' => $user->id, 'website' => null]);
+    }
+
+    public function test_second_email_must_be_valid(): void
+    {
+        $response = $this->actingAs(User::factory()->create())
+            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['second_email' => 'not-an-email']));
+
+        $response->assertSessionHasErrors('second_email');
+    }
+
+    public function test_second_email_and_llc_names_are_optional(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)
+            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['second_email' => '', 'llc_name' => '', 'second_llc_name' => '']))
+            ->assertSessionHasNoErrors();
+
+        $this->assertDatabaseHas('inquiries', ['user_id' => $user->id, 'second_email' => null, 'llc_name' => null, 'second_llc_name' => null]);
     }
 
     public function test_role_and_work_area_are_optional(): void
@@ -208,12 +251,12 @@ class InquiryTest extends TestCase
         $this->assertDatabaseHas('inquiries', ['user_id' => $user->id, 'role' => null, 'work_area' => null]);
     }
 
-    public function test_domain_name_must_look_like_a_domain(): void
+    public function test_website_must_look_like_a_domain(): void
     {
         $response = $this->actingAs(User::factory()->create())
-            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['domain_name' => 'not a domain']));
+            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['website' => 'not a domain']));
 
-        $response->assertSessionHasErrors('domain_name');
+        $response->assertSessionHasErrors('website');
     }
 
     public function test_consent_must_be_accepted(): void
@@ -309,15 +352,16 @@ class InquiryTest extends TestCase
             'first_name' => 'Amina',
             'last_name' => 'Benali',
             'email' => 'amina@company.com',
+            'second_email' => 'amina@gmail.com',
             'phone' => '+212612345678',
-            'company' => 'Acme Inc.',
-            'domain_name' => 'acme.com',
+            'llc_name' => 'Acme Ventures LLC',
+            'second_llc_name' => 'Acme Labs LLC',
+            'website' => 'acme.com',
             'role' => 'VP Engineering',
             'work_area' => 'Technology & SaaS',
             'package' => 'pro',
             'message' => 'We need a portal.',
             'referral' => 'Search engine',
-            'nda_requested' => true,
         ]);
 
         (new SendProjectRequestToGoogleSheet($inquiry))->handle();
@@ -329,15 +373,16 @@ class InquiryTest extends TestCase
                 'submitted_at' => $inquiry->created_at->toDateString(),
                 'full_name' => 'Amina Benali',
                 'email' => 'amina@company.com',
+                'second_email' => 'amina@gmail.com',
                 'phone' => '+212612345678',
-                'company' => 'Acme Inc.',
-                'domain_name' => 'acme.com',
+                'llc_name' => 'Acme Ventures LLC',
+                'second_llc_name' => 'Acme Labs LLC',
+                'website' => 'acme.com',
                 'role' => 'VP Engineering',
                 'work_area' => 'Technology & SaaS',
                 'package' => 'Pro',
                 'message' => 'We need a portal.',
                 'referral' => 'Search engine',
-                'nda_requested' => 'Yes',
                 'account' => 'Guest',
             ]);
     }
@@ -349,12 +394,11 @@ class InquiryTest extends TestCase
             'services.google_sheets.secret' => 'top-secret',
         ]);
         Http::fake(['script.google.com/*' => Http::response(['ok' => true])]);
-        $inquiry = Inquiry::factory()->for(User::factory())->create(['nda_requested' => false, 'package' => null]);
+        $inquiry = Inquiry::factory()->for(User::factory())->create(['package' => null]);
 
         (new SendProjectRequestToGoogleSheet($inquiry))->handle();
 
         Http::assertSent(fn (Request $request) => $request['account'] === 'Registered'
-            && $request['nda_requested'] === 'No'
             && $request['package'] === '');
     }
 

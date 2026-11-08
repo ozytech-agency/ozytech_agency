@@ -55,7 +55,7 @@ export default function AdminDashboard({ stats, latestInquiries }) {
                                         </span>
                                         <span className="text-on-surface-variant">{inquiry.email}</span>
                                     </td>
-                                    <td className="p-space-md text-on-surface-variant">{inquiry.company}</td>
+                                    <td className="p-space-md text-on-surface-variant">{inquiry.llc_name}</td>
                                     <td className="p-space-md text-on-surface-variant">{inquiry.topic}</td>
                                     <td className="p-space-md">{inquiry.package && <StatusBadge>{inquiry.package}</StatusBadge>}</td>
                                     <td className="p-space-md">

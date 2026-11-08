@@ -27,7 +27,7 @@ class DashboardController extends Controller
             'latestInquiries' => Inquiry::query()
                 ->latest()
                 ->limit(8)
-                ->get(['id', 'first_name', 'last_name', 'email', 'company', 'topic', 'package', 'status', 'created_at']),
+                ->get(['id', 'first_name', 'last_name', 'email', 'llc_name', 'topic', 'package', 'status', 'created_at']),
         ]);
     }
 }

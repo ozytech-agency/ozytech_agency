@@ -138,7 +138,7 @@ export default function Dashboard() {
                                 inquiries.map((inquiry) => {
                                     const topicIndex = TOPIC_ORDER.indexOf(inquiry.topic);
                                     const topicLabel = topicIndex >= 0 ? topicLabels[topicIndex] : inquiry.topic;
-                                    const title = inquiry.topic === 'new-project' && inquiry.company ? inquiry.company : topicLabel;
+                                    const title = inquiry.topic === 'new-project' && inquiry.llc_name ? inquiry.llc_name : topicLabel;
                                     const status = statusMeta[inquiry.status] ?? statusMeta.in_review;
                                     return (
                                         <div key={inquiry.id} className="relative flex items-center justify-between gap-space-md rounded-xl border border-surface-container bg-surface-container-lowest px-space-lg py-10">

@@ -14,7 +14,8 @@ class InquiryController extends Controller
 {
     public function store(StoreInquiryRequest $request): RedirectResponse
     {
-        $validated = $request->validated();
+        // has_website only drives validation; a stored website is the answer.
+        $validated = $request->safe()->except('has_website');
 
         $inquiry = Inquiry::create([
             ...$validated,
