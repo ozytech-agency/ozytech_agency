@@ -368,24 +368,26 @@ export default function Home({ serviceImages = {}, reviews = [] }) {
                             <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">{t('home.testimonials.badge')}</span>
                             <h2 className="font-headline-lg text-headline-lg text-on-surface mt-1">{t('home.testimonials.title')}</h2>
                         </div>
-                        <div className="flex items-center gap-space-xs">
-                            <button
-                                type="button"
-                                aria-label={t('home.testimonials.prev')}
-                                onClick={() => scrollTestimonials(-1)}
-                                className="w-11 h-11 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface flex items-center justify-center transition-colors"
-                            >
-                                <span className="material-symbols-outlined text-xl">arrow_back</span>
-                            </button>
-                            <button
-                                type="button"
-                                aria-label={t('home.testimonials.next')}
-                                onClick={() => scrollTestimonials(1)}
-                                className="w-11 h-11 rounded-full bg-secondary-container text-on-primary hover:bg-secondary flex items-center justify-center shadow-md transition-colors"
-                            >
-                                <span className="material-symbols-outlined text-xl">arrow_forward</span>
-                            </button>
-                        </div>
+                        {testimonials.length > 3 && (
+                            <div className="flex items-center gap-space-xs">
+                                <button
+                                    type="button"
+                                    aria-label={t('home.testimonials.prev')}
+                                    onClick={() => scrollTestimonials(-1)}
+                                    className="w-11 h-11 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface flex items-center justify-center transition-colors"
+                                >
+                                    <span className="material-symbols-outlined text-xl">arrow_back</span>
+                                </button>
+                                <button
+                                    type="button"
+                                    aria-label={t('home.testimonials.next')}
+                                    onClick={() => scrollTestimonials(1)}
+                                    className="w-11 h-11 rounded-full bg-secondary-container text-on-primary hover:bg-secondary flex items-center justify-center shadow-md transition-colors"
+                                >
+                                    <span className="material-symbols-outlined text-xl">arrow_forward</span>
+                                </button>
+                            </div>
+                        )}
                     </div>
                     <div ref={gridRef} className="flex gap-space-md lg:gap-space-lg overflow-x-auto snap-x snap-mandatory pb-space-xs md:grid md:grid-cols-3 md:overflow-visible">
                         {testimonials.map((item) => (
