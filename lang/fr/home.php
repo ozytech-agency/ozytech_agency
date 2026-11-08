@@ -123,7 +123,7 @@ return [
         'title_prefix' => 'Toutes les',
         'title_highlight' => 'fonctionnalités critiques',
         'subtitle' => "Cessez de jongler avec des freelances dispersés et des agences bureaucratiques. Ozytech Agency opère comme votre équipe d'ingénierie principale intégrée, de la conception au déploiement en entreprise.",
-        'cta' => 'Voir toutes les spécifications de service',
+        'cta' => 'En savoir plus sur nous',
         'card1_eyebrow' => "NOTE D'ARCHITECTURE",
         'card1_title' => 'Migration cloud Zero-Trust',
         'card1_desc' => 'Microservices conteneurisés fonctionnant sur AWS Fargate avec authentification mutuelle mTLS.',

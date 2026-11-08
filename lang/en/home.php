@@ -123,7 +123,7 @@ return [
         'title_prefix' => 'All the mission-critical',
         'title_highlight' => 'features',
         'subtitle' => 'Stop juggling fragmented freelancers and bureaucratic agencies. Ozytech Agency operates as your embedded Principal Engineering pod from concept design to enterprise release.',
-        'cta' => 'View all service specifications',
+        'cta' => 'Learn more about us',
         'card1_eyebrow' => 'ARCHITECTURE BRIEF',
         'card1_title' => 'Zero-Trust Cloud Migration',
         'card1_desc' => 'Containerized microservices running on AWS Fargate with mTLS mutual authentication.',

@@ -446,9 +446,12 @@ export default function Home({ serviceImages = {}, reviews = [] }) {
                                 <span className="underline decoration-secondary-container decoration-4 underline-offset-8">{t('home.solutions.title_highlight')}</span>
                             </h2>
                             <p className="font-body-md text-body-md text-on-surface-variant">{t('home.solutions.subtitle')}</p>
-                            <a href="#solutions" className="inline-flex items-center gap-space-xs text-secondary font-label-md text-label-md hover:translate-x-1 transition-transform">
+                            <Link
+                                href={route('about')}
+                                className="inline-flex items-center gap-space-xs self-start bg-accent2 text-on-primary font-label-md text-label-md px-space-lg py-space-sm rounded-lg shadow-[0_10px_20px_-5px_rgba(233,87,71,0.35)] transition-all hover:-translate-y-0.5"
+                            >
                                 <span>{t('home.solutions.cta')}</span> <span className="material-symbols-outlined text-base">arrow_forward</span>
-                            </a>
+                            </Link>
                         </div>
                         <div className="lg:col-span-7 relative">
                             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-80 h-80 lg:w-96 lg:h-96 bg-secondary-container rounded-3xl -rotate-6 opacity-85 -z-0"></div>
