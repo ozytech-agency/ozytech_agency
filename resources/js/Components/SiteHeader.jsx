@@ -24,24 +24,27 @@ export default function SiteHeader() {
                     <img width="150" src="/images/logo.png" alt={t('nav.logo_alt')} />
                 </Link>
 
-                <nav className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-space-xs p-space-2xs bg-surface-container-low/80 rounded-xl">
-                    <Link href={route('home')} className="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
+                <nav className="hidden xl:flex items-center gap-0 2xl:gap-space-xs p-space-2xs bg-surface-container-low/80 rounded-xl">
+                    <Link href={route('home')} className="whitespace-nowrap px-space-xs 2xl:px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
                         {t('nav.home')}
                     </Link>
-                    <Link href={route('about')} className="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
+                    <Link href={route('about')} className="whitespace-nowrap px-space-xs 2xl:px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
                         {t('nav.about')}
                     </Link>
                     <NavDropdown label={t('nav.services_trigger')} items={nav?.services ?? []} />
-                    <Link href={route('packages')} className="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
+                    <Link href={route('packages')} className="whitespace-nowrap px-space-xs 2xl:px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
                         {t('nav.packages')}
                     </Link>
                     <NavDropdown label={t('nav.website_trigger')} items={nav?.website ?? []} align="end" />
-                    <Link href={route('blog')} className="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
+                    <Link href={route('blog')} className="whitespace-nowrap px-space-xs 2xl:px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
                         {t('nav.blogs')}
+                    </Link>
+                    <Link href={route('contact')} className="whitespace-nowrap px-space-xs 2xl:px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg">
+                        {t('nav.contact')}
                     </Link>
                 </nav>
 
-                <div className="flex items-center gap-space-md">
+                <div className="flex shrink-0 items-center gap-space-sm 2xl:gap-space-md">
                     <button
                         type="button"
                         aria-label={isDark ? t('nav.theme_toggle_to_light') : t('nav.theme_toggle_to_dark')}
@@ -78,13 +81,13 @@ export default function SiteHeader() {
                         <>
                             <Link
                                 href={route('login')}
-                                className="hidden sm:inline-flex items-center justify-center rounded-lg border border-outline-variant px-space-md py-space-sm font-label-md text-label-md text-on-surface-variant transition-colors hover:border-secondary-container hover:text-on-surface"
+                                className="hidden sm:inline-flex items-center whitespace-nowrap justify-center rounded-lg border border-outline-variant px-space-md py-space-sm font-label-md text-label-md text-on-surface-variant transition-colors hover:border-secondary-container hover:text-on-surface"
                             >
                                 {t('nav.login')}
                             </Link>
                             <Link
                                 href={route('register')}
-                                className="hidden sm:inline-flex items-center justify-center bg-accent2 text-on-primary font-label-md text-label-md px-space-lg py-space-sm rounded-lg shadow-[0_10px_20px_-5px_rgba(233,87,71,0.35)] transition-all hover:-translate-y-0.5"
+                                className="hidden sm:inline-flex items-center whitespace-nowrap justify-center bg-accent2 text-on-primary font-label-md text-label-md px-space-md 2xl:px-space-lg py-space-sm rounded-lg shadow-[0_10px_20px_-5px_rgba(233,87,71,0.35)] transition-all hover:-translate-y-0.5"
                             >
                                 {t('nav.signup')}
                             </Link>
@@ -94,7 +97,7 @@ export default function SiteHeader() {
                         type="button"
                         aria-label={mobileOpen ? t('nav.close_menu') : t('nav.open_menu')}
                         aria-expanded={mobileOpen}
-                        className="lg:hidden w-10 h-10 -mr-1 flex items-center justify-center rounded-lg text-on-surface hover:bg-surface-container-high transition-colors"
+                        className="xl:hidden w-10 h-10 -mr-1 flex items-center justify-center rounded-lg text-on-surface hover:bg-surface-container-high transition-colors"
                         onClick={() => setMobileOpen((v) => !v)}
                     >
                         <span className="material-symbols-outlined">{mobileOpen ? 'close' : 'menu'}</span>
@@ -103,7 +106,7 @@ export default function SiteHeader() {
             </div>
 
             {mobileOpen && (
-                <nav aria-label="Mobile" className="lg:hidden fixed top-20 inset-x-0 z-40 bg-surface border-t border-surface-container shadow-[0_20px_40px_-12px_rgba(19,27,46,0.25)] max-h-[calc(100vh-5rem)] overflow-y-auto">
+                <nav aria-label="Mobile" className="xl:hidden fixed top-20 inset-x-0 z-40 bg-surface border-t border-surface-container shadow-[0_20px_40px_-12px_rgba(19,27,46,0.25)] max-h-[calc(100vh-5rem)] overflow-y-auto">
                     <div className="mx-[6%] py-space-md flex flex-col gap-1">
                         <Link
                             href={route('home')}
@@ -134,6 +137,13 @@ export default function SiteHeader() {
                             className="px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md transition-colors"
                         >
                             {t('nav.blogs')}
+                        </Link>
+                        <Link
+                            href={route('contact')}
+                            onClick={closeMobile}
+                            className="px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md transition-colors"
+                        >
+                            {t('nav.contact')}
                         </Link>
                         {user ? (
                             <div className="mt-space-xs border-t border-surface-container pt-space-sm">

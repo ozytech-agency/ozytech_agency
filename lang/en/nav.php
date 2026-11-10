@@ -7,7 +7,7 @@ return [
     'about' => 'About Us',
     'packages' => 'Packages',
     'blogs' => 'Blogs',
-    'contact' => 'Contact',
+    'contact' => 'Contact Us',
     'services_trigger' => 'Services',
     'website_trigger' => 'Website',
     'login' => 'Log in',

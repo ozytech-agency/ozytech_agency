@@ -7,7 +7,7 @@ return [
     'about' => 'Sobre nosotros',
     'packages' => 'Paquetes',
     'blogs' => 'Blog',
-    'contact' => 'Contacto',
+    'contact' => 'Contáctanos',
     'services_trigger' => 'Servicios',
     'website_trigger' => 'Sitio web',
     'login' => 'Iniciar sesión',

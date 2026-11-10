@@ -24,7 +24,7 @@ export default function NavDropdown({ label, items, align = 'start' }) {
         <div className={`services-menu relative ${align === 'end' ? 'services-menu--align-end' : ''} ${open ? 'is-open' : ''}`} ref={ref}>
             <button
                 type="button"
-                className="inline-flex items-center gap-[0.2rem] px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg"
+                className="inline-flex items-center gap-[0.2rem] whitespace-nowrap px-space-xs 2xl:px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors rounded-lg"
                 aria-expanded={open}
                 onClick={() => setOpen((v) => !v)}
             >
