@@ -82,6 +82,15 @@ return [
         'cta' => 'Learn more about our methodology',
     ],
 
+    'packages' => [
+        'badge' => 'Engagement Packages',
+        'title_prefix' => 'Pick the',
+        'title_highlight' => 'package',
+        'title_suffix' => 'that fits your stage',
+        'subtitle' => 'Transparent starting points for every stage of growth. Choose one and we confirm scope, timeline and team on your first call.',
+        'cta' => 'Compare all packages',
+    ],
+
     'guild' => [
         'title' => 'Meet our global guild of elite architects & builders',
         'subtitle' => 'We rigorously curate the top 1% of distributed engineering talent across North America, Europe, and Asia. Our engineers hold patents in distributed systems and have founded high-profile open source projects.',

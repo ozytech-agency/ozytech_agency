@@ -6,6 +6,7 @@ import CountUp from '@/Components/CountUp';
 import TechMarquee from '@/Components/TechMarquee';
 import Seo from '@/Components/Seo';
 import Avatar from '@/Components/Avatar';
+import PackageCard from '@/Components/PackageCard';
 import { StarRating } from '@/Components/StarRating';
 import { useTranslations } from '@/lib/translations';
 
@@ -51,7 +52,7 @@ const TESTIMONIAL_AVATARS = [
     'https://lh3.googleusercontent.com/aida-public/AB6AXuDC-rv7KbuUbaH9Usmwujp1qQjHkDe2rhGL1IU6MuSIZ55kbavp8sPV2-YQG9VAzbPF3rBiK8JO1GwD5W5eKNuTmaj3nuY_A6l8UFZjxXs5BKD1GTS9f759eDsBIxoakL7MPE9zd_oGCt0logfshaNOXQOmo9ZtTNJ592OF5raq9RBGOtb8MnlrourSs8j47SX66IcBpVtDqXApm-cDQ8Cs2PAygnSJlYd56RuPab29eB6o3Zyi9Mm9',
 ];
 
-export default function Home({ serviceImages = {}, reviews = [] }) {
+export default function Home({ serviceImages = {}, reviews = [], packages = [] }) {
     const t = useTranslations();
     const { appUrl } = usePage().props;
     const [slide, setSlide] = useState(0);
@@ -288,8 +289,38 @@ export default function Home({ serviceImages = {}, reviews = [] }) {
                 </div>
             </Reveal>
 
+            {/* 3b. PACKAGES */}
+            {packages.length > 0 && (
+                <Reveal as="section" id="packages" className="w-full py-space-3xl lg:py-space-4xl bg-surface-container-low">
+                    <div className="mx-[6%]">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-space-md mb-space-2xl">
+                            <div className="max-w-2xl flex flex-col gap-space-sm">
+                                <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary-container font-bold">{t('home.packages.badge')}</span>
+                                <h2 className="font-headline-lg text-headline-lg text-on-surface">
+                                    {t('home.packages.title_prefix')}{' '}
+                                    <span className="underline decoration-secondary-container decoration-4 underline-offset-8">{t('home.packages.title_highlight')}</span>{' '}
+                                    {t('home.packages.title_suffix')}
+                                </h2>
+                                <p className="font-body-md text-body-md text-on-surface-variant">{t('home.packages.subtitle')}</p>
+                            </div>
+                            <Link
+                                href={route('packages')}
+                                className="inline-flex items-center gap-space-xs shrink-0 text-secondary font-label-md text-label-md hover:translate-x-1 transition-transform"
+                            >
+                                <span>{t('home.packages.cta')}</span> <span className="material-symbols-outlined text-base">arrow_forward</span>
+                            </Link>
+                        </div>
+                        <Reveal as="div" stagger className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                            {packages.map((pkg) => (
+                                <PackageCard key={pkg.key} pkg={pkg} titleAs="h3" />
+                            ))}
+                        </Reveal>
+                    </div>
+                </Reveal>
+            )}
+
             {/* 4. GUILD */}
-            <Reveal as="section" id="about" className="w-full py-space-3xl lg:py-space-4xl bg-surface-container-low">
+            <Reveal as="section" id="about" className="w-full py-space-3xl lg:py-space-4xl bg-surface">
                 <div className="mx-[6%]">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl items-center">
                         <div className="lg:col-span-6 grid grid-cols-3 gap-space-xs">

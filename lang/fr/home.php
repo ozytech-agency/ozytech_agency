@@ -82,6 +82,15 @@ return [
         'cta' => 'En savoir plus sur notre méthodologie',
     ],
 
+    'packages' => [
+        'badge' => 'Packs d\'accompagnement',
+        'title_prefix' => 'Choisissez le',
+        'title_highlight' => 'pack',
+        'title_suffix' => 'adapté à votre étape',
+        'subtitle' => 'Des points de départ transparents pour chaque étape de croissance. Choisissez-en un et nous confirmons le périmètre, le planning et l’équipe dès le premier appel.',
+        'cta' => 'Comparer tous les packs',
+    ],
+
     'guild' => [
         'title' => "Découvrez notre guilde mondiale d'architectes et de bâtisseurs d'élite",
         'subtitle' => "Nous sélectionnons rigoureusement le top 1 % des talents d'ingénierie répartis en Amérique du Nord, en Europe et en Asie. Nos ingénieurs détiennent des brevets en systèmes distribués et ont fondé des projets open source de premier plan.",

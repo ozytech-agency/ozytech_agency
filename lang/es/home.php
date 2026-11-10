@@ -82,6 +82,15 @@ return [
         'cta' => 'Conoce más sobre nuestra metodología',
     ],
 
+    'packages' => [
+        'badge' => 'Paquetes de colaboración',
+        'title_prefix' => 'Elige el',
+        'title_highlight' => 'paquete',
+        'title_suffix' => 'que encaja con tu etapa',
+        'subtitle' => 'Puntos de partida transparentes para cada etapa de crecimiento. Elige uno y confirmamos el alcance, los plazos y el equipo en la primera llamada.',
+        'cta' => 'Comparar todos los paquetes',
+    ],
+
     'guild' => [
         'title' => 'Conoce a nuestro gremio global de arquitectos y creadores de élite',
         'subtitle' => 'Seleccionamos rigurosamente el 1% superior del talento en ingeniería distribuida en Norteamérica, Europa y Asia. Nuestros ingenieros poseen patentes en sistemas distribuidos y han fundado proyectos de código abierto de alto perfil.',

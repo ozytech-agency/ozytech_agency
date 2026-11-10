@@ -27,6 +27,7 @@ class PageController extends Controller
                 ->get()
                 ->map(fn (Reviews $review) => $review->toPublicArray())
                 ->all(),
+            'packages' => $this->publishedPackages(),
         ]);
     }
 
