@@ -26,14 +26,10 @@ const BRAND_ICON_PATHS = {
 };
 
 const SERVICE_CARD_META = [
-    { key: 'itSolutions', slug: 'it-infrastructure', icon: 'dns', iconColor: 'text-[#E55E4A]' },
     { key: 'llc', slug: 'llc-incorporation', icon: 'domain_add', iconColor: 'text-[#E55E4A]' },
     { key: 'payments', slug: 'payment-solutions', icon: 'credit_card', iconColor: 'text-[#E55E4A]' },
     { key: 'shopifyCommerce', slug: 'shopify-store-development', iconSvg: 'shopify', iconColor: 'text-[#E55E4A]' },
     { key: 'wordpress', slug: 'cms-development', iconSvg: 'wordpress', iconColor: 'text-[#E55E4A]' },
-    { key: 'fullstack', slug: 'web-development', icon: 'code', iconColor: 'text-[#E55E4A]' },
-    { key: 'mobile', slug: 'mobile-apps', icon: 'smartphone', iconColor: 'text-[#E55E4A]' },
-    { key: 'saas', slug: 'software-development', icon: 'cloud_sync', iconColor: 'text-[#E55E4A]' },
 ];
 
 

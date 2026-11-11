@@ -25,11 +25,6 @@ return [
         'subtitle' => 'Ingeniería digital de extremo a extremo, constitución de empresas y soluciones tecnológicas diseñadas para escalar compañías modernas a nivel global.',
         'cta' => 'Saber más',
         'cards' => [
-            'itSolutions' => [
-                'badge' => 'Infraestructura',
-                'title' => 'Soluciones de TI',
-                'desc' => 'Infraestructura cloud empresarial, arquitectura de red, ciberseguridad y sistemas de TI gestionados 24/7.',
-            ],
             'llc' => [
                 'badge' => 'Legal y fiscal',
                 'title' => 'LLC e incorporación',
@@ -49,21 +44,6 @@ return [
                 'badge' => 'Arquitectura CMS',
                 'title' => 'WordPress y Woo',
                 'desc' => 'Temas empresariales a medida, WP headless, WooCommerce a gran escala, optimización de velocidad y plugins seguros.',
-            ],
-            'fullstack' => [
-                'badge' => 'Full Stack',
-                'title' => 'Desarrollo web full stack',
-                'desc' => 'Aplicaciones web modernas con React, Next.js, Node.js, Python, PostgreSQL y APIs de microservicios escalables.',
-            ],
-            'mobile' => [
-                'badge' => 'Móvil',
-                'title' => 'Aplicaciones móviles',
-                'desc' => 'Desarrollo nativo para iOS (Swift) y Android (Kotlin), además de apps multiplataforma con Flutter y React Native.',
-            ],
-            'saas' => [
-                'badge' => 'SaaS',
-                'title' => 'Desarrollo de producto SaaS',
-                'desc' => 'Ingeniería SaaS multi-tenant de extremo a extremo, facturación por suscripción, DevOps automatizado y arquitectura cloud-native.',
             ],
         ],
     ],

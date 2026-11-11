@@ -25,11 +25,6 @@ return [
         'subtitle' => "Ingénierie numérique de bout en bout, création d'entreprise et solutions technologiques conçues pour faire évoluer les entreprises modernes à l'échelle mondiale.",
         'cta' => 'En savoir plus',
         'cards' => [
-            'itSolutions' => [
-                'badge' => 'Infrastructure',
-                'title' => 'Solutions IT',
-                'desc' => "Infrastructure cloud d'entreprise, architecture réseau, cybersécurité et systèmes IT managés 24/7.",
-            ],
             'llc' => [
                 'badge' => 'Juridique & fiscal',
                 'title' => 'LLC & incorporation',
@@ -49,21 +44,6 @@ return [
                 'badge' => 'Architecture CMS',
                 'title' => 'WordPress & Woo',
                 'desc' => 'Thèmes sur mesure, WP headless, WooCommerce à grande échelle, optimisation de la vitesse et plugins sécurisés.',
-            ],
-            'fullstack' => [
-                'badge' => 'Full Stack',
-                'title' => 'Développement web full stack',
-                'desc' => 'Applications web modernes avec React, Next.js, Node.js, Python, PostgreSQL et API microservices évolutives.',
-            ],
-            'mobile' => [
-                'badge' => 'Mobile',
-                'title' => 'Applications mobiles',
-                'desc' => 'Développement natif iOS (Swift) et Android (Kotlin), ainsi que des applications multiplateformes Flutter & React Native.',
-            ],
-            'saas' => [
-                'badge' => 'SaaS',
-                'title' => 'Développement produit SaaS',
-                'desc' => "Ingénierie SaaS multi-tenant de bout en bout, facturation d'abonnement, DevOps automatisé et architecture cloud-native.",
             ],
         ],
     ],

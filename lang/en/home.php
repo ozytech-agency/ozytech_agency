@@ -25,11 +25,6 @@ return [
         'subtitle' => 'End-to-End Digital Engineering, Business Formation & Technology Solutions engineered to scale modern companies globally.',
         'cta' => 'Learn more',
         'cards' => [
-            'itSolutions' => [
-                'badge' => 'Infrastructure',
-                'title' => 'IT Solutions',
-                'desc' => 'Enterprise cloud infrastructure, network architecture, cybersecurity, and 24/7 managed IT systems.',
-            ],
             'llc' => [
                 'badge' => 'Legal & Tax',
                 'title' => 'LLC & Incorporation',
@@ -49,21 +44,6 @@ return [
                 'badge' => 'CMS Architecture',
                 'title' => 'WordPress & Woo',
                 'desc' => 'Enterprise custom themes, headless WP, WooCommerce scale, speed optimization, and secure plugin architectures.',
-            ],
-            'fullstack' => [
-                'badge' => 'Full Stack',
-                'title' => 'Full Stack Web Dev',
-                'desc' => 'Modern web applications with React, Next.js, Node.js, Python, PostgreSQL, and scalable microservice APIs.',
-            ],
-            'mobile' => [
-                'badge' => 'Mobile',
-                'title' => 'Mobile Applications',
-                'desc' => 'Native iOS (Swift) & Android (Kotlin) development, plus Flutter & React Native cross-platform mobile apps.',
-            ],
-            'saas' => [
-                'badge' => 'SaaS',
-                'title' => 'SaaS Product Dev',
-                'desc' => 'End-to-end multi-tenant SaaS engineering, subscription billing, automated DevOps, and cloud-native architecture.',
             ],
         ],
     ],
