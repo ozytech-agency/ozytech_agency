@@ -14,7 +14,7 @@ export default function SiteLayout({ children }) {
         url: appUrl,
         logo: `${appUrl}/images/logo.png`,
         sameAs: [
-            'https://github.com/ozytech-agency',
+            'https://www.linkedin.com/company/ozytechagency',
             'https://www.instagram.com/ozytechaagency',
             'https://web.facebook.com/profile.php?id=61594837992868',
             'https://www.tiktok.com/@ozytech_agency',

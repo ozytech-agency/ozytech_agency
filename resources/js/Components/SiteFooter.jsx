@@ -33,11 +33,11 @@ export default function SiteFooter() {
                             <a
                                 target="_blank"
                                 rel="noreferrer"
-                                href="https://github.com/ozytech-agency"
-                                aria-label="Ozytech Agency on GitHub"
+                                href="https://www.linkedin.com/company/ozytechagency"
+                                aria-label="Ozytech Agency on LinkedIn"
                                 className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-outline-variant hover:text-on-primary hover:bg-secondary-container transition-colors"
                             >
-                                <img src="/images/patterns/github.svg" alt="" aria-hidden="true" className="w-4 h-4 scale-[1.21]" />
+                                <i className="fa-brands fa-linkedin-in scale-[1.21]" aria-hidden="true"></i>
                             </a>
                             <a
                                 target="_blank"
