@@ -20,6 +20,9 @@ const INITIAL_INQUIRY_FORM = {
     email: '',
     second_email: '',
     phone: '',
+    date_of_birth: '',
+    address: '',
+    second_address: '',
     llc_name: '',
     second_llc_name: '',
     has_website: false,
@@ -238,6 +241,54 @@ export default function StartAProject() {
                                                     inputClassName="min-w-0 flex-1 border-0 bg-transparent p-0 text-on-surface outline-none placeholder:text-outline"
                                                 />
                                                 {errors.phone && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.phone}</p>}
+                                            </div>
+                                            <div>
+                                                <label htmlFor="dateOfBirth" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
+                                                    {t('start_a_project.form.date_of_birth')} <span className="text-secondary-container">*</span>
+                                                </label>
+                                                <input
+                                                    id="dateOfBirth"
+                                                    type="date"
+                                                    className="field"
+                                                    required
+                                                    autoComplete="bday"
+                                                    min="1900-01-01"
+                                                    max={new Date().toISOString().slice(0, 10)}
+                                                    {...field('date_of_birth')}
+                                                />
+                                                {errors.date_of_birth && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.date_of_birth}</p>}
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                                            <div>
+                                                <label htmlFor="address" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
+                                                    {t('start_a_project.form.address')} <span className="text-secondary-container">*</span>
+                                                </label>
+                                                <input
+                                                    id="address"
+                                                    className="field"
+                                                    required
+                                                    maxLength={255}
+                                                    autoComplete="address-line1"
+                                                    placeholder={t('start_a_project.form.address_placeholder')}
+                                                    {...field('address')}
+                                                />
+                                                {errors.address && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.address}</p>}
+                                            </div>
+                                            <div>
+                                                <label htmlFor="secondAddress" className="block font-label-md text-label-md text-on-surface mb-space-2xs">
+                                                    {t('start_a_project.form.second_address')} <span className="text-outline font-normal">{t('start_a_project.form.optional')}</span>
+                                                </label>
+                                                <input
+                                                    id="secondAddress"
+                                                    className="field"
+                                                    maxLength={255}
+                                                    autoComplete="address-line2"
+                                                    placeholder={t('start_a_project.form.second_address_placeholder')}
+                                                    {...field('second_address')}
+                                                />
+                                                {errors.second_address && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.second_address}</p>}
                                             </div>
                                         </div>
                                         {user ? (

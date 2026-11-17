@@ -42,6 +42,9 @@ class InquiryTest extends TestCase
             'email' => 'amina@company.com',
             'second_email' => 'amina@gmail.com',
             'phone' => '+212612345678',
+            'date_of_birth' => '1990-04-12',
+            'address' => '12 Rue Atlas, Casablanca, Morocco',
+            'second_address' => 'Suite 4B',
             'llc_name' => 'Acme Ventures LLC',
             'second_llc_name' => 'Acme Labs LLC',
             'has_website' => true,
@@ -81,12 +84,15 @@ class InquiryTest extends TestCase
             'email' => 'amina@company.com',
             'second_email' => 'amina@gmail.com',
             'phone' => '+212612345678',
+            'address' => '12 Rue Atlas, Casablanca, Morocco',
+            'second_address' => 'Suite 4B',
             'llc_name' => 'Acme Ventures LLC',
             'second_llc_name' => 'Acme Labs LLC',
             'website' => 'acme.com',
             'role' => 'VP Engineering',
             'referral' => 'Search engine',
         ]);
+        $this->assertSame('1990-04-12', Inquiry::query()->firstOrFail()->date_of_birth->toDateString());
         Queue::assertPushed(
             SendProjectRequestToGoogleSheet::class,
             fn (SendProjectRequestToGoogleSheet $job) => $job->inquiry->user_id === null && $job->inquiry->email === 'amina@company.com',
@@ -240,6 +246,33 @@ class InquiryTest extends TestCase
         $this->assertDatabaseHas('inquiries', ['user_id' => $user->id, 'second_email' => null, 'llc_name' => null, 'second_llc_name' => null]);
     }
 
+    public function test_date_of_birth_and_address_are_required(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['date_of_birth' => '', 'address' => '']))
+            ->assertSessionHasErrors(['date_of_birth', 'address']);
+
+        $this->assertDatabaseCount('inquiries', 0);
+    }
+
+    public function test_date_of_birth_must_be_a_past_date(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['date_of_birth' => now()->addDay()->toDateString()]))
+            ->assertSessionHasErrors('date_of_birth');
+    }
+
+    public function test_second_address_is_optional(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)
+            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['second_address' => '']))
+            ->assertSessionHasNoErrors();
+
+        $this->assertDatabaseHas('inquiries', ['user_id' => $user->id, 'second_address' => null]);
+    }
+
     public function test_role_and_work_area_are_optional(): void
     {
         $user = User::factory()->create();
@@ -354,6 +387,9 @@ class InquiryTest extends TestCase
             'email' => 'amina@company.com',
             'second_email' => 'amina@gmail.com',
             'phone' => '+212612345678',
+            'date_of_birth' => '1990-04-12',
+            'address' => '12 Rue Atlas, Casablanca, Morocco',
+            'second_address' => 'Suite 4B',
             'llc_name' => 'Acme Ventures LLC',
             'second_llc_name' => 'Acme Labs LLC',
             'website' => 'acme.com',
@@ -375,6 +411,9 @@ class InquiryTest extends TestCase
                 'email' => 'amina@company.com',
                 'second_email' => 'amina@gmail.com',
                 'phone' => '+212612345678',
+                'date_of_birth' => '1990-04-12',
+                'address' => '12 Rue Atlas, Casablanca, Morocco',
+                'second_address' => 'Suite 4B',
                 'llc_name' => 'Acme Ventures LLC',
                 'second_llc_name' => 'Acme Labs LLC',
                 'website' => 'acme.com',
@@ -394,12 +433,13 @@ class InquiryTest extends TestCase
             'services.google_sheets.secret' => 'top-secret',
         ]);
         Http::fake(['script.google.com/*' => Http::response(['ok' => true])]);
-        $inquiry = Inquiry::factory()->for(User::factory())->create(['package' => null]);
+        $inquiry = Inquiry::factory()->for(User::factory())->create(['package' => null, 'second_address' => null]);
 
         (new SendProjectRequestToGoogleSheet($inquiry))->handle();
 
         Http::assertSent(fn (Request $request) => $request['account'] === 'Registered'
-            && $request['package'] === '');
+            && $request['package'] === ''
+            && $request['second_address'] === '');
     }
 
     public function test_google_sheet_job_fails_when_delivery_is_not_configured(): void

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #[Fillable([
     'user_id', 'topic', 'first_name', 'last_name', 'email', 'second_email', 'phone',
-    'llc_name', 'second_llc_name', 'website', 'role', 'work_area', 'package', 'message', 'referral',
+    'date_of_birth', 'address', 'second_address', 'llc_name', 'second_llc_name', 'website', 'role', 'work_area', 'package', 'message', 'referral',
     'consent', 'status',
 ])]
 class Inquiry extends Model
@@ -27,6 +27,7 @@ class Inquiry extends Model
     {
         return [
             'consent' => 'boolean',
+            'date_of_birth' => 'date',
         ];
     }
 

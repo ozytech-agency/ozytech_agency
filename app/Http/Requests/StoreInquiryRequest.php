@@ -50,6 +50,9 @@ class StoreInquiryRequest extends FormRequest
             'phone' => $isGuest
                 ? ['required', 'string', 'max:30', 'regex:/^\+?[0-9\s\-\(\)]{6,20}$/']
                 : ['nullable', 'string', 'max:50'],
+            'date_of_birth' => ['required', 'date_format:Y-m-d', 'after:1900-01-01', 'before:today'],
+            'address' => ['required', 'string', 'max:255'],
+            'second_address' => ['nullable', 'string', 'max:255'],
             'llc_name' => ['nullable', 'string', 'max:255'],
             'second_llc_name' => ['nullable', 'string', 'max:255'],
             'has_website' => ['boolean'],
@@ -73,6 +76,8 @@ class StoreInquiryRequest extends FormRequest
     {
         return [
             'second_email' => 'second email',
+            'date_of_birth' => 'date of birth',
+            'second_address' => 'second address',
             'llc_name' => 'suggested LLC name',
             'second_llc_name' => 'second suggested LLC name',
             'website' => 'website name',
