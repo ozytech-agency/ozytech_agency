@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Deja tu opinión | Ozytech Agency',
+    'title' => 'Deja tu opinión - Ozytech Agency',
     'meta_description' => '¿Has trabajado con Ozytech Agency? Comparte tu experiencia: tu opinión ayuda a otros equipos a decidir.',
 
     'hero' => [

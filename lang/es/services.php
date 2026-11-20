@@ -6,7 +6,7 @@ return [
 
     'index' => [
         'title' => 'Nuestros servicios',
-        'description' => 'Descubre todos los servicios de Ozytech Agency: ingeniería en la nube e IA, comercio electrónico, apps móviles y soporte continuo.',
+        'description' => 'Ofrecemos soluciones innovadoras de tecnología y negocios que ayudan a emprendedores, startups y empresas consolidadas a convertir sus ideas en realidad y optimizar sus operaciones.',
     ],
 
     'projects' => ['view' => 'Ver proyecto', 'visit' => 'Visitar sitio', 'client' => 'Cliente', 'service' => 'Servicio'],

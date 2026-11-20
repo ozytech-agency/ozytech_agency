@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'title' => 'Contacta a Ozytech Agency — Inicia un proyecto, alianza o conversación de soporte',
-    'meta_description' => 'Cuéntale a Ozytech Agency sobre tu proyecto y te conectaremos con el equipo y el paquete adecuados.',
+    'title' => 'Ozytech Agency -  Inicia tu Proyecto',
+    'meta_description' => '¿Listo para hacer realidad tus ideas? Comparte tu proyecto con Ozytech y descubre soluciones personalizadas de desarrollo web, móvil, comercio electrónico y SaaS.',
 
     'hero' => [
         'badge' => 'Respondemos en horas, no en semanas',
-        'title' => 'Definamos el sistema que realmente necesitas',
-        'subtitle' => 'Cuéntanos dónde estás y hacia dónde vas. Tu mensaje se envía directamente a un ingeniero principal, no a una bandeja de entrada genérica, que puede hablar de arquitectura, plazos y presupuesto desde la primera llamada.',
+        'title' => 'Hagamos realidad tus ideas',
+        'subtitle' => 'Cuéntanos sobre tu proyecto, tus objetivos y lo que deseas conseguir. Completa el formulario a continuación y nuestro equipo revisará tu solicitud y se pondrá en contacto contigo para hablar sobre los próximos pasos.',
         'cta_primary' => 'Contáctanos',
     ],
 
@@ -55,7 +55,7 @@ return [
         'privacy_note_prefix' => 'Nunca compartimos tu información. Respuesta habitual:',
         'privacy_note_suffix' => 'menos de 24 horas.',
         'success' => [
-            'title' => 'Mensaje recibido — estás en buenas manos',
+            'title' => 'Mensaje recibido - estás en buenas manos',
             'message_prefix' => 'Una confirmación va en camino a',
             'message_suffix' => 'Un ingeniero principal te responderá en menos de 24 horas. Para algo urgente, llama al',
             'reset_cta' => 'Enviar otro mensaje',
@@ -81,14 +81,14 @@ return [
         'channels' => [
             'title' => 'Canales directos',
             'email' => 'Escríbenos cuando quieras',
-            'hours' => 'Lun–Vie, horario laboral',
+            'hours' => 'Lun-Vie, horario laboral',
         ],
         'next_steps' => [
             'title' => 'Qué sigue',
             'steps' => [
                 ['title' => 'Revisamos y dirigimos', 'desc' => 'En menos de 24 horas, hacia el responsable correcto, no una cola.'],
-                ['title' => 'Llamada de introducción y alcance', 'desc' => '30–45 min para poner a prueba objetivos, restricciones, cronograma y presupuesto.'],
-                ['title' => 'Propuesta y resumen de arquitectura', 'desc' => 'En 2–4 días: alcance fijo, plan de equipo e hitos accionables.'],
+                ['title' => 'Llamada de introducción y alcance', 'desc' => '30-45 min para poner a prueba objetivos, restricciones, cronograma y presupuesto.'],
+                ['title' => 'Propuesta y resumen de arquitectura', 'desc' => 'En 2-4 días: alcance fijo, plan de equipo e hitos accionables.'],
             ],
         ],
     ],
@@ -101,13 +101,13 @@ return [
         'browse_all' => 'Ver todas las preguntas frecuentes',
         'items' => [
             ['q' => '¿Qué tan rápido me responderán?', 'a' => 'El tiempo medio de primera respuesta es menos de 24 horas. Para un nuevo proyecto, espera una llamada de alcance programada en 2 días hábiles. Los incidentes de producción de clientes existentes se reconocen en 15 minutos.'],
-            ['q' => '¿Firman un NDA antes del descubrimiento?', 'a' => 'Sí. Indícalo en tu mensaje y enviaremos un NDA mutuo antes de intercambiar cualquier detalle técnico. Si tienes tu propio documento, envíalo — nuestro equipo legal gestiona la mayoría de los NDA el mismo día.'],
+            ['q' => '¿Firman un NDA antes del descubrimiento?', 'a' => 'Sí. Indícalo en tu mensaje y enviaremos un NDA mutuo antes de intercambiar cualquier detalle técnico. Si tienes tu propio documento, envíalo - nuestro equipo legal gestiona la mayoría de los NDA el mismo día.'],
             ['q' => '¿Cuál es su compromiso mínimo?', 'a' => 'Los sprints de descubrimiento y arquitectura comienzan en 2 semanas. Los proyectos de construcción suelen empezar con un equipo integrado de 8 semanas (arquitecto + ingenieros + líder de entrega). Los retainers de soporte son mes a mes.'],
-            ['q' => '¿Trabajan con startups en etapa pre-semilla y temprana?', 'a' => 'Sí, junto a scale-ups y empresas globales. Ajustamos el alcance a tu etapa y a tu runway — a menudo eso significa un equipo MVP ágil junto con una ruta de arquitectura clara para no reconstruir todo en la Serie A.'],
+            ['q' => '¿Trabajan con startups en etapa pre-semilla y temprana?', 'a' => 'Sí, junto a scale-ups y empresas globales. Ajustamos el alcance a tu etapa y a tu runway - a menudo eso significa un equipo MVP ágil junto con una ruta de arquitectura clara para no reconstruir todo en la Serie A.'],
             ['q' => '¿Pueden gestionar la incorporación y los pagos junto con la construcción?', 'a' => 'Sí. La constitución de empresas en EE. UU. (Delaware/Wyoming) o a nivel global, el EIN, el agente registrado y la integración de pasarelas Stripe / PayPal / multidivisa pueden avanzar en paralelo con la ingeniería, bajo un solo plan.'],
             ['q' => '¿Cómo funciona la fijación de precios?', 'a' => 'Precio de alcance fijo para el descubrimiento, precio mensual por equipo para la construcción, y retainers para el soporte continuo. Recibirás una estimación por escrito con hitos después de la llamada de alcance, sin compromiso.'],
             ['q' => '¿Qué zonas horarias pueden cubrir?', 'a' => 'Nuestro gremio abarca América, EMEA y APAC, por lo que mantenemos horas de solapamiento reales con cualquier zona horaria. La cobertura de confiabilidad de sitio 24/7 está disponible bajo retainer.'],
-            ['q' => 'Ya soy cliente — ¿dónde obtengo soporte?', 'a' => 'Usa support@ozytech.agency o tu canal de Slack dedicado. Elige "Soporte al cliente" en el formulario para todo lo que necesite quedar registrado; los incidentes de producción tienen un SLA de reconocimiento de 15 minutos.'],
+            ['q' => 'Ya soy cliente - ¿dónde obtengo soporte?', 'a' => 'Usa support@ozytech.agency o tu canal de Slack dedicado. Elige "Soporte al cliente" en el formulario para todo lo que necesite quedar registrado; los incidentes de producción tienen un SLA de reconocimiento de 15 minutos.'],
         ],
     ],
 

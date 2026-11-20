@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'title' => 'Offres | Ozytech Agency',
-    'meta_description' => "Comparez nos forfaits d'ingénierie à périmètre fixe — Explorer, Construire et Évoluer — et trouvez le bon point de départ pour votre prochain projet logiciel.",
+    'title' => 'Offres - Ozytech Agency',
+    'meta_description' => 'Découvrez les offres flexibles d\'Ozytech Agency en développement web, e-commerce, SaaS, solutions IT, création d\'entreprise et intégration de paiements.',
 
     'hero' => [
         'kicker' => 'Offres Ozytech Agency',
         'title' => 'Choisissez le bon point de départ.',
-        'lead' => 'Des missions ciblées pour les équipes qui veulent avancer clairement, sans cérémonie inutile.',
+        'lead' => 'Nous proposons des offres flexibles conçues autour de vos objectifs. Choisissez le bon point de départ et laissez-nous vous aider à donner vie à votre vision.',
     ],
 
     'cards' => [
@@ -20,16 +20,16 @@ return [
                 'Création & incorporation de LLC',
                 [
                     'text' => 'Site web : Shopify, WooCommerce ou WordPress',
-                    'note' => 'Choisissez ce qui convient à votre activité — une boutique Shopify ou WooCommerce si vous vendez en ligne, ou un site WordPress classique sinon.',
+                    'note' => 'Choisissez ce qui convient à votre activité - une boutique Shopify ou WooCommerce si vous vendez en ligne, ou un site WordPress classique sinon.',
                 ],
                 [
                     'text' => 'Nom de domaine gratuit',
-                    'note' => 'Inclus gratuitement la première année — choisissez le nom de domaine disponible de votre choix.',
+                    'note' => 'Inclus gratuitement la première année - choisissez le nom de domaine disponible de votre choix.',
                 ],
                 'Maintenance du site pendant 1 an',
                 [
                     'text' => 'Passerelles de paiement',
-                    'note' => 'Stripe, PayPal ou un prestataire local — nous configurons celui qui convient à votre marché et à votre façon d\'encaisser.',
+                    'note' => 'Stripe, PayPal ou un prestataire local - nous configurons celui qui convient à votre marché et à votre façon d\'encaisser.',
                 ],
             ],
             'cta' => 'Choisir ce pack',
@@ -52,7 +52,7 @@ return [
                 'Maintenance logicielle pendant 1 an',
                 [
                     'text' => 'Nom de domaine gratuit',
-                    'note' => 'Inclus gratuitement la première année — choisissez le nom de domaine disponible de votre choix.',
+                    'note' => 'Inclus gratuitement la première année - choisissez le nom de domaine disponible de votre choix.',
                 ],
             ],
             'cta' => 'Planifier votre lancement',
@@ -83,18 +83,12 @@ return [
         ],
     ],
 
-    'assurances' => [
-        'Un périmètre clair validé avant le démarrage',
-        'Un accès direct à des ingénieurs seniors',
-        "Passez à l'offre suivante à mesure que vous grandissez",
-    ],
-
     'comparison' => [
         'label' => 'Comparer les offres',
         'title' => 'Voyez précisément ce qui est inclus à chaque étape.',
-        'subtitle' => "Une vue comparative du périmètre, pour voir où une offre s'arrête et où la suivante commence.",
+        'subtitle' => 'Vous ne savez pas quelle offre convient à votre entreprise ? Comparez nos formules côte à côte pour découvrir leurs fonctionnalités, services et avantages, et trouvez la solution adaptée à vos objectifs, à votre budget et aux exigences de votre projet.',
         'rows' => [
-            ['label' => 'Durée type', 'type' => 'text', 'values' => ['2–4 semaines', '8–12 semaines', 'Continu, trimestriel']],
+            ['label' => 'Durée type', 'type' => 'text', 'values' => ['2-4 semaines', '8-12 semaines', 'Continu, trimestriel']],
             ['label' => 'Architecture et découverte', 'type' => 'bool', 'values' => [true, true, true]],
             ['label' => 'Design UX et interface', 'type' => 'bool', 'values' => [false, true, true]],
             ['label' => 'Version prête pour la production', 'type' => 'bool', 'values' => [false, true, true]],
@@ -107,12 +101,12 @@ return [
     'process' => [
         'label' => 'La suite des événements',
         'title' => "De l'offre à la production, sans zone d'ombre.",
-        'subtitle' => "Chaque mission suit le même parcours clair, quelle que soit l'offre de départ.",
+        'subtitle' => 'De votre première idée à la livraison finale, en toute simplicité.',
         'steps' => [
-            ['label' => 'ÉTAPE 01', 'title' => 'Choisissez votre offre', 'desc' => 'Choisissez la mission qui correspond à votre situation actuelle.'],
-            ['label' => 'ÉTAPE 02', 'title' => 'Appel de cadrage', 'desc' => "Un ingénieur principal confirme le périmètre, le calendrier et l'adéquation de l'équipe sous 2 jours ouvrés."],
-            ['label' => 'ÉTAPE 03', 'title' => 'Lancement et plan de livraison', 'desc' => 'Vous recevez un plan écrit avec des jalons avant le démarrage des travaux.'],
-            ['label' => 'ÉTAPE 04', 'title' => 'Livrer et itérer', 'desc' => 'Des livraisons régulières, une progression transparente et une trajectoire claire vers l\'étape suivante.'],
+            ['label' => 'ÉTAPE 01', 'title' => 'Choisissez votre offre', 'desc' => 'Parcourez nos offres et choisissez la solution qui correspond le mieux à vos besoins, à vos objectifs et à votre budget.'],
+            ['label' => 'ÉTAPE 02', 'title' => 'Découverte et consultation', 'desc' => 'Nous échangeons sur votre vision, comprenons vos besoins et définissons la bonne approche pour votre projet.'],
+            ['label' => 'ÉTAPE 03', 'title' => 'Planification et développement', 'desc' => 'Notre équipe définit la feuille de route du projet, fixe les jalons et commence à construire votre solution avec une direction claire.'],
+            ['label' => 'ÉTAPE 04', 'title' => 'Lancement et support continu', 'desc' => 'Nous livrons votre solution, nous assurons que tout fonctionne comme prévu et vous accompagnons durablement à mesure que votre entreprise grandit.'],
         ],
     ],
 

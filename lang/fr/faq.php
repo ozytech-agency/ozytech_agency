@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'title' => 'FAQ | Ozytech Agency',
+    'title' => 'FAQ - Ozytech Agency',
     'meta_description' => "Réponses aux questions courantes sur la collaboration avec Ozytech Agency : tarifs, délais, modèles d'engagement et fonctionnement de notre équipe d'ingénierie.",
 
     'hero' => [
         'eyebrow' => 'Questions fréquentes',
         'title' => 'Des réponses avant même votre question.',
-        'subtitle' => 'Tout ce que les équipes veulent généralement savoir avant de nous contacter — tarifs, délais, sécurité, et comment démarrent réellement les missions.',
+        'subtitle' => 'Tout ce que les équipes veulent généralement savoir avant de nous contacter - tarifs, délais, sécurité, et comment démarrent réellement les missions.',
     ],
 
     'search' => [
@@ -18,7 +18,7 @@ return [
     'cta' => [
         'label' => 'Encore des questions ?',
         'title' => 'Nous sommes à un message de vous.',
-        'description' => 'Envoyez-nous un message et un ingénieur principal vous répondra directement — généralement en quelques heures.',
+        'description' => 'Envoyez-nous un message et un ingénieur principal vous répondra directement - généralement en quelques heures.',
         'button' => 'Nous contacter',
     ],
 ];

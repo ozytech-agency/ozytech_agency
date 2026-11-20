@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'about' => 'Pioneros en ingeniería de software de alta velocidad, arquitectura cloud empresarial y soluciones de IA críticas para scale-ups modernas y empresas tecnológicas globales.',
+    'about' => 'Ponte en contacto con Ozytech Agency para servicios de desarrollo web, SaaS, e-commerce, soluciones IT, creación de empresas e integración de pagos.',
     'services_heading' => 'Nuestros servicios',
     'services' => [
         ['label' => 'Soluciones de TI', 'slug' => 'it-infrastructure'],
@@ -34,7 +34,7 @@ return [
         'label' => 'Mantente al día',
         'placeholder' => 'Tu dirección de correo',
         'cta' => 'Suscribirse',
-        'success' => 'Gracias — revisa tu bandeja de entrada para confirmar tu suscripción.',
+        'success' => 'Gracias - revisa tu bandeja de entrada para confirmar tu suscripción.',
         'invalid' => 'Introduce una dirección de correo profesional válida.',
     ],
     'copyright' => ':year Ozytech Agency. Todos los derechos reservados.',

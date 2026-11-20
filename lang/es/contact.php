@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'title' => 'Contacta con Ozytech Agency',
-    'meta_description' => 'Ponte en contacto con el equipo de ingeniería de Ozytech Agency para hablar sobre tu próximo proyecto de software, nube o IA.',
+    'title' => 'Contacta con Ozytech Agency - Construyamos algo juntos',
+    'meta_description' => 'Ponte en contacto con Ozytech Agency para servicios de desarrollo web, SaaS, e-commerce, soluciones IT, creación de empresas e integración de pagos.',
 
     'hero' => [
         'eyebrow' => 'Ponte en contacto',
         'title' => 'Hablemos.',
-        'subtitle' => 'Preguntas, soporte, o simplemente saludar — contáctanos directamente abajo.',
+        'subtitle' => '¿Tienes un proyecto en mente? Hagámoslo realidad.',
     ],
 
     'details' => [
@@ -16,7 +16,7 @@ return [
         'phone_label' => 'Teléfono',
         'address_label' => 'Oficina',
         'hours_label' => 'Horario',
-        'hours_value' => 'Lun–Vie, 09:00–18:00 (GMT+1)',
+        'hours_value' => 'Lun-Vie, 09:00-18:00 (GMT+1)',
         'social_label' => 'Síguenos',
     ],
 
@@ -29,6 +29,6 @@ return [
         'message_label' => 'Mensaje',
         'message_placeholder' => '¿Cómo podemos ayudarte?',
         'submit' => 'Enviar mensaje',
-        'success' => 'Gracias — hemos recibido tu mensaje y responderemos pronto.',
+        'success' => 'Gracias - hemos recibido tu mensaje y responderemos pronto.',
     ],
 ];

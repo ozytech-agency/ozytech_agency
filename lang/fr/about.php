@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'title' => "À propos d'Ozytech Agency | L'ingénierie derrière la suite",
+    'title' => 'À propos d\'Ozytech Agency',
 
     'meta' => [
-        'description' => "Ozytech Agency, guilde d'ingénierie mondiale, apporte réflexion de haut niveau et dynamisme concret aux logiciels des équipes ambitieuses.",
+        'description' => 'Ozytech Agency est une entreprise de solutions numériques qui aide les entrepreneurs, les startups et les entreprises établies à se construire, se lancer et se développer.',
     ],
 
     'hero' => [
-        'eyebrow' => 'Les personnes derrière les systèmes',
+        'eyebrow' => 'À propos d\'Ozytech Agency',
         'title' => 'Conçus pour le travail qui compte.',
-        'description' => "Ozytech Agency est une guilde d'ingénierie mondiale pour les équipes ambitieuses. Nous apportons une réflexion de niveau principal, un savoir-faire rigoureux et une dynamique concrète aux logiciels qui font avancer votre entreprise.",
+        'description' => 'Ozytech Agency est une entreprise de solutions numériques qui aide les entrepreneurs, les startups et les entreprises établies à se construire, se lancer et se développer.',
         'cta_primary' => 'Démarrez votre projet',
         'cta_secondary' => 'Nos principes',
         'stat_number' => '01',
@@ -18,45 +18,39 @@ return [
     ],
 
     'section1' => [
-        'label' => 'Ce en quoi nous croyons',
-        'title' => 'Une bonne ingénierie laisse place à de meilleures idées.',
-        'paragraph1' => "Le meilleur partenaire technologique fait plus que livrer des fonctionnalités. Il rend la complexité lisible, protège le niveau de qualité et laisse votre équipe plus forte qu'il ne l'a trouvée.",
-        'paragraph2' => "C'est la norme que nous apportons à chaque mission : une architecture honnête, une communication directe et une préférence pour des systèmes qui continuent de mériter leur place à mesure que votre entreprise grandit.",
+        'label' => 'NOTRE PHILOSOPHIE',
+        'title' => 'Ce en quoi nous croyons',
+        'paragraph1' => 'Nous croyons que la technologie doit créer des opportunités, simplifier les défis des entreprises et transformer les idées ambitieuses en réalité. Chaque entreprise mérite d\'accéder aux bons outils, à l\'expertise et aux solutions numériques adaptées pour grandir et réussir.',
+        'cta' => 'Démarrer votre projet aujourd\'hui',
     ],
 
     'principles' => [
         'label' => 'Comment nous travaillons',
-        'title' => 'Une guilde fondée sur la confiance, pas la mise en scène.',
-        'description' => 'Nos principes de fonctionnement gardent le travail concentré quand le problème est complexe et les enjeux réels.',
+        'title' => 'Fondés sur la confiance. Portés par l\'innovation. Tournés vers les résultats.',
+        'description' => 'Notre approche repose sur la transparence, la collaboration et la qualité. Nous associons expertise technique et compréhension claire de vos objectifs pour livrer des solutions qui font une vraie différence.',
         'cards' => [
-            ['title' => 'Penser en systèmes', 'description' => 'Nous concevons pour tout le cycle de vie : fiabilité, sécurité, coût, adoption, et les personnes qui prendront le relais après le lancement.'],
-            ['title' => 'Rendre les choses claires', 'description' => 'Les décisions se prennent au grand jour. Nous expliquons les compromis clairement et gardons les parties prenantes proches de la réalité technique.'],
-            ['title' => 'Laisser les choses meilleures', 'description' => 'Chaque mission doit créer une capacité durable, qu\'il s\'agisse d\'une plateforme plus propre ou d\'une équipe qui avance avec confiance.'],
+            ['title' => 'Comprendre avant de construire', 'description' => 'Tout projet réussi commence par la compréhension. Nous prenons le temps de connaître votre entreprise, d\'identifier vos défis et de définir la bonne solution avant le début du développement.'],
+            ['title' => 'Une transparence totale', 'description' => 'Une communication claire crée de meilleurs partenariats. Nous vous impliquons tout au long du processus, partageons régulièrement l\'avancement et veillons à ce que chaque décision corresponde à votre vision.'],
+            ['title' => 'Une qualité qui dure', 'description' => 'Nous construisons en pensant performance, sécurité, évolutivité et valeur à long terme. Notre objectif n\'est pas seulement de terminer des projets, mais de créer des solutions qui accompagnent la croissance de votre entreprise.'],
         ],
     ],
 
     'team' => [
-        'label' => 'Avec qui vous allez travailler',
-        'title' => "L'équipe derrière le travail.",
-        'description' => "L'équipe senior présente en personne à chaque appel client, du premier schéma d'architecture au dernier déploiement.",
+        'label' => 'L\'ÉQUIPE DERRIÈRE OZYTECH',
+        'title' => 'Rencontrez les cofondateurs à l\'origine de la vision',
+        'description' => 'Ozytech est née d\'une vision commune : rendre la technologie et les solutions numériques plus accessibles aux entreprises et aux entrepreneurs.',
         'empty' => 'La page de notre équipe est en cours de mise à jour. Revenez bientôt.',
     ],
 
     'numbers' => [
         'label' => 'La guilde en chiffres',
         'title' => 'Assez petits pour rester proches. Assez expérimentés pour aller loin.',
-        'items' => [
-            ['value' => '12+', 'label' => 'Années d\'ancienneté moyenne de nos bâtisseurs seniors'],
-            ['value' => '250+', 'label' => 'Systèmes d\'entreprise livrés'],
-            ['value' => '6', 'label' => 'Régions connectées par notre guilde'],
-            ['value' => '98,5 %', 'label' => 'Fidélisation des partenaires à long terme'],
-        ],
     ],
 
     'cta' => [
-        'label' => 'Commencez par la question difficile',
-        'title' => 'Apportez-nous le problème derrière le brief.',
-        'description' => 'Dites-nous ce qui change dans votre entreprise. Nous amènerons un ingénieur principal à la première conversation pour vous aider à trouver la prochaine étape la plus claire.',
+        'label' => 'CONSTRUISONS QUELQUE CHOSE DE GRAND',
+        'title' => 'Partagez votre vision. Nous vous aidons à la concrétiser.',
+        'description' => 'Vous avez une idée d\'entreprise, un projet à lancer ou un défi à relever ? Que vous ayez besoin de conseils ou d\'accompagnement, notre équipe est prête à vous aider à trouver la bonne voie.',
         'button' => "Parler à l'équipe",
     ],
 ];

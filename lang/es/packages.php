@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'title' => 'Paquetes | Ozytech Agency',
-    'meta_description' => 'Compara nuestros paquetes de ingeniería de alcance fijo — Explorar, Construir y Escalar — y encuentra el punto de partida adecuado para tu próximo proyecto de software.',
+    'title' => 'Paquetes - Ozytech Agency',
+    'meta_description' => 'Descubre los paquetes flexibles de Ozytech Agency para desarrollo web, e-commerce, SaaS, soluciones IT, creación de empresas e integración de pagos.',
 
     'hero' => [
         'kicker' => 'Paquetes Ozytech Agency',
         'title' => 'Elige el punto de partida correcto.',
-        'lead' => 'Proyectos enfocados para equipos que quieren avanzar con claridad, sin ceremonias innecesarias.',
+        'lead' => 'Ofrecemos paquetes flexibles diseñados en torno a tus objetivos. Elige el punto de partida adecuado y déjanos ayudarte a dar vida a tu visión.',
     ],
 
     'cards' => [
@@ -20,16 +20,16 @@ return [
                 'Creación e incorporación de LLC',
                 [
                     'text' => 'Sitio web: Shopify, WooCommerce o WordPress',
-                    'note' => 'Elige lo que mejor se adapte a tu negocio — una tienda Shopify o WooCommerce si vendes en línea, o un sitio WordPress estándar si no.',
+                    'note' => 'Elige lo que mejor se adapte a tu negocio - una tienda Shopify o WooCommerce si vendes en línea, o un sitio WordPress estándar si no.',
                 ],
                 [
                     'text' => 'Dominio gratuito',
-                    'note' => 'Incluido gratis durante el primer año — elige cualquier nombre de dominio disponible que prefieras.',
+                    'note' => 'Incluido gratis durante el primer año - elige cualquier nombre de dominio disponible que prefieras.',
                 ],
                 'Mantenimiento del sitio web durante 1 año',
                 [
                     'text' => 'Pasarelas de pago',
-                    'note' => 'Stripe, PayPal o un proveedor local — configuramos el que mejor se adapte a tu mercado y a cómo quieres cobrar.',
+                    'note' => 'Stripe, PayPal o un proveedor local - configuramos el que mejor se adapte a tu mercado y a cómo quieres cobrar.',
                 ],
             ],
             'cta' => 'Elegir este paquete',
@@ -52,7 +52,7 @@ return [
                 'Mantenimiento de software durante 1 año',
                 [
                     'text' => 'Dominio gratuito',
-                    'note' => 'Incluido gratis durante el primer año — elige cualquier nombre de dominio disponible que prefieras.',
+                    'note' => 'Incluido gratis durante el primer año - elige cualquier nombre de dominio disponible que prefieras.',
                 ],
             ],
             'cta' => 'Planifica tu lanzamiento',
@@ -83,18 +83,12 @@ return [
         ],
     ],
 
-    'assurances' => [
-        'Alcance claro acordado antes de empezar',
-        'Acceso directo a ingenieros senior',
-        'Avanza al siguiente paquete a medida que creces',
-    ],
-
     'comparison' => [
         'label' => 'Compara los paquetes',
         'title' => 'Descubre exactamente qué incluye cada etapa.',
-        'subtitle' => 'Una vista comparativa del alcance, para que veas dónde termina un paquete y empieza el siguiente.',
+        'subtitle' => '¿No sabes qué paquete es el adecuado para tu negocio? Compara nuestras opciones lado a lado para explorar funcionalidades, servicios y beneficios, y encuentra la solución que se ajuste a tus objetivos, tu presupuesto y los requisitos de tu proyecto.',
         'rows' => [
-            ['label' => 'Duración típica', 'type' => 'text', 'values' => ['2–4 semanas', '8–12 semanas', 'Continuo, trimestral']],
+            ['label' => 'Duración típica', 'type' => 'text', 'values' => ['2-4 semanas', '8-12 semanas', 'Continuo, trimestral']],
             ['label' => 'Arquitectura y descubrimiento', 'type' => 'bool', 'values' => [true, true, true]],
             ['label' => 'Diseño UX e interfaz', 'type' => 'bool', 'values' => [false, true, true]],
             ['label' => 'Compilación lista para producción', 'type' => 'bool', 'values' => [false, true, true]],
@@ -107,12 +101,12 @@ return [
     'process' => [
         'label' => 'Qué sucede después',
         'title' => 'Del paquete a producción, sin incertidumbre.',
-        'subtitle' => 'Cada proyecto sigue el mismo camino claro, sea cual sea el paquete con el que empieces.',
+        'subtitle' => 'De tu primera idea a la entrega final, de forma sencilla.',
         'steps' => [
-            ['label' => 'PASO 01', 'title' => 'Elige tu paquete', 'desc' => 'Elige el proyecto que se ajusta a tu etapa actual.'],
-            ['label' => 'PASO 02', 'title' => 'Llamada de alcance', 'desc' => 'Un ingeniero principal confirma el alcance, el cronograma y el ajuste del equipo en un plazo de 2 días hábiles.'],
-            ['label' => 'PASO 03', 'title' => 'Arranque y plan de entrega', 'desc' => 'Recibes un plan escrito con hitos antes de que comience cualquier trabajo.'],
-            ['label' => 'PASO 04', 'title' => 'Entregar e iterar', 'desc' => 'Lanzamientos regulares, progreso transparente y un camino claro hacia la siguiente etapa.'],
+            ['label' => 'PASO 01', 'title' => 'Elige tu paquete', 'desc' => 'Explora nuestros paquetes y elige la solución que mejor se adapte a las necesidades, objetivos y presupuesto de tu negocio.'],
+            ['label' => 'PASO 02', 'title' => 'Descubrimiento y consultoría', 'desc' => 'Hablamos sobre tu visión, entendemos tus requisitos e identificamos el enfoque adecuado para tu proyecto.'],
+            ['label' => 'PASO 03', 'title' => 'Planificación y desarrollo', 'desc' => 'Nuestro equipo define la hoja de ruta del proyecto, establece los hitos y comienza a construir tu solución con una dirección clara.'],
+            ['label' => 'PASO 04', 'title' => 'Lanzamiento y soporte continuo', 'desc' => 'Entregamos tu solución, nos aseguramos de que todo funcione como se espera y te brindamos soporte continuo a medida que tu negocio crece.'],
         ],
     ],
 

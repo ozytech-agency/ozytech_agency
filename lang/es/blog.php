@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'title' => 'Blog de Ozytech Agency | Notas de ingeniería para equipos ambiciosos',
+    'title' => 'Blog de Ozytech Agency - Tecnología, negocios e ideas digitales',
 
     'hero' => [
-        'badge' => 'Notas de ingeniería',
+        'badge' => 'BLOG DE OZYTECH AGENCY',
         'title' => 'Ideas que hacen que la tecnología compleja sea más fácil de mover.',
-        'description' => 'Pensamiento claro sobre arquitectura, IA, sistemas cloud y las decisiones que ayudan a los equipos ambiciosos a lanzar con confianza.',
+        'description' => 'Descubre ideas, aprende nuevas estrategias y mantente a la vanguardia en un mundo digital en constante evolución.',
     ],
 
     'featured' => [
@@ -17,11 +17,11 @@ return [
     ],
 
     'why_blog' => [
-        'label' => 'Por qué este blog',
-        'title' => 'Notas útiles, sin teatralidad.',
-        'description' => 'Escribimos para personas que toman decisiones reales: qué construir, qué simplificar y dónde invertir antes de que la escala haga que cada elección sea más costosa.',
+        'label' => 'POR QUÉ LEER NUESTRO BLOG',
+        'title' => 'Ideas que inspiran. Conocimiento que te impulsa.',
+        'description' => 'Ideas que inspiran. Conocimiento que te impulsa.',
         'stat1' => 'áreas de enfoque',
-        'stat2' => 'punto de vista claro',
+        'stat2' => 'Compartimos conocimiento que importa',
     ],
 
     'latest' => [
@@ -39,7 +39,7 @@ return [
     ],
 
     'read_more' => 'Leer el artículo',
-    'empty' => 'Aún no hay artículos publicados — vuelve pronto.',
+    'empty' => 'Aún no hay artículos publicados - vuelve pronto.',
 
     'show' => [
         'back' => 'Volver al blog',

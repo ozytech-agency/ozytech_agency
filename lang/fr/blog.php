@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'title' => 'Blog Ozytech Agency | Notes d\'ingénierie pour équipes ambitieuses',
+    'title' => 'Blog Ozytech Agency - Technologie, business et insights numériques',
 
     'hero' => [
-        'badge' => "Notes d'ingénierie",
+        'badge' => 'BLOG OZYTECH AGENCY',
         'title' => 'Des idées qui rendent la technologie complexe plus facile à faire avancer.',
-        'description' => "Une réflexion claire sur l'architecture, l'IA, les systèmes cloud et les décisions qui aident les équipes ambitieuses à livrer avec confiance.",
+        'description' => 'Découvrez des idées, apprenez de nouvelles stratégies et gardez une longueur d\'avance dans un monde numérique en constante évolution.',
     ],
 
     'featured' => [
@@ -17,11 +17,11 @@ return [
     ],
 
     'why_blog' => [
-        'label' => 'Pourquoi ce blog',
-        'title' => 'Des notes utiles, sans mise en scène.',
-        'description' => "Nous écrivons pour des personnes qui prennent de vraies décisions : quoi construire, quoi simplifier, et où investir avant que l'échelle ne rende chaque choix plus coûteux.",
+        'label' => 'POURQUOI LIRE NOTRE BLOG',
+        'title' => 'Des idées qui inspirent. Des connaissances qui vous font avancer.',
+        'description' => 'Des idées qui inspirent. Des connaissances qui vous font avancer.',
         'stat1' => 'domaines de spécialisation',
-        'stat2' => 'point de vue clair',
+        'stat2' => 'Partager des connaissances qui comptent',
     ],
 
     'latest' => [
@@ -39,7 +39,7 @@ return [
     ],
 
     'read_more' => 'Lire l’article',
-    'empty' => 'Aucun article publié pour le moment — revenez bientôt.',
+    'empty' => 'Aucun article publié pour le moment - revenez bientôt.',
 
     'show' => [
         'back' => 'Retour au blog',

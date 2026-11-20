@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'title' => 'Contacter Ozytech Agency — Démarrer un projet, un partenariat ou une conversation de support',
-    'meta_description' => "Parlez de votre projet à Ozytech Agency et soyez mis en relation avec l'équipe et le forfait adaptés.",
+    'title' => 'Ozytech Agency - Démarrer votre projet',
+    'meta_description' => "Prêt à concrétiser vos idées ? Présentez votre projet à Ozytech et découvrez des solutions sur mesure en développement web, mobile, e-commerce et SaaS.",
 
     'hero' => [
         'badge' => 'Nous répondons en heures, pas en semaines',
-        'title' => 'Définissons ensemble le système dont vous avez vraiment besoin',
-        'subtitle' => 'Dites-nous où vous en êtes et où vous allez. Votre message est directement transmis à un ingénieur principal — pas à une boîte de réception générique — capable de parler architecture, délais et budget dès le premier appel.',
+        'title' => 'Donnons vie à vos idées',
+        'subtitle' => 'Parlez-nous de votre projet, de vos objectifs et de ce que vous souhaitez réaliser. Remplissez le formulaire ci-dessous. Notre équipe étudiera votre demande et vous contactera pour discuter des prochaines étapes.',
         'cta_primary' => 'Contactez-nous',
     ],
 
@@ -55,7 +55,7 @@ return [
         'privacy_note_prefix' => 'Nous ne partageons jamais vos informations. Réponse habituelle :',
         'privacy_note_suffix' => 'sous 24 heures.',
         'success' => [
-            'title' => 'Message reçu — vous êtes entre de bonnes mains',
+            'title' => 'Message reçu - vous êtes entre de bonnes mains',
             'message_prefix' => 'Une confirmation est en route vers',
             'message_suffix' => 'Un ingénieur principal vous répondra sous 24 heures. Pour toute urgence, appelez le',
             'reset_cta' => 'Envoyer un autre message',
@@ -75,18 +75,18 @@ return [
     'sidebar' => [
         'schedule' => [
             'title' => 'Vous préférez en discuter directement ?',
-            'desc' => 'Écrivez-nous directement sur WhatsApp. Sans discours commercial — un vrai échange sur votre projet, votre périmètre et vos délais.',
+            'desc' => 'Écrivez-nous directement sur WhatsApp. Sans discours commercial - un vrai échange sur votre projet, votre périmètre et vos délais.',
             'cta' => 'Contactez-nous sur WhatsApp',
         ],
         'channels' => [
             'title' => 'Canaux directs',
             'email' => 'Écrivez-nous à tout moment',
-            'hours' => 'Lun–Ven, heures ouvrées',
+            'hours' => 'Lun-Ven, heures ouvrées',
         ],
         'next_steps' => [
             'title' => 'La suite',
             'steps' => [
-                ['title' => 'Nous étudions et orientons', 'desc' => 'Sous 24 heures, vers le bon responsable — pas une file d\'attente.'],
+                ['title' => 'Nous étudions et orientons', 'desc' => 'Sous 24 heures, vers le bon responsable - pas une file d\'attente.'],
                 ['title' => 'Appel de découverte & cadrage', 'desc' => '30 à 45 min pour challenger vos objectifs, contraintes, délais et budget.'],
                 ['title' => "Proposition & note d'architecture", 'desc' => 'Sous 2 à 4 jours : périmètre fixe, plan d\'équipe et jalons concrets.'],
             ],
@@ -101,13 +101,13 @@ return [
         'browse_all' => 'Voir toutes les FAQ',
         'items' => [
             ['q' => 'À quelle vitesse allez-vous me répondre ?', 'a' => 'Le délai médian de première réponse est inférieur à 24 heures. Pour un nouveau projet, attendez-vous à un appel de cadrage programmé sous 2 jours ouvrés. Les incidents de production des clients existants sont accusés réception sous 15 minutes.'],
-            ['q' => 'Signez-vous un NDA avant la découverte ?', 'a' => 'Oui. Mentionnez-le dans votre message et nous envoyons un NDA mutuel avant tout échange technique. Si vous avez votre propre document, envoyez-le-nous — notre équipe juridique traite la plupart des NDA le jour même.'],
+            ['q' => 'Signez-vous un NDA avant la découverte ?', 'a' => 'Oui. Mentionnez-le dans votre message et nous envoyons un NDA mutuel avant tout échange technique. Si vous avez votre propre document, envoyez-le-nous - notre équipe juridique traite la plupart des NDA le jour même.'],
             ['q' => 'Quel est votre engagement minimum ?', 'a' => "Les sprints de découverte et d'architecture démarrent à 2 semaines. Les missions de construction commencent généralement par une équipe intégrée de 8 semaines (architecte + ingénieurs + responsable de livraison). Les forfaits de support sont mensuels."],
-            ['q' => 'Travaillez-vous avec des startups pré-amorçage et en phase précoce ?', 'a' => "Oui, aux côtés des scale-ups et des entreprises mondiales. Nous adaptons le périmètre à votre stade et à votre trésorerie — souvent une équipe MVP légère avec une trajectoire d'architecture claire pour éviter de tout reconstruire en Series A."],
+            ['q' => 'Travaillez-vous avec des startups pré-amorçage et en phase précoce ?', 'a' => "Oui, aux côtés des scale-ups et des entreprises mondiales. Nous adaptons le périmètre à votre stade et à votre trésorerie - souvent une équipe MVP légère avec une trajectoire d'architecture claire pour éviter de tout reconstruire en Series A."],
             ['q' => "Pouvez-vous gérer l'incorporation et les paiements en parallèle du build ?", 'a' => "Oui. La création d'entreprise aux États-Unis (Delaware/Wyoming) ou à l'international, l'EIN, l'agent enregistré, ainsi que l'intégration Stripe / PayPal / passerelles multidevises peuvent tous avancer en parallèle de l'ingénierie, dans un seul plan."],
-            ['q' => 'Comment fonctionne la tarification ?', 'a' => "Tarification à périmètre fixe pour la découverte, tarification mensuelle par équipe pour la construction, et forfaits pour le support continu. Vous recevez une estimation écrite avec des jalons après l'appel de cadrage — sans engagement."],
+            ['q' => 'Comment fonctionne la tarification ?', 'a' => "Tarification à périmètre fixe pour la découverte, tarification mensuelle par équipe pour la construction, et forfaits pour le support continu. Vous recevez une estimation écrite avec des jalons après l'appel de cadrage - sans engagement."],
             ['q' => 'Quels fuseaux horaires couvrez-vous ?', 'a' => "Notre guilde s'étend sur les Amériques, l'EMEA et l'APAC, nous maintenons donc de vraies heures de chevauchement avec n'importe quel fuseau horaire. Une couverture de fiabilité de site 24/7 est disponible en option."],
-            ['q' => 'Je suis déjà client — où puis-je obtenir du support ?', 'a' => "Utilisez support@ozytech.agency ou votre canal Slack dédié. Choisissez « Support client » dans le formulaire pour tout ce qui nécessite une trace écrite ; les incidents de production bénéficient d'un SLA d'accusé de réception de 15 minutes."],
+            ['q' => 'Je suis déjà client - où puis-je obtenir du support ?', 'a' => "Utilisez support@ozytech.agency ou votre canal Slack dédié. Choisissez « Support client » dans le formulaire pour tout ce qui nécessite une trace écrite ; les incidents de production bénéficient d'un SLA d'accusé de réception de 15 minutes."],
         ],
     ],
 

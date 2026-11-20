@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'title' => 'Sobre Ozytech Agency | La ingeniería detrás de lo que viene',
+    'title' => 'Sobre Ozytech Agency',
 
     'meta' => [
-        'description' => 'Ozytech Agency es un gremio de ingeniería global que aporta pensamiento experto e impulso práctico al software de equipos ambiciosos.',
+        'description' => 'Ozytech Agency es una empresa de soluciones digitales que ayuda a emprendedores, startups y empresas consolidadas a construir, lanzar y crecer.',
     ],
 
     'hero' => [
-        'eyebrow' => 'Las personas detrás de los sistemas',
+        'eyebrow' => 'Sobre Ozytech Agency',
         'title' => 'Construidos para el trabajo que importa.',
-        'description' => 'Ozytech Agency es un gremio de ingeniería global para equipos ambiciosos. Aportamos pensamiento de nivel principal, artesanía cuidadosa y impulso práctico al software que impulsa tu negocio hacia adelante.',
+        'description' => 'Ozytech Agency es una empresa de soluciones digitales que ayuda a emprendedores, startups y empresas consolidadas a construir, lanzar y crecer.',
         'cta_primary' => 'Inicia tu proyecto',
         'cta_secondary' => 'Nuestros principios',
         'stat_number' => '01',
@@ -18,45 +18,39 @@ return [
     ],
 
     'section1' => [
-        'label' => 'En qué creemos',
-        'title' => 'La buena ingeniería deja espacio para mejores ideas.',
-        'paragraph1' => 'El mejor socio tecnológico hace más que entregar funcionalidades. Hace que la complejidad sea comprensible, protege el nivel de calidad y deja a tu equipo más fuerte de lo que lo encontró.',
-        'paragraph2' => 'Ese es el estándar que aportamos a cada proyecto: arquitectura honesta, comunicación directa y una preferencia por sistemas que sigan ganándose su lugar a medida que tu negocio crece.',
+        'label' => 'NUESTRA FILOSOFÍA',
+        'title' => 'En qué creemos',
+        'paragraph1' => 'Creemos que la tecnología debe crear oportunidades, simplificar los desafíos empresariales y convertir las ideas ambiciosas en realidad. Toda empresa merece acceder a las herramientas, la experiencia y las soluciones digitales adecuadas para crecer y tener éxito.',
+        'cta' => 'Inicia tu proyecto hoy',
     ],
 
     'principles' => [
         'label' => 'Cómo trabajamos',
-        'title' => 'Un gremio construido sobre la confianza, no la teatralidad.',
-        'description' => 'Nuestros principios de trabajo mantienen el enfoque cuando el problema es complejo y lo que está en juego es real.',
+        'title' => 'Basados en la confianza. Impulsados por la innovación. Enfocados en resultados.',
+        'description' => 'Nuestro enfoque se basa en la transparencia, la colaboración y la calidad. Combinamos experiencia técnica con una comprensión clara de tus objetivos de negocio para ofrecer soluciones que marcan una diferencia real.',
         'cards' => [
-            ['title' => 'Pensar en sistemas', 'description' => 'Diseñamos para todo el ciclo de vida: fiabilidad, seguridad, costo, adopción y las personas que se harán cargo del trabajo después del lanzamiento.'],
-            ['title' => 'Hacerlo claro', 'description' => 'Las decisiones se toman a la vista de todos. Explicamos los compromisos con claridad y mantenemos a los interesados cerca de la realidad técnica.'],
-            ['title' => 'Dejarlo mejor', 'description' => 'Cada proyecto debe crear una capacidad duradera, ya sea una plataforma más limpia o un equipo que pueda avanzar con confianza.'],
+            ['title' => 'Entender antes de construir', 'description' => 'Todo proyecto exitoso empieza por la comprensión. Nos tomamos el tiempo de conocer tu negocio, identificar tus desafíos y definir la solución adecuada antes de comenzar el desarrollo.'],
+            ['title' => 'Transparencia en todo momento', 'description' => 'Una comunicación clara crea mejores alianzas. Te mantenemos involucrado durante todo el proceso, compartimos el progreso con regularidad y nos aseguramos de que cada decisión esté alineada con tu visión.'],
+            ['title' => 'Calidad que perdura', 'description' => 'Construimos pensando en el rendimiento, la seguridad, la escalabilidad y el valor a largo plazo. Nuestro objetivo no es solo terminar proyectos, sino crear soluciones que acompañen a tu negocio a medida que crece.'],
         ],
     ],
 
     'team' => [
-        'label' => 'Con quién vas a trabajar',
-        'title' => 'El equipo detrás del trabajo.',
-        'description' => 'El equipo senior que participa en persona en cada llamada con el cliente, desde el primer boceto de arquitectura hasta el último despliegue.',
+        'label' => 'LAS PERSONAS DETRÁS DE OZYTECH',
+        'title' => 'Conoce a los cofundadores detrás de la visión',
+        'description' => 'Ozytech nació de una visión compartida: hacer que la tecnología y las soluciones digitales sean más accesibles para empresas y emprendedores.',
         'empty' => 'La página de nuestro equipo se está actualizando. Vuelve pronto.',
     ],
 
     'numbers' => [
         'label' => 'El gremio en cifras',
         'title' => 'Lo suficientemente pequeños para estar cerca. Lo suficientemente experimentados para profundizar.',
-        'items' => [
-            ['value' => '12+', 'label' => 'Años de antigüedad promedio de nuestros desarrolladores senior'],
-            ['value' => '250+', 'label' => 'Sistemas empresariales entregados'],
-            ['value' => '6', 'label' => 'Regiones conectadas por nuestro gremio'],
-            ['value' => '98.5%', 'label' => 'Retención de socios a largo plazo'],
-        ],
     ],
 
     'cta' => [
-        'label' => 'Empieza con la pregunta difícil',
-        'title' => 'Tráenos el problema detrás del encargo.',
-        'description' => 'Cuéntanos qué está cambiando en tu negocio. Llevaremos a un ingeniero principal a la primera conversación y te ayudaremos a encontrar el siguiente paso más claro.',
+        'label' => 'CONSTRUYAMOS ALGO GRANDE',
+        'title' => 'Cuéntanos tu visión. Te ayudamos a hacerla realidad.',
+        'description' => '¿Tienes una idea de negocio, un proyecto por lanzar o un desafío por resolver? Tanto si necesitas orientación como apoyo, nuestro equipo está listo para ayudarte a encontrar el camino correcto.',
         'button' => 'Habla con el equipo',
     ],
 ];

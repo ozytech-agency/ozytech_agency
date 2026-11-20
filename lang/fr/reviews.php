@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'title' => 'Laisser un avis | Ozytech Agency',
-    'meta_description' => 'Vous avez travaillé avec Ozytech Agency ? Partagez votre expérience — votre avis aide d’autres équipes à choisir.',
+    'title' => 'Laisser un avis - Ozytech Agency',
+    'meta_description' => 'Vous avez travaillé avec Ozytech Agency ? Partagez votre expérience - votre avis aide d’autres équipes à choisir.',
 
     'hero' => [
         'eyebrow' => 'Avis clients',
         'title' => 'Comment s’est passée notre collaboration ?',
-        'subtitle' => 'Parlez-nous de votre projet et de l’équipe. Aucun compte requis — cela prend environ une minute.',
+        'subtitle' => 'Parlez-nous de votre projet et de l’équipe. Aucun compte requis - cela prend environ une minute.',
     ],
 
     'form' => [
