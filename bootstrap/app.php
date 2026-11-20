@@ -28,7 +28,8 @@ return Application::configure(basePath: dirname(__DIR__))
             ],
         );
 
-        //
+        // The saved language is written by the browser (mirroring localStorage), so it can't be encrypted.
+        $middleware->encryptCookies(except: ['locale']);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
@@ -56,7 +57,7 @@ return Application::configure(basePath: dirname(__DIR__))
             // `ziggy` prop) has nothing to work with, and
             // HandleInertiaRequests::share() itself reads $request->session()
             // for flash messages. Replicate just enough of that setup here.
-            $locale = in_array($request->segment(1), ['en', 'ar', 'fr', 'es'], true)
+            $locale = in_array($request->segment(1), config('app.supported_locales'), true)
                 ? $request->segment(1)
                 : app()->getLocale();
             app()->setLocale($locale);

@@ -54,7 +54,8 @@ class HandleInertiaRequests extends Middleware
                 'can_access_admin' => $canAccessAdmin,
             ],
             'locale' => app()->getLocale(),
-            'available_locales' => ['en', 'ar', 'fr', 'es'],
+            'available_locales' => config('app.supported_locales'),
+            'locale_cookie' => config('app.locale_cookie'),
             // Only consumed by the SSR entry point (resources/js/ssr.jsx), which has
             // no access to the @routes Blade script that defines route()/Ziggy for
             // the browser. The browser already gets routes from that script, so this

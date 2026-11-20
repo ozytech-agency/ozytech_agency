@@ -11,11 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 class SetLocale
 {
     /**
-     * @var list<string>
-     */
-    protected array $supportedLocales = ['en', 'ar', 'fr', 'es'];
-
-    /**
      * Handle an incoming request.
      *
      * Reads the locale from the first URL segment directly (rather than the
@@ -28,7 +23,7 @@ class SetLocale
     {
         $locale = $request->segment(1);
 
-        if (! in_array($locale, $this->supportedLocales, true)) {
+        if (! in_array($locale, config('app.supported_locales'), true)) {
             $locale = app()->getLocale();
         }
 

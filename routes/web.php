@@ -20,12 +20,17 @@ use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RedirectToPreferredLocaleController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/en', 301);
+// A plain redirect, not an Inertia page; Inertia's middleware would also replace its Vary header.
+Route::get('/', RedirectToPreferredLocaleController::class)
+    ->withoutMiddleware(HandleInertiaRequests::class)
+    ->name('root');
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
@@ -42,7 +47,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::prefix('{locale}')
-    ->where(['locale' => '^(en|ar|fr|es)$'])
+    ->where(['locale' => '^('.implode('|', config('app.supported_locales')).')$'])
     ->group(function () {
         Route::get('/', [PageController::class, 'home'])->name('home');
         Route::get('/about', [PageController::class, 'about'])->name('about');

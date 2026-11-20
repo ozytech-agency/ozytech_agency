@@ -86,6 +86,25 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Supported Site Locales
+    |--------------------------------------------------------------------------
+    |
+    | The locales the public site is served in, used as the {locale} URL prefix.
+    | The default locale above should be one of them.
+    |
+    | "locale_cookie" holds the visitor's saved language. The browser writes it
+    | (mirroring localStorage) when a language is picked, and the server writes
+    | it once after detecting the browser language, so the bare domain can send
+    | a returning visitor straight to their language without a client redirect.
+    |
+    */
+
+    'supported_locales' => ['en', 'ar', 'fr', 'es'],
+
+    'locale_cookie' => 'locale',
+
+    /*
+    |--------------------------------------------------------------------------
     | Encryption Key
     |--------------------------------------------------------------------------
     |

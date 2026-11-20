@@ -15,6 +15,6 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertRedirect('/en');
-        $response->assertStatus(301);
+        $response->assertStatus(302);
     }
 }

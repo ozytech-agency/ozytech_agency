@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { router } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
 import { useLocale } from '@/lib/translations';
+import { rememberLocale } from '@/lib/localePreference';
 
 const LANGS = [
     { code: 'ar', label: 'العربية', flag: 'ma' },
@@ -10,7 +11,8 @@ const LANGS = [
 ];
 
 export default function LanguageSwitcher() {
-    const { locale } = useLocale();
+    const { locale, availableLocales } = useLocale();
+    const { locale_cookie: cookieName } = usePage().props;
     const [open, setOpen] = useState(false);
     const ref = useRef(null);
 
@@ -31,6 +33,8 @@ export default function LanguageSwitcher() {
 
     const select = (code) => {
         setOpen(false);
+        // Saved even when it is already the page's language, so picking it confirms the choice.
+        rememberLocale(code, { cookieName, availableLocales });
         if (code === locale) return;
         const name = route().current();
         router.visit(route(name, { ...route().params, locale: code }));

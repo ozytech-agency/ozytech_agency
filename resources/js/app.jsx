@@ -4,6 +4,7 @@ import './bootstrap';
 import { createInertiaApp, router } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot, hydrateRoot } from 'react-dom/client';
+import { syncStoredLocale } from './lib/localePreference';
 
 // Keep Ziggy's default route parameters in sync with the current page's
 // locale. Ziggy.defaults is only ever set once, from the server, on the very
@@ -19,6 +20,14 @@ router.on('beforeUpdate', (event) => {
     const locale = event.detail.page.props.locale;
     if (!locale || !window.Ziggy) return;
     window.Ziggy.defaults = { ...window.Ziggy.defaults, locale };
+});
+
+// Runs once, on the first full page load: repairs the saved language if the visitor cleared
+// either localStorage or the cookie, so the bare domain keeps honouring their choice.
+const stopLocaleSync = router.on('navigate', (event) => {
+    stopLocaleSync();
+    const { locale_cookie: cookieName, available_locales: availableLocales } = event.detail.page.props;
+    if (cookieName && availableLocales) syncStoredLocale({ cookieName, availableLocales });
 });
 
 router.on('navigate', (event) => {
