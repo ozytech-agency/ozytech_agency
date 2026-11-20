@@ -5,12 +5,9 @@ import PackageCard from '@/Components/PackageCard';
 import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
-const ASSURANCE_ICONS = ['event_available', 'groups', 'sync_alt'];
-
 export default function Packages() {
     const t = useTranslations();
     const { packages } = usePage().props;
-    const assurances = t('packages.assurances');
     const comparisonRows = t('packages.comparison.rows');
     const processSteps = t('packages.process.steps');
 
@@ -110,15 +107,6 @@ export default function Packages() {
                             </div>
                         ))}
                     </Reveal>
-                </Reveal>
-
-                <Reveal as="section" className="mx-auto mt-space-4xl grid max-w-4xl grid-cols-1 gap-space-lg sm:grid-cols-3">
-                    {assurances.map((text, i) => (
-                        <div key={text} className="flex items-start gap-space-sm">
-                            <span className="material-symbols-outlined text-secondary">{ASSURANCE_ICONS[i]}</span>
-                            <p className="font-body-sm text-body-sm text-on-surface-variant">{text}</p>
-                        </div>
-                    ))}
                 </Reveal>
 
                 <Reveal as="section" className="mt-space-4xl rounded-xl bg-primary-container p-space-2xl text-center text-on-primary">
