@@ -6,7 +6,7 @@ return [
 
     'index' => [
         'title' => 'Our Services',
-        'description' => 'Explore every service Ozytech Agency offers — from cloud and AI engineering to e-commerce, mobile apps, and ongoing support.',
+        'description' => 'We provide innovative technology and business solutions that help entrepreneurs, startups, and established companies turn ideas into reality, streamline operations.',
     ],
 
     'projects' => ['view' => 'View project', 'visit' => 'Visit site', 'client' => 'Client', 'service' => 'Service'],
@@ -182,7 +182,7 @@ return [
     'website-maintenance' => [
         'title' => 'Website Maintenance',
         'lead' => 'Keep every release healthy, and every defect fixed.',
-        'body' => "We keep websites secure, current, fast, and ready for the next campaign, integration, or improvement your business needs — diagnosing stubborn defects and stabilizing production behavior so the same problems don't return.",
+        'body' => "We keep websites secure, current, fast, and ready for the next campaign, integration, or improvement your business needs - diagnosing stubborn defects and stabilizing production behavior so the same problems don't return.",
         'offer' => ['Security patching', 'Uptime monitoring', 'Bug triage & fixes'],
         'build' => ['Stable, up-to-date websites', 'Monitoring & alerting setups', 'Ongoing improvement roadmaps'],
     ],

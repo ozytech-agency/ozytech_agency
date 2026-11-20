@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'title' => 'Submit a Review | Ozytech Agency',
-    'meta_description' => 'Worked with Ozytech Agency? Share your experience — your review helps other teams decide.',
+    'title' => 'Submit a Review - Ozytech Agency',
+    'meta_description' => 'Worked with Ozytech Agency? Share your experience - your review helps other teams decide.',
 
     'hero' => [
         'eyebrow' => 'Client reviews',
         'title' => 'How was working with us?',
-        'subtitle' => 'Tell us about your project and the team. No account needed — it takes about a minute.',
+        'subtitle' => 'Tell us about your project and the team. No account needed - it takes about a minute.',
     ],
 
     'form' => [

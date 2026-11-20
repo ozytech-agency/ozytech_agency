@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'title' => 'About Ozytech Agency | Engineering the Work Behind the Next',
+    'title' => 'About Ozytech Agency',
 
     'meta' => [
-        'description' => "Ozytech Agency is a global engineering guild bringing principal-level thinking and practical momentum to ambitious teams' software.",
+        'description' => 'Ozytech Agency is a digital solutions company helping entrepreneurs, startups, and established businesses build, launch, and grow.',
     ],
 
     'hero' => [
-        'eyebrow' => 'The people behind the systems',
+        'eyebrow' => 'About Ozytech Agency',
         'title' => 'Built for the work that matters.',
-        'description' => 'Ozytech Agency is a global engineering guild for ambitious teams. We bring principal-level thinking, careful craft, and practical momentum to the software that moves your business forward.',
+        'description' => 'Ozytech Agency is a digital solutions company helping entrepreneurs, startups, and established businesses build, launch, and grow.',
         'cta_primary' => 'Start your project',
         'cta_secondary' => 'Our principles',
         'stat_number' => '01',
@@ -18,45 +18,39 @@ return [
     ],
 
     'section1' => [
-        'label' => 'What we believe',
-        'title' => 'Good engineering creates room for better ideas.',
-        'paragraph1' => 'The best technology partner does more than ship features. They make complexity legible, protect the quality bar, and leave your team stronger than they found it.',
-        'paragraph2' => 'That is the standard we bring to every engagement: honest architecture, direct communication, and a bias toward systems that can keep earning their place as your business grows.',
+        'label' => 'OUR PHILOSOPHY',
+        'title' => 'What We Believe',
+        'paragraph1' => 'We believe technology should create opportunities, simplify business challenges, and turn ambitious ideas into reality. Every business deserves access to the right tools, expertise, and digital solutions to grow and succeed.',
+        'cta' => 'Start Your Project Today',
     ],
 
     'principles' => [
         'label' => 'How we work',
-        'title' => 'A guild built around trust, not theatre.',
-        'description' => 'Our operating principles keep the work focused when the problem is complex and the stakes are real.',
+        'title' => 'Built on Trust. Driven by Innovation. Focused on Results.',
+        'description' => 'Our approach is built around transparency, collaboration, and quality. We combine technical expertise with a clear understanding of your business goals to deliver solutions that make a real difference.',
         'cards' => [
-            ['title' => 'Think in systems', 'description' => 'We design for the full lifecycle: reliability, security, cost, adoption, and the people who will own the work after launch.'],
-            ['title' => 'Make it clear', 'description' => 'Decisions belong in the open. We explain tradeoffs plainly and keep stakeholders close to the technical truth.'],
-            ['title' => 'Leave it better', 'description' => 'Every engagement should create durable capability, from a cleaner platform to a team that can move with confidence.'],
+            ['title' => 'Understand Before We Build', 'description' => 'Every successful project starts with understanding. We take the time to learn about your business, identify your challenges, and define the right solution before development begins.'],
+            ['title' => 'Keep Everything Transparent', 'description' => 'Clear communication creates better partnerships. We keep you involved throughout the process, share progress regularly, and make sure every decision aligns with your vision.'],
+            ['title' => 'Deliver Quality That Lasts', 'description' => 'We build with performance, security, scalability, and long-term value in mind. Our goal is not just to complete projects, but to create solutions that support your business as it grows.'],
         ],
     ],
 
     'team' => [
-        'label' => 'Who you will work with',
-        'title' => 'The team behind the work.',
-        'description' => 'The senior builders who show up on every client call personally, from the first architecture sketch to the last deployment.',
+        'label' => 'THE PEOPLE BEHIND OZYTECH',
+        'title' => 'Meet the Co-Founders Behind the Vision',
+        'description' => 'Ozytech was built on a shared vision: making technology and digital solutions more accessible to businesses and entrepreneurs.',
         'empty' => 'Our team page is being updated. Check back soon.',
     ],
 
     'numbers' => [
         'label' => 'The guild by the numbers',
         'title' => 'Small enough to stay close. Experienced enough to go deep.',
-        'items' => [
-            ['value' => '12+', 'label' => 'Years average senior builder tenure'],
-            ['value' => '250+', 'label' => 'Enterprise systems shipped'],
-            ['value' => '6', 'label' => 'Regions connected by our guild'],
-            ['value' => '98.5%', 'label' => 'Long-term partner retention'],
-        ],
     ],
 
     'cta' => [
-        'label' => 'Start with the hard question',
-        'title' => 'Bring us the problem behind the brief.',
-        'description' => 'Tell us what is changing in your business. We will bring a principal engineer to the first conversation and help you find the clearest next move.',
+        'label' => 'LET\'S BUILD SOMETHING GREAT',
+        'title' => 'Tell Us Your Vision. We\'ll Help You Make It Happen.',
+        'description' => 'Have a business idea, a project to launch, or a challenge to solve?  Whether you need guidance or support, our team is ready to help you find the right way forward.',
         'button' => 'Talk to the team',
     ],
 ];

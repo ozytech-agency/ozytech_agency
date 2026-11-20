@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'about' => 'Pioneering high-velocity software engineering, enterprise cloud architecture, and mission-critical AI solutions for modern scale-ups and global tech enterprises.',
+    'about' => 'Get in touch with Ozytech Agency for web development, SaaS, e-commerce, IT solutions, business formation, and payment integration services.',
     'services_heading' => 'Services Suite',
     'services' => [
         ['label' => 'IT Solutions', 'slug' => 'it-infrastructure'],
@@ -34,7 +34,7 @@ return [
         'label' => 'Stay in the loop',
         'placeholder' => 'Your email address',
         'cta' => 'Subscribe',
-        'success' => 'Thanks — check your inbox to confirm your subscription.',
+        'success' => 'Thanks - check your inbox to confirm your subscription.',
         'invalid' => 'Please enter a valid work email address.',
     ],
     'copyright' => ':year Ozytech Agency. All rights reserved.',

@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'title' => 'Ozytech Agency Blog | Engineering Notes for Ambitious Teams',
+    'title' => 'Ozytech Agency Blog - Technology, Business & Digital Insights',
 
     'hero' => [
-        'badge' => 'Engineering notes',
+        'badge' => 'OZYTECH AGENCY BLOGS',
         'title' => 'Ideas that make complex technology easier to move.',
-        'description' => 'Clear thinking on architecture, AI, cloud systems, and the decisions that help ambitious teams ship with confidence.',
+        'description' => 'Discover ideas, learn new strategies, and stay ahead in the ever-evolving digital world.',
     ],
 
     'featured' => [
@@ -17,11 +17,11 @@ return [
     ],
 
     'why_blog' => [
-        'label' => 'Why this blog',
-        'title' => 'Useful notes, without the theatre.',
-        'description' => 'We write for people making real decisions: what to build, what to simplify, and where to invest before scale makes every choice more expensive.',
+        'label' => 'WHY READ OUR BLOG',
+        'title' => 'Insights That Inspire. Knowledge That Moves You Forward.',
+        'description' => 'Insights That Inspire. Knowledge That Moves You Forward.',
         'stat1' => 'focus areas',
-        'stat2' => 'clear point of view',
+        'stat2' => 'Sharing Knowledge That Matters',
     ],
 
     'latest' => [
@@ -39,7 +39,7 @@ return [
     ],
 
     'read_more' => 'Read the note',
-    'empty' => 'No posts published yet — check back soon.',
+    'empty' => 'No posts published yet - check back soon.',
 
     'show' => [
         'back' => 'Back to the blog',

@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'title' => 'Contact Ozytech Agency',
-    'meta_description' => "Get in touch with Ozytech Agency's engineering team to start a conversation about your next software, cloud, or AI project.",
+    'title' => 'Contact Ozytech Agency - Let\'s Build Something Together',
+    'meta_description' => 'Get in touch with Ozytech Agency for web development, SaaS, e-commerce, IT solutions, business formation, and payment integration services.',
 
     'hero' => [
         'eyebrow' => 'Get in touch',
         'title' => "Let's talk.",
-        'subtitle' => 'Questions, support, or just want to say hello — reach us directly below.',
+        'subtitle' => 'Have a Project in Mind? Let\'s Make It Happen.',
     ],
 
     'details' => [
@@ -16,7 +16,7 @@ return [
         'phone_label' => 'Phone',
         'address_label' => 'Office',
         'hours_label' => 'Hours',
-        'hours_value' => 'Mon–Fri, 09:00–18:00 (GMT+1)',
+        'hours_value' => 'Mon-Fri, 09:00-18:00 (GMT+1)',
         'social_label' => 'Follow us',
     ],
 
@@ -29,6 +29,6 @@ return [
         'message_label' => 'Message',
         'message_placeholder' => 'How can we help?',
         'submit' => 'Send message',
-        'success' => "Thanks — we've received your message and will reply soon.",
+        'success' => "Thanks - we've received your message and will reply soon.",
     ],
 ];

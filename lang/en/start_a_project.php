@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'title' => 'Contact Ozytech Agency — Start a Project, Partnership or Support Conversation',
-    'meta_description' => 'Tell Ozytech Agency about your project and get matched with the right engineering team and package.',
+    'title' => 'Ozytech Agency - Start Your Project',
+    'meta_description' => 'Ready to bring your ideas to life? Submit your project details to Ozytech and discover tailored web, mobile, e-commerce, and SaaS solutions for your business.',
 
     'hero' => [
         'badge' => 'We reply in hours, not weeks',
-        'title' => "Let's scope the system you actually need",
-        'subtitle' => "Tell us where you are and where you're heading. Your message is routed straight to a principal engineer — not a generic inbox — who can talk architecture, timelines and budget on the first call.",
+        'title' => "Let's Bring Your Ideas to Life",
+        'subtitle' => "tell us about your project, your goals, and what you're looking to achieve. Fill out the form below, and our team will review your request and get back to you to discuss the next steps.",
         'cta_primary' => 'Contact us',
     ],
 
@@ -55,7 +55,7 @@ return [
         'privacy_note_prefix' => 'We never share your information. Typical reply:',
         'privacy_note_suffix' => 'under 24 hours.',
         'success' => [
-            'title' => "Message received — you're in the right hands",
+            'title' => "Message received - you're in the right hands",
             'message_prefix' => 'A confirmation is on its way to',
             'message_suffix' => 'A principal engineer will reply within 24 hours. For anything time-critical, call',
             'reset_cta' => 'Send another message',
@@ -75,20 +75,20 @@ return [
     'sidebar' => [
         'schedule' => [
             'title' => 'Prefer to talk it through?',
-            'desc' => 'Message us directly on WhatsApp. No sales script — just a real conversation about your project, scope and timeline.',
+            'desc' => 'Message us directly on WhatsApp. No sales script - just a real conversation about your project, scope and timeline.',
             'cta' => 'Contact us on WhatsApp',
         ],
         'channels' => [
             'title' => 'Direct channels',
             'email' => 'Write to us anytime',
-            'hours' => 'Mon–Fri, business hours',
+            'hours' => 'Mon-Fri, business hours',
         ],
         'next_steps' => [
             'title' => 'What happens next',
             'steps' => [
-                ['title' => 'We review & route', 'desc' => 'Within 24 hours, to the right principal — not a queue.'],
-                ['title' => 'Intro & scoping call', 'desc' => '30–45 min to pressure-test goals, constraints, timeline and budget.'],
-                ['title' => 'Proposal & architecture brief', 'desc' => 'In 2–4 days: fixed scope, team plan and milestones you can act on.'],
+                ['title' => 'We review & route', 'desc' => 'Within 24 hours, to the right principal - not a queue.'],
+                ['title' => 'Intro & scoping call', 'desc' => '30-45 min to pressure-test goals, constraints, timeline and budget.'],
+                ['title' => 'Proposal & architecture brief', 'desc' => 'In 2-4 days: fixed scope, team plan and milestones you can act on.'],
             ],
         ],
     ],
@@ -101,13 +101,13 @@ return [
         'browse_all' => 'Browse all FAQs',
         'items' => [
             ['q' => 'How quickly will someone get back to me?', 'a' => 'Median first response is under 24 hours. For a new project, expect a scoping call scheduled within 2 business days. Production incidents from existing clients are acknowledged within 15 minutes.'],
-            ['q' => 'Do you sign an NDA before discovery?', 'a' => 'Yes. Mention it in your message and we send a mutual NDA before any technical detail is exchanged. If you have your own paper, send it over — our legal team turns most NDAs around same day.'],
+            ['q' => 'Do you sign an NDA before discovery?', 'a' => 'Yes. Mention it in your message and we send a mutual NDA before any technical detail is exchanged. If you have your own paper, send it over - our legal team turns most NDAs around same day.'],
             ['q' => 'What is your minimum engagement?', 'a' => 'Discovery & architecture sprints start at 2 weeks. Build engagements typically begin with an 8-week embedded pod (architect + engineers + delivery lead). Support retainers are month-to-month.'],
-            ['q' => 'Do you work with pre-seed and early-stage startups?', 'a' => "Yes, alongside scale-ups and global enterprises. We scope to your stage and runway — that often means a lean MVP pod plus a clear architecture path so you don't rebuild at Series A."],
+            ['q' => 'Do you work with pre-seed and early-stage startups?', 'a' => "Yes, alongside scale-ups and global enterprises. We scope to your stage and runway - that often means a lean MVP pod plus a clear architecture path so you don't rebuild at Series A."],
             ['q' => 'Can you handle incorporation and payments alongside the build?', 'a' => 'Yes. US (Delaware/Wyoming) or global company formation, EIN, registered agent, and Stripe / PayPal / multi-currency gateway integration can all run in parallel with engineering under one plan.'],
-            ['q' => 'How does pricing work?', 'a' => 'Fixed-scope pricing for discovery, monthly pod pricing for build, and retainers for ongoing support. You receive a written estimate with milestones after the scoping call — no obligation.'],
+            ['q' => 'How does pricing work?', 'a' => 'Fixed-scope pricing for discovery, monthly pod pricing for build, and retainers for ongoing support. You receive a written estimate with milestones after the scoping call - no obligation.'],
             ['q' => 'Which timezones can you cover?', 'a' => 'Our guild spans the Americas, EMEA and APAC, so we maintain real overlap hours with any timezone. 24/7 site-reliability coverage is available on retainer.'],
-            ['q' => "I'm an existing client — where do I get support?", 'a' => 'Use support@ozytech.agency or your dedicated Slack channel. Choose "Client support" in the form for anything that needs a paper trail; production incidents carry a 15-minute acknowledgement SLA.'],
+            ['q' => "I'm an existing client - where do I get support?", 'a' => 'Use support@ozytech.agency or your dedicated Slack channel. Choose "Client support" in the form for anything that needs a paper trail; production incidents carry a 15-minute acknowledgement SLA.'],
         ],
     ],
 
