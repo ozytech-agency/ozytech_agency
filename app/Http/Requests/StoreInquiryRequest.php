@@ -61,7 +61,7 @@ class StoreInquiryRequest extends FormRequest
             'role' => ['nullable', 'string', 'max:255'],
             'work_area' => ['nullable', 'string', 'max:100'],
             'package' => ['nullable', 'string', Rule::exists('packages', 'key')->where('is_published', true)],
-            'message' => ['required', 'string', 'max:1500'],
+            'message' => ['nullable', 'string', 'max:1500'],
             'referral' => ['nullable', 'string', 'max:150'],
             'consent' => ['required', 'accepted'],
         ];

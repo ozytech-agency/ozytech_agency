@@ -13,7 +13,7 @@ return [
     'form' => [
         'heading' => 'Rédigez votre avis',
         'name_label' => 'Votre nom',
-        'name_placeholder' => 'Amina Benali',
+        'name_placeholder' => 'Jean Dupont',
         'email_label' => 'E-mail',
         'email_placeholder' => 'vous@entreprise.com',
         'email_note' => 'Jamais affiché publiquement. Nous l’utilisons uniquement pour confirmer votre avis si besoin.',

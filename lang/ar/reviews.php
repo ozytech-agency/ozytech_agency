@@ -13,7 +13,7 @@ return [
     'form' => [
         'heading' => 'اكتب تقييمك',
         'name_label' => 'اسمك',
-        'name_placeholder' => 'أمينة بنعلي',
+        'name_placeholder' => 'محمد أحمد',
         'email_label' => 'البريد الإلكتروني',
         'email_placeholder' => 'you@company.com',
         'email_note' => 'لا يُعرض علنًا أبدًا. نستخدمه فقط إذا احتجنا إلى تأكيد تقييمك.',

@@ -13,7 +13,7 @@ return [
     'form' => [
         'heading' => 'Write your review',
         'name_label' => 'Your name',
-        'name_placeholder' => 'Amina Benali',
+        'name_placeholder' => 'John Doe',
         'email_label' => 'Email',
         'email_placeholder' => 'you@company.com',
         'email_note' => 'Never shown publicly. We only use it if we need to confirm your review.',

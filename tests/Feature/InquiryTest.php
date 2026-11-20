@@ -273,6 +273,17 @@ class InquiryTest extends TestCase
         $this->assertDatabaseHas('inquiries', ['user_id' => $user->id, 'second_address' => null]);
     }
 
+    public function test_project_details_message_is_optional(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)
+            ->post(route('start-a-project.store', ['locale' => 'en']), $this->payload(['message' => '']))
+            ->assertSessionHasNoErrors();
+
+        $this->assertDatabaseHas('inquiries', ['user_id' => $user->id, 'message' => null]);
+    }
+
     public function test_role_and_work_area_are_optional(): void
     {
         $user = User::factory()->create();

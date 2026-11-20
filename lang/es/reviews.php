@@ -13,7 +13,7 @@ return [
     'form' => [
         'heading' => 'Escribe tu opinión',
         'name_label' => 'Tu nombre',
-        'name_placeholder' => 'Amina Benali',
+        'name_placeholder' => 'Juan Pérez',
         'email_label' => 'Correo electrónico',
         'email_placeholder' => 'tu@empresa.com',
         'email_note' => 'Nunca se muestra públicamente. Solo lo usamos si necesitamos confirmar tu opinión.',

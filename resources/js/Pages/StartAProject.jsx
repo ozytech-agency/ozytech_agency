@@ -206,7 +206,7 @@ export default function StartAProject() {
                                                     disabled={!!user}
                                                     required
                                                     autoComplete="email"
-                                                    placeholder={user ? undefined : 'amina@company.com'}
+                                                    placeholder={user ? undefined : t('start_a_project.form.email_placeholder')}
                                                     {...field('email')}
                                                 />
                                                 {errors.email && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.email}</p>}
@@ -220,7 +220,7 @@ export default function StartAProject() {
                                                     type="email"
                                                     className="field"
                                                     autoComplete="off"
-                                                    placeholder="amina@gmail.com"
+                                                    placeholder={t('start_a_project.form.second_email_placeholder')}
                                                     {...field('second_email')}
                                                 />
                                                 {errors.second_email && <p className="mt-space-2xs font-body-sm text-body-sm text-error">{errors.second_email}</p>}
@@ -454,7 +454,7 @@ export default function StartAProject() {
                                         <div>
                                             <div className="flex items-baseline justify-between mb-space-2xs">
                                                 <label htmlFor="message" className="font-label-md text-label-md text-on-surface">
-                                                    {t('start_a_project.form.message')} <span className="text-secondary-container">*</span>
+                                                    {t('start_a_project.form.message')} <span className="text-outline font-normal">{t('start_a_project.form.optional')}</span>
                                                 </label>
                                                 <span className="font-body-sm text-body-sm text-outline">{data.message.length} / 1500</span>
                                             </div>
