@@ -19,10 +19,10 @@ export default function PolicyShow({ policy }) {
 
             <section className="relative overflow-hidden bg-primary-container py-space-4xl text-on-primary">
                 <div className="absolute right-[-8%] top-[-35%] h-[520px] w-[520px] rounded-full bg-secondary-container/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
-                <div className="relative mx-[6%]">
+                <div className="relative mx-[6%] text-center">
                     <p className="mb-space-sm font-label-sm text-label-sm uppercase tracking-widest text-secondary-fixed-dim">{t('policies.eyebrow')}</p>
-                    <h1 className="max-w-3xl font-display-xl text-display-xl leading-[1.1]">{policy.title}</h1>
-                    {policy.summary && <p className="mt-space-md max-w-2xl font-body-lg text-body-lg text-primary-fixed-dim">{policy.summary}</p>}
+                    <h1 className="mx-auto max-w-3xl font-display-xl text-display-xl leading-[1.1]">{policy.title}</h1>
+                    {policy.summary && <p className="mx-auto mt-space-md max-w-2xl font-body-lg text-body-lg text-primary-fixed-dim">{policy.summary}</p>}
                 </div>
             </section>
 
