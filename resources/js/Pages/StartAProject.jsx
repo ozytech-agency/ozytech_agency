@@ -82,7 +82,11 @@ export default function StartAProject() {
         e.preventDefault();
         post(route('start-a-project.store'), {
             preserveScroll: true,
-            onSuccess: () => setSubmitted(true),
+            onSuccess: () => {
+                // Reported to the Meta Pixel (when configured) so ad campaigns can optimise for real inquiries.
+                window.fbq?.('track', 'Lead', { content_name: data.topic, content_category: data.package || undefined });
+                setSubmitted(true);
+            },
         });
     };
 

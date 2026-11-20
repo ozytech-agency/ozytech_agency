@@ -30,6 +30,12 @@ const stopLocaleSync = router.on('navigate', (event) => {
     if (cookieName && availableLocales) syncStoredLocale({ cookieName, availableLocales });
 });
 
+// Inertia fires `navigate` on the first page load and on every client-side visit, so this
+// counts each page once; app.blade.php only initialises the Meta Pixel when it is configured.
+router.on('navigate', () => {
+    window.fbq?.('track', 'PageView');
+});
+
 router.on('navigate', (event) => {
     const locale = event.detail.page.props.locale;
     if (!locale) return;

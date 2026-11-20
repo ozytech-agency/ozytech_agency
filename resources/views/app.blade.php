@@ -37,6 +37,22 @@
             }());
         </script>
 
+        @if ($metaPixelId = config('services.meta_pixel.id'))
+            {{-- Meta Pixel: only initialised here. PageView is sent from resources/js/app.jsx on every
+                 Inertia navigation (including the first load), so client-side page changes are counted too. --}}
+            <script>
+                !function(f,b,e,v,n,t,s)
+                {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window, document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', @js((string) $metaPixelId));
+            </script>
+        @endif
+
         <!-- Scripts -->
         @routes
         <script>
@@ -75,6 +91,9 @@
         @endif
     </head>
     <body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-primary">
+        @if ($metaPixelId = config('services.meta_pixel.id'))
+            <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id={{ urlencode($metaPixelId) }}&amp;ev=PageView&amp;noscript=1"></noscript>
+        @endif
         @inertia
     </body>
 </html>

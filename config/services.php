@@ -33,6 +33,10 @@ return [
         'secret' => env('GOOGLE_SHEETS_SECRET'),
     ],
 
+    'meta_pixel' => [
+        'id' => env('META_PIXEL_ID'),
+    ],
+
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
