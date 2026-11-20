@@ -2,7 +2,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
-import CountUp from '@/Components/CountUp';
+import ImpactStatValue, { IMPACT_STATS } from '@/Components/ImpactStatValue';
 import TechMarquee from '@/Components/TechMarquee';
 import Seo from '@/Components/Seo';
 import Avatar from '@/Components/Avatar';
@@ -187,7 +187,7 @@ export default function Home({ serviceImages = {}, reviews = [], packages = [] }
                         </h2>
                         <p className="font-body-md text-body-md text-on-surface-variant mt-space-2xs max-w-2xl">{t('home.services.subtitle')}</p>
                     </div>
-                    <Reveal as="div" stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg w-full">
+                    <Reveal as="div" stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-space-lg gap-y-space-2xl w-full">
                         {SERVICE_CARD_META.map((card) => {
                             const title = t(`home.services.cards.${card.key}.title`);
                             const image = card.image ?? serviceImages[card.slug];
@@ -371,23 +371,13 @@ export default function Home({ serviceImages = {}, reviews = [], packages = [] }
             {/* 5. IMPACT STATS */}
             <Reveal as="section" id="impact" className="w-full py-space-3xl bg-primary-container text-on-primary">
                 <div className="mx-[6%]">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-space-xl text-left">
-                        <div className="flex flex-col gap-space-2xs">
-                            <CountUp target={12} suffix="+" className="font-stat-counter text-stat-counter font-bold text-on-primary tracking-tight" />
-                            <span className="font-body-sm text-body-sm text-outline-variant">{t('home.stats.builder_tenure')}</span>
-                        </div>
-                        <div className="flex flex-col gap-space-2xs">
-                            <CountUp target={250} suffix="+" className="font-stat-counter text-stat-counter font-bold text-on-primary tracking-tight" />
-                            <span className="font-body-sm text-body-sm text-outline-variant">{t('home.stats.systems_shipped')}</span>
-                        </div>
-                        <div className="flex flex-col gap-space-2xs">
-                            <CountUp target={6} className="font-stat-counter text-stat-counter font-bold text-on-primary tracking-tight" />
-                            <span className="font-body-sm text-body-sm text-outline-variant">{t('home.stats.regions_connected')}</span>
-                        </div>
-                        <div className="flex flex-col gap-space-2xs">
-                            <CountUp target={98.5} suffix="%" decimals={1} className="font-stat-counter text-stat-counter font-bold text-on-primary tracking-tight" />
-                            <span className="font-body-sm text-body-sm text-outline-variant">{t('home.stats.partner_retention')}</span>
-                        </div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-x-space-2xl gap-y-space-xl text-center">
+                        {IMPACT_STATS.map((stat) => (
+                            <div key={stat.labelKey} className="flex flex-col items-center justify-center gap-space-2xs">
+                                <ImpactStatValue stat={stat} className="font-stat-counter text-stat-counter font-bold text-on-primary tracking-tight" />
+                                <span className="font-body-sm text-body-sm text-outline-variant">{t(stat.labelKey)}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </Reveal>
