@@ -349,7 +349,7 @@ export default function Home({ serviceImages = {}, reviews = [], packages = [] }
                             <p className="font-body-md text-body-md text-on-surface-variant">{t('home.guild.subtitle')}</p>
                             <div className="grid grid-cols-2 gap-space-md w-full pt-space-xs">
                                 <div className="bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
-                                    <div className="font-headline-sm text-headline-sm font-bold text-on-surface">{t('home.guild.stat1_value')}</div>
+                                    <div className="font-headline-sm text-headline-sm font-bold text-secondary-container">{t('home.guild.stat1_value')}</div>
                                     <div className="font-body-sm text-body-sm text-on-surface-variant">{t('home.guild.stat1_desc')}</div>
                                 </div>
                                 <div className="bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
