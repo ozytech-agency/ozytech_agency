@@ -25,25 +25,25 @@ return [
         'subtitle' => 'End-to-End Digital Engineering, Business Formation & Technology Solutions engineered to scale modern companies globally.',
         'cta' => 'Learn more',
         'cards' => [
-            'llc' => [
-                'badge' => 'Legal & Tax',
-                'title' => 'LLC & Incorporation',
-                'desc' => 'US (Delaware/Wyoming) & global business formation, registered agent, EIN tax setup, and compliance.',
+            'itSolutions' => [
+                'badge' => 'Infrastructure',
+                'title' => 'IT Solutions',
+                'desc' => 'Secure networks, servers, and scalable environments your team can rely on every day.',
             ],
-            'payments' => [
-                'badge' => 'FinTech',
-                'title' => 'Payment Solutions',
-                'desc' => 'Stripe, PayPal, multi-currency payment gateway integrations, merchant accounts, and recurring billing.',
+            'llcPayments' => [
+                'badge' => 'Legal & FinTech',
+                'title' => 'LLC Formation & Payment Solutions',
+                'desc' => 'US (Delaware/Wyoming) company formation, EIN and registered agent, plus Stripe, PayPal, and multi-currency payment setup.',
             ],
-            'shopifyCommerce' => [
+            'commerceWebsites' => [
                 'badge' => 'E-Commerce',
-                'title' => 'Shopify & Commerce',
-                'desc' => 'Custom Shopify Plus liquid engineering, headless storefronts, app integrations, and conversion checkout optimization.',
+                'title' => 'Shopify or WordPress & WooCommerce Websites',
+                'desc' => 'Conversion-focused Shopify stores, WooCommerce shops, and WordPress websites built for your business.',
             ],
-            'wordpress' => [
-                'badge' => 'CMS Architecture',
-                'title' => 'WordPress & Woo',
-                'desc' => 'Enterprise custom themes, headless WP, WooCommerce scale, speed optimization, and secure plugin architectures.',
+            'fullStackSaas' => [
+                'badge' => 'Software',
+                'title' => 'Full Stack Development & SaaS Development',
+                'desc' => 'Custom web applications and multi-tenant SaaS products with secure sign-up, billing, and admin dashboards.',
             ],
         ],
     ],
@@ -113,7 +113,6 @@ return [
         'card4_eyebrow' => 'PIPELINE METRIC',
         'card4_title' => 'Autonomous QA',
         'card4_desc' => '100% end-to-end regression testing on pull requests.',
-        'card4_coverage' => 'Coverage: 94.2%',
     ],
 
     'cta' => [

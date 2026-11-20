@@ -25,25 +25,25 @@ return [
         'subtitle' => 'Ingeniería digital de extremo a extremo, constitución de empresas y soluciones tecnológicas diseñadas para escalar compañías modernas a nivel global.',
         'cta' => 'Saber más',
         'cards' => [
-            'llc' => [
-                'badge' => 'Legal y fiscal',
-                'title' => 'LLC e incorporación',
-                'desc' => 'Constitución de empresas en EE. UU. (Delaware/Wyoming) y a nivel global, agente registrado, EIN fiscal y cumplimiento normativo.',
+            'itSolutions' => [
+                'badge' => 'Infraestructura',
+                'title' => 'Soluciones IT',
+                'desc' => 'Redes seguras, servidores y entornos escalables en los que tu equipo puede confiar cada día.',
             ],
-            'payments' => [
-                'badge' => 'FinTech',
-                'title' => 'Soluciones de pago',
-                'desc' => 'Integraciones de pasarelas de pago Stripe, PayPal y multidivisa, cuentas de comerciante y facturación recurrente.',
+            'llcPayments' => [
+                'badge' => 'Legal y FinTech',
+                'title' => 'Creación de LLC y soluciones de pago',
+                'desc' => 'Constitución de empresas en EE. UU. (Delaware/Wyoming), EIN y agente registrado, más configuración de Stripe, PayPal y pagos multidivisa.',
             ],
-            'shopifyCommerce' => [
+            'commerceWebsites' => [
                 'badge' => 'E-Commerce',
-                'title' => 'Shopify y comercio',
-                'desc' => 'Ingeniería Liquid de Shopify Plus a medida, tiendas headless, integraciones de apps y optimización del checkout.',
+                'title' => 'Sitios Shopify o WordPress y WooCommerce',
+                'desc' => 'Tiendas Shopify orientadas a la conversión, tiendas WooCommerce y sitios WordPress creados para tu negocio.',
             ],
-            'wordpress' => [
-                'badge' => 'Arquitectura CMS',
-                'title' => 'WordPress y Woo',
-                'desc' => 'Temas empresariales a medida, WP headless, WooCommerce a gran escala, optimización de velocidad y plugins seguros.',
+            'fullStackSaas' => [
+                'badge' => 'Software',
+                'title' => 'Desarrollo Full Stack y SaaS',
+                'desc' => 'Aplicaciones web a medida y productos SaaS multiinquilino con registro seguro, facturación y paneles de administración.',
             ],
         ],
     ],
@@ -113,7 +113,6 @@ return [
         'card4_eyebrow' => 'MÉTRICA DE PIPELINE',
         'card4_title' => 'QA autónomo',
         'card4_desc' => 'Pruebas de regresión de extremo a extremo al 100% en cada pull request.',
-        'card4_coverage' => 'Cobertura: 94.2%',
     ],
 
     'cta' => [
