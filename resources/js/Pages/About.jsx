@@ -2,6 +2,7 @@ import { Link } from '@inertiajs/react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
 import Seo from '@/Components/Seo';
+import ImpactStatValue, { IMPACT_STATS } from '@/Components/ImpactStatValue';
 import { useTranslations } from '@/lib/translations';
 
 const PRINCIPLE_ICONS = ['architecture', 'forum', 'trending_up'];
@@ -27,7 +28,6 @@ function getInitials(name) {
 export default function About({ teamMembers }) {
     const t = useTranslations();
     const principles = t('about.principles.cards');
-    const numbers = t('about.numbers.items');
 
     return (
         <SiteLayout>
@@ -98,7 +98,12 @@ export default function About({ teamMembers }) {
                         <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('about.section1.label')}</span>
                         <h2 className="mt-space-sm font-headline-lg text-headline-lg text-on-surface">{t('about.section1.title')}</h2>
                         <p className="mt-space-md text-on-surface-variant leading-relaxed">{t('about.section1.paragraph1')}</p>
-                        <p className="mt-space-md text-on-surface-variant leading-relaxed">{t('about.section1.paragraph2')}</p>
+                        <Link
+                            href={route('start-a-project')}
+                            className="mt-space-lg inline-flex items-center gap-space-xs bg-accent2 text-on-primary font-label-md text-label-md px-space-lg py-space-sm rounded-lg shadow-[0_10px_20px_-5px_rgba(233,87,71,0.35)] transition-all hover:-translate-y-0.5"
+                        >
+                            {t('about.section1.cta')} <span className="material-symbols-outlined text-base">arrow_forward</span>
+                        </Link>
                     </div>
                 </div>
             </Reveal>
@@ -180,10 +185,10 @@ export default function About({ teamMembers }) {
                         <h2 className="mt-space-sm font-headline-lg text-headline-lg text-on-surface">{t('about.numbers.title')}</h2>
                     </div>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-space-lg">
-                        {numbers.map((n) => (
-                            <div key={n.label} className="border-t-2 border-accent2 pt-space-md">
-                                <strong className="block font-headline-lg text-4xl text-on-surface">{n.value}</strong>
-                                <span className="text-on-surface-variant text-sm">{n.label}</span>
+                        {IMPACT_STATS.map((stat) => (
+                            <div key={stat.labelKey} className="border-t-2 border-accent2 pt-space-md">
+                                <ImpactStatValue stat={stat} className="block font-headline-lg text-4xl font-bold text-on-surface" />
+                                <span className="text-on-surface-variant text-sm">{t(stat.labelKey)}</span>
                             </div>
                         ))}
                     </div>
