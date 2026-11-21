@@ -39,15 +39,6 @@ const SERVICE_CARD_META = [
 ];
 
 
-const ABOUT_PHOTOS = [
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuDkJPdW8obQp1iA3g-wc5kBgMH7qk_IcokPWD0MjBfqm4V1CKxmKh9bV_rHZccMDPGOIsXgWX9C8JcXwMwAc2fuXXXz1BW9VeXqhKZ8HRHXJrA1EOCdLYBJ10S5K4gbPK6RqmPq6pjmVaBIIGLiY9XV57wE8vmtwOKivhI5D2wbfZ1AWBVU23HqnnPfqZchXyMLMrY1Sa2Zaq675rpx1XGOkgtF37kdBRKS6UFHX0MSn3Z4yFrGZE9c',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuAAxO0Z6TM4lGhwttxj8_60EcWymoXuaEw_V_6VSsNopxX--UKZaLTl6pIPfK24rQIxkoVU_QFhYjVCRecMdZgn3bOpZIUt0g5WzYJ8DftYPZOM3zgRFChNUkmKweahPBEGIm9i4M7p8lgA8mRAhoAwhH39djS9chtYeVDtzQF3tI8wlJea_-gnzbbPThLlD9JBZCBJNpYGffpcKZ2wDSaz7e0KrFypXT4ZY_lxHWZ1PRTaaY0gMC3U',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuCveN1pDO3glXLZsIJ29m92d6gyppXqG7WPRsLOs8MGBpOJrsM3g0lJ7yV4ifuf9FPlsNKbo7HWlj_5anaYQLgbixAoIw8l0QPEPJTp9CEu7wZ8K5_jCHB1xFRn0d3cDYsYXN9I44BT-xihameNXfNPphmspByRrmVVG1k2uj-tcO6qRwYfcDQH9swN9Aa7ldfpn-A9KQuUxZic_0hwYGHX9KPWy8ptxpDkQy2Y7yNb7fkE41NBTDM5',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuAjdfoOFMNmd-6-9B2fAq6X1pc614-_IGSmykpp4Ya9hLSxMyK3SkfTW0gWavubtMqznZK5jsbtr5VV3msKbuS2dTT6Ogd9-3_qyQUYsvNnv8R984OWQMTmp2D8GLPzKjIn7YC6d4KEil_uuGQnkZxcQ5g51b6TbqlRHjNA6lTUEVFa6XhyhbRjDqwAOuUwhgnis6hV-y9tXWS1HNFpEq_Z5h7mvcMkSvH_JYeBKd1p6GQWBkjGpuTo',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuDAjQkhzoxDqTZXzASvSs-Z5CpQhnGEXWwOxCNAn5l9sB2K0MX-p5FZ0DVV4PZQfCzuHIGOXbe8l6VTEzQJtOw6U5cPDfAORy-LabpwsUlMlzJtqY1MzscxDjExM18FyzXDw-NezuRkSLkofeLJ_3pSyKuAWjug-NIn-A0VYbjbTmtNL8YFQtHpKriWb19Gr6rSv7n2naqokwiLVEq-anWdVA1FCRBId5FXoREge0Ly-ftm6bzqL0kE',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuBsGGa6HVZwPHZaNBEaldw2uY1irTYW3uZNgNCcK75zLvj_2Ly5QIahlLNtqE90213nHhZlqvXGMO3723M6mkKawmtjeJ5S6uCC_cPH_sljNJgycRuhsrzbVDp6PoeBf0k3YNrq2y1eyEVddUobyyFF1E253ExzjNiVIahu_-yY_7UCPFW0gL7DWF5lXJ27cShjeKvPJ1l47qte0eL21gd_BHAvSivtvrLbTDOVXBibxft7vorO6LOE',
-];
-
 const TESTIMONIAL_AVATARS = [
     'https://lh3.googleusercontent.com/aida-public/AB6AXuAB7hoL1hha3W1Un81SUDuUgFI9U5aVC1c85SX4LSSQ_Nnef3JZ8G3BkpIZVUbZ-DSPT-n3J-UW13LDCrxV6tiaxfBCLCJWnAZSKO0GG3OzFs0m-ODKgDRu8idlpYVZe0uvOBfVBbultKs-IbCSTthUQl2KuS3-IESburDpQphCwdv59AmZ6PdUz1cmkosnDsr3B-1eaDWj9xrMKjdqv98QMGBAlvSDaR9GlRzOZlA2ECpbZ3n2CLIh',
     'https://lh3.googleusercontent.com/aida-public/AB6AXuDCieF_dpdB3n49PhYMv-TA2MyHwyCwTeE0kqIZ_j_xC2mBTiVYA0N9GIlDNQzk3A7YZ_KCSG1MURi0KuE-FfFh8r-OOXzup8N-GvwV_Y9CX3SlqtzpwrhfUMUUe4h0nblgIU_dJoR5YqT2Oeq9hyJBJ4TxnscgcPjogCvuXlKF97PlT7mYH8pjLhch_0crSbCz7LP5JxIAor8Qs83LcLnPmL6GCMcANHqkj43oqC7SH1rJf6VwUOH2',
@@ -333,22 +324,15 @@ export default function Home({ serviceImages = {}, reviews = [], packages = [] }
             <Reveal as="section" id="about" className="w-full py-space-3xl lg:py-space-4xl bg-surface">
                 <div className="mx-[6%]">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl items-center">
-                        <div className="lg:col-span-6 grid grid-cols-3 gap-space-xs">
-                            {[0, 2, 4].map((startIdx, colIdx) => (
-                                <div key={colIdx} className={`flex flex-col gap-space-xs ${colIdx === 1 ? 'sm:mt-space-2xl' : ''}`}>
-                                    {[ABOUT_PHOTOS[startIdx], ABOUT_PHOTOS[startIdx + 1]].map((src, i) => (
-                                        <div key={src} className={`${(colIdx + i) % 2 === 0 ? 'aspect-[3/4]' : 'aspect-square'} rounded-lg overflow-hidden shadow-sm bg-surface-container`}>
-                                            <img
-                                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                                                alt=""
-                                                aria-hidden="true"
-                                                loading="lazy"
-                                                src={src}
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                            ))}
+                        <div className="lg:col-span-6 flex justify-center">
+                            <img
+                                className="w-full max-w-xl h-auto"
+                                alt={t('home.guild.image_alt')}
+                                loading="lazy"
+                                width="2400"
+                                height="1850"
+                                src="/images/all-in-one-team.png"
+                            />
                         </div>
                         <div className="lg:col-span-6 flex flex-col items-start gap-space-md">
                             <div className="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">

@@ -81,6 +81,7 @@ return [
         'stat2_value' => 'Full Support',
         'stat2_desc' => 'From your initial idea to development, launch, and beyond.',
         'cta' => 'Explore Our Services',
+        'image_alt' => "Form your company, launch your online store, build your digital platform and grow your business.",
     ],
 
     'stats' => [

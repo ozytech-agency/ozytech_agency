@@ -79,6 +79,7 @@ return [
         'stat2_value' => 'Acompañamiento completo',
         'stat2_desc' => 'Desde tu idea inicial hasta el desarrollo, el lanzamiento y más allá.',
         'cta' => 'Explora nuestros servicios',
+        'image_alt' => "Crea tu empresa, lanza tu tienda online, construye tu plataforma digital y haz crecer tu negocio.",
     ],
 
     'stats' => [
