@@ -506,7 +506,7 @@ export default function Home({ serviceImages = {}, reviews = [], packages = [] }
                     <div className="flex flex-col sm:flex-row items-center gap-space-md">
                         <Link
                             href={route('start-a-project')}
-                            className="inline-flex items-center justify-center bg-primary-container text-on-primary font-label-md text-label-md px-space-2xl py-space-md rounded-lg shadow-xl hover:bg-primary transition-all hover:-translate-y-0.5"
+                            className="inline-flex items-center justify-center bg-[#263963] text-on-primary font-label-md text-label-md px-space-2xl py-space-md rounded-lg shadow-xl hover:bg-[#1d2c4d] transition-all hover:-translate-y-0.5"
                         >
                             {t('home.cta.primary')}
                         </Link>
