@@ -351,7 +351,7 @@ export default function Home({ serviceImages = {}, reviews = [], packages = [] }
                                 </div>
                             </div>
                             <Link
-                                href={route('packages')}
+                                href={route('services.index')}
                                 className="inline-flex items-center gap-space-xs self-start mt-[20px] bg-accent2 text-on-primary font-label-md text-label-md px-space-lg py-space-sm rounded-lg shadow-[0_10px_20px_-5px_rgba(233,87,71,0.35)] transition-all hover:-translate-y-0.5"
                             >
                                 <span>{t('home.guild.cta')}</span> <span className="material-symbols-outlined text-base">arrow_forward</span>
