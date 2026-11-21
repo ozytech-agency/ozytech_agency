@@ -104,6 +104,18 @@ body {
     overscroll-behavior: none;
 }
 
+/* Images can't be dragged out of the site (Chrome/Safari/Edge; Firefox is handled in app.jsx).
+   The rich-text editor keeps dragging so images can still be moved while editing. */
+img {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+[contenteditable='true'] img {
+    -webkit-user-drag: auto;
+    user-drag: auto;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }

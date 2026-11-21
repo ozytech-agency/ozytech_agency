@@ -22,6 +22,14 @@ router.on('beforeUpdate', (event) => {
     window.Ziggy.defaults = { ...window.Ziggy.defaults, locale };
 });
 
+// Stops images being dragged out of the site in every browser (the CSS rule in app.css
+// doesn't cover Firefox). Images inside the rich-text editor can still be moved.
+document.addEventListener('dragstart', (event) => {
+    if (event.target instanceof HTMLImageElement && !event.target.closest('[contenteditable="true"]')) {
+        event.preventDefault();
+    }
+});
+
 // Runs once, on the first full page load: repairs the saved language if the visitor cleared
 // either localStorage or the cookie, so the bare domain keeps honouring their choice.
 const stopLocaleSync = router.on('navigate', (event) => {
