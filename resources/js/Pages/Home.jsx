@@ -451,7 +451,7 @@ export default function Home({ serviceImages = {}, reviews = [], packages = [] }
                             </Link>
                         </div>
                         <div className="lg:col-span-7 relative">
-                            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-80 h-80 lg:w-96 lg:h-96 bg-secondary-container rounded-3xl -rotate-6 opacity-85 -z-0"></div>
+                            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-80 h-80 lg:w-96 lg:h-96 bg-[#263963] rounded-3xl -rotate-6 opacity-85 -z-0"></div>
                             <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-space-md">
                                 <div className="bg-surface-container-lowest p-space-md rounded-xl shadow-xl flex flex-col items-center justify-center text-center gap-space-xs">
                                     <span className="font-label-sm text-label-sm text-on-tertiary-container uppercase">{t('home.solutions.card1_eyebrow')}</span>
