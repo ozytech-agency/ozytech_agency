@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Ozytech - Soluciones IT y servicios digitales para empresas globales',
+    'title' => 'Soluciones IT y servicios digitales para empresas globales',
     'meta_description' => 'Ozytech Agency ofrece soluciones IT, desarrollo web full stack, plataformas SaaS, sitios Shopify y WooCommerce, creación de LLC y soluciones de pago.',
 
     'hero' => [

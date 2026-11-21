@@ -2,6 +2,7 @@
 
 return [
     'skip_to_content' => 'Aller au contenu',
+    'brand' => 'Ozytech Agency',
     'logo_alt' => 'Logo Ozytech Agency',
     'home' => 'Accueil',
     'about' => 'À propos',

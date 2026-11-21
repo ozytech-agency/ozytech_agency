@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'À propos d\'Ozytech Agency',
+    'title' => 'À propos de nous',
 
     'meta' => [
         'description' => 'Ozytech Agency est une entreprise de solutions numériques qui aide les entrepreneurs, les startups et les entreprises établies à se construire, se lancer et se développer.',

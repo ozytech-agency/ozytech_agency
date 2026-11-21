@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Packages - Ozytech Agency',
+    'title' => 'Packages',
     'meta_description' => 'Explore Ozytech Agency\'s flexible packages for web development, e-commerce, SaaS, IT solutions, business formation, and payment integration.',
 
     'hero' => [

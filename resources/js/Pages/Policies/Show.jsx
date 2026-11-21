@@ -12,7 +12,7 @@ export default function PolicyShow({ policy }) {
     return (
         <SiteLayout>
             <Seo
-                title={`${policy.title} | Ozytech Agency`}
+                title={policy.title}
                 description={policy.summary}
                 breadcrumbs={[{ name: policy.title, path: `/policies/${policy.slug}` }]}
             />

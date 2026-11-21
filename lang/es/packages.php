@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Paquetes - Ozytech Agency',
+    'title' => 'Paquetes',
     'meta_description' => 'Descubre los paquetes flexibles de Ozytech Agency para desarrollo web, e-commerce, SaaS, soluciones IT, creación de empresas e integración de pagos.',
 
     'hero' => [

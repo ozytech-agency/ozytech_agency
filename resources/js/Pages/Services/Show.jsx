@@ -20,7 +20,7 @@ export default function ServiceShow({ slug, title, lead, metaDescription, body, 
     return (
         <SiteLayout>
             <Seo
-                title={`${title} | Ozytech Agency`}
+                title={title}
                 description={description}
                 image={gallery?.[0]}
                 jsonLd={serviceJsonLd}

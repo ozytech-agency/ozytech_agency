@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'FAQ - Ozytech Agency',
+    'title' => 'FAQ',
     'meta_description' => "Réponses aux questions courantes sur la collaboration avec Ozytech Agency : tarifs, délais, modèles d'engagement et fonctionnement de notre équipe d'ingénierie.",
 
     'hero' => [

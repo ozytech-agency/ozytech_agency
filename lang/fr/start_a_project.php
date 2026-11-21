@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'title' => 'Ozytech Agency - Démarrer votre projet',
-    'meta_description' => "Prêt à concrétiser vos idées ? Présentez votre projet à Ozytech et découvrez des solutions sur mesure en développement web, mobile, e-commerce et SaaS.",
+    'title' => 'Démarrer votre projet',
+    'meta_description' => 'Prêt à concrétiser vos idées ? Présentez votre projet à Ozytech et découvrez des solutions sur mesure en développement web, mobile, e-commerce et SaaS.',
 
     'hero' => [
         'badge' => 'Nous répondons en heures, pas en semaines',

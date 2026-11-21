@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Ozytech - IT Solutions & Digital Business Services for Global Enterprises',
+    'title' => 'IT Solutions & Digital Business Services for Global Enterprises',
     'meta_description' => 'Ozytech Agency delivers IT solutions, full-stack web development, SaaS platforms, 
     Shopify and WooCommerce websites, LLC formation, and payment solutions.',
 

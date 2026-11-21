@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Offres - Ozytech Agency',
+    'title' => 'Offres',
     'meta_description' => 'Découvrez les offres flexibles d\'Ozytech Agency en développement web, e-commerce, SaaS, solutions IT, création d\'entreprise et intégration de paiements.',
 
     'hero' => [

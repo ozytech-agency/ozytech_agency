@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Submit a Review - Ozytech Agency',
+    'title' => 'Submit a Review',
     'meta_description' => 'Worked with Ozytech Agency? Share your experience - your review helps other teams decide.',
 
     'hero' => [

@@ -23,6 +23,10 @@ export default function Seo({ title, description, image, noindex = false, robots
     const { appUrl, currentPath, locale, translations } = props;
     const resolvedImage = image ?? `${appUrl}/images/logo.png`;
 
+    // Every page title leads with the brand: "Ozytech Agency - <page title>".
+    const brand = translations?.nav?.brand ?? 'Ozytech Agency';
+    const fullTitle = title ? `${brand} - ${title}` : brand;
+
     const segments = (currentPath ?? '').split('/').filter(Boolean);
     const hasLocale = LOCALES.includes(segments[0]);
     const rest = (hasLocale ? segments.slice(1) : segments).join('/');
@@ -48,7 +52,7 @@ export default function Seo({ title, description, image, noindex = false, robots
         : null;
 
     return (
-        <Head title={title}>
+        <Head title={fullTitle}>
             {description && <meta name="description" content={description} />}
 
             {hasLocale && <link rel="canonical" href={canonical} head-key="canonical" />}
@@ -59,12 +63,12 @@ export default function Seo({ title, description, image, noindex = false, robots
             {robotsContent && <meta name="robots" content={robotsContent} />}
 
             <meta property="og:type" content="website" />
-            {title && <meta property="og:title" content={title} />}
+            <meta property="og:title" content={fullTitle} />
             {description && <meta property="og:description" content={description} />}
             <meta property="og:image" content={resolvedImage} />
             <meta property="og:url" content={canonical} />
             <meta name="twitter:card" content="summary_large_image" />
-            {title && <meta name="twitter:title" content={title} />}
+            <meta name="twitter:title" content={fullTitle} />
             {description && <meta name="twitter:description" content={description} />}
             <meta name="twitter:image" content={resolvedImage} />
 

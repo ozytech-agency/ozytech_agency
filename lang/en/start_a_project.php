@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Ozytech Agency - Start Your Project',
+    'title' => 'Start Your Project',
     'meta_description' => 'Ready to bring your ideas to life? Submit your project details to Ozytech and discover tailored web, mobile, e-commerce, and SaaS solutions for your business.',
 
     'hero' => [

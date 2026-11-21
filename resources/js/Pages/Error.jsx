@@ -26,7 +26,7 @@ export default function Error({ status }) {
 
     return (
         <SiteLayout>
-            <Seo title={`${title} | Ozytech Agency`} description={description} noindex />
+            <Seo title={title} description={description} noindex />
 
             <section className="flex w-full flex-1 flex-col items-center justify-center py-space-4xl text-center">
                 <span className="font-stat-counter text-stat-counter font-bold text-secondary-container">{status}</span>

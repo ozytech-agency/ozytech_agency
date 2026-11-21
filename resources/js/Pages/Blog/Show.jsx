@@ -23,7 +23,7 @@ export default function BlogShow({ post, related }) {
     return (
         <SiteLayout>
             <Seo
-                title={`${post.title} | Ozytech Agency`}
+                title={post.title}
                 description={post.excerpt}
                 image={post.cover_image}
                 jsonLd={articleJsonLd}

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'About Ozytech Agency',
+    'title' => 'About Us',
 
     'meta' => [
         'description' => 'Ozytech Agency is a digital solutions company helping entrepreneurs, startups, and established businesses build, launch, and grow.',

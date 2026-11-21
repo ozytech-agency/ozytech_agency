@@ -10,7 +10,7 @@ export default function ServicesIndex({ services }) {
 
     return (
         <SiteLayout>
-            <Seo title={`${title} | Ozytech Agency`} description={description} breadcrumbs={[{ name: title, path: '/services' }]} />
+            <Seo title={title} description={description} breadcrumbs={[{ name: title, path: '/services' }]} />
 
             <section className="w-full py-space-3xl lg:py-space-4xl bg-surface">
                 <div className="mx-[6%] flex flex-col gap-space-2xl">

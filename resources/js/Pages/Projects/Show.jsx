@@ -19,7 +19,7 @@ export default function ProjectShow({ project }) {
     return (
         <SiteLayout>
             <Seo
-                title={`${project.title} | Ozytech Agency`}
+                title={project.title}
                 description={project.short_description ?? undefined}
                 image={project.featured_image ?? undefined}
                 jsonLd={projectJsonLd}
