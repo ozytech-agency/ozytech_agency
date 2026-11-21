@@ -31,6 +31,7 @@ class AdminPackageManagementTest extends TestCase
             'icon' => 'fa-solid fa-seedling',
             'price_amount' => '$990',
             'price_period' => ['en' => 'one-time'],
+            'formation_states' => ['new-mexico', 'wyoming'],
             'is_featured' => false,
             'is_published' => true,
             'sort_order' => 3,
@@ -77,6 +78,46 @@ class AdminPackageManagementTest extends TestCase
         $package->refresh();
         $this->assertSame('$5,500', $package->price_amount);
         $this->assertSame(['Second', 'First'], $package->features->map->localized('text')->all());
+    }
+
+    public function test_admin_can_list_a_package_under_one_formation_state(): void
+    {
+        $package = Package::factory()->create(['key' => 'growth']);
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->put(route('admin.packages.update', ['locale' => 'en', 'package' => $package]), $this->payload([
+                'key' => 'growth',
+                'formation_states' => ['wyoming'],
+            ]))
+            ->assertSessionHasNoErrors();
+
+        $this->assertSame(['wyoming'], $package->refresh()->formation_states);
+    }
+
+    public function test_package_needs_at_least_one_known_formation_state(): void
+    {
+        $admin = User::factory()->admin()->create();
+
+        $this->actingAs($admin)
+            ->post(route('admin.packages.store', ['locale' => 'en']), $this->payload(['formation_states' => []]))
+            ->assertSessionHasErrors('formation_states');
+
+        $this->actingAs($admin)
+            ->post(route('admin.packages.store', ['locale' => 'en']), $this->payload(['formation_states' => ['texas']]))
+            ->assertSessionHasErrors('formation_states.0');
+    }
+
+    public function test_public_packages_expose_their_formation_states(): void
+    {
+        Package::factory()->create(['key' => 'growth', 'sort_order' => 1, 'formation_states' => ['new-mexico']]);
+        Package::factory()->create(['key' => 'pro', 'sort_order' => 2, 'formation_states' => ['new-mexico', 'wyoming']]);
+
+        $this->get(route('packages', ['locale' => 'en']))
+            ->assertOk()
+            ->assertInertia(fn (Assert $page) => $page
+                ->where('packages.0.formation_states', ['new-mexico'])
+                ->where('packages.1.formation_states', ['new-mexico', 'wyoming'])
+            );
     }
 
     public function test_public_packages_page_shows_only_published_packages_in_order(): void

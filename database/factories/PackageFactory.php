@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\FormationState;
 use App\Models\Package;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -30,6 +31,7 @@ class PackageFactory extends Factory
             'icon' => 'fa-solid fa-compass',
             'price_amount' => '$'.number_format(fake()->numberBetween(1000, 50000)),
             'price_period' => ['en' => 'one-time'],
+            'formation_states' => FormationState::values(),
             'is_featured' => false,
             'sort_order' => 0,
             'is_published' => true,

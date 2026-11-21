@@ -2,6 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import AdminLayout from '@/Layouts/AdminLayout';
 import DeleteButton from '@/Components/Admin/DeleteButton';
 import { StatusBadge } from '@/Components/Admin/Field';
+import { FORMATION_STATES } from '@/Components/StateSwitcher';
 import { useTranslations } from '@/lib/translations';
 
 export default function PackagesIndex({ packages }) {
@@ -27,6 +28,9 @@ export default function PackagesIndex({ packages }) {
                             <div className="flex flex-wrap items-center gap-1">
                                 <StatusBadge tone={pkg.is_published ? 'success' : 'neutral'}>{pkg.is_published ? t('admin.common.published') : t('admin.common.hidden')}</StatusBadge>
                                 {pkg.is_featured && <StatusBadge tone="warning">{t('admin.common.featured')}</StatusBadge>}
+                                {FORMATION_STATES.filter((state) => pkg.formation_states.includes(state.key)).map((state) => (
+                                    <StatusBadge key={state.key}>{t(state.labelKey)}</StatusBadge>
+                                ))}
                             </div>
                             <Link href={route('admin.packages.edit', pkg.id)} className="font-headline-sm text-xl font-bold text-on-surface hover:text-secondary">
                                 {pkg.title}

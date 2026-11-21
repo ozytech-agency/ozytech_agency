@@ -7,6 +7,7 @@ import TechMarquee from '@/Components/TechMarquee';
 import Seo from '@/Components/Seo';
 import Avatar from '@/Components/Avatar';
 import PackageCard from '@/Components/PackageCard';
+import StateSwitcher, { useFormationState } from '@/Components/StateSwitcher';
 import { StarRating } from '@/Components/StarRating';
 import { useTranslations } from '@/lib/translations';
 
@@ -55,6 +56,8 @@ const TESTIMONIAL_AVATARS = [
 
 export default function Home({ serviceImages = {}, reviews = [], packages = [] }) {
     const t = useTranslations();
+    const [formationState, setFormationState] = useFormationState();
+    const statePackages = packages.filter((pkg) => pkg.formation_states?.includes(formationState));
     const { appUrl } = usePage().props;
     const [slide, setSlide] = useState(0);
     const gridRef = useRef(null);
@@ -311,11 +314,17 @@ export default function Home({ serviceImages = {}, reviews = [], packages = [] }
                                 <span>{t('home.packages.cta')}</span> <span className="material-symbols-outlined text-base">arrow_forward</span>
                             </Link>
                         </div>
-                        <Reveal as="div" stagger className="grid grid-cols-1 gap-4 md:grid-cols-3">
-                            {packages.map((pkg) => (
-                                <PackageCard key={pkg.key} pkg={pkg} titleAs="h3" />
-                            ))}
-                        </Reveal>
+                        <StateSwitcher value={formationState} onChange={setFormationState} className="mb-space-xl" />
+                        {statePackages.length > 0 ? (
+                            // Keyed by state so the cards replay their staggered fade-in on every switch.
+                            <Reveal key={formationState} as="div" stagger className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                                {statePackages.map((pkg) => (
+                                    <PackageCard key={pkg.key} pkg={pkg} titleAs="h3" />
+                                ))}
+                            </Reveal>
+                        ) : (
+                            <p className="rounded-xl border border-dashed border-outline-variant p-space-lg text-center text-on-surface-variant">{t('packages.state_switcher.empty')}</p>
+                        )}
                     </div>
                 </Reveal>
             )}

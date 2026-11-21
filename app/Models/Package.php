@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable([
     'key', 'label', 'title', 'best_for', 'description', 'cta', 'badge', 'icon',
-    'price_amount', 'price_period', 'is_featured', 'sort_order', 'is_published',
+    'price_amount', 'price_period', 'formation_states', 'is_featured', 'sort_order', 'is_published',
 ])]
 class Package extends Model
 {
@@ -35,6 +35,7 @@ class Package extends Model
             'cta' => 'array',
             'badge' => 'array',
             'price_period' => 'array',
+            'formation_states' => 'array',
             'is_featured' => 'boolean',
             'is_published' => 'boolean',
         ];
@@ -65,7 +66,7 @@ class Package extends Model
     /**
      * The package as the public Packages / Start a Project pages consume it.
      *
-     * @return array{key: string, icon: string|null, featured: bool, label: string|null, title: string|null, best_for: string|null, description: string|null, cta: string|null, badge: string|null, price: array{amount: string, period: string|null}, features: list<array{text: string|null, note: string|null}>}
+     * @return array{key: string, icon: string|null, featured: bool, label: string|null, title: string|null, best_for: string|null, description: string|null, cta: string|null, badge: string|null, price: array{amount: string, period: string|null}, formation_states: list<string>, features: list<array{text: string|null, note: string|null}>}
      */
     public function toPublicArray(): array
     {
@@ -83,6 +84,7 @@ class Package extends Model
                 'amount' => $this->price_amount,
                 'period' => $this->localized('price_period'),
             ],
+            'formation_states' => array_values($this->formation_states ?? []),
             'features' => $this->features
                 ->map(fn (PackageFeature $feature) => [
                     'text' => $feature->localized('text'),

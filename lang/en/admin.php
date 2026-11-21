@@ -142,6 +142,8 @@ return [
             'icon' => 'Icon (Font Awesome class)',
             'price_amount' => 'Price',
             'price_period' => 'Price period (e.g. one-time)',
+            'formation_states' => 'LLC formation states',
+            'formation_states_help' => 'The package is listed under each state you tick on the Packages and Home pages.',
             'is_featured' => 'Highlight this package',
             'is_published' => 'Published',
             'sort_order' => 'Display order',

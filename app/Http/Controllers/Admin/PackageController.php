@@ -26,6 +26,7 @@ class PackageController extends Controller
                     'title' => $package->localized('title'),
                     'price_amount' => $package->price_amount,
                     'price_period' => $package->localized('price_period'),
+                    'formation_states' => $package->formation_states ?? [],
                     'is_featured' => $package->is_featured,
                     'is_published' => $package->is_published,
                     'sort_order' => $package->sort_order,
@@ -59,7 +60,7 @@ class PackageController extends Controller
 
         return Inertia::render('Admin/Packages/Form', [
             'package' => [
-                ...$package->only(['id', 'key', 'label', 'title', 'best_for', 'description', 'cta', 'badge', 'icon', 'price_amount', 'price_period', 'is_featured', 'is_published', 'sort_order']),
+                ...$package->only(['id', 'key', 'label', 'title', 'best_for', 'description', 'cta', 'badge', 'icon', 'price_amount', 'price_period', 'formation_states', 'is_featured', 'is_published', 'sort_order']),
                 'features' => $package->features
                     ->map(fn (PackageFeature $feature) => ['text' => $feature->text, 'note' => $feature->note])
                     ->values(),

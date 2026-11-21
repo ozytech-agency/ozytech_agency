@@ -83,6 +83,13 @@ return [
         ],
     ],
 
+    'state_switcher' => [
+        'label' => 'Choose your LLC formation state',
+        'new_mexico' => 'New Mexico',
+        'wyoming' => 'Wyoming',
+        'empty' => 'No packages are available for this state yet.',
+    ],
+
     'comparison' => [
         'label' => 'Compare packages',
         'title' => 'See exactly what is included at each stage.',

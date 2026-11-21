@@ -2,7 +2,8 @@ import { Head, Link, useForm } from '@inertiajs/react';
 import AdminLayout from '@/Layouts/AdminLayout';
 import Checkbox from '@/Components/Checkbox';
 import PrimaryButton from '@/Components/PrimaryButton';
-import { RowControls, Section, TextField } from '@/Components/Admin/Field';
+import { Field, RowControls, Section, TextField } from '@/Components/Admin/Field';
+import { FORMATION_STATES } from '@/Components/StateSwitcher';
 import { EditingLocaleProvider, LocaleSwitcher, LocalizedInput } from '@/Components/Admin/Localized';
 import { emptyLocalized, localizedOrEmpty, moveItem } from '@/lib/admin';
 import { useTranslations } from '@/lib/translations';
@@ -18,6 +19,7 @@ function initialData(pkg, nextSortOrder) {
         badge: localizedOrEmpty(pkg?.badge),
         icon: pkg?.icon ?? '',
         price_amount: pkg?.price_amount ?? '',
+        formation_states: pkg?.formation_states ?? FORMATION_STATES.map((state) => state.key),
         price_period: localizedOrEmpty(pkg?.price_period),
         is_featured: pkg?.is_featured ?? false,
         is_published: pkg?.is_published ?? true,
@@ -169,6 +171,26 @@ export default function PackageForm({ package: pkg, nextSortOrder }) {
                                 error={errors.sort_order}
                             />
                         </div>
+                        <Field label={t('admin.packages.fields.formation_states')} name="formation_states" error={errors.formation_states} help={t('admin.packages.fields.formation_states_help')} required>
+                            <div className="flex flex-wrap gap-space-md">
+                                {FORMATION_STATES.map((state) => (
+                                    <label key={state.key} className="inline-flex items-center gap-space-xs font-body-md text-on-surface">
+                                        <Checkbox
+                                            checked={data.formation_states.includes(state.key)}
+                                            onChange={(e) =>
+                                                setData(
+                                                    'formation_states',
+                                                    e.target.checked
+                                                        ? FORMATION_STATES.map((s) => s.key).filter((key) => key === state.key || data.formation_states.includes(key))
+                                                        : data.formation_states.filter((key) => key !== state.key),
+                                                )
+                                            }
+                                        />
+                                        {t(state.labelKey)}
+                                    </label>
+                                ))}
+                            </div>
+                        </Field>
                         <label className="inline-flex items-center gap-space-xs font-body-md text-on-surface">
                             <Checkbox checked={data.is_featured} onChange={(e) => setData('is_featured', e.target.checked)} />
                             {t('admin.packages.fields.is_featured')}

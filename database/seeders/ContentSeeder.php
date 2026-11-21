@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\FormationState;
 use App\Enums\ServiceItemType;
 use App\Models\Package;
 use App\Models\Policy;
@@ -307,6 +308,7 @@ class ContentSeeder extends Seeder
                 'icon' => $icon,
                 'price_amount' => trans("{$base}.price.amount", [], 'en'),
                 'price_period' => $this->localized("{$base}.price.period"),
+                'formation_states' => FormationState::values(),
                 'is_featured' => $this->localized("{$base}.badge") !== null,
                 'sort_order' => $index,
                 'is_published' => true,

@@ -83,6 +83,13 @@ return [
         ],
     ],
 
+    'state_switcher' => [
+        'label' => 'Elige el estado de constitución de tu LLC',
+        'new_mexico' => 'Nuevo México',
+        'wyoming' => 'Wyoming',
+        'empty' => 'Todavía no hay paquetes disponibles para este estado.',
+    ],
+
     'comparison' => [
         'label' => 'Compara los paquetes',
         'title' => 'Descubre exactamente qué incluye cada etapa.',

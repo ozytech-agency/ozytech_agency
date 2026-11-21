@@ -2,12 +2,15 @@ import { usePage } from '@inertiajs/react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
 import PackageCard from '@/Components/PackageCard';
+import StateSwitcher, { useFormationState } from '@/Components/StateSwitcher';
 import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
 export default function Packages() {
     const t = useTranslations();
     const { packages } = usePage().props;
+    const [formationState, setFormationState] = useFormationState();
+    const statePackages = packages.filter((pkg) => pkg.formation_states?.includes(formationState));
     const comparisonRows = t('packages.comparison.rows');
     const processSteps = t('packages.process.steps');
 
@@ -41,11 +44,17 @@ export default function Packages() {
             </section>
 
             <div className="w-full max-w-[1180px] mx-auto px-gutter-mobile py-space-3xl">
-                <Reveal as="section" stagger className="grid grid-cols-1 gap-4 md:grid-cols-3" aria-label="Available packages">
-                    {packages.map((pkg) => (
-                        <PackageCard key={pkg.key} pkg={pkg} />
-                    ))}
-                </Reveal>
+                <StateSwitcher value={formationState} onChange={setFormationState} className="mb-space-xl" />
+                {statePackages.length > 0 ? (
+                    // Keyed by state so the cards replay their staggered fade-in on every switch.
+                    <Reveal key={formationState} as="section" stagger className="grid grid-cols-1 gap-4 md:grid-cols-3" aria-label="Available packages">
+                        {statePackages.map((pkg) => (
+                            <PackageCard key={pkg.key} pkg={pkg} />
+                        ))}
+                    </Reveal>
+                ) : (
+                    <p className="rounded-xl border border-dashed border-outline-variant p-space-lg text-center text-on-surface-variant">{t('packages.state_switcher.empty')}</p>
+                )}
 
                 <Reveal as="section" className="mt-space-4xl">
                     <div className="max-w-2xl mb-space-xl">

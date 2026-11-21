@@ -83,6 +83,13 @@ return [
         ],
     ],
 
+    'state_switcher' => [
+        'label' => "Choisissez l'État de création de votre LLC",
+        'new_mexico' => 'Nouveau-Mexique',
+        'wyoming' => 'Wyoming',
+        'empty' => "Aucune offre n'est encore disponible pour cet État.",
+    ],
+
     'comparison' => [
         'label' => 'Comparer les offres',
         'title' => 'Voyez précisément ce qui est inclus à chaque étape.',
