@@ -51,7 +51,7 @@ export default function PackageCard({ pkg, titleAs: Title = 'h2' }) {
     return (
         <article
             className={`relative flex h-full min-h-[390px] flex-col rounded-2xl border p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl ${
-                pkg.featured ? 'border-secondary-container/45 bg-primary-container text-on-primary' : 'border-outline-variant/25 bg-surface-container-lowest'
+                pkg.featured ? 'border-[#263963] bg-[#263963] text-on-primary' : 'border-outline-variant/25 bg-surface-container-lowest'
             }`}
         >
             {pkg.badge && (
