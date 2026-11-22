@@ -55,7 +55,7 @@ export default function PackageCard({ pkg, titleAs: Title = 'h2' }) {
             }`}
         >
             {pkg.badge && (
-                <span className="absolute end-5 top-5 rounded-full bg-accent2 px-3 py-1 font-label-sm text-[11px] font-bold uppercase tracking-wider text-on-primary">
+                <span className={`absolute end-5 top-5 rounded-full px-3 py-1 font-label-sm text-[11px] font-bold uppercase tracking-wider ${pkg.featured ? 'bg-white text-[#263963]' : 'bg-accent2 text-on-primary'}`}>
                     {pkg.badge}
                 </span>
             )}
@@ -101,7 +101,7 @@ export default function PackageCard({ pkg, titleAs: Title = 'h2' }) {
                 href={`${route('start-a-project')}?package=${pkg.key}#inquiry-form`}
                 className={`mt-auto inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-3 text-sm font-bold transition-all hover:-translate-y-0.5 ${
                     pkg.featured
-                        ? 'border-white/30 text-white hover:bg-accent2 hover:border-accent2'
+                        ? 'border-white/30 text-white hover:bg-white hover:border-white hover:text-[#263963]'
                         : 'border-outline-variant/40 text-on-surface hover:bg-accent2 hover:border-accent2 hover:text-white'
                 }`}
             >
