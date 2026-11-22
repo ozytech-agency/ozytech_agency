@@ -120,6 +120,65 @@ class AdminPackageManagementTest extends TestCase
             );
     }
 
+    public function test_admin_can_toggle_most_popular_from_the_package_list(): void
+    {
+        $package = Package::factory()->create(['is_featured' => false]);
+        $admin = User::factory()->admin()->create();
+
+        $this->actingAs($admin)
+            ->patch(route('admin.packages.most-popular', ['locale' => 'en', 'package' => $package]))
+            ->assertSessionHasNoErrors()
+            ->assertRedirect();
+
+        $this->assertTrue($package->refresh()->is_featured);
+
+        $this->actingAs($admin)
+            ->patch(route('admin.packages.most-popular', ['locale' => 'en', 'package' => $package]));
+
+        $this->assertFalse($package->refresh()->is_featured);
+    }
+
+    public function test_marking_most_popular_clears_it_only_from_packages_in_the_same_state(): void
+    {
+        $wyomingPopular = Package::factory()->create(['is_featured' => true, 'formation_states' => ['wyoming']]);
+        $newMexicoPopular = Package::factory()->create(['is_featured' => true, 'formation_states' => ['new-mexico']]);
+        $package = Package::factory()->create(['is_featured' => false, 'formation_states' => ['wyoming']]);
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->patch(route('admin.packages.most-popular', ['locale' => 'en', 'package' => $package]));
+
+        $this->assertTrue($package->refresh()->is_featured);
+        $this->assertFalse($wyomingPopular->refresh()->is_featured);
+        $this->assertTrue($newMexicoPopular->refresh()->is_featured);
+    }
+
+    public function test_saving_a_package_as_most_popular_replaces_the_current_one(): void
+    {
+        $currentPopular = Package::factory()->create(['is_featured' => true, 'formation_states' => ['new-mexico']]);
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->post(route('admin.packages.store', ['locale' => 'en']), $this->payload(['is_featured' => true]))
+            ->assertSessionHasNoErrors();
+
+        $this->assertTrue(Package::where('key', 'starter')->firstOrFail()->is_featured);
+        $this->assertFalse($currentPopular->refresh()->is_featured);
+    }
+
+    public function test_most_popular_package_gets_a_translated_badge_unless_one_is_set(): void
+    {
+        Package::factory()->create(['key' => 'growth', 'sort_order' => 1, 'is_featured' => true, 'badge' => null]);
+        Package::factory()->create(['key' => 'pro', 'sort_order' => 2, 'is_featured' => true, 'badge' => ['en' => 'Best value'], 'formation_states' => []]);
+        Package::factory()->create(['key' => 'basic', 'sort_order' => 3, 'is_featured' => false, 'badge' => null]);
+
+        $this->get(route('packages', ['locale' => 'fr']))
+            ->assertOk()
+            ->assertInertia(fn (Assert $page) => $page
+                ->where('packages.0.badge', 'Le plus populaire')
+                ->where('packages.1.badge', 'Best value')
+                ->where('packages.2.badge', null)
+            );
+    }
+
     public function test_public_packages_page_shows_only_published_packages_in_order(): void
     {
         Package::factory()->create(['key' => 'second', 'sort_order' => 2, 'title' => ['en' => 'Second', 'es' => 'Segundo']]);

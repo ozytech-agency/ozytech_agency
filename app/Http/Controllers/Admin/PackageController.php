@@ -49,6 +49,7 @@ class PackageController extends Controller
         DB::transaction(function () use ($request) {
             $package = Package::create($request->packageAttributes());
             $package->features()->createMany($request->features());
+            $package->keepOnlyMostPopularInItsStates();
         });
 
         return to_route('admin.packages.index')->with('status', __('admin.flash.saved'));
@@ -75,9 +76,23 @@ class PackageController extends Controller
             $package->update($request->packageAttributes());
             PackageFeature::where('package_id', $package->id)->delete();
             $package->features()->createMany($request->features());
+            $package->keepOnlyMostPopularInItsStates();
         });
 
         return to_route('admin.packages.index')->with('status', __('admin.flash.saved'));
+    }
+
+    /**
+     * Marks the package as Most Popular, or removes the mark, straight from the package list.
+     */
+    public function toggleMostPopular(string $locale, Package $package): RedirectResponse
+    {
+        DB::transaction(function () use ($package) {
+            $package->update(['is_featured' => ! $package->is_featured]);
+            $package->keepOnlyMostPopularInItsStates();
+        });
+
+        return back()->with('status', __('admin.flash.saved'));
     }
 
     public function destroy(string $locale, Package $package): RedirectResponse

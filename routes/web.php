@@ -82,6 +82,7 @@ Route::prefix('{locale}')
             ->group(function () {
                 Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
                 Route::resource('services', AdminServiceController::class)->except('show');
+                Route::patch('packages/{package}/most-popular', [AdminPackageController::class, 'toggleMostPopular'])->name('packages.most-popular');
                 Route::resource('packages', AdminPackageController::class)->except('show');
                 Route::resource('posts', AdminPostController::class)->except('show');
                 Route::resource('team-members', AdminTeamMemberController::class)->except('show');

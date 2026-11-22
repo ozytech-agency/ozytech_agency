@@ -83,6 +83,8 @@ return [
         ],
     ],
 
+    'most_popular' => 'الأكثر طلبًا',
+
     'state_switcher' => [
         'label' => 'اختر ولاية تأسيس شركتك LLC',
         'new_mexico' => 'ولاية نيو مكسيكو',

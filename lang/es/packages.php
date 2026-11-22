@@ -83,6 +83,8 @@ return [
         ],
     ],
 
+    'most_popular' => 'Más popular',
+
     'state_switcher' => [
         'label' => 'Elige el estado de constitución de tu LLC',
         'new_mexico' => 'Nuevo México',

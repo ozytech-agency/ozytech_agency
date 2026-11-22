@@ -51,6 +51,26 @@ class Package extends Model
         return $this->hasMany(Inquiry::class, 'package', 'key');
     }
 
+    /**
+     * Keeps a single Most Popular package per formation state: once this package is
+     * marked, the flag is cleared from the other packages sharing any of its states.
+     */
+    public function keepOnlyMostPopularInItsStates(): void
+    {
+        if (! $this->is_featured) {
+            return;
+        }
+
+        $states = $this->formation_states ?? [];
+
+        static::query()
+            ->whereKeyNot($this->getKey())
+            ->where('is_featured', true)
+            ->get()
+            ->filter(fn (Package $other) => array_intersect($other->formation_states ?? [], $states) !== [])
+            ->each(fn (Package $other) => $other->update(['is_featured' => false]));
+    }
+
     #[Scope]
     protected function published(Builder $query): void
     {
@@ -79,7 +99,7 @@ class Package extends Model
             'best_for' => $this->localized('best_for'),
             'description' => $this->localized('description'),
             'cta' => $this->localized('cta'),
-            'badge' => $this->localized('badge'),
+            'badge' => $this->localized('badge') ?? ($this->is_featured ? __('packages.most_popular') : null),
             'price' => [
                 'amount' => $this->price_amount,
                 'period' => $this->localized('price_period'),

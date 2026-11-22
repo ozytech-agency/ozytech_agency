@@ -1,4 +1,5 @@
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
+import { useState } from 'react';
 import AdminLayout from '@/Layouts/AdminLayout';
 import DeleteButton from '@/Components/Admin/DeleteButton';
 import { StatusBadge } from '@/Components/Admin/Field';
@@ -7,6 +8,15 @@ import { useTranslations } from '@/lib/translations';
 
 export default function PackagesIndex({ packages }) {
     const t = useTranslations();
+    const [togglingId, setTogglingId] = useState(null);
+
+    const toggleMostPopular = (pkg) => {
+        router.patch(route('admin.packages.most-popular', pkg.id), {}, {
+            preserveScroll: true,
+            onStart: () => setTogglingId(pkg.id),
+            onFinish: () => setTogglingId(null),
+        });
+    };
 
     return (
         <AdminLayout
@@ -27,7 +37,7 @@ export default function PackagesIndex({ packages }) {
                         <article key={pkg.id} className="flex flex-col gap-space-xs rounded-xl border border-surface-container bg-surface-container-lowest p-space-lg">
                             <div className="flex flex-wrap items-center gap-1">
                                 <StatusBadge tone={pkg.is_published ? 'success' : 'neutral'}>{pkg.is_published ? t('admin.common.published') : t('admin.common.hidden')}</StatusBadge>
-                                {pkg.is_featured && <StatusBadge tone="warning">{t('admin.common.featured')}</StatusBadge>}
+                                {pkg.is_featured && <StatusBadge tone="warning">{t('admin.packages.most_popular')}</StatusBadge>}
                                 {FORMATION_STATES.filter((state) => pkg.formation_states.includes(state.key)).map((state) => (
                                     <StatusBadge key={state.key}>{t(state.labelKey)}</StatusBadge>
                                 ))}
@@ -44,6 +54,19 @@ export default function PackagesIndex({ packages }) {
                                 {t('admin.packages.inquiries_count').replace(':count', pkg.inquiries_count)}
                             </p>
                             <div className="mt-auto flex items-center justify-end gap-1 pt-space-sm">
+                                <button
+                                    type="button"
+                                    onClick={() => toggleMostPopular(pkg)}
+                                    disabled={togglingId === pkg.id}
+                                    className={`flex h-8 w-8 items-center justify-center rounded-lg hover:bg-surface-container-high disabled:opacity-50 ${pkg.is_featured ? 'text-amber-500' : 'text-on-surface-variant hover:text-on-surface'}`}
+                                    aria-label={pkg.is_featured ? t('admin.packages.unmark_most_popular') : t('admin.packages.mark_most_popular')}
+                                    aria-pressed={pkg.is_featured}
+                                    title={pkg.is_featured ? t('admin.packages.unmark_most_popular') : t('admin.packages.mark_most_popular')}
+                                >
+                                    <span className="material-symbols-outlined text-lg" style={pkg.is_featured ? { fontVariationSettings: "'FILL' 1" } : undefined}>
+                                        star
+                                    </span>
+                                </button>
                                 <Link
                                     href={route('admin.packages.edit', pkg.id)}
                                     className="flex h-8 w-8 items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"

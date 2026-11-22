@@ -83,6 +83,8 @@ return [
         ],
     ],
 
+    'most_popular' => 'Most popular',
+
     'state_switcher' => [
         'label' => 'Choose your LLC formation state',
         'new_mexico' => 'New Mexico',
