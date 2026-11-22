@@ -120,7 +120,7 @@ export default function About({ teamMembers }) {
                     <Reveal as="div" stagger className="grid grid-cols-1 md:grid-cols-3 gap-space-md">
                         {principles.map((p, i) => (
                             <article key={p.title} className="h-full p-space-lg bg-surface-container-lowest border border-surface-container rounded-xl">
-                                <span className="material-symbols-outlined text-3xl text-secondary">{PRINCIPLE_ICONS[i]}</span>
+                                <span className="material-symbols-outlined text-3xl text-[#263963]">{PRINCIPLE_ICONS[i]}</span>
                                 <h3 className="mt-space-md font-headline-sm text-xl font-bold text-on-surface">{p.title}</h3>
                                 <p className="mt-space-xs text-on-surface-variant leading-relaxed">{p.description}</p>
                             </article>
