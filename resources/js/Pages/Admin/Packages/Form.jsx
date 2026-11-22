@@ -8,7 +8,7 @@ import { EditingLocaleProvider, LocaleSwitcher, LocalizedInput } from '@/Compone
 import { emptyLocalized, localizedOrEmpty, moveItem } from '@/lib/admin';
 import { useTranslations } from '@/lib/translations';
 
-function initialData(pkg, nextSortOrder) {
+function initialData(pkg, nextSortOrder, isWebsite) {
     return {
         key: pkg?.key ?? '',
         label: localizedOrEmpty(pkg?.label),
@@ -19,7 +19,7 @@ function initialData(pkg, nextSortOrder) {
         badge: localizedOrEmpty(pkg?.badge),
         icon: pkg?.icon ?? '',
         price_amount: pkg?.price_amount ?? '',
-        formation_states: pkg?.formation_states ?? FORMATION_STATES.map((state) => state.key),
+        formation_states: isWebsite ? [] : (pkg?.formation_states ?? FORMATION_STATES.map((state) => state.key)),
         price_period: localizedOrEmpty(pkg?.price_period),
         is_featured: pkg?.is_featured ?? false,
         is_published: pkg?.is_published ?? true,
@@ -28,30 +28,32 @@ function initialData(pkg, nextSortOrder) {
     };
 }
 
-export default function PackageForm({ package: pkg, nextSortOrder }) {
+export default function PackageForm({ package: pkg, nextSortOrder, category, routeBase }) {
     const t = useTranslations();
     const isEditing = Boolean(pkg);
-    const { data, setData, post, put, processing, errors } = useForm(initialData(pkg, nextSortOrder));
+    const isWebsite = category === 'website';
+    const copy = isWebsite ? 'admin.website_packages' : 'admin.packages';
+    const { data, setData, post, put, processing, errors } = useForm(initialData(pkg, nextSortOrder, isWebsite));
     const rowLabels = { up: t('admin.common.move_up'), down: t('admin.common.move_down'), remove: t('admin.common.remove') };
 
     const submit = (e) => {
         e.preventDefault();
         if (isEditing) {
-            put(route('admin.packages.update', pkg.id), { preserveScroll: true });
+            put(route(`${routeBase}.update`, pkg.id), { preserveScroll: true });
         } else {
-            post(route('admin.packages.store'), { preserveScroll: true });
+            post(route(`${routeBase}.store`), { preserveScroll: true });
         }
     };
 
     const updateFeature = (index, changes) => setData('features', data.features.map((feature, i) => (i === index ? { ...feature, ...changes } : feature)));
 
-    const title = isEditing ? t('admin.packages.edit') : t('admin.packages.create');
+    const title = isEditing ? t(`${copy}.edit`) : t(`${copy}.create`);
 
     return (
         <AdminLayout
             title={title}
             actions={
-                <Link href={route('admin.packages.index')} className="font-label-md text-label-md text-secondary hover:text-on-surface">
+                <Link href={route(`${routeBase}.index`)} className="font-label-md text-label-md text-secondary hover:text-on-surface">
                     {t('admin.common.back')}
                 </Link>
             }
@@ -171,29 +173,31 @@ export default function PackageForm({ package: pkg, nextSortOrder }) {
                                 error={errors.sort_order}
                             />
                         </div>
-                        <Field label={t('admin.packages.fields.formation_states')} name="formation_states" error={errors.formation_states} help={t('admin.packages.fields.formation_states_help')} required>
-                            <div className="flex flex-wrap gap-space-md">
-                                {FORMATION_STATES.map((state) => (
-                                    <label key={state.key} className="inline-flex items-center gap-space-xs font-body-md text-on-surface">
-                                        <Checkbox
-                                            checked={data.formation_states.includes(state.key)}
-                                            onChange={(e) =>
-                                                setData(
-                                                    'formation_states',
-                                                    e.target.checked
-                                                        ? FORMATION_STATES.map((s) => s.key).filter((key) => key === state.key || data.formation_states.includes(key))
-                                                        : data.formation_states.filter((key) => key !== state.key),
-                                                )
-                                            }
-                                        />
-                                        {t(state.labelKey)}
-                                    </label>
-                                ))}
-                            </div>
-                        </Field>
+                        {!isWebsite && (
+                            <Field label={t('admin.packages.fields.formation_states')} name="formation_states" error={errors.formation_states} help={t('admin.packages.fields.formation_states_help')} required>
+                                <div className="flex flex-wrap gap-space-md">
+                                    {FORMATION_STATES.map((state) => (
+                                        <label key={state.key} className="inline-flex items-center gap-space-xs font-body-md text-on-surface">
+                                            <Checkbox
+                                                checked={data.formation_states.includes(state.key)}
+                                                onChange={(e) =>
+                                                    setData(
+                                                        'formation_states',
+                                                        e.target.checked
+                                                            ? FORMATION_STATES.map((s) => s.key).filter((key) => key === state.key || data.formation_states.includes(key))
+                                                            : data.formation_states.filter((key) => key !== state.key),
+                                                    )
+                                                }
+                                            />
+                                            {t(state.labelKey)}
+                                        </label>
+                                    ))}
+                                </div>
+                            </Field>
+                        )}
                         <label className="inline-flex items-center gap-space-xs font-body-md text-on-surface">
                             <Checkbox checked={data.is_featured} onChange={(e) => setData('is_featured', e.target.checked)} />
-                            {t('admin.packages.fields.is_featured')}
+                            {t(isWebsite ? 'admin.website_packages.is_featured' : 'admin.packages.fields.is_featured')}
                         </label>
                         <label className="inline-flex items-center gap-space-xs font-body-md text-on-surface">
                             <Checkbox checked={data.is_published} onChange={(e) => setData('is_published', e.target.checked)} />

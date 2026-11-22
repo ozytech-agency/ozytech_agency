@@ -6,12 +6,13 @@ import { StatusBadge } from '@/Components/Admin/Field';
 import { FORMATION_STATES } from '@/Components/StateSwitcher';
 import { useTranslations } from '@/lib/translations';
 
-export default function PackagesIndex({ packages }) {
+export default function PackagesIndex({ packages, category, routeBase }) {
     const t = useTranslations();
+    const copy = category === 'website' ? 'admin.website_packages' : 'admin.packages';
     const [togglingId, setTogglingId] = useState(null);
 
     const toggleMostPopular = (pkg) => {
-        router.patch(route('admin.packages.most-popular', pkg.id), {}, {
+        router.patch(route(`${routeBase}.most-popular`, pkg.id), {}, {
             preserveScroll: true,
             onStart: () => setTogglingId(pkg.id),
             onFinish: () => setTogglingId(null),
@@ -20,14 +21,14 @@ export default function PackagesIndex({ packages }) {
 
     return (
         <AdminLayout
-            title={t('admin.packages.title')}
+            title={t(`${copy}.title`)}
             actions={
-                <Link href={route('admin.packages.create')} className="inline-flex items-center gap-space-xs rounded-lg bg-accent2 px-space-md py-space-xs font-label-md text-label-md text-on-primary hover:bg-secondary-container">
-                    <span className="material-symbols-outlined text-lg">add</span> {t('admin.packages.create')}
+                <Link href={route(`${routeBase}.create`)} className="inline-flex items-center gap-space-xs rounded-lg bg-accent2 px-space-md py-space-xs font-label-md text-label-md text-on-primary hover:bg-secondary-container">
+                    <span className="material-symbols-outlined text-lg">add</span> {t(`${copy}.create`)}
                 </Link>
             }
         >
-            <Head title={t('admin.packages.title')} />
+            <Head title={t(`${copy}.title`)} />
 
             {packages.length === 0 ? (
                 <p className="rounded-xl border border-dashed border-outline-variant p-space-lg text-on-surface-variant">{t('admin.common.empty')}</p>
@@ -42,7 +43,7 @@ export default function PackagesIndex({ packages }) {
                                     <StatusBadge key={state.key}>{t(state.labelKey)}</StatusBadge>
                                 ))}
                             </div>
-                            <Link href={route('admin.packages.edit', pkg.id)} className="font-headline-sm text-xl font-bold text-on-surface hover:text-secondary">
+                            <Link href={route(`${routeBase}.edit`, pkg.id)} className="font-headline-sm text-xl font-bold text-on-surface hover:text-secondary">
                                 {pkg.title}
                             </Link>
                             <p>
@@ -68,13 +69,13 @@ export default function PackagesIndex({ packages }) {
                                     </span>
                                 </button>
                                 <Link
-                                    href={route('admin.packages.edit', pkg.id)}
+                                    href={route(`${routeBase}.edit`, pkg.id)}
                                     className="flex h-8 w-8 items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"
                                     aria-label={t('admin.common.edit')}
                                 >
                                     <span className="material-symbols-outlined text-lg">edit</span>
                                 </Link>
-                                {pkg.inquiries_count === 0 && <DeleteButton href={route('admin.packages.destroy', pkg.id)} itemName={pkg.title} />}
+                                {pkg.inquiries_count === 0 && <DeleteButton href={route(`${routeBase}.destroy`, pkg.id)} itemName={pkg.title} />}
                             </div>
                         </article>
                     ))}

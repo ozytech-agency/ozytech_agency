@@ -6,6 +6,7 @@ return [
         'overview' => 'Overview',
         'services' => 'Services',
         'packages' => 'Packages',
+        'website_packages' => 'Website Packages',
         'posts' => 'Blog',
         'projects' => 'Projects',
         'team_members' => 'Team',
@@ -154,6 +155,13 @@ return [
             'feature_text' => 'Feature',
             'feature_note' => 'Tooltip note (optional)',
         ],
+    ],
+
+    'website_packages' => [
+        'title' => 'Website Packages',
+        'create' => 'New website package',
+        'edit' => 'Edit website package',
+        'is_featured' => 'Mark as Most Popular (one among website packages; replaces the current one)',
     ],
 
     'posts' => [

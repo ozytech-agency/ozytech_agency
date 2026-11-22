@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\FormationState;
+use App\Enums\PackageCategory;
 use App\Models\Package;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,6 +23,7 @@ class PackageFactory extends Factory
 
         return [
             'key' => $word,
+            'category' => PackageCategory::Llc,
             'label' => ['en' => '01 / '.ucfirst($word)],
             'title' => ['en' => ucfirst($word).' Pack'],
             'best_for' => ['en' => fake()->sentence(4)],
@@ -42,6 +44,14 @@ class PackageFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'is_published' => false,
+        ]);
+    }
+
+    public function website(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'category' => PackageCategory::Website,
+            'formation_states' => [],
         ]);
     }
 

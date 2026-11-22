@@ -36,7 +36,7 @@ class PackageRequest extends FormRequest
             ...$this->localizedRules('badge', required: false, max: 50),
             'icon' => ['nullable', 'string', 'max:100'],
             'price_amount' => ['required', 'string', 'max:50'],
-            'formation_states' => ['required', 'array', 'min:1'],
+            'formation_states' => $this->isForWebsitePackage() ? ['nullable', 'array'] : ['required', 'array', 'min:1'],
             'formation_states.*' => ['distinct', Rule::enum(FormationState::class)],
             ...$this->localizedRules('price_period', max: 50),
             'is_featured' => ['boolean'],
@@ -70,6 +70,14 @@ class PackageRequest extends FormRequest
     }
 
     /**
+     * Website packages aren't tied to an LLC formation state.
+     */
+    public function isForWebsitePackage(): bool
+    {
+        return $this->routeIs('admin.website-packages.*');
+    }
+
+    /**
      * @return array<string, mixed>
      */
     public function packageAttributes(): array
@@ -84,7 +92,7 @@ class PackageRequest extends FormRequest
             'badge' => $this->cleanLocalized($this->validated('badge')),
             'icon' => $this->validated('icon'),
             'price_amount' => $this->validated('price_amount'),
-            'formation_states' => array_values($this->validated('formation_states')),
+            'formation_states' => $this->isForWebsitePackage() ? [] : array_values($this->validated('formation_states')),
             'price_period' => $this->cleanLocalized($this->validated('price_period')),
             'is_featured' => $this->boolean('is_featured'),
             'is_published' => $this->boolean('is_published'),

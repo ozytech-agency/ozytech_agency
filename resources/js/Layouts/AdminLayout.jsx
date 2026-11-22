@@ -7,6 +7,7 @@ const NAV_ITEMS = [
     { route: 'admin.dashboard', match: 'admin.dashboard', icon: 'space_dashboard', label: 'admin.nav.overview' },
     { route: 'admin.services.index', match: 'admin.services.*', icon: 'design_services', label: 'admin.nav.services' },
     { route: 'admin.packages.index', match: 'admin.packages.*', icon: 'inventory_2', label: 'admin.nav.packages' },
+    { route: 'admin.website-packages.index', match: 'admin.website-packages.*', icon: 'language', label: 'admin.nav.website_packages' },
     { route: 'admin.posts.index', match: 'admin.posts.*', icon: 'article', label: 'admin.nav.posts' },
     { route: 'admin.projects.index', match: 'admin.projects.*', icon: 'work', label: 'admin.nav.projects' },
     { route: 'admin.team-members.index', match: 'admin.team-members.*', icon: 'groups', label: 'admin.nav.team_members' },

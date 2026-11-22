@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\PackageCategory;
 use App\Models\Concerns\HasLocalizedAttributes;
 use Database\Factories\PackageFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -12,13 +13,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable([
-    'key', 'label', 'title', 'best_for', 'description', 'cta', 'badge', 'icon',
+    'key', 'category', 'label', 'title', 'best_for', 'description', 'cta', 'badge', 'icon',
     'price_amount', 'price_period', 'formation_states', 'is_featured', 'sort_order', 'is_published',
 ])]
 class Package extends Model
 {
     /** @use HasFactory<PackageFactory> */
     use HasFactory, HasLocalizedAttributes;
+
+    /**
+     * @var array<string, string>
+     */
+    protected $attributes = [
+        'category' => 'llc',
+    ];
 
     /**
      * Get the attributes that should be cast.
@@ -28,6 +36,7 @@ class Package extends Model
     protected function casts(): array
     {
         return [
+            'category' => PackageCategory::class,
             'label' => 'array',
             'title' => 'array',
             'best_for' => 'array',
@@ -52,8 +61,8 @@ class Package extends Model
     }
 
     /**
-     * Keeps a single Most Popular package per formation state: once this package is
-     * marked, the flag is cleared from the other packages sharing any of its states.
+     * Keeps a single Most Popular package per formation state, and a single one among the
+     * website packages: once this package is marked, the flag is cleared from the others.
      */
     public function keepOnlyMostPopularInItsStates(): void
     {
@@ -65,10 +74,18 @@ class Package extends Model
 
         static::query()
             ->whereKeyNot($this->getKey())
+            ->ofCategory($this->category)
             ->where('is_featured', true)
             ->get()
-            ->filter(fn (Package $other) => array_intersect($other->formation_states ?? [], $states) !== [])
+            ->filter(fn (Package $other) => $this->category === PackageCategory::Website
+                || array_intersect($other->formation_states ?? [], $states) !== [])
             ->each(fn (Package $other) => $other->update(['is_featured' => false]));
+    }
+
+    #[Scope]
+    protected function ofCategory(Builder $query, PackageCategory $category): void
+    {
+        $query->where('category', $category->value);
     }
 
     #[Scope]
@@ -86,12 +103,13 @@ class Package extends Model
     /**
      * The package as the public Packages / Start a Project pages consume it.
      *
-     * @return array{key: string, icon: string|null, featured: bool, label: string|null, title: string|null, best_for: string|null, description: string|null, cta: string|null, badge: string|null, price: array{amount: string, period: string|null}, formation_states: list<string>, features: list<array{text: string|null, note: string|null}>}
+     * @return array{key: string, category: string, icon: string|null, featured: bool, label: string|null, title: string|null, best_for: string|null, description: string|null, cta: string|null, badge: string|null, price: array{amount: string, period: string|null}, formation_states: list<string>, features: list<array{text: string|null, note: string|null}>}
      */
     public function toPublicArray(): array
     {
         return [
             'key' => $this->key,
+            'category' => $this->category->value,
             'icon' => $this->icon,
             'featured' => $this->is_featured,
             'label' => $this->localized('label'),

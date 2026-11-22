@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\TeamMemberController as AdminTeamMemberController;
 use App\Http\Controllers\Admin\UploadController as AdminUploadController;
+use App\Http\Controllers\Admin\WebsitePackageController as AdminWebsitePackageController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\ContactController;
@@ -84,6 +85,8 @@ Route::prefix('{locale}')
                 Route::resource('services', AdminServiceController::class)->except('show');
                 Route::patch('packages/{package}/most-popular', [AdminPackageController::class, 'toggleMostPopular'])->name('packages.most-popular');
                 Route::resource('packages', AdminPackageController::class)->except('show');
+                Route::patch('website-packages/{package}/most-popular', [AdminWebsitePackageController::class, 'toggleMostPopular'])->name('website-packages.most-popular');
+                Route::resource('website-packages', AdminWebsitePackageController::class)->parameters(['website-packages' => 'package'])->except('show');
                 Route::resource('posts', AdminPostController::class)->except('show');
                 Route::resource('team-members', AdminTeamMemberController::class)->except('show');
                 Route::resource('projects', AdminProjectController::class)->except('show');
