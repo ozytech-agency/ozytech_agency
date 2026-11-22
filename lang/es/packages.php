@@ -90,6 +90,8 @@ return [
         'new_mexico' => 'Nuevo México',
         'wyoming' => 'Wyoming',
         'empty' => 'Todavía no hay paquetes disponibles para este estado.',
+        'website' => 'Paquetes de creación web',
+        'website_empty' => 'Todavía no hay paquetes web disponibles.',
     ],
 
     'comparison' => [

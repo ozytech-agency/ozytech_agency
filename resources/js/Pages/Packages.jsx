@@ -2,7 +2,7 @@ import { usePage } from '@inertiajs/react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import Reveal from '@/Components/Reveal';
 import PackageCard from '@/Components/PackageCard';
-import StateSwitcher, { useFormationState } from '@/Components/StateSwitcher';
+import StateSwitcher, { WEBSITE_PACKAGES, packagesFor, useFormationState } from '@/Components/StateSwitcher';
 import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
@@ -10,7 +10,8 @@ export default function Packages() {
     const t = useTranslations();
     const { packages } = usePage().props;
     const [formationState, setFormationState] = useFormationState();
-    const statePackages = packages.filter((pkg) => pkg.formation_states?.includes(formationState));
+    const statePackages = packagesFor(packages, formationState);
+    const llcPackages = packages.filter((pkg) => pkg.category !== 'website');
     const comparisonRows = t('packages.comparison.rows');
     const processSteps = t('packages.process.steps');
 
@@ -53,7 +54,7 @@ export default function Packages() {
                         ))}
                     </Reveal>
                 ) : (
-                    <p className="rounded-xl border border-dashed border-outline-variant p-space-lg text-center text-on-surface-variant">{t('packages.state_switcher.empty')}</p>
+                    <p className="rounded-xl border border-dashed border-outline-variant p-space-lg text-center text-on-surface-variant">{t(formationState === WEBSITE_PACKAGES ? 'packages.state_switcher.website_empty' : 'packages.state_switcher.empty')}</p>
                 )}
 
                 <Reveal as="section" className="mt-space-4xl">
@@ -67,7 +68,7 @@ export default function Packages() {
                             <thead>
                                 <tr className="border-b border-surface-container">
                                     <th className="p-space-md text-left font-label-md text-label-md text-on-surface-variant"></th>
-                                    {packages.map((pkg) => (
+                                    {llcPackages.map((pkg) => (
                                         <th
                                             key={pkg.key}
                                             className={`p-space-md text-left font-headline-sm text-base font-bold ${pkg.featured ? 'text-secondary' : 'text-on-surface'}`}

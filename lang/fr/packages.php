@@ -90,6 +90,8 @@ return [
         'new_mexico' => 'Nouveau-Mexique',
         'wyoming' => 'Wyoming',
         'empty' => "Aucune offre n'est encore disponible pour cet État.",
+        'website' => 'Offres de création de site web',
+        'website_empty' => 'Aucune offre de site web n\'est encore disponible.',
     ],
 
     'comparison' => [

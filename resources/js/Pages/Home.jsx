@@ -7,7 +7,7 @@ import TechMarquee from '@/Components/TechMarquee';
 import Seo from '@/Components/Seo';
 import Avatar from '@/Components/Avatar';
 import PackageCard from '@/Components/PackageCard';
-import StateSwitcher, { useFormationState } from '@/Components/StateSwitcher';
+import StateSwitcher, { WEBSITE_PACKAGES, packagesFor, useFormationState } from '@/Components/StateSwitcher';
 import { StarRating } from '@/Components/StarRating';
 import { useTranslations } from '@/lib/translations';
 
@@ -48,7 +48,7 @@ const TESTIMONIAL_AVATARS = [
 export default function Home({ serviceImages = {}, reviews = [], packages = [] }) {
     const t = useTranslations();
     const [formationState, setFormationState] = useFormationState();
-    const statePackages = packages.filter((pkg) => pkg.formation_states?.includes(formationState));
+    const statePackages = packagesFor(packages, formationState);
     const { appUrl } = usePage().props;
     const [slide, setSlide] = useState(0);
     const gridRef = useRef(null);
@@ -314,7 +314,7 @@ export default function Home({ serviceImages = {}, reviews = [], packages = [] }
                                 ))}
                             </Reveal>
                         ) : (
-                            <p className="rounded-xl border border-dashed border-outline-variant p-space-lg text-center text-on-surface-variant">{t('packages.state_switcher.empty')}</p>
+                            <p className="rounded-xl border border-dashed border-outline-variant p-space-lg text-center text-on-surface-variant">{t(formationState === WEBSITE_PACKAGES ? 'packages.state_switcher.website_empty' : 'packages.state_switcher.empty')}</p>
                         )}
                     </div>
                 </Reveal>

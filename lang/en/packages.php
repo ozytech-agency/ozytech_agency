@@ -90,6 +90,8 @@ return [
         'new_mexico' => 'New Mexico',
         'wyoming' => 'Wyoming',
         'empty' => 'No packages are available for this state yet.',
+        'website' => 'Website Creation Packages',
+        'website_empty' => 'No website packages are available yet.',
     ],
 
     'comparison' => [
