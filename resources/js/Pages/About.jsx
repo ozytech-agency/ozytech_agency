@@ -86,12 +86,14 @@ export default function About({ teamMembers }) {
 
             <Reveal as="section" className="w-full py-space-4xl bg-surface">
                 <div className="mx-[6%] grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-space-2xl items-center">
-                    <div className="rounded-2xl overflow-hidden bg-surface-container-high">
+                    <div>
                         <img
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkJPdW8obQp1iA3g-wc5kBgMH7qk_IcokPWD0MjBfqm4V1CKxmKh9bV_rHZccMDPGOIsXgWX9C8JcXwMwAc2fuXXXz1BW9VeXqhKZ8HRHXJrA1EOCdLYBJ10S5K4gbPK6RqmPq6pjmVaBIIGLiY9XV57wE8vmtwOKivhI5D2wbfZ1AWBVU23HqnnPfqZchXyMLMrY1Sa2Zaq675rpx1XGOkgtF37kdBRKS6UFHX0MSn3Z4yFrGZE9c"
-                            alt="Senior architect working at a dual-monitor workstation"
+                            src="/images/philosophy-llc-progress.png"
+                            alt="Business owner tracking LLC formation progress: payment received, company created, documents and EIN sent"
                             loading="lazy"
-                            className="w-full aspect-[4/3] object-cover"
+                            width="527"
+                            height="468"
+                            className="mx-auto h-auto w-full max-w-[527px] rounded-bl-[3.8%_4.27%]"
                         />
                     </div>
                     <div>
