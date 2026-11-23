@@ -362,13 +362,13 @@ export default function Home({ serviceImages = {}, reviews = [], packages = [] }
             </Reveal>
 
             {/* 5. IMPACT STATS */}
-            <Reveal as="section" id="impact" className="w-full py-space-3xl bg-primary-container text-on-primary">
+            <Reveal as="section" id="impact" className="w-full py-space-3xl bg-[#263963] text-on-primary">
                 <div className="mx-[6%]">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-x-space-2xl gap-y-space-xl text-center">
                         {IMPACT_STATS.map((stat) => (
                             <div key={stat.labelKey} className="flex flex-col items-center justify-center gap-space-2xs">
                                 <ImpactStatValue stat={stat} className="font-stat-counter text-stat-counter font-bold text-on-primary tracking-tight" />
-                                <span className="font-body-sm text-body-sm text-outline-variant">{t(stat.labelKey)}</span>
+                                <span className="font-body-sm text-body-sm text-white/85">{t(stat.labelKey)}</span>
                             </div>
                         ))}
                     </div>
