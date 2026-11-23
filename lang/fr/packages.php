@@ -84,6 +84,7 @@ return [
     ],
 
     'most_popular' => 'Le plus populaire',
+    'old_price' => 'Ancien prix',
 
     'state_switcher' => [
         'label' => "Choisissez l'État de création de votre LLC",

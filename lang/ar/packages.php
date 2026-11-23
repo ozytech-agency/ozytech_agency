@@ -84,6 +84,7 @@ return [
     ],
 
     'most_popular' => 'الأكثر طلبًا',
+    'old_price' => 'السعر القديم',
 
     'state_switcher' => [
         'label' => 'اختر ولاية تأسيس شركتك LLC',

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from '@/lib/translations';
 
 function FeatureNote({ note, dark }) {
     const [open, setOpen] = useState(false);
@@ -48,6 +49,8 @@ function FeatureNote({ note, dark }) {
  * `titleAs` sets the heading level so the card fits the page's outline (h2 on Packages, h3 inside a home section).
  */
 export default function PackageCard({ pkg, titleAs: Title = 'h2' }) {
+    const t = useTranslations();
+
     return (
         <article
             className={`relative flex h-full min-h-[390px] flex-col rounded-2xl border p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl ${
@@ -69,6 +72,12 @@ export default function PackageCard({ pkg, titleAs: Title = 'h2' }) {
             <span className={`font-label-sm text-[0.72rem] font-bold uppercase tracking-widest ${pkg.featured ? 'text-on-primary' : 'text-secondary'}`}>{pkg.label}</span>
             <Title className="mt-space-xs font-headline-sm text-2xl font-bold">{pkg.title}</Title>
             <div className={`mt-space-sm inline-flex w-fit items-baseline gap-1.5 rounded-lg px-3 py-2 ${pkg.featured ? 'bg-white/10' : 'bg-accent2/10'}`}>
+                {pkg.price.old_amount && (
+                    <s className={`me-1 font-headline-sm text-lg font-bold decoration-1 ${pkg.featured ? 'text-white/55 decoration-white/70' : 'text-outline decoration-accent2'}`}>
+                        <span className="sr-only">{t('packages.old_price')} </span>
+                        {pkg.price.old_amount}
+                    </s>
+                )}
                 <span className={`font-headline-lg text-4xl font-extrabold leading-none tracking-tight ${pkg.featured ? 'text-white' : 'text-accent2'}`}>{pkg.price.amount}</span>
                 <span className={`font-label-sm text-[0.68rem] font-bold uppercase tracking-wider ${pkg.featured ? 'text-white/70' : 'text-on-surface-variant'}`}>
                     {pkg.price.period}
