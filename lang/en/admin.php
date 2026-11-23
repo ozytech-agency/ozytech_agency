@@ -145,6 +145,8 @@ return [
             'badge' => 'Badge text (optional, shows "Most popular" when left empty on a Most Popular package)',
             'icon' => 'Icon (Font Awesome class)',
             'price_amount' => 'Price',
+            'old_price_amount' => 'Old price (optional)',
+            'old_price_amount_help' => 'Shown crossed out next to the price. Leave empty to hide it.',
             'price_period' => 'Price period (e.g. one-time)',
             'formation_states' => 'LLC formation states',
             'formation_states_help' => 'The package is listed under each state you tick on the Packages and Home pages.',

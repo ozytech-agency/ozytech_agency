@@ -120,6 +120,44 @@ class AdminPackageManagementTest extends TestCase
             );
     }
 
+    public function test_admin_can_set_and_clear_an_old_price(): void
+    {
+        $package = Package::factory()->create(['key' => 'growth']);
+        $admin = User::factory()->admin()->create();
+
+        $this->actingAs($admin)
+            ->put(route('admin.packages.update', ['locale' => 'en', 'package' => $package]), $this->payload([
+                'key' => 'growth',
+                'old_price_amount' => '$1,290',
+            ]))
+            ->assertSessionHasNoErrors();
+
+        $this->assertSame('$1,290', $package->refresh()->old_price_amount);
+
+        $this->actingAs($admin)
+            ->put(route('admin.packages.update', ['locale' => 'en', 'package' => $package]), $this->payload([
+                'key' => 'growth',
+                'old_price_amount' => '',
+            ]))
+            ->assertSessionHasNoErrors();
+
+        $this->assertNull($package->refresh()->old_price_amount);
+    }
+
+    public function test_public_packages_expose_the_old_price(): void
+    {
+        Package::factory()->create(['key' => 'growth', 'sort_order' => 1, 'price_amount' => '$990', 'old_price_amount' => '$1,290']);
+        Package::factory()->create(['key' => 'pro', 'sort_order' => 2, 'old_price_amount' => null]);
+
+        $this->get(route('packages', ['locale' => 'en']))
+            ->assertOk()
+            ->assertInertia(fn (Assert $page) => $page
+                ->where('packages.0.price.amount', '$990')
+                ->where('packages.0.price.old_amount', '$1,290')
+                ->where('packages.1.price.old_amount', null)
+            );
+    }
+
     public function test_admin_can_toggle_most_popular_from_the_package_list(): void
     {
         $package = Package::factory()->create(['is_featured' => false]);

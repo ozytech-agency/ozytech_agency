@@ -47,6 +47,7 @@ export default function PackagesIndex({ packages, category, routeBase }) {
                                 {pkg.title}
                             </Link>
                             <p>
+                                {pkg.old_price_amount && <s className="me-1 font-body-md text-body-md text-outline">{pkg.old_price_amount}</s>}
                                 <span className="font-headline-sm text-2xl font-extrabold text-accent2">{pkg.price_amount}</span>{' '}
                                 <span className="font-label-sm text-label-sm uppercase text-outline">{pkg.price_period}</span>
                             </p>

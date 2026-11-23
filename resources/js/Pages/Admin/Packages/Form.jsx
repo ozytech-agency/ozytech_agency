@@ -19,6 +19,7 @@ function initialData(pkg, nextSortOrder, isWebsite) {
         badge: localizedOrEmpty(pkg?.badge),
         icon: pkg?.icon ?? '',
         price_amount: pkg?.price_amount ?? '',
+        old_price_amount: pkg?.old_price_amount ?? '',
         formation_states: isWebsite ? [] : (pkg?.formation_states ?? FORMATION_STATES.map((state) => state.key)),
         price_period: localizedOrEmpty(pkg?.price_period),
         is_featured: pkg?.is_featured ?? false,
@@ -101,6 +102,15 @@ export default function PackageForm({ package: pkg, nextSortOrder, category, rou
                                 error={errors.price_amount}
                                 placeholder="$4,900"
                                 required
+                            />
+                            <TextField
+                                label={t('admin.packages.fields.old_price_amount')}
+                                name="old_price_amount"
+                                value={data.old_price_amount}
+                                onChange={(value) => setData('old_price_amount', value)}
+                                error={errors.old_price_amount}
+                                placeholder="$5,900"
+                                help={t('admin.packages.fields.old_price_amount_help')}
                             />
                             <LocalizedInput label={t('admin.packages.fields.price_period')} name="price_period" value={data.price_period} errors={errors} onChange={(value) => setData('price_period', value)} />
                             <LocalizedInput label={t('admin.packages.fields.cta')} name="cta" value={data.cta} errors={errors} onChange={(value) => setData('cta', value)} />
