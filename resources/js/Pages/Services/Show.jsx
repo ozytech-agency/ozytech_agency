@@ -1,6 +1,7 @@
 import { Link } from '@inertiajs/react';
 import SiteLayout from '@/Layouts/SiteLayout';
 import ProjectCard from '@/Components/ProjectCard';
+import Reveal from '@/Components/Reveal';
 import Seo from '@/Components/Seo';
 import { useTranslations } from '@/lib/translations';
 
@@ -59,35 +60,11 @@ export default function ServiceShow({ slug, title, lead, metaDescription, body, 
             </section>
 
             {(offer?.length > 0 || build?.length > 0) && (
-                <section className="w-full py-space-2xl bg-surface-container-low">
-                    <div className="mx-[6%] max-w-[760px] grid grid-cols-1 sm:grid-cols-2 gap-space-xl">
-                        {offer?.length > 0 && (
-                            <div>
-                                <h2 className="mb-space-md font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('services.details.offer_label')}</h2>
-                                <ul className="flex flex-col gap-space-sm">
-                                    {offer.map((item) => (
-                                        <li key={item.label} className="flex items-start gap-space-xs">
-                                            <span className="material-symbols-outlined icon-fill text-secondary-container">{item.icon}</span>
-                                            <span className="text-sm text-on-surface">{item.label}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-                        {build?.length > 0 && (
-                            <div>
-                                <h2 className="mb-space-md font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">{t('services.details.build_label')}</h2>
-                                <ul className="flex flex-col gap-space-sm">
-                                    {build.map((item) => (
-                                        <li key={item.label} className="flex items-start gap-space-xs">
-                                            <span className="material-symbols-outlined icon-fill text-accent2">{item.icon}</span>
-                                            <span className="text-sm text-on-surface">{item.label}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-                    </div>
+                <section className="w-full py-space-3xl bg-surface-container-low">
+                    <Reveal as="div" className="mx-[6%] grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+                        {offer?.length > 0 && <ServiceItemsPanel title={t('services.details.offer_label')} items={offer} />}
+                        {build?.length > 0 && <ServiceItemsPanel title={t('services.details.build_label')} items={build} dark />}
+                    </Reveal>
                 </section>
             )}
 
@@ -141,5 +118,44 @@ export default function ServiceShow({ slug, title, lead, metaDescription, body, 
                 </section>
             )}
         </SiteLayout>
+    );
+}
+
+/**
+ * A service's offer or build list, shown as a panel of icon tiles. The dark variant sits on
+ * navy so the two lists read as distinct.
+ */
+function ServiceItemsPanel({ title, items, dark = false }) {
+    return (
+        <div
+            className={`relative h-full overflow-hidden rounded-2xl border p-space-lg sm:p-space-xl ${
+                dark ? 'border-transparent bg-[#263963] text-white' : 'border-outline-variant/25 bg-surface-container-lowest shadow-sm'
+            }`}
+        >
+            <div className={`absolute -end-16 -top-16 h-40 w-40 rounded-full blur-2xl pointer-events-none ${dark ? 'bg-accent2/25' : 'bg-accent2/10'}`} aria-hidden="true"></div>
+            <h2 className={`relative mb-space-lg flex items-center gap-space-sm font-label-sm text-label-sm uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-accent2'}`}>
+                <span className={`h-0.5 w-6 rounded-full ${dark ? 'bg-white' : 'bg-accent2'}`} aria-hidden="true"></span>
+                {title}
+            </h2>
+            <ul className="relative flex flex-col gap-space-sm">
+                {items.map((item) => (
+                    <li
+                        key={item.label}
+                        className={`group flex items-center gap-space-md rounded-xl p-space-sm transition-colors duration-300 ${dark ? 'hover:bg-white/[0.06]' : 'hover:bg-surface-container-low'}`}
+                    >
+                        <span
+                            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-all duration-300 group-hover:-translate-y-0.5 group-hover:bg-accent2 group-hover:text-white ${
+                                dark ? 'bg-white/10 text-accent2' : 'bg-accent2/10 text-accent2'
+                            }`}
+                        >
+                            <span className="material-symbols-outlined icon-fill text-[22px]" aria-hidden="true">
+                                {item.icon}
+                            </span>
+                        </span>
+                        <span className={`font-body-md text-body-md font-medium ${dark ? 'text-white/90' : 'text-on-surface'}`}>{item.label}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 }
