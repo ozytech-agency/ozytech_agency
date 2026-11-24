@@ -34,7 +34,7 @@ class AdminPackageManagementTest extends TestCase
             'formation_states' => ['new-mexico', 'wyoming'],
             'is_featured' => false,
             'is_published' => true,
-            'sort_order' => 3,
+            'sort_order' => 1,
             'features' => [
                 ['text' => ['en' => 'Landing page'], 'note' => ['en' => '']],
                 ['text' => ['en' => 'Free domain'], 'note' => ['en' => 'First year only.']],
@@ -215,6 +215,109 @@ class AdminPackageManagementTest extends TestCase
                 ->where('packages.1.badge', 'Best value')
                 ->where('packages.2.badge', null)
             );
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function keysInDisplayOrder(): array
+    {
+        return Package::query()->ordered()->pluck('key')->all();
+    }
+
+    public function test_moving_a_package_to_a_position_shifts_the_others(): void
+    {
+        Package::factory()->create(['key' => 'growth', 'sort_order' => 1]);
+        Package::factory()->create(['key' => 'pro', 'sort_order' => 2]);
+        $ultimate = Package::factory()->create(['key' => 'ultimate', 'sort_order' => 3]);
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->put(route('admin.packages.update', ['locale' => 'en', 'package' => $ultimate]), $this->payload([
+                'key' => 'ultimate',
+                'sort_order' => 1,
+            ]))
+            ->assertSessionHasNoErrors();
+
+        $this->assertSame(['ultimate', 'growth', 'pro'], $this->keysInDisplayOrder());
+        $this->assertSame([1, 2, 3], Package::query()->ordered()->pluck('sort_order')->all());
+    }
+
+    public function test_a_new_package_can_be_placed_between_existing_ones(): void
+    {
+        Package::factory()->create(['key' => 'growth', 'sort_order' => 1]);
+        Package::factory()->create(['key' => 'pro', 'sort_order' => 2]);
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->post(route('admin.packages.store', ['locale' => 'en']), $this->payload(['sort_order' => 2]))
+            ->assertSessionHasNoErrors();
+
+        $this->assertSame(['growth', 'starter', 'pro'], $this->keysInDisplayOrder());
+        $this->assertSame([1, 2, 3], Package::query()->ordered()->pluck('sort_order')->all());
+    }
+
+    public function test_position_must_be_within_the_number_of_packages(): void
+    {
+        $growth = Package::factory()->create(['key' => 'growth', 'sort_order' => 1]);
+        Package::factory()->create(['key' => 'pro', 'sort_order' => 2]);
+        $admin = User::factory()->admin()->create();
+
+        foreach ([0, 3] as $position) {
+            $this->actingAs($admin)
+                ->put(route('admin.packages.update', ['locale' => 'en', 'package' => $growth]), $this->payload([
+                    'key' => 'growth',
+                    'sort_order' => $position,
+                ]))
+                ->assertSessionHasErrors('sort_order');
+        }
+
+        $this->actingAs($admin)
+            ->post(route('admin.packages.store', ['locale' => 'en']), $this->payload(['sort_order' => 4]))
+            ->assertSessionHasErrors('sort_order');
+
+        $this->actingAs($admin)
+            ->post(route('admin.packages.store', ['locale' => 'en']), $this->payload(['sort_order' => 3]))
+            ->assertSessionHasNoErrors();
+    }
+
+    public function test_positions_are_counted_within_the_packages_own_section(): void
+    {
+        $growth = Package::factory()->create(['key' => 'growth', 'sort_order' => 1]);
+        Package::factory()->website()->create(['key' => 'landing-page', 'sort_order' => 1]);
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->put(route('admin.packages.update', ['locale' => 'en', 'package' => $growth]), $this->payload([
+                'key' => 'growth',
+                'sort_order' => 2,
+            ]))
+            ->assertSessionHasErrors('sort_order');
+    }
+
+    public function test_deleting_a_package_closes_the_gap_in_positions(): void
+    {
+        Package::factory()->create(['key' => 'growth', 'sort_order' => 1]);
+        $pro = Package::factory()->create(['key' => 'pro', 'sort_order' => 2]);
+        Package::factory()->create(['key' => 'ultimate', 'sort_order' => 3]);
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->delete(route('admin.packages.destroy', ['locale' => 'en', 'package' => $pro]))
+            ->assertSessionHasNoErrors();
+
+        $this->assertSame(['growth' => 1, 'ultimate' => 2], Package::query()->ordered()->pluck('sort_order', 'key')->all());
+    }
+
+    public function test_admin_screens_offer_one_position_per_package(): void
+    {
+        $growth = Package::factory()->create(['sort_order' => 1]);
+        Package::factory()->create(['sort_order' => 2]);
+        $admin = User::factory()->admin()->create();
+
+        $this->actingAs($admin)
+            ->get(route('admin.packages.edit', ['locale' => 'en', 'package' => $growth]))
+            ->assertInertia(fn (Assert $page) => $page->where('positionCount', 2));
+
+        $this->actingAs($admin)
+            ->get(route('admin.packages.create', ['locale' => 'en']))
+            ->assertInertia(fn (Assert $page) => $page->where('positionCount', 3));
     }
 
     public function test_public_packages_page_shows_only_published_packages_in_order(): void

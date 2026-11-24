@@ -64,7 +64,7 @@ class PackageController extends Controller
         return Inertia::render('Admin/Packages/Form', [
             ...$this->screenProps(),
             'package' => null,
-            'nextSortOrder' => (int) Package::query()->ofCategory($this->category())->max('sort_order') + 1,
+            'positionCount' => $this->packageCount() + 1,
         ]);
     }
 
@@ -72,6 +72,7 @@ class PackageController extends Controller
     {
         DB::transaction(function () use ($request) {
             $package = Package::create([...$request->packageAttributes(), 'category' => $this->category()]);
+            $package->moveToPosition($request->integer('sort_order'));
             $package->features()->createMany($request->features());
             $package->keepOnlyMostPopularInItsStates();
         });
@@ -93,6 +94,7 @@ class PackageController extends Controller
                     ->values(),
                 'has_inquiries' => $package->inquiries()->exists(),
             ],
+            'positionCount' => $this->packageCount(),
         ]);
     }
 
@@ -102,6 +104,7 @@ class PackageController extends Controller
 
         DB::transaction(function () use ($request, $package) {
             $package->update($request->packageAttributes());
+            $package->moveToPosition($request->integer('sort_order'));
             PackageFeature::where('package_id', $package->id)->delete();
             $package->features()->createMany($request->features());
             $package->keepOnlyMostPopularInItsStates();
@@ -133,9 +136,20 @@ class PackageController extends Controller
             return back()->withErrors(['package' => __('admin.packages.delete_blocked')]);
         }
 
-        $package->delete();
+        DB::transaction(function () use ($package) {
+            $package->delete();
+            Package::renumberPositions($this->category());
+        });
 
         return to_route($this->routeBase().'.index')->with('status', __('admin.flash.deleted'));
+    }
+
+    /**
+     * How many packages this section holds, which is also its last position.
+     */
+    protected function packageCount(): int
+    {
+        return Package::query()->ofCategory($this->category())->count();
     }
 
     /**

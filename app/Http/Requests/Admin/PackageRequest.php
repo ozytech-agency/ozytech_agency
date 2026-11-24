@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use App\Enums\FormationState;
+use App\Enums\PackageCategory;
 use App\Http\Requests\Admin\Concerns\ValidatesLocalizedFields;
 use App\Models\Package;
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -42,11 +43,41 @@ class PackageRequest extends FormRequest
             ...$this->localizedRules('price_period', max: 50),
             'is_featured' => ['boolean'],
             'is_published' => ['boolean'],
-            'sort_order' => ['required', 'integer', 'min:0'],
+            'sort_order' => ['required', 'integer', 'min:1', 'max:'.$this->maxPosition()],
             'features' => ['present', 'array', 'max:30'],
             ...$this->localizedRules('features.*.text'),
             ...$this->localizedRules('features.*.note', required: false, max: 500),
         ];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'sort_order.max' => __('admin.packages.position_out_of_range', ['max' => $this->maxPosition()]),
+            'sort_order.min' => __('admin.packages.position_out_of_range', ['max' => $this->maxPosition()]),
+        ];
+    }
+
+    /**
+     * The category this request saves a package into.
+     */
+    public function category(): PackageCategory
+    {
+        return $this->isForWebsitePackage() ? PackageCategory::Website : PackageCategory::Llc;
+    }
+
+    /**
+     * Positions run from 1 to the number of packages in the category, plus one slot at the
+     * end when a new package is being added.
+     */
+    public function maxPosition(): int
+    {
+        $count = Package::query()->ofCategory($this->category())->count();
+
+        return $this->route('package') instanceof Package ? max($count, 1) : $count + 1;
     }
 
     /**

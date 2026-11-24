@@ -82,6 +82,44 @@ class Package extends Model
             ->each(fn (Package $other) => $other->update(['is_featured' => false]));
     }
 
+    /**
+     * Moves the package to a 1-based position among the packages of its category, shifting
+     * the others so the positions stay 1..N with no gaps or duplicates.
+     */
+    public function moveToPosition(int $position): void
+    {
+        $siblings = static::query()
+            ->ofCategory($this->category)
+            ->whereKeyNot($this->getKey())
+            ->ordered()
+            ->get();
+
+        $position = max(1, min($position, $siblings->count() + 1));
+        $siblings->splice($position - 1, 0, [$this]);
+
+        static::savePositions($siblings->values()->all());
+    }
+
+    /**
+     * Closes the gaps left in a category's positions, e.g. after a package is deleted.
+     */
+    public static function renumberPositions(PackageCategory $category): void
+    {
+        static::savePositions(static::query()->ofCategory($category)->ordered()->get()->all());
+    }
+
+    /**
+     * @param  list<Package>  $packages  In display order.
+     */
+    private static function savePositions(array $packages): void
+    {
+        foreach ($packages as $index => $package) {
+            if ($package->sort_order !== $index + 1) {
+                $package->update(['sort_order' => $index + 1]);
+            }
+        }
+    }
+
     #[Scope]
     protected function ofCategory(Builder $query, PackageCategory $category): void
     {

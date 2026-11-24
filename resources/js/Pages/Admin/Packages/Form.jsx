@@ -8,7 +8,7 @@ import { EditingLocaleProvider, LocaleSwitcher, LocalizedInput } from '@/Compone
 import { emptyLocalized, localizedOrEmpty, moveItem } from '@/lib/admin';
 import { useTranslations } from '@/lib/translations';
 
-function initialData(pkg, nextSortOrder, isWebsite) {
+function initialData(pkg, positionCount, isWebsite) {
     return {
         key: pkg?.key ?? '',
         label: localizedOrEmpty(pkg?.label),
@@ -24,17 +24,17 @@ function initialData(pkg, nextSortOrder, isWebsite) {
         price_period: localizedOrEmpty(pkg?.price_period),
         is_featured: pkg?.is_featured ?? false,
         is_published: pkg?.is_published ?? true,
-        sort_order: pkg?.sort_order ?? nextSortOrder ?? 0,
+        sort_order: pkg?.sort_order ?? positionCount ?? 1,
         features: (pkg?.features ?? []).map((feature) => ({ text: localizedOrEmpty(feature.text), note: localizedOrEmpty(feature.note) })),
     };
 }
 
-export default function PackageForm({ package: pkg, nextSortOrder, category, routeBase }) {
+export default function PackageForm({ package: pkg, positionCount = 1, category, routeBase }) {
     const t = useTranslations();
     const isEditing = Boolean(pkg);
     const isWebsite = category === 'website';
     const copy = isWebsite ? 'admin.website_packages' : 'admin.packages';
-    const { data, setData, post, put, processing, errors } = useForm(initialData(pkg, nextSortOrder, isWebsite));
+    const { data, setData, post, put, processing, errors } = useForm(initialData(pkg, positionCount, isWebsite));
     const rowLabels = { up: t('admin.common.move_up'), down: t('admin.common.move_down'), remove: t('admin.common.remove') };
 
     const submit = (e) => {
@@ -173,15 +173,15 @@ export default function PackageForm({ package: pkg, nextSortOrder, category, rou
                                 error={errors.icon}
                                 placeholder="fa-solid fa-rocket"
                             />
-                            <TextField
-                                label={t('admin.packages.fields.sort_order')}
-                                name="sort_order"
-                                type="number"
-                                min="0"
-                                value={data.sort_order}
-                                onChange={(value) => setData('sort_order', value)}
-                                error={errors.sort_order}
-                            />
+                            <Field label={t('admin.packages.fields.sort_order')} name="sort_order" error={errors.sort_order} help={t('admin.packages.fields.sort_order_help')} required>
+                                <select id="sort_order" value={data.sort_order} onChange={(e) => setData('sort_order', Number(e.target.value))} className="mt-1 w-full rounded-lg border-outline-variant/50 bg-surface text-on-surface font-body-md focus:border-secondary-container focus:ring-secondary-container">
+                                    {Array.from({ length: positionCount }, (_, index) => index + 1).map((position) => (
+                                        <option key={position} value={position}>
+                                            {t('admin.packages.position_option').replace(':position', position).replace(':count', positionCount)}
+                                        </option>
+                                    ))}
+                                </select>
+                            </Field>
                         </div>
                         {!isWebsite && (
                             <Field label={t('admin.packages.fields.formation_states')} name="formation_states" error={errors.formation_states} help={t('admin.packages.fields.formation_states_help')} required>

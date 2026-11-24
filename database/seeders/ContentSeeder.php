@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\FormationState;
+use App\Enums\PackageCategory;
 use App\Enums\ServiceItemType;
 use App\Models\Package;
 use App\Models\Policy;
@@ -310,7 +311,7 @@ class ContentSeeder extends Seeder
                 'price_period' => $this->localized("{$base}.price.period"),
                 'formation_states' => FormationState::values(),
                 'is_featured' => $this->localized("{$base}.badge") !== null,
-                'sort_order' => $index,
+                'sort_order' => $index + 1,
                 'is_published' => true,
             ]);
 
@@ -336,6 +337,8 @@ class ContentSeeder extends Seeder
                 ]);
             }
         }
+
+        Package::renumberPositions(PackageCategory::Llc);
     }
 
     private function seedPosts(): void

@@ -37,6 +37,7 @@ export default function PackagesIndex({ packages, category, routeBase }) {
                     {packages.map((pkg) => (
                         <article key={pkg.id} className="flex flex-col gap-space-xs rounded-xl border border-surface-container bg-surface-container-lowest p-space-lg">
                             <div className="flex flex-wrap items-center gap-1">
+                                <StatusBadge>{t('admin.packages.position_badge').replace(':position', pkg.sort_order)}</StatusBadge>
                                 <StatusBadge tone={pkg.is_published ? 'success' : 'neutral'}>{pkg.is_published ? t('admin.common.published') : t('admin.common.hidden')}</StatusBadge>
                                 {pkg.is_featured && <StatusBadge tone="warning">{t('admin.packages.most_popular')}</StatusBadge>}
                                 {FORMATION_STATES.filter((state) => pkg.formation_states.includes(state.key)).map((state) => (
