@@ -17,15 +17,16 @@ const LOCALES = ['en', 'ar', 'fr', 'es'];
  * DOM after the JS bundle executed, invisible to crawlers that don't render
  * JS.
  */
-export default function Seo({ title, description, image, noindex = false, robots, jsonLd, breadcrumbs, children }) {
+export default function Seo({ title, description, image, noindex = false, robots, jsonLd, breadcrumbs, withBrand = false, children }) {
     const { props } = usePage();
     const robotsContent = robots ?? (noindex ? 'noindex, nofollow' : null);
     const { appUrl, currentPath, locale, translations } = props;
     const resolvedImage = image ?? `${appUrl}/images/logo.png`;
 
-    // Every page title leads with the brand: "Ozytech Agency - <page title>".
+    // Subpages use their own title alone ("About Us"); `withBrand` (the home page) leads with
+    // the brand instead: "Ozytech Agency - <page title>".
     const brand = translations?.nav?.brand ?? 'Ozytech Agency';
-    const fullTitle = title ? `${brand} - ${title}` : brand;
+    const fullTitle = title ? (withBrand ? `${brand} - ${title}` : title) : brand;
 
     const segments = (currentPath ?? '').split('/').filter(Boolean);
     const hasLocale = LOCALES.includes(segments[0]);

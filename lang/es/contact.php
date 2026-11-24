@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Contáctanos - Construyamos algo juntos',
+    'title' => 'Contáctanos',
     'meta_description' => 'Ponte en contacto con Ozytech Agency para servicios de desarrollo web, SaaS, e-commerce, soluciones IT, creación de empresas e integración de pagos.',
 
     'hero' => [

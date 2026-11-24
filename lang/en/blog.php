@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Blog - Technology, Business & Digital Insights',
+    'title' => 'Blog',
 
     'hero' => [
         'badge' => 'OZYTECH AGENCY BLOGS',

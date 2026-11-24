@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Contact Us - Let\'s Build Something Together',
+    'title' => 'Contact Us',
     'meta_description' => 'Get in touch with Ozytech Agency for web development, SaaS, e-commerce, IT solutions, business formation, and payment integration services.',
 
     'hero' => [

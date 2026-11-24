@@ -89,7 +89,7 @@ export default function Home({ serviceImages = {}, reviews = [], packages = [] }
 
     return (
         <SiteLayout>
-            <Seo title={t('home.title')} description={t('home.meta_description')} jsonLd={websiteJsonLd}>
+            <Seo title={t('home.title')} description={t('home.meta_description')} jsonLd={websiteJsonLd} withBrand>
                 <link rel="preload" as="image" href={HERO_SLIDES[0]} fetchpriority="high" head-key="hero-preload" />
             </Seo>
 
