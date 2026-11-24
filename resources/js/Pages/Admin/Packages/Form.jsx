@@ -20,6 +20,8 @@ function initialData(pkg, positionCount, isWebsite) {
         icon: pkg?.icon ?? '',
         price_amount: pkg?.price_amount ?? '',
         old_price_amount: pkg?.old_price_amount ?? '',
+        currency: pkg?.currency ?? '',
+        currency_symbol: localizedOrEmpty(pkg?.currency_symbol),
         formation_states: isWebsite ? [] : (pkg?.formation_states ?? FORMATION_STATES.map((state) => state.key)),
         price_period: localizedOrEmpty(pkg?.price_period),
         is_featured: pkg?.is_featured ?? false,
@@ -29,12 +31,13 @@ function initialData(pkg, positionCount, isWebsite) {
     };
 }
 
-export default function PackageForm({ package: pkg, positionCount = 1, category, routeBase }) {
+export default function PackageForm({ package: pkg, positionCount = 1, currencies = [], category, routeBase }) {
     const t = useTranslations();
     const isEditing = Boolean(pkg);
     const isWebsite = category === 'website';
     const copy = isWebsite ? 'admin.website_packages' : 'admin.packages';
     const { data, setData, post, put, processing, errors } = useForm(initialData(pkg, positionCount, isWebsite));
+    const pricePlaceholder = data.currency ? '4,900' : '$4,900';
     const rowLabels = { up: t('admin.common.move_up'), down: t('admin.common.move_down'), remove: t('admin.common.remove') };
 
     const submit = (e) => {
@@ -100,7 +103,8 @@ export default function PackageForm({ package: pkg, positionCount = 1, category,
                                 value={data.price_amount}
                                 onChange={(value) => setData('price_amount', value)}
                                 error={errors.price_amount}
-                                placeholder="$4,900"
+                                placeholder={pricePlaceholder}
+                                help={data.currency ? t('admin.packages.fields.price_amount_numeric_help') : null}
                                 required
                             />
                             <TextField
@@ -109,9 +113,30 @@ export default function PackageForm({ package: pkg, positionCount = 1, category,
                                 value={data.old_price_amount}
                                 onChange={(value) => setData('old_price_amount', value)}
                                 error={errors.old_price_amount}
-                                placeholder="$5,900"
+                                placeholder={data.currency ? '5,900' : '$5,900'}
                                 help={t('admin.packages.fields.old_price_amount_help')}
                             />
+                            <Field label={t('admin.packages.fields.currency')} name="currency" error={errors.currency} help={t('admin.packages.fields.currency_help')}>
+                                <select id="currency" value={data.currency} onChange={(e) => setData('currency', e.target.value)} className="mt-1 w-full rounded-lg border-outline-variant/50 bg-surface text-on-surface font-body-md focus:border-secondary-container focus:ring-secondary-container">
+                                    <option value="">{t('admin.packages.fields.currency_none')}</option>
+                                    {currencies.map((code) => (
+                                        <option key={code} value={code}>
+                                            {code}
+                                        </option>
+                                    ))}
+                                </select>
+                            </Field>
+                            {data.currency && (
+                                <LocalizedInput
+                                    label={t('admin.packages.fields.currency_symbol')}
+                                    name="currency_symbol"
+                                    value={data.currency_symbol}
+                                    errors={errors}
+                                    required={false}
+                                    help={t('admin.packages.fields.currency_symbol_help')}
+                                    onChange={(value) => setData('currency_symbol', value)}
+                                />
+                            )}
                             <LocalizedInput label={t('admin.packages.fields.price_period')} name="price_period" value={data.price_period} errors={errors} onChange={(value) => setData('price_period', value)} />
                             <LocalizedInput label={t('admin.packages.fields.cta')} name="cta" value={data.cta} errors={errors} onChange={(value) => setData('cta', value)} />
                             <LocalizedInput label={t('admin.packages.fields.badge')} name="badge" value={data.badge} errors={errors} required={false} onChange={(value) => setData('badge', value)} />

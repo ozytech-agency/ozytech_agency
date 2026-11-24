@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Currency;
 use App\Enums\PackageCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PackageRequest;
@@ -46,8 +47,8 @@ class PackageController extends Controller
                     'id' => $package->id,
                     'key' => $package->key,
                     'title' => $package->localized('title'),
-                    'price_amount' => $package->price_amount,
-                    'old_price_amount' => $package->old_price_amount,
+                    'price' => $package->formatPrice($package->price_amount),
+                    'old_price' => $package->formatPrice($package->old_price_amount),
                     'price_period' => $package->localized('price_period'),
                     'formation_states' => $package->formation_states ?? [],
                     'is_featured' => $package->is_featured,
@@ -88,7 +89,7 @@ class PackageController extends Controller
         return Inertia::render('Admin/Packages/Form', [
             ...$this->screenProps(),
             'package' => [
-                ...$package->only(['id', 'key', 'label', 'title', 'best_for', 'description', 'cta', 'badge', 'icon', 'price_amount', 'old_price_amount', 'price_period', 'formation_states', 'is_featured', 'is_published', 'sort_order']),
+                ...$package->only(['id', 'key', 'label', 'title', 'best_for', 'description', 'cta', 'badge', 'icon', 'price_amount', 'old_price_amount', 'currency', 'currency_symbol', 'price_period', 'formation_states', 'is_featured', 'is_published', 'sort_order']),
                 'features' => $package->features
                     ->map(fn (PackageFeature $feature) => ['text' => $feature->text, 'note' => $feature->note])
                     ->values(),
@@ -155,13 +156,14 @@ class PackageController extends Controller
     /**
      * Tells the shared admin screens which kind of package they show and where their links go.
      *
-     * @return array{category: string, routeBase: string}
+     * @return array{category: string, routeBase: string, currencies: list<string>}
      */
     protected function screenProps(): array
     {
         return [
             'category' => $this->category()->value,
             'routeBase' => $this->routeBase(),
+            'currencies' => array_column(Currency::cases(), 'value'),
         ];
     }
 

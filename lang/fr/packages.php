@@ -86,6 +86,11 @@ return [
     'most_popular' => 'Le plus populaire',
     'old_price' => 'Ancien prix',
 
+    'currencies' => [
+        'USD' => ['symbol' => '$', 'format' => ':amount :symbol'],
+        'MAD' => ['symbol' => 'MAD', 'format' => ':amount :symbol'],
+    ],
+
     'state_switcher' => [
         'label' => "Choisissez l'État de création de votre LLC",
         'new_mexico' => 'Nouveau-Mexique',

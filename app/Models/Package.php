@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Currency;
 use App\Enums\PackageCategory;
 use App\Models\Concerns\HasLocalizedAttributes;
 use Database\Factories\PackageFactory;
@@ -11,10 +12,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Number;
 
 #[Fillable([
     'key', 'category', 'label', 'title', 'best_for', 'description', 'cta', 'badge', 'icon',
-    'price_amount', 'old_price_amount', 'price_period', 'formation_states', 'is_featured', 'sort_order', 'is_published',
+    'price_amount', 'old_price_amount', 'currency', 'currency_symbol', 'price_period', 'formation_states', 'is_featured', 'sort_order', 'is_published',
 ])]
 class Package extends Model
 {
@@ -43,6 +45,8 @@ class Package extends Model
             'description' => 'array',
             'cta' => 'array',
             'badge' => 'array',
+            'currency' => Currency::class,
+            'currency_symbol' => 'array',
             'price_period' => 'array',
             'formation_states' => 'array',
             'is_featured' => 'boolean',
@@ -120,6 +124,30 @@ class Package extends Model
         }
     }
 
+    /**
+     * The amount with the package's currency, laid out for the current language. Without a
+     * currency the amount is shown exactly as the admin typed it.
+     */
+    public function formatPrice(?string $amount): ?string
+    {
+        if (blank($amount) || $this->currency === null) {
+            return $amount;
+        }
+
+        $locale = app()->getLocale();
+        $number = (float) preg_replace('/[^\d.]/', '', $amount);
+        $formatted = extension_loaded('intl')
+            ? Number::format($number, maxPrecision: 2, locale: $locale)
+            : number_format($number, floor($number) === $number ? 0 : 2);
+
+        $code = $this->currency->value;
+        $symbol = filled($this->currency_symbol[$locale] ?? null)
+            ? $this->currency_symbol[$locale]
+            : __("packages.currencies.{$code}.symbol");
+
+        return __("packages.currencies.{$code}.format", ['amount' => $formatted, 'symbol' => $symbol]);
+    }
+
     #[Scope]
     protected function ofCategory(Builder $query, PackageCategory $category): void
     {
@@ -157,8 +185,8 @@ class Package extends Model
             'cta' => $this->localized('cta'),
             'badge' => $this->localized('badge') ?? ($this->is_featured ? __('packages.most_popular') : null),
             'price' => [
-                'amount' => $this->price_amount,
-                'old_amount' => $this->old_price_amount,
+                'amount' => $this->formatPrice($this->price_amount),
+                'old_amount' => $this->formatPrice($this->old_price_amount),
                 'period' => $this->localized('price_period'),
             ],
             'formation_states' => array_values($this->formation_states ?? []),

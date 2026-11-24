@@ -86,6 +86,11 @@ return [
     'most_popular' => 'الأكثر طلبًا',
     'old_price' => 'السعر القديم',
 
+    'currencies' => [
+        'USD' => ['symbol' => '$', 'format' => ':amount:symbol'],
+        'MAD' => ['symbol' => 'د.م.', 'format' => ':amount :symbol'],
+    ],
+
     'state_switcher' => [
         'label' => 'اختر ولاية تأسيس شركتك LLC',
         'new_mexico' => 'ولاية نيو مكسيكو',

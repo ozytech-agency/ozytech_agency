@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Enums\Currency;
 use App\Enums\FormationState;
 use App\Enums\PackageCategory;
 use App\Http\Requests\Admin\Concerns\ValidatesLocalizedFields;
@@ -36,8 +37,10 @@ class PackageRequest extends FormRequest
             ...$this->localizedRules('cta', max: 100),
             ...$this->localizedRules('badge', required: false, max: 50),
             'icon' => ['nullable', 'string', 'max:100'],
-            'price_amount' => ['required', 'string', 'max:50'],
-            'old_price_amount' => ['nullable', 'string', 'max:50'],
+            'price_amount' => ['required', 'string', 'max:50', ...$this->numericAmountRules()],
+            'old_price_amount' => ['nullable', 'string', 'max:50', ...$this->numericAmountRules()],
+            'currency' => ['nullable', Rule::enum(Currency::class)],
+            ...$this->localizedRules('currency_symbol', required: false, max: 20),
             'formation_states' => $this->isForWebsitePackage() ? ['nullable', 'array'] : ['required', 'array', 'min:1'],
             'formation_states.*' => ['distinct', Rule::enum(FormationState::class)],
             ...$this->localizedRules('price_period', max: 50),
@@ -56,9 +59,22 @@ class PackageRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'price_amount.regex' => __('admin.packages.amount_must_be_numeric'),
+            'old_price_amount.regex' => __('admin.packages.amount_must_be_numeric'),
             'sort_order.max' => __('admin.packages.position_out_of_range', ['max' => $this->maxPosition()]),
             'sort_order.min' => __('admin.packages.position_out_of_range', ['max' => $this->maxPosition()]),
         ];
+    }
+
+    /**
+     * Once a currency is chosen the site adds its symbol, so the amount must be a plain
+     * number such as 4900, 4,900 or 4900.50.
+     *
+     * @return list<string>
+     */
+    private function numericAmountRules(): array
+    {
+        return $this->filled('currency') ? ['regex:/^\d{1,3}(?:[,\s]?\d{3})*(?:\.\d{1,2})?$/'] : [];
     }
 
     /**
@@ -125,6 +141,8 @@ class PackageRequest extends FormRequest
             'icon' => $this->validated('icon'),
             'price_amount' => $this->validated('price_amount'),
             'old_price_amount' => $this->validated('old_price_amount'),
+            'currency' => $this->validated('currency'),
+            'currency_symbol' => $this->filled('currency') ? $this->cleanLocalized($this->validated('currency_symbol')) : null,
             'formation_states' => $this->isForWebsitePackage() ? [] : array_values($this->validated('formation_states')),
             'price_period' => $this->cleanLocalized($this->validated('price_period')),
             'is_featured' => $this->boolean('is_featured'),

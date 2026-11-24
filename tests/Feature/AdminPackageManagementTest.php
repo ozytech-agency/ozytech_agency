@@ -2,11 +2,13 @@
 
 namespace Tests\Feature;
 
+use App\Enums\Currency;
 use App\Models\Inquiry;
 use App\Models\Package;
 use App\Models\PackageFeature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Number;
 use Inertia\Testing\AssertableInertia as Assert;
 use Tests\TestCase;
 
@@ -313,11 +315,95 @@ class AdminPackageManagementTest extends TestCase
 
         $this->actingAs($admin)
             ->get(route('admin.packages.edit', ['locale' => 'en', 'package' => $growth]))
-            ->assertInertia(fn (Assert $page) => $page->where('positionCount', 2));
+            ->assertInertia(fn (Assert $page) => $page->where('positionCount', 2)->where('currencies', ['USD', 'MAD']));
 
         $this->actingAs($admin)
             ->get(route('admin.packages.create', ['locale' => 'en']))
             ->assertInertia(fn (Assert $page) => $page->where('positionCount', 3));
+    }
+
+    public function test_price_without_a_currency_is_shown_exactly_as_typed(): void
+    {
+        Package::factory()->create(['price_amount' => '4 900 $', 'old_price_amount' => '5 900 $', 'currency' => null]);
+
+        $this->get(route('packages', ['locale' => 'fr']))
+            ->assertInertia(fn (Assert $page) => $page
+                ->where('packages.0.price.amount', '4 900 $')
+                ->where('packages.0.price.old_amount', '5 900 $')
+            );
+    }
+
+    public function test_currency_prices_are_laid_out_for_each_language(): void
+    {
+        Package::factory()->create(['key' => 'usd', 'sort_order' => 1, 'price_amount' => '4,900', 'old_price_amount' => '5900', 'currency' => Currency::Usd]);
+        Package::factory()->create(['key' => 'mad', 'sort_order' => 2, 'price_amount' => '12000', 'currency' => Currency::Mad]);
+
+        $this->get(route('packages', ['locale' => 'en']))
+            ->assertInertia(fn (Assert $page) => $page
+                ->where('packages.0.price.amount', '$4,900')
+                ->where('packages.0.price.old_amount', '$5,900')
+                ->where('packages.1.price.amount', '12,000 MAD')
+            );
+
+        $this->get(route('packages', ['locale' => 'ar']))
+            ->assertInertia(fn (Assert $page) => $page
+                ->where('packages.0.price.amount', '4,900$')
+                ->where('packages.1.price.amount', '12,000 د.م.')
+            );
+
+        $this->get(route('packages', ['locale' => 'fr']))
+            ->assertInertia(fn (Assert $page) => $page
+                ->where('packages.0.price.amount', Number::format(4900, locale: 'fr').' $')
+            );
+    }
+
+    public function test_admin_can_override_the_currency_symbol_for_one_language(): void
+    {
+        $package = Package::factory()->create(['key' => 'growth', 'sort_order' => 1]);
+
+        $this->actingAs(User::factory()->admin()->create())
+            ->put(route('admin.packages.update', ['locale' => 'en', 'package' => $package]), $this->payload([
+                'key' => 'growth',
+                'price_amount' => '4900',
+                'currency' => 'MAD',
+                'currency_symbol' => ['en' => '', 'fr' => 'DH'],
+            ]))
+            ->assertSessionHasNoErrors();
+
+        $package->refresh();
+        $this->assertSame(Currency::Mad, $package->currency);
+        $this->assertSame(['fr' => 'DH'], $package->currency_symbol);
+
+        $this->get(route('packages', ['locale' => 'en']))
+            ->assertInertia(fn (Assert $page) => $page->where('packages.0.price.amount', '4,900 MAD'));
+
+        $this->get(route('packages', ['locale' => 'fr']))
+            ->assertInertia(fn (Assert $page) => $page->where('packages.0.price.amount', Number::format(4900, locale: 'fr').' DH'));
+    }
+
+    public function test_currency_must_be_known_and_its_amounts_numeric(): void
+    {
+        $admin = User::factory()->admin()->create();
+
+        $this->actingAs($admin)
+            ->post(route('admin.packages.store', ['locale' => 'en']), $this->payload(['currency' => 'GBP']))
+            ->assertSessionHasErrors('currency');
+
+        $this->actingAs($admin)
+            ->post(route('admin.packages.store', ['locale' => 'en']), $this->payload([
+                'currency' => 'USD',
+                'price_amount' => '$990',
+                'old_price_amount' => 'about 1k',
+            ]))
+            ->assertSessionHasErrors(['price_amount', 'old_price_amount']);
+
+        $this->actingAs($admin)
+            ->post(route('admin.packages.store', ['locale' => 'en']), $this->payload([
+                'currency' => 'USD',
+                'price_amount' => '990',
+                'currency_symbol' => ['en' => str_repeat('$', 21)],
+            ]))
+            ->assertSessionHasErrors('currency_symbol.en');
     }
 
     public function test_public_packages_page_shows_only_published_packages_in_order(): void
